@@ -1,65 +1,22 @@
-/* src/components/LoginPage/LoginPage.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.login-container {
-  @apply min-h-screen flex items-center justify-center bg-black text-white;
+.login-wrapper {
+  @apply min-h-screen;
 }
 
-.login-box {
-  @apply w-full max-w-md bg-white text-black rounded-2xl shadow-lg p-8;
+.login-left {
+  @apply h-full;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-.login-title {
-  @apply text-3xl font-bold mb-6 text-center;
+.login-right {
+  @apply p-4;
 }
 
-.login-form {
-  @apply space-y-4;
-}
-
-.login-label {
-  @apply block text-sm font-medium;
-}
-
-.login-input {
-  @apply mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
-}
-
-.password-wrapper {
-  @apply relative;
-}
-
-.eye-icon {
-  @apply absolute right-3 top-2.5 cursor-pointer;
-}
-
-.forgot-password {
-  @apply text-right text-sm text-blue-600 hover:underline;
-}
-
-.login-button {
-  @apply w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium;
-}
-
-.separator {
-  @apply my-4 flex items-center justify-center;
-}
-.separator::before,
-.separator::after {
-  content: '';
-  @apply flex-grow border-t border-gray-300 mx-2;
-}
-
-.social-buttons {
-  @apply space-y-3;
-}
-
-.social-button {
-  @apply w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 font-medium hover:bg-gray-100 transition;
-}
-
-.signup-text {
-  @apply mt-6 text-center text-sm;
+input {
+  @apply bg-white text-black;
 }
