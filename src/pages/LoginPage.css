@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.login-wrapper {
+  @apply min-h-screen;
+}
+
+.login-left {
+  @apply h-full;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.login-right {
+  @apply p-4;
+}
+
+input {
+  @apply bg-white text-black;
+}
