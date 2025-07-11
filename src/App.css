@@ -1,1 +1,22 @@
-@import "tailwindcss";
+@import "tailwindcss";.login-btn {
+    font-size: 15px;
+    background-color: #04af2f;
+    border: 2px solid transparent;
+    color: #fff;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 40.38px;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #e4ffe5;
+    border-color: #04af2f;
+    color: #04af2f;
+  }
+  

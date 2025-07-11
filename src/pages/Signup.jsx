@@ -1,132 +1,217 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { FaGoogle, FaEyeSlash, FaEye, FaUser, FaUserTag, FaArrowLeft, FaCheck } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+import bgTop from "../assets/bg-top.png";
+import bgBottom from "../assets/bg-bottom.png";
+import bgLeft from "../assets/bg-left.webp";
 
-export default function Signup() {
+const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+
   return (
-    <div className="relative min-h-screen bg-[#EBEDDF]">
-      <div className="relative z-10 flex min-h-screen text-[#333A2F]">
-        
-        <div
-          className="w-1/3 bg-cover bg-center flex items-center justify-center"
-          style={{
-            backgroundColor: "#333A2F",
-          }}
-        >
-          <img
-            src="/background-left.png"
-            alt="img"
-            className="w-[300px] h-auto"
-          />
-        </div>
-
-        <div className="w-2/3 flex items-center justify-center p-10 relative">
+    <div className="min-h-screen relative" style={{ backgroundColor: '#EBEDDF' }}>
+      {/* Content */}
+      <section className="relative z-10">
+        <div className="auth-content-wrapper flex min-h-screen">
+          {/* Left Panel - Aside (25%) */}
           
-          <img
-            src="/bg-top.png"
-            alt="Top Decoration"
-            className="absolute top-0 left-0 w-full h-auto z-0 brightness-350"
-            style={{ maxHeight: "2000px" }}
-          />
-          <img
-            src="/bg-bottom.png"
-            alt="Bottom Decoration"
-            className="absolute bottom-0 right-0 w-full h-auto z-0 brightness-350"
-            style={{ maxHeight: "1900px" }}
-          />
-
-          <div className="w-full max-w-[130rem] p-32 rounded-xl border border-gray-200 relative z-10">
-            <h2 className="text-6xl font-bold mb-16 text-center">Sign Up</h2>
-
-            <form className="space-y-12">
-              <div>
-                <label className="block text-3xl mb-3">Enter Full Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter Full Name"
-                  className="w-full border border-gray-300 px-10 py-5 rounded-3xl outline-none focus:ring-4 focus:ring-[#333A2F] text-[#333A2F] text-2xl"
-                />
+          <aside 
+            className="auth-aside flex flex-col items-center justify-center w-1/4 relative overflow-hidden" 
+            style={{ 
+              backgroundColor: '#333A2F',
+              backgroundImage: `url(${bgLeft})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          >
+            
+            {/* Overlay for better text readability */}
+            <div 
+              className="absolute inset-0" 
+              style={{ 
+                backgroundColor: 'rgba(51, 58, 47, 0.9)' // #333A2F with 70% opacity
+              }}
+            ></div>
+            
+            <div className="text-center z-10 relative">
+            
+              <div className="mb-16">
+              <p className="text-white text-4xl font-semibold leading-snug mb-0 ">
+                Instant learning, <br />
+                one click away
+              </p>
+                <img src={logo} alt="LearnSphere Logo" className="w-100 h-100" />
               </div>
-
-              <div>
-                <label className="block text-3xl mb-3">Enter E-mail Address</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter E-mail Address"
-                  className="w-full border border-[#333A2F] px-10 py-5 rounded-3xl outline-none focus:ring-4 focus:ring-[#333A2F] text-[#333A2F] text-2xl"
-                />
-              </div>
-
-              <div>
-                <label className="block text-3xl mb-3">New Password</label>
-                <input
-                  type="password"
-                  required
-                  placeholder="Enter Password"
-                  className="w-full border border-gray-300 px-10 py-5 rounded-3xl outline-none focus:ring-4 focus:ring-[#333A2F] text-[#333A2F] text-2xl"
-                />
-              </div>
-
-              <div>
-                <label className="block text-3xl mb-3">Confirm Password</label>
-                <input
-                  type="password"
-                  required
-                  placeholder="Confirm Password"
-                  className="w-full border border-gray-300 px-10 py-5 rounded-3xl outline-none focus:ring-4 focus:ring-[#333A2F] text-[#333A2F] text-2xl"
-                />
-              </div>
-
-              <div className="flex items-start">
-                <input
-                  type="checkbox"
-                  defaultChecked
-                  className="accent-[#333A2F] mt-1 w-6 h-6"
-                />
-                <label className="ml-4 text-xl leading-relaxed">
-                  I’m in for emails with exciting discounts and newsletter.
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#333A2F] text-white text-3xl font-semibold py-5 rounded-3xl hover:bg-opacity-90"
-              >
-                Sign Up
-              </button>
-            </form>
-
-            <p className="text-xl mt-10 text-center">
-              By signing up, you agree to our{" "}
-              <span className="font-semibold">Terms of Use</span> and{" "}
-              <span className="font-semibold">Privacy Policy</span>.
-            </p>
-
-            <div className="flex items-center my-10">
-              <hr className="flex-grow border-t border-gray-300" />
-              <span className="px-4 text-gray-500 text-lg">or</span>
-              <hr className="flex-grow border-t border-gray-300" />
+              
             </div>
+          </aside>
 
-            <button className="w-full flex items-center justify-center gap-4 border border-gray-300 py-4 rounded-3xl hover:bg-gray-100 text-2xl">
-              <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                alt="Google"
-                className="w-8 h-8"
-              />
-              <span>Sign Up with Google</span>
-            </button>
+          {/* Right Panel - Main (75%) */}
+          <main 
+            className="auth flow auth--signup flex-1 flex items-center justify-center p-12 relative" 
+            style={{ backgroundColor: '#EBEDDF' }}
+          >
+            {/* Background images for right panel */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: `url(${bgTop}), url(${bgBottom})`,
+                backgroundPosition: '-300px -70px, 400px 90px',
+                backgroundSize: 'contain, contain',
+                backgroundRepeat: 'no-repeat, no-repeat'
+              }}
+            ></div>
+            
+            <div className="w-full max-w-md relative z-10">
+              <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Sign Up</h1>
+              
+              <form className="auth-form space-y-4">
+                {/* Full Name Field */}
+                <div className="auth-form__span-2">
+                  <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="fullName">
+                    Full Name
+                  </label>
+                  <input 
+                    id="txtSignupFullName" 
+                    name="txtSignupFullName" 
+                    type="text" 
+                    className="input w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors" 
+                    placeholder="Enter Full Name" 
+                    autoFocus 
+                    required 
+                  />
+                </div>
 
-            <p className="text-2xl text-center mt-8">
-              Already have an account?{" "}
-              <Link to="/login" className="text-[#333A2F] font-semibold hover:underline">
-                Sign In
-              </Link>
-            </p>
-          </div>
+                {/* Email Field */}
+                <div className="auth-form__span-2">
+                  <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="email">
+                    E-mail Address
+                  </label>
+                  <input 
+                    id="txtSignupEmailId" 
+                    name="txtSignupEmailId" 
+                    type="email" 
+                    className="input w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors" 
+                    placeholder="Enter E-mail Address" 
+                    required 
+                  />
+                </div>
+
+                {/* Password Field */}
+                <div className="auth-form__span-2 relative">
+                  <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="password">
+                    Create Password
+                  </label>
+                  <div className="relative">
+                    <input 
+                      name="txtSignupPassword" 
+                      id="txtSignupPassword" 
+                      type={showPassword ? "text" : "password"} 
+                      className="input w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors" 
+                      placeholder="Create Password" 
+                      required 
+                    />
+                    <span 
+                      className="login-wrap-hide-pwd togglePassword absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700 text-lg"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FaEye /> : <FaEyeSlash />}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Confirm Password Field */}
+                <div className="auth-form__span-2 relative">
+                  <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="confirmPassword">
+                    Confirm Password
+                  </label>
+                  <div className="relative">
+                    <input 
+                      name="txtSignupConfirmPassword" 
+                      id="txtSignupConfirmPassword" 
+                      type={showConfirmPassword ? "text" : "password"} 
+                      className="input w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors" 
+                      placeholder="Confirm Password" 
+                      required 
+                    />
+                    <span 
+                      className="login-wrap-hide-pwd togglePassword absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700 text-lg"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    >
+                      {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Terms and Conditions */}
+                <div className="auth-form__span-2">
+                  <label className="checkbox flex items-start cursor-pointer">
+                    <div 
+                      className="custom-checkbox w-5 h-5 border-gray-300 rounded flex items-center justify-center cursor-pointer transition-all duration-200"
+                      style={{ 
+                        backgroundColor: agreeTerms ? '#333A2F' : 'white',
+                        borderColor: agreeTerms ? '#333A2F' : '#d1d5db'
+                      }}
+                      onClick={() => setAgreeTerms(!agreeTerms)}
+                    >
+                      {agreeTerms && (
+                        <FaCheck 
+                          className="text-white text-xs font-bold" 
+                          style={{ color: 'white' }}
+                        />
+                      )}
+                    </div>
+                    <span className="checkmark text-sm text-gray-700 ml-2">
+                      I agree to the <a href="/terms" className="text-[#333A2F] hover:text-[#2a3128]">Terms and Conditions</a> and <a href="/privacy" className="text-[#333A2F] hover:text-[#2a3128]">Privacy Policy</a>
+                    </span>
+                  </label>
+                </div>
+
+                {/* Sign Up Button */}
+                <button 
+                  id="submitSignup" 
+                  name="submitSignup" 
+                  type="button" 
+                  className="login-btn auth-form__button w-full text-white py-3 px-4 text-base font-medium transition-colors duration-200 flex items-center justify-center rounded-lg"
+                  style={{ backgroundColor: '#333A2F' }}
+                >
+                  Sign Up
+                </button>
+              </form>
+
+              {/* Divider */}
+              <div className="text-center form-text mt-6">
+                <p className="or-divider text-gray-500 text-sm">or</p>
+                
+                {/* Google Sign Up Button */}
+                <div className="signin-flex-group mt-4 flex-wrap justify-center">
+                  <button 
+                    className="w-full flex items-center justify-center gap-2 border border-gray-300 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+                  >
+                    <FaGoogle className="text-[#333A2F] text-lg" />
+                    <span className="text-gray-700">Sign up with Google</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Sign In Link */}
+              <div className="text-center form-text mt-6">
+                <span className="text-gray-600 text-sm">Already have an account?</span>
+                <Link to="/login" className="ps-2 text-[#333A2F] hover:text-[#2a3128] font-semibold flex items-center justify-center mt-2 text-sm">
+                  <FaArrowLeft className="mr-1" />
+                  Sign In
+                </Link>
+              </div>
+            </div>
+          </main>
         </div>
-      </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Signup;
