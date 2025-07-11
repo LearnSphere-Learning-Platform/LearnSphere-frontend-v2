@@ -10,6 +10,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
+  const [isInstructor, setIsInstructor] = useState(false);
 
   return (
     <div className="min-h-screen relative" style={{ backgroundColor: '#EBEDDF' }}>
@@ -145,6 +146,30 @@ const Signup = () => {
                       {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
                     </span>
                   </div>
+                </div>
+
+                {/* Instructor Checkbox */}
+                <div className="auth-form__span-2">
+                  <label className="checkbox flex items-start cursor-pointer">
+                    <div 
+                      className="custom-checkbox w-5 h-5 border-gray-300 rounded flex items-center justify-center cursor-pointer transition-all duration-200"
+                      style={{ 
+                        backgroundColor: isInstructor ? '#333A2F' : 'white',
+                        borderColor: isInstructor ? '#333A2F' : '#d1d5db'
+                      }}
+                      onClick={() => setIsInstructor(!isInstructor)}
+                    >
+                      {isInstructor && (
+                        <FaCheck 
+                          className="text-white text-xs font-bold" 
+                          style={{ color: 'white' }}
+                        />
+                      )}
+                    </div>
+                    <span className="checkmark text-sm text-gray-700 ml-2">
+                      I am an instructor
+                    </span>
+                  </label>
                 </div>
 
                 {/* Terms and Conditions */}

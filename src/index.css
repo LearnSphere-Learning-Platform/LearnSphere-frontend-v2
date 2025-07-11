@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,5 +8,4 @@
   color-scheme: light dark;
   color: #333A2F;
   background-color: #EBEDDF;
-
 }
