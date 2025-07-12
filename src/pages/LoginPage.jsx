@@ -28,7 +28,7 @@ const LoginPage = () => {
 
           >
             <div 
-              className="absolute inset-0" 
+              classNae="absolute inset-0" 
               style={{ 
                 backgroundColor: 'rgba(51, 58, 47, 0.9) ' // #333A2F with 70% opacity
               }}
