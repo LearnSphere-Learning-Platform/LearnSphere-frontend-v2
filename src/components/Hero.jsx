@@ -52,24 +52,34 @@ const Hero = () => {
 
           {/* Right Column - Visual */}
           <div className="relative">
-            <div className="bg-white rounded-xl p-8 h-96">
+            <div className="bg-white rounded-xl p-8 h-96 lg:h-[500px] shadow-2xl">
               <div className="relative h-full">
+                {/* Background Image */}
+                <div className="absolute inset-0 rounded-xl overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                    alt="Student learning online"
+                    className="w-full h-full object-cover rounded-xl opacity-20"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#EBEDDF]/80 to-white/90 rounded-xl"></div>
+                </div>
+
                 {/* Main content area */}
-                <div className="absolute inset-0 flex items-center justify-center border-2 border-gray-300 rounded-xl">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-[#333A2F] mb-4">Interactive Learning</h3>
-                    <p className="text-gray-600">Experience hands-on learning with our interactive platform</p>
+                <div className="relative z-10 flex items-center justify-center h-full">
+                  <div className="text-center p-6">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-[#333A2F] mb-4">Interactive Learning</h3>
+                    <p className="text-gray-600 text-lg">Experience hands-on learning with our interactive platform</p>
                   </div>
                 </div>
 
                 {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl">
-                  <FaCheck className="text-[#333A2F] text-2xl" />
+                <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl z-20 animate-bounce">
+                  <FaCheck className="text-[#333A2F] h-6 w-6" />
                 </div>
-                <div className="absolute top-1/2 -left-4 transform -translate-y-1/2">
-                  <div className="w-6 h-6 bg-[#EBEDDF] rounded-full border-2 border-white"></div>
+                <div className="absolute top-1/2 -left-4 transform -translate-y-1/2 z-20">
+                  <div className="w-6 h-6 bg-[#EBEDDF] rounded-full border-4 border-white shadow-lg animate-pulse"></div>
                 </div>
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl">
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl z-20 hover:scale-105 transition-transform duration-300">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-[#333A2F]">95%</div>
                     <div className="text-sm text-gray-600">Success Rate</div>

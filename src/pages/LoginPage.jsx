@@ -25,6 +25,7 @@ const LoginPage = () => {
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
             }}
+            
           >
             {/* Overlay for better text readability */}
             <div 
