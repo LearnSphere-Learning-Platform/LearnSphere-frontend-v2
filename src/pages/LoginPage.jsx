@@ -51,8 +51,6 @@ const LoginPage = () => {
             className="auth flow auth--signin flex-1 md:flex-1 w-full flex items-center justify-center p-6 md:p-12 relative" 
             style={{ backgroundColor: '#EBEDDF' }}
           >
-            
-            {/* Background images for right panel */}
             <div 
               className="absolute inset-0 pointer-events-none"
               style={{
