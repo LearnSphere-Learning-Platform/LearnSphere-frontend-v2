@@ -15,9 +15,9 @@ const LoginPage = () => {
       {/* Content */}
       <section className="relative z-10">
         <div className="auth-content-wrapper flex min-h-screen">
-          {/* Left Panel - Aside (25%) */}
+          {/* Left Panel - Aside (25%) - Hidden on mobile */}
           <aside 
-            className="auth-aside flex flex-col items-center justify-center w-1/4 relative overflow-hidden" 
+            className="auth-aside hidden md:flex flex-col items-center justify-center w-1/4 relative overflow-hidden" 
             style={{ 
               backgroundColor: '#333A2F',
               backgroundImage: `url(${bgLeft})`,
@@ -46,9 +46,9 @@ const LoginPage = () => {
           </div>
           </aside>
 
-          {/* Right Panel - Main (75%) */}
+          {/* Right Panel - Main (75% on desktop, 100% on mobile) */}
           <main 
-            className="auth flow auth--signin flex-1 flex items-center justify-center p-12 relative" 
+            className="auth flow auth--signin flex-1 md:flex-1 w-full flex items-center justify-center p-6 md:p-12 relative" 
             style={{ backgroundColor: '#EBEDDF' }}
           >
             
