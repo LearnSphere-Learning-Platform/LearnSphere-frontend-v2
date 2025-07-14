@@ -78,33 +78,34 @@ const LessonSidebar = ({
                     style={{ borderBottom: '1px solid #f1f1f1' }}
                   >
                     <span className="flex items-center flex-1" style={{ color: '#333A2F' }}>
-                      {lesson.type === 'video' || lesson.type === 'demo' || lesson.type === 'theory' ? (
-                        <input
-                          type="checkbox"
-                          checked={lesson.completed || false}
-                          onChange={(e) => {
-                            e.stopPropagation();
-                            console.log('=== DEBUG INFO ===');
-                            console.log('Lesson ID:', lesson.id);
-                            console.log('Module ID:', module.id);
-                            console.log('Lesson Type:', lesson.type);
-                            console.log('Current Completed State:', lesson.completed);
-                            console.log('Course ID:', currentCourse.id);
-                            console.log('Course Content Keys:', Object.keys(courseContent));
-                            console.log('Module Lessons:', module.lessons.map(l => ({ id: l.id, completed: l.completed, type: l.type })));
-                            onLessonCheckboxToggle(module.id, lesson.id);
-                          }}
-                          className="mr-2 w-4 h-4 rounded focus:ring-2 focus:ring-[#333A2F]"
+                      {lesson.type === 'video' || lesson.type === 'demo' || lesson.type === 'theory' || lesson.type === 'summary'  ? (
+                        <div
+                          className="custom-checkbox w-5 h-5 p-0 border rounded flex items-center justify-center cursor-pointer transition-all duration-200 mr-2"
                           style={{
-                            backgroundColor: lesson.completed ? '#333A2F' : '#EBEDDF',
-                            border: 'none',
-                            accentColor: '#333A2F'
+                            backgroundColor: lesson.completed ? '#333A2F' : 'white',
+                            borderColor: lesson.completed ? '#333A2F' : '#d1d5db',
+                            borderWidth: '2px',
+                            minWidth: '20px',
+                            minHeight: '20px',
+                            maxWidth: '20px',
+                            maxHeight: '20px'
                           }}
-                        />
+                          onClick={() => onLessonCheckboxToggle(module.id, lesson.id)}
+                        >
+                          {lesson.completed && (
+                            <svg
+                              className="text-white text-xs font-bold w-3 h-3"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                        </div>
                       ) : (
                         <span className="mr-2 inline-flex items-center px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">
                           <FileText className="w-4 h-4 mr-1" />
-                          {lesson.type === 'test' ? 'Test' : 'Final'}
+                          {/* No text, icon only for test/final-test */}
                         </span>
                       )}
                       <span

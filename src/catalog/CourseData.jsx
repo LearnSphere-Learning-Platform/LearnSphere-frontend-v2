@@ -4,7 +4,7 @@ const courseData = [
     id: 1,
     course_name: "React - The Complete Guide (2024 Edition)",
     description: "Master React with hooks, context API, Redux, and more",
-    image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
 
     instructor: {
       name: "Maximilian Schwarzmüller",
@@ -305,7 +305,7 @@ const courseData = [
     id: 2,
     course_name: "Python for Data Science: Complete Bootcamp",
     description: "Master Pandas, NumPy, Matplotlib for data analysis",
-    image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
     instructor: {
       name: "Dr. Angela Yu",
       mailid: "angela@example.com",
@@ -561,7 +561,7 @@ const courseData = [
     id: 3,
     course_name: "The Complete Web Developer Bootcamp 2024",
     description: "HTML, CSS, JavaScript, Node, React, MongoDB",
-    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
     instructor: {
       name: "Kyle Simpson",
       mailid: "kyle@example.com",
@@ -949,7 +949,7 @@ const courseData = [
     course_name: "Advanced JavaScript: Concepts & Techniques",
     description:
       "Deep dive into closures, prototypes, asynchronous JS, and more",
-    image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://ucarecdn.com/6432eebc-f77b-480f-b1d9-88d89ec4f149/",
     instructor: {
       name: "Sarah Miller",
       mailid: "sarah@example.com",
@@ -1211,7 +1211,7 @@ const courseData = [
     id: 5,
     course_name: "Complete UX/UI Design Masterclass",
     description: "Learn Figma, user research, wireframing, and prototyping",
-    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
     instructor: {
       name: "Adrian Cantrill",
       mailid: "adrian@example.com",
@@ -1432,7 +1432,7 @@ const courseData = [
     id: 6,
     course_name: "DevOps with AWS: From Zero to Hero",
     description: "Implement CI/CD, automation, and scaling on AWS",
-    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
     instructor: {
       name: "Paul Hudson",
       mailid: "paul@example.com",
@@ -1741,7 +1741,7 @@ const courseData = [
       summary: "Data Scientist",
       overall_rating: 4.7,
       no_of_courses_released: 25,
-      avatar: "https://placehold.co/100x100?text=Kirill",
+      avatar: "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -2075,7 +2075,7 @@ const courseData = [
     course_name: "Machine Learning A-Z™: AI, Python & R Data Science",
     description:
       "Master Machine Learning algorithms and build powerful AI models",
-    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://wallpaperaccess.com/full/3079594.jpg",
     instructor: {
       name: "Nathan House",
       mailid: "nathan@example.com",
@@ -2463,7 +2463,7 @@ const courseData = [
     course_name: "The Complete Cyber Security Course: Network Security!",
     description:
       "Learn ethical hacking, penetration testing, and network security",
-    image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://wallpaperaccess.com/full/2407073.jpg",
     instructor: {
       name: "Hadelin de Ponteves",
       mailid: "hadelin@example.com",
@@ -2726,7 +2726,7 @@ const courseData = [
     course_name: "Blockchain A-Z™: Learn How To Build Your First Blockchain",
     description:
       "Understand blockchain technology and build a simple blockchain",
-    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -2948,7 +2948,7 @@ const courseData = [
     course_name: "Financial Modeling & Valuation Analyst (FMVA®) Certification",
     description:
       "Master financial modeling, valuation, and Excel for corporate finance roles.",
-    image: "https://images.pexels.com/photos/164474/pexels-photo-164474.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
     instructor: {
       name: "CFI - Corporate Finance Institute",
       mailid: "support@cfi.com",
@@ -3287,7 +3287,7 @@ const courseData = [
     course_name: "Generative AI with Python: From Zero to GPT",
     description:
       "Learn to build, train, and deploy generative models (GANs, Transformers, LLMs) using Python and PyTorch/TensorFlow.",
-    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -3604,7 +3604,7 @@ const courseData = [
     course_name: "Digital Painting Masterclass in Adobe Photoshop",
     description:
       "Learn to create stunning digital paintings from scratch using Adobe Photoshop.",
-    image: "https://images.pexels.com/photos/3807755/pexels-photo-3807755.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -3875,7 +3875,7 @@ const courseData = [
     course_name: "IoT Development with Arduino & ESP32: Build Smart Devices",
     description:
       "Learn to build Internet of Things (IoT) projects using Arduino, ESP32, and cloud platforms.",
-    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://wallpaperaccess.com/full/3202442.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4148,7 +4148,7 @@ const courseData = [
     course_name: "Ethical Hacking & Penetration Testing with Kali Linux",
     description:
       "Become an ethical hacker! Learn advanced penetration testing techniques, vulnerability assessment, and exploit development using Kali Linux.",
-    image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.kali.org/wallpapers/images/2025/kali-tiles.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4465,7 +4465,7 @@ const courseData = [
     course_name: "No-Code Web Development: Build Websites & Apps Without Code",
     description:
       "Create powerful websites, web apps, and online businesses using no-code platforms like Webflow and Bubble.",
-    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://wallpaperaccess.com/full/3239444.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4694,7 +4694,7 @@ const courseData = [
     course_name: "Quantum Computing Fundamentals: A Gentle Introduction",
     description:
       "Explore the mind-bending world of quantum computing, from qubits to quantum algorithms.",
-    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4967,7 +4967,7 @@ const courseData = [
       "Complete Supply Chain Management: From Procurement to Delivery",
     description:
       "Learn end-to-end supply chain strategies, logistics, and operations for business efficiency.",
-    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -5282,7 +5282,7 @@ const courseData = [
     course_name: "Adobe Premiere Pro CC: Master Video Editing for Beginners",
     description:
       "Learn to edit professional-quality videos for YouTube, social media, and film using Adobe Premiere Pro.",
-    image: "https://images.pexels.com/photos/3807755/pexels-photo-3807755.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -5553,7 +5553,7 @@ const courseData = [
     course_name: "Cloud Security Professional: Google Cloud Platform (GCP)",
     description:
       "Master security best practices and services on Google Cloud Platform to protect your infrastructure and data.",
-    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "https://cdn-thumbs.comidoc.net/750/5654326_5a69.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",

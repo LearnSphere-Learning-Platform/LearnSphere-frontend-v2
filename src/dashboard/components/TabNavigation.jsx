@@ -13,7 +13,11 @@ const TabNavigation = ({ activeTab, setActiveTab, renderTabContent }) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`py-4 px-2 text-sm font-medium whitespace-nowrap ${activeTab === tab.id ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
+            className={`py-4 px-2 text-sm font-medium whitespace-nowrap ${
+              activeTab === tab.id
+                ? 'border-b-2 border-[#333A2F] text-[#333A2F] bg-[#EBEDDF]'
+                : 'border-b-2 border-transparent text-gray-500 hover:text-[#333A2F] hover:border-gray-300'
+            }`}
             style={{ minWidth: 80 }}
           >
             {tab.label}

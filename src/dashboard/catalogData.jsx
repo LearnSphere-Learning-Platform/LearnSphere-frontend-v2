@@ -1,40 +1,18 @@
-// import aiImage from '../assets/courses/ai.jpg';
-
-// import datascienceImage from '../assets/courses/data.jpg'
-
-// import websdevelopImage from '../assets/courses/webdev.jpg'
-// import javascriptImage from '../assets/courses/javascript.jpg'
-// import uiImage from '../assets/courses/ui.jpg'
-// import appImage from '../assets/courses/app.jpg'
-// import devopsImage from '../assets/courses/devops.jpeg'
-// import IotImages from '../assets/courses/IoT.jpg'
-// import EthicalHackingImage from '../assets/courses/Ethical Hacking.jpg'
-// import cyberImage from '../assets/courses/cyber.jpg'
-// import blockchainImage from '../assets/courses/blockchain.jpg'
-// import finincialImage from '../assets/courses/Financial Modeling.jpg'
-// import generativeaiImage from '../assets/courses/Generative AI.jpg'
-// import photoshopImage from '../assets/courses/Photoshop.jpg'
-// import mlImage from '../assets/courses/ml.jpg'
-
-
-
-
-
-
 const courseData = [
   // 1. React Course (6 sessions)
   {
     id: 1,
     course_name: "React - The Complete Guide (2024 Edition)",
     description: "Master React with hooks, context API, Redux, and more",
-    // image: aiImage,
+    image: "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
       summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
       overall_rating: 4.7,
       no_of_courses_released: 28,
-      avatar: "https://placehold.co/100x100?text=Max",
       total_learners: "2,159,428",
       total_reviews: "481,798",
       about: [
@@ -52,7 +30,7 @@ const courseData = [
 
     level: "Intermediate",
     price: 0,
-    language: ["Tamil"],
+    language: "English",
     total_hours: 48,
     no_of_sessions: 6,
     no_of_tests_available: 12,
@@ -327,13 +305,27 @@ const courseData = [
     id: 2,
     course_name: "Python for Data Science: Complete Bootcamp",
     description: "Master Pandas, NumPy, Matplotlib for data analysis",
-    // image: datascienceImage,
+    image: "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
     instructor: {
       name: "Dr. Angela Yu",
       mailid: "angela@example.com",
       summary: "Lead Data Science Instructor",
       overall_rating: 4.8,
       no_of_courses_released: 15,
+      avatar: "https://placehold.co/100x100?text=Angela",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Dr. Angela Yu. I specialize in lead data science instructor.",
+        "With over 15 courses and a rating of 4.8, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Beginner",
     price: 0,
@@ -569,13 +561,27 @@ const courseData = [
     id: 3,
     course_name: "The Complete Web Developer Bootcamp 2024",
     description: "HTML, CSS, JavaScript, Node, React, MongoDB",
-    // image:websdevelopImage,
+    image: "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
     instructor: {
-      name: "Dr. Angela Yu",
-      mailid: "angela@example.com",
-      summary: "Lead Full-Stack Developer & Instructor",
-      overall_rating: 4.9,
-      no_of_courses_released: 20,
+      name: "Kyle Simpson",
+      mailid: "kyle@example.com",
+      summary: "JavaScript Evangelist",
+      overall_rating: 4.6,
+      no_of_courses_released: 12,
+      avatar: "https://placehold.co/100x100?text=Kyle",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Kyle Simpson. I specialize in javascript evangelist.",
+        "With over 12 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Beginner",
     price: 0,
@@ -943,13 +949,27 @@ const courseData = [
     course_name: "Advanced JavaScript: Concepts & Techniques",
     description:
       "Deep dive into closures, prototypes, asynchronous JS, and more",
-      //  image:javascriptImage,
+    image: "https://ucarecdn.com/6432eebc-f77b-480f-b1d9-88d89ec4f149/",
     instructor: {
-      name: "Kyle Simpson",
-      mailid: "kyle@example.com",
-      summary: "Author of 'You Don't Know JS'",
-      overall_rating: 4.8,
-      no_of_courses_released: 10,
+      name: "Sarah Miller",
+      mailid: "sarah@example.com",
+      summary: "Senior UX Designer",
+      overall_rating: 4.6,
+      no_of_courses_released: 8,
+      avatar: "https://placehold.co/100x100?text=Sarah",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Sarah Miller. I specialize in senior ux designer.",
+        "With over 8 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Advanced",
     price: 0,
@@ -1191,13 +1211,27 @@ const courseData = [
     id: 5,
     course_name: "Complete UX/UI Design Masterclass",
     description: "Learn Figma, user research, wireframing, and prototyping",
-    //  image:uiImage,
+    image: "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
     instructor: {
-      name: "Sarah Miller",
-      mailid: "sarah@example.com",
-      summary: "Senior UX Designer",
-      overall_rating: 4.6,
-      no_of_courses_released: 8,
+      name: "Adrian Cantrill",
+      mailid: "adrian@example.com",
+      summary: "AWS Certified Solutions Architect",
+      overall_rating: 4.9,
+      no_of_courses_released: 12,
+      avatar: "https://placehold.co/100x100?text=Adrian",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Adrian Cantrill. I specialize in aws certified solutions architect.",
+        "With over 12 courses and a rating of 4.9, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Beginner",
     price: 0,
@@ -1398,13 +1432,27 @@ const courseData = [
     id: 6,
     course_name: "DevOps with AWS: From Zero to Hero",
     description: "Implement CI/CD, automation, and scaling on AWS",
-    //  image:devopsImage,
+    image: "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
     instructor: {
-      name: "Adrian Cantrill",
-      mailid: "adrian@example.com",
-      summary: "AWS Certified Solutions Architect",
-      overall_rating: 4.9,
-      no_of_courses_released: 12,
+      name: "Paul Hudson",
+      mailid: "paul@example.com",
+      summary: "Swift & iOS Developer",
+      overall_rating: 4.7,
+      no_of_courses_released: 18,
+      avatar: "https://placehold.co/100x100?text=Paul",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Paul Hudson. I specialize in swift & ios developer.",
+        "With over 18 courses and a rating of 4.7, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Intermediate",
     price: 0,
@@ -1687,16 +1735,26 @@ const courseData = [
 
   // 7. iOS Development (7 sessions)
   {
-    id: 7,
-    course_name: "iOS & Swift - The Complete iOS App Development Bootcamp",
-    description: "Build real-world iOS apps with Swift and SwiftUI",
-    // image:appImage,
     instructor: {
-      name: "Paul Hudson",
-      mailid: "paul@example.com",
-      summary: "Hacking with Swift Author",
-      overall_rating: 4.8,
-      no_of_courses_released: 18,
+      name: "Kirill Eremenko",
+      mailid: "kirill@example.com",
+      summary: "Data Scientist",
+      overall_rating: 4.7,
+      no_of_courses_released: 25,
+      avatar: "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Kirill Eremenko. I specialize in data scientist.",
+        "With over 25 courses and a rating of 4.7, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Beginner",
     price: 0,
@@ -2017,13 +2075,27 @@ const courseData = [
     course_name: "Machine Learning A-Z™: AI, Python & R Data Science",
     description:
       "Master Machine Learning algorithms and build powerful AI models",
-    //   image:mlImage,
+    image: "https://wallpaperaccess.com/full/3079594.jpg",
     instructor: {
-      name: "Kirill Eremenko",
-      mailid: "kirill@example.com",
-      summary: "Data Scientist & Founder of SuperDataScience",
-      overall_rating: 4.7,
-      no_of_courses_released: 25,
+      name: "Nathan House",
+      mailid: "nathan@example.com",
+      summary: "Cyber Security Expert",
+      overall_rating: 4.6,
+      no_of_courses_released: 9,
+      avatar: "https://placehold.co/100x100?text=Nathan",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Nathan House. I specialize in cyber security expert.",
+        "With over 9 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Intermediate",
     price: 0,
@@ -2391,13 +2463,27 @@ const courseData = [
     course_name: "The Complete Cyber Security Course: Network Security!",
     description:
       "Learn ethical hacking, penetration testing, and network security",
-    //   image:EthicalHackingImage,
+    image: "https://wallpaperaccess.com/full/2407073.jpg",
     instructor: {
-      name: "Nathan House",
-      mailid: "nathan@example.com",
-      summary: "Cyber Security Expert",
-      overall_rating: 4.6,
-      no_of_courses_released: 9,
+      name: "Hadelin de Ponteves",
+      mailid: "hadelin@example.com",
+      summary: "AI & Blockchain Expert",
+      overall_rating: 4.5,
+      no_of_courses_released: 7,
+      avatar: "https://placehold.co/100x100?text=Hadelin",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Hadelin de Ponteves. I specialize in ai & blockchain expert.",
+        "With over 7 courses and a rating of 4.5, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
     },
     level: "Beginner",
     price: 0,
@@ -2640,14 +2726,29 @@ const courseData = [
     course_name: "Blockchain A-Z™: Learn How To Build Your First Blockchain",
     description:
       "Understand blockchain technology and build a simple blockchain",
-    //   image:blockchainImage,
+    image: "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
     instructor: {
-      name: "Hadelin de Ponteves",
-      mailid: "hadelin@example.com",
-      summary: "AI & Blockchain Expert",
-      overall_rating: 4.5,
-      no_of_courses_released: 7,
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Beginner",
     price: 0,
     language: "English",
@@ -2844,10 +2945,10 @@ const courseData = [
   },
   {
     id: 11,
-    course_name:
-      "Financial Modeling & Valuation Analyst (FMVA®) Certification",
+    course_name: "Financial Modeling & Valuation Analyst (FMVA®) Certification",
     description:
       "Master financial modeling, valuation, and Excel for corporate finance roles.",
+    image: "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
     instructor: {
       name: "CFI - Corporate Finance Institute",
       mailid: "support@cfi.com",
@@ -3186,14 +3287,29 @@ const courseData = [
     course_name: "Generative AI with Python: From Zero to GPT",
     description:
       "Learn to build, train, and deploy generative models (GANs, Transformers, LLMs) using Python and PyTorch/TensorFlow.",
-    //  image:generativeaiImage,
-      instructor: {
-      name: "Dr. Alana Gupta",
-      mailid: "alana.gupta@neural-labs.ai",
-      summary: "AI Researcher and Deep Learning Engineer",
+    image: "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
       overall_rating: 4.7,
-      no_of_courses_released: 9,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Advanced",
     price: 500,
     language: "English",
@@ -3488,14 +3604,29 @@ const courseData = [
     course_name: "Digital Painting Masterclass in Adobe Photoshop",
     description:
       "Learn to create stunning digital paintings from scratch using Adobe Photoshop.",
-    //  image:photoshopImage,
+    image: "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
     instructor: {
-      name: "Lena Sharma",
-      mailid: "lena.sharma.art@example.com",
-      summary: "Professional Concept Artist & Digital Illustrator",
-      overall_rating: 4.6,
-      no_of_courses_released: 6,
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Beginner",
     price: 0,
     language: "English",
@@ -3744,14 +3875,29 @@ const courseData = [
     course_name: "IoT Development with Arduino & ESP32: Build Smart Devices",
     description:
       "Learn to build Internet of Things (IoT) projects using Arduino, ESP32, and cloud platforms.",
-    //  image:IotImages,
-      instructor: {
-      name: "Pranav Singh",
-      mailid: "pranav.singh@iotinnovate.com",
-      summary: "Embedded Systems Engineer & IoT Consultant",
+    image: "https://wallpaperaccess.com/full/3202442.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
       overall_rating: 4.7,
-      no_of_courses_released: 8,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Intermediate",
     price: 0,
     language: "English",
@@ -4002,14 +4148,29 @@ const courseData = [
     course_name: "Ethical Hacking & Penetration Testing with Kali Linux",
     description:
       "Become an ethical hacker! Learn advanced penetration testing techniques, vulnerability assessment, and exploit development using Kali Linux.",
-    //   image:EthicalHackingImage,
-      instructor: {
-      name: "Zaid Sabih",
-      mailid: "zaid.sabih@hackingacademy.com",
-      summary: "Certified Ethical Hacker & Penetration Tester",
-      overall_rating: 4.8,
-      no_of_courses_released: 12,
+    image: "https://www.kali.org/wallpapers/images/2025/kali-tiles.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Intermediate",
     price: 0,
     language: "English",
@@ -4304,13 +4465,29 @@ const courseData = [
     course_name: "No-Code Web Development: Build Websites & Apps Without Code",
     description:
       "Create powerful websites, web apps, and online businesses using no-code platforms like Webflow and Bubble.",
+    image: "https://wallpaperaccess.com/full/3239444.jpg",
     instructor: {
-      name: "Priya Patel",
-      mailid: "priya.patel@nocodesolutions.co",
-      summary: "No-Code Expert & Startup Founder",
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
       overall_rating: 4.7,
-      no_of_courses_released: 7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Beginner",
     price: 0,
     language: "English",
@@ -4517,13 +4694,29 @@ const courseData = [
     course_name: "Quantum Computing Fundamentals: A Gentle Introduction",
     description:
       "Explore the mind-bending world of quantum computing, from qubits to quantum algorithms.",
+    image: "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
     instructor: {
-      name: "Dr. Anya Sharma",
-      mailid: "anya.sharma@quantumlabs.org",
-      summary: "Quantum Computing Researcher & Educator",
-      overall_rating: 4.6,
-      no_of_courses_released: 4,
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Beginner",
     price: 0,
     language: "English",
@@ -4774,14 +4967,29 @@ const courseData = [
       "Complete Supply Chain Management: From Procurement to Delivery",
     description:
       "Learn end-to-end supply chain strategies, logistics, and operations for business efficiency.",
+    image: "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
     instructor: {
-      name: "Prof. Vikram Das",
-      mailid: "vikram.das@supplychainguru.org",
-      summary:
-        "Logistics and Supply Chain Consultant, Former Operations Director",
-      overall_rating: 4.6,
-      no_of_courses_released: 10,
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Intermediate",
     price: 0,
     language: "English",
@@ -5074,13 +5282,29 @@ const courseData = [
     course_name: "Adobe Premiere Pro CC: Master Video Editing for Beginners",
     description:
       "Learn to edit professional-quality videos for YouTube, social media, and film using Adobe Premiere Pro.",
+    image: "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
     instructor: {
-      name: "Rohit Verma",
-      mailid: "rohit.verma.films@example.com",
-      summary: "Award-winning Filmmaker & Video Editor",
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
       overall_rating: 4.7,
-      no_of_courses_released: 9,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Beginner",
     price: 0,
     language: "English",
@@ -5329,13 +5553,29 @@ const courseData = [
     course_name: "Cloud Security Professional: Google Cloud Platform (GCP)",
     description:
       "Master security best practices and services on Google Cloud Platform to protect your infrastructure and data.",
+    image: "https://cdn-thumbs.comidoc.net/750/5654326_5a69.jpg",
     instructor: {
-      name: "Dr. Ananya Rao",
-      mailid: "ananya.rao@cloudsecure.io",
-      summary: "GCP Certified Security Engineer & Cloud Architect",
-      overall_rating: 4.8,
-      no_of_courses_released: 11,
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
     },
+
     level: "Advanced",
     price: 0,
     language: "English",

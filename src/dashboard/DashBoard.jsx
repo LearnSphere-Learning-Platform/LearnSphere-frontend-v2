@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { 
   Play, 
   Pause, 
@@ -31,11 +32,23 @@ import TabNavigation from './components/TabNavigation';
 import TestContent from './components/TestContent';
 import CourseList from './components/CourseList';
 import courseData from './catalogData';
+import LessonInfo from './components/LessonInfo';
+import NotesTab from './components/NotesTab';
+import DiscussionTab from './components/DiscussionTab';
+import AnnouncementsTab from './components/AnnouncementsTab';
+import ReviewsTab from './components/ReviewsTab';
 
 const Dashboard = () => {
-  // Use data from catalogData.jsx
-  const [enrolledCourses] = useState(courseData);
-  const [currentCourse, setCurrentCourse] = useState(null);
+  const { id } = useParams();
+  const course = courseData.find(c => String(c.id) === String(id));
+
+  // If course not found, show message
+  if (!course) {
+    return <div className="text-center p-6 text-gray-700">Course not found</div>;
+  }
+
+  // All state and logic below should use this course only
+  const [currentCourse] = useState(course);
   const [currentLesson, setCurrentLesson] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -80,6 +93,20 @@ const Dashboard = () => {
     setCourseContent(contentMap);
   }, []);
 
+  // Automatically set currentLesson to the first lesson of the first module
+  useEffect(() => {
+    if (!currentLesson && currentCourse && currentCourse.course_content?.length > 0) {
+      const firstModule = currentCourse.course_content[0];
+      if (firstModule && firstModule.videos && firstModule.videos.length > 0) {
+        setCurrentLesson({
+          ...firstModule.videos[0],
+          videoUrl: firstModule.videos[0].preview && currentCourse.preview
+            ? `https://www.youtube.com/embed/${currentCourse.preview.split('v=')[1]?.split('&')[0]}`
+            : null
+        });
+      }
+    }
+  }, [currentLesson, currentCourse]);
 
 
   const handleCourseSelect = (course) => {
@@ -293,10 +320,6 @@ const Dashboard = () => {
   };
 
   const handleLessonCheckboxToggle = (moduleId, lessonId) => {
-    console.log('=== HANDLE LESSON CHECKBOX TOGGLE ===');
-    console.log('Module ID:', moduleId);
-    console.log('Lesson ID:', lessonId);
-    console.log('Current Course ID:', currentCourse?.id);
     
     setCourseContent(prev => {
       const newContent = { ...prev };
@@ -328,8 +351,7 @@ const Dashboard = () => {
           })
         };
       }
-      
-      console.log('New Course Content:', newContent);
+    
       return newContent;
     });
   };
@@ -376,149 +398,33 @@ const Dashboard = () => {
         );
       case 'notes':
         return (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#333A2F' }}>My Notes</h3>
-            <div className="space-y-4">
-              {notes.map(note => (
-                <div key={note.id} className="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-400">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs text-gray-500 font-medium">{note.lessonTitle}</span>
-                    <span className="text-xs text-gray-500">{note.timestamp}</span>
-                  </div>
-                  <p className="text-sm text-gray-700">{note.content}</p>
-                </div>
-              ))}
-              <div className="mt-4">
-                <textarea
-                  value={newNote}
-                  onChange={(e) => setNewNote(e.target.value)}
-                  placeholder="Add a new note..."
-                  className="w-full p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows="3"
-                />
-                <button
-                  onClick={handleAddNote}
-                  className="mt-2 px-4 py-2 rounded-md text-white font-medium hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#333A2F' }}
-                >
-                  Add Note
-                </button>
-              </div>
-            </div>
-          </div>
+          <NotesTab
+            notes={notes}
+            newNote={newNote}
+            setNewNote={setNewNote}
+            handleAddNote={handleAddNote}
+          />
         );
       case 'discussion':
         return (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#333A2F' }}>Discussion</h3>
-            <div className="space-y-4">
-              {discussions.map(discussion => (
-                <div key={discussion.id} className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="flex items-start space-x-3 mb-2">
-                    <img src={discussion.avatar} alt={discussion.user} className="w-10 h-10 rounded-full" />
-                    <div>
-                      <h4 className="font-semibold text-sm" style={{ color: '#333A2F' }}>{discussion.user}</h4>
-                      <p className="text-xs text-gray-500">{discussion.timestamp}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-700 mb-2">{discussion.content}</p>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <button 
-                      onClick={() => handleLike(discussion.id)}
-                      className={`flex items-center text-sm ${likedComments.has(discussion.id) ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
-                    >
-                      <ThumbsUp className="w-4 h-4 mr-1" />
-                      {discussion.likes}
-                    </button>
-                    <button 
-                      onClick={() => handleReply(discussion.id)}
-                      className="text-sm text-gray-600 hover:text-blue-600"
-                    >
-                      Reply
-                    </button>
-                  </div>
-                  {replyTo === discussion.id && (
-                    <div className="mt-2">
-                      <textarea
-                        value={replyContent}
-                        onChange={(e) => setReplyContent(e.target.value)}
-                        placeholder="Write a reply..."
-                        className="w-full p-2 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        rows="2"
-                      />
-                      <button
-                        onClick={() => handleReplySubmit(discussion.id)}
-                        className="mt-2 px-4 py-2 rounded-md text-white font-medium hover:opacity-90 transition-opacity"
-                        style={{ backgroundColor: '#333A2F' }}
-                      >
-                        Submit Reply
-                      </button>
-                    </div>
-                  )}
-                  {discussion.replies.length > 0 && (
-                    <div className="mt-4 border-t pt-2">
-                      {discussion.replies.map(reply => (
-                        <div key={reply.id} className="flex items-start space-x-3 mb-2">
-                          <img src={reply.avatar} alt={reply.user} className="w-8 h-8 rounded-full" />
-                          <div>
-                            <h5 className="font-semibold text-sm" style={{ color: '#333A2F' }}>{reply.user}</h5>
-                            <p className="text-xs text-gray-500">{reply.timestamp}</p>
-                            <p className="text-sm text-gray-700 mt-1">{reply.content}</p>
-                            <div className="flex items-center space-x-3 mt-1">
-                              <button 
-                                onClick={() => handleLike(reply.id)}
-                                className={`flex items-center text-sm ${likedComments.has(reply.id) ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
-                              >
-                                <ThumbsUp className="w-4 h-4 mr-1" />
-                                {reply.likes}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="mt-4">
-                <textarea
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Add a new discussion comment..."
-                  className="w-full p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows="3"
-                />
-                <button
-                  onClick={handleCommentSubmit}
-                  className="mt-2 px-4 py-2 rounded-md text-white font-medium hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#333A2F' }}
-                >
-                  Post Comment
-                </button>
-              </div>
-            </div>
-          </div>
+          <DiscussionTab
+            discussions={discussions}
+            likedComments={likedComments}
+            handleLike={handleLike}
+            handleReply={handleReply}
+            replyTo={replyTo}
+            replyContent={replyContent}
+            setReplyContent={setReplyContent}
+            handleReplySubmit={handleReplySubmit}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            handleCommentSubmit={handleCommentSubmit}
+          />
         );
       case 'announcements':
-        return (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#333A2F' }}>Announcements</h3>
-            <div className="text-center text-gray-500 py-8">
-              <Bell className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p>No announcements yet.</p>
-            </div>
-          </div>
-        );
+        return <AnnouncementsTab />;
       case 'reviews':
-        return (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#333A2F' }}>Reviews</h3>
-            <div className="text-center text-gray-500 py-8">
-              <Star className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p>No reviews yet. Be the first to review this course!</p>
-            </div>
-          </div>
-        );
+        return <ReviewsTab />;
       default:
         return null;
     }
@@ -526,7 +432,7 @@ const Dashboard = () => {
 
   if (!currentCourse) {
     return (
-      <CourseList enrolledCourses={enrolledCourses} onSelect={handleCourseSelect} />
+      <CourseList enrolledCourses={courseData} onSelect={handleCourseSelect} />
     );
   }
 
@@ -534,13 +440,6 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-50" style={{ backgroundColor: '#EBEDDF' }}>
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <button 
-            onClick={() => setCurrentCourse(null)}
-            className="px-4 py-2 rounded-md text-white font-medium hover:opacity-90 transition-opacity mb-4"
-            style={{ backgroundColor: '#333A2F' }}
-          >
-            ← Back to Dashboard
-          </button>
           <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>
             {currentCourse.course_name}
           </h1>
@@ -575,24 +474,7 @@ const Dashboard = () => {
                     onSeek={handleSeek}
                     videoRef={videoRef}
                   />
-                  {/* Lesson Info */}
-                  <div className="p-6">
-                    <h2 className="text-2xl font-bold mb-2" style={{ color: '#333A2F' }}>
-                      {currentLesson.title}
-                    </h2>
-                    <div className="flex items-center space-x-4 text-gray-600">
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {currentLesson.duration}
-                      </div>
-                      {currentLesson.completed && (
-                        <div className="flex items-center text-green-600">
-                          <CheckCircle className="w-4 h-4 mr-1" />
-                          Completed
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <LessonInfo currentLesson={currentLesson} />
                 </div>
               )
             )}

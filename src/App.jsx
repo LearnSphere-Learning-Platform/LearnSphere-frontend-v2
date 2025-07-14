@@ -12,6 +12,8 @@ import Signup from './pages/Signup';
 import InstructorRouteWrapper from "./catalog/InstructorRouteWrapper";
 import { CourseCatalog } from "./catalog/CourseCatalog";
 import CoursePageWrapper from "./catalog/CoursePageWrapper"; // ⬅️ new component
+import DashBoard from './dashboard/DashBoard';
+import ScrollToTop from './ScrollToTop';
 
 function AppContent() {
   const location = useLocation();
@@ -34,6 +36,7 @@ function AppContent() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/catalog" element={<CourseCatalog />} />
         <Route path="/course/:id" element={<CoursePageWrapper />} />
+        <Route path="/course/:id/dashboard" element={<DashBoard />} />
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
       </Routes>
       {!hideFooter && <Footer />}
@@ -44,6 +47,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppContent />
     </BrowserRouter>
   );
