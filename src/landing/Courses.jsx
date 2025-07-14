@@ -1,7 +1,10 @@
 import React from 'react';
 import { Star, Clock, Users, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Courses = () => {
+  const navigate = useNavigate();
   const courses = [
     {
       id: 1,
@@ -133,7 +136,8 @@ const Courses = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg hover:bg-[#2a3028] transition-colors">
+          <button className="px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg hover:bg-[#2a3028] transition-colors"
+          onClick={() => navigate('/catalog')}>
             View All Courses
           </button>
         </div>
