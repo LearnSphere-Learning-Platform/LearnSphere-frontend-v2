@@ -37,6 +37,7 @@ import NotesTab from './components/NotesTab';
 import DiscussionTab from './components/DiscussionTab';
 import AnnouncementsTab from './components/AnnouncementsTab';
 import ReviewsTab from './components/ReviewsTab';
+import QATab from './components/QATab';
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -387,15 +388,7 @@ const Dashboard = () => {
           </div>
         );
       case 'qa':
-        return (
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4" style={{ color: '#333A2F' }}>Q&A</h3>
-            <div className="text-center text-gray-500 py-8">
-              <MessageSquare className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p>No questions yet. Be the first to ask!</p>
-            </div>
-          </div>
-        );
+        return <QATab />;
       case 'notes':
         return (
           <NotesTab
@@ -437,7 +430,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50" style={{ backgroundColor: '#EBEDDF' }}>
+    <div className="min-h-screen bg-gray-50 mt-25" style={{ backgroundColor: '#EBEDDF' }}>
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
           <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>

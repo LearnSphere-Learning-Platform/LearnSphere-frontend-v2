@@ -19,7 +19,7 @@ const Enrollment = () => {
 
   return (
     <div
-      className="relative w-full bg-cover bg-center mt-5 flex items-center justify-center"
+      className="relative w-full bg-cover bg-center mt-5 flex items-center justify-center mt-25"
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${bgImage})`,
       }}

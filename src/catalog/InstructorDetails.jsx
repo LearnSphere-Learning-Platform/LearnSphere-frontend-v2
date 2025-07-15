@@ -18,7 +18,7 @@ const InstructorDetails = ({ courseData }) => {
   }
 
   return (
-    <div className="bg-white min-h-screen border-b border-gray-800">
+    <div className="bg-white min-h-screen border-b border-gray-800 mt-25">
       {/* Header */}
       <div className="bg-50 bg-[#EBEDDF] py-10 px-4 sm:px-8 md:px-16 lg:px-24 flex justify-between items-start flex-col-reverse md:flex-row gap-8">
         <div>

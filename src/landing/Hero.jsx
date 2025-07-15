@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaPlay, FaCheck, FaUsers, FaAward, FaGlobe } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
+const DEMO_VIDEO_URL = 'https://www.youtube.com/embed/ZK-rNEhJIDs'; // Use embed link for iframe
 
 const Hero = () => {
+  const [showDemo, setShowDemo] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <section id="home" className="bg-[rgb(235, 237, 223)] py-16">
+    <section id="home" className="bg-[rgb(235, 237, 223)] py-16 mt-20">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
@@ -19,10 +25,16 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg transition-colors hover:bg-[#2a3028]">
+              <button
+                className="flex items-center justify-center px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg transition-colors hover:bg-[#2a3028]"
+                onClick={() => navigate('/catalog')}
+              >
                 Get Started
               </button>
-              <button className="flex items-center justify-center px-8 py-4 bg-white text-gray-800 rounded-lg font-bold text-lg border border-gray-300 transition-colors hover:bg-gray-50">
+              <button
+                className="flex items-center justify-center px-8 py-4 bg-white text-gray-800 rounded-lg font-bold text-lg border border-gray-300 transition-colors hover:bg-gray-50"
+                onClick={() => setShowDemo(true)}
+              >
                 <FaPlay className="mr-2" />
                 Watch Demo
               </button>
@@ -59,7 +71,7 @@ const Hero = () => {
                   <img 
                     src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
                     alt="Student learning online"
-                    className="w-full h-full object-cover rounded-xl opacity-20"
+                    className="w-full h-full object-cover rounded-xl opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-[#EBEDDF]/80 to-white/90 rounded-xl"></div>
                 </div>
@@ -90,6 +102,32 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Demo Video Modal */}
+      {showDemo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="relative w-full max-w-2xl mx-4">
+            <button
+              className="absolute top-2 right-2 text-white text-2xl font-bold z-10 bg-black bg-opacity-40 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70"
+              onClick={() => setShowDemo(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <div className="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden bg-black">
+              <iframe
+                width="100%"
+                height="400"
+                src={DEMO_VIDEO_URL}
+                title="Demo Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -18,10 +18,11 @@ import ScrollToTop from './ScrollToTop';
 function AppContent() {
   const location = useLocation();
   const hideFooter = location.pathname === '/login' || location.pathname === '/signup';
+  const hideHeader = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      {!hideHeader && <Header />}
       <Routes>
         <Route path="/" element={
           <>
@@ -40,6 +41,7 @@ function AppContent() {
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
       </Routes>
       {!hideFooter && <Footer />}
+      
     </div>
   );
 }

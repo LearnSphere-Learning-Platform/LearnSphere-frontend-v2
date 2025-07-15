@@ -53,7 +53,7 @@ export function CourseCatalog() {
   }, [searchQuery, selectedLevel, selectedInstructors]);
 
   return (
-    <div className="flex min-h-screen bg-[#f5f5f5]">
+    <div className="flex min-h-screen bg-[#f5f5f5] mt-23">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
