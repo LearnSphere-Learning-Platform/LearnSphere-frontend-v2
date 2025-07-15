@@ -37,7 +37,7 @@ const VideoPlayer = ({
     <div className="relative">
       <video
         ref={videoRef}
-        className="w-full h-96 bg-black"
+        className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] bg-black"
         src={videoUrl}
         onTimeUpdate={onTimeUpdate}
         onLoadedMetadata={onLoadedMetadata}

@@ -14,6 +14,8 @@ import { CourseCatalog } from "./catalog/CourseCatalog";
 import CoursePageWrapper from "./catalog/CoursePageWrapper"; // ⬅️ new component
 import DashBoard from './dashboard/DashBoard';
 import ScrollToTop from './ScrollToTop';
+import QuizLoader from './quiz/QuizLoader';
+import DashboardQuizLoader from './dashboard/components/DashboardQuizLoader';
 
 function AppContent() {
   const location = useLocation();
@@ -38,6 +40,8 @@ function AppContent() {
         <Route path="/course/:id" element={<CoursePageWrapper />} />
         <Route path="/course/:id/dashboard" element={<DashBoard />} />
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
+        <Route path="/course/:courseId/test/:moduleId" element={<QuizLoader />} />
+        <Route path="/dashboard/course/:courseId/test/:lessonId" element={<DashboardQuizLoader />} />
       </Routes>
       {!hideFooter && <Footer />}
     </div>
