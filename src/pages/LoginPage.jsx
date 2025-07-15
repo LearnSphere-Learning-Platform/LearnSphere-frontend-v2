@@ -25,12 +25,12 @@ const LoginPage = () => {
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
             }}
+
           >
-            {/* Overlay for better text readability */}
             <div 
               className="absolute inset-0" 
               style={{ 
-                backgroundColor: 'rgba(51, 58, 47, 0.9) ' // #333A2F with 70% opacity
+                backgroundColor: 'rgba(51, 58, 47, 0.9)' // #333A2F with 70% opacity
               }}
             ></div>
             <div className="text-center z-10 relative">

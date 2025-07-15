@@ -1,0 +1,7262 @@
+const courseData = [
+  // 1. React Course (6 sessions)
+  {
+    id: 1,
+    course_name: "React - The Complete Guide (2024 Edition)",
+    description: "Master React with hooks, context API, Redux, and more",
+    image: "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
+
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 48,
+    no_of_sessions: 6,
+    no_of_tests_available: 12,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://youtu.be/CgkZ7MvWUAA?si=yQV3pUWCsik5NTUq",
+    about_course: {
+      skills: ["React Hooks", "Redux", "React Router", "Context API"],
+      complete_description:
+        "The most comprehensive React course - from basics to advanced patterns.",
+    },
+    outcome: [
+      "Build enterprise-grade React applications",
+      "Master state management",
+      "Create reusable component libraries",
+    ],
+    course_content: [
+      {
+        session: "1. Getting Started with React",
+        module_description:
+          "Setup development environment and learn core concepts",
+        videos: [
+          {
+            id: 1,
+            title: "Why React?",
+            duration: "8:32",
+            preview: true,
+            type: "video",
+            resources: ["Course Slides"],
+          },
+          {
+            id: 2,
+            title: "Creating Your First App",
+            duration: "12:45",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Understanding Components",
+            duration: "14:20",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 4,
+            title: "Practice: Build a Profile Card",
+            duration: "18:00",
+            preview: false,
+            type: "test",
+            questions: [
+              {
+                question: "Which React hook is most commonly used to manage the state of a profile card?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What is the best way to pass user data to a ProfileCard component?",
+                options: ["Via props", "Via global variable", "Via window object", "Via CSS"],
+                answer: "Via props"
+              },
+              {
+                question: "Which HTML element is best for displaying a user's profile picture?",
+                options: ["<img>", "<div>", "<span>", "<section>"],
+                answer: "<img>"
+              },
+              {
+                question: "How do you conditionally render a user's bio if it exists?",
+                options: ["{bio && <p>{bio}</p>}", "if (bio) <p>{bio}</p>", "<p>{bio}</p> always", "Use window.alert(bio)"],
+                answer: "{bio && <p>{bio}</p>}"
+              },
+              {
+                question: "What is a good practice for styling a profile card in React?",
+                options: ["Use CSS modules or styled-components", "Inline styles only", "No styles needed", "Use global CSS only"],
+                answer: "Use CSS modules or styled-components"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Session Recap",
+            duration: "5:10",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "2. Components & Props Deep Dive",
+        module_description: "Master component composition and props",
+        videos: [
+          {
+            id: 6,
+            title: "Props vs State",
+            duration: "15:22",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 7,
+            title: "Building a Product Card",
+            duration: "22:30",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Component Lifecycle",
+            duration: "19:15",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 9,
+            title: "Assignment: E-commerce Item",
+            duration: "30:00",
+            preview: false,
+            type: "assignment",
+            questions: [
+              {
+                question: "Which React hook is best for managing the state of an e-commerce cart?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What prop would you pass to a ProductCard to display its price?",
+                options: ["price", "cost", "amount", "value"],
+                answer: "price"
+              },
+              {
+                question: "How do you handle adding an item to the cart in React?",
+                options: ["Update state with setState/useState", "Reload the page", "Use window.alert", "Directly modify the DOM"],
+                answer: "Update state with setState/useState"
+              },
+              {
+                question: "Which event handler is used for button clicks in React?",
+                options: ["onClick", "onPress", "onTap", "onSelect"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to display a list of products in React?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              }
+            ]
+          },
+          {
+            id: 10,
+            title: "Q&A Session",
+            duration: "10:45",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+      {
+        session: "3. State Management with Hooks",
+        module_description: "Understand and implement React Hooks for state",
+        videos: [
+          {
+            id: 11,
+            title: "Introducing useState",
+            duration: "16:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Understanding useEffect",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Building a Counter App",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which hook is essential for a counter app in React?",
+                options: ["useState", "useEffect", "useContext", "useReducer"],
+                answer: "useState"
+              },
+              {
+                question: "What is the initial value of a counter typically set to?",
+                options: ["0", "1", "null", "undefined"],
+                answer: "0"
+              },
+              {
+                question: "How do you increment a counter in React?",
+                options: ["setCount(count + 1)", "count++", "add(1)", "setState(1)"],
+                answer: "setCount(count + 1)"
+              },
+              {
+                question: "Which event is used to trigger the increment?",
+                options: ["onClick", "onChange", "onInput", "onHover"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to display the counter value?",
+                options: ["Inside a <span> or <div>", "In the console", "In a CSS file", "In a comment"],
+                answer: "Inside a <span> or <div>"
+              }
+            ]
+          },
+          {
+            id: 14,
+            title: "Custom Hooks",
+            duration: "18:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 15,
+            title: "Debugging Hooks",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. React Router & Navigation",
+        module_description: "Implement routing in React applications",
+        videos: [
+          {
+            id: 16,
+            title: "Introduction to React Router",
+            duration: "14:30",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Nested Routes",
+            duration: "19:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Programmatic Navigation",
+            duration: "16:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Practice: Blog Navigation",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which library is commonly used for navigation in React apps?",
+                options: ["React Router", "Redux", "Axios", "Lodash"],
+                answer: "React Router"
+              },
+              {
+                question: "What is the component used to define a route?",
+                options: ["<Route>", "<Link>", "<Switch>", "<Nav>"],
+                answer: "<Route>"
+              },
+              {
+                question: "How do you navigate programmatically in React Router v6?",
+                options: ["useNavigate()", "useHistory()", "window.location", "navigateTo()"],
+                answer: "useNavigate()"
+              },
+              {
+                question: "What prop is used to specify the path in a Route?",
+                options: ["path", "to", "route", "url"],
+                answer: "path"
+              },
+              {
+                question: "How do you create a navigation link in React Router?",
+                options: ["<Link>", "<a>", "<button>", "<span>"],
+                answer: "<Link>"
+              }
+            ]
+          },
+          {
+            id: 20,
+            title: "Route Guards",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Context API & Redux for Global State",
+        module_description: "Manage application-wide state effectively",
+        videos: [
+          {
+            id: 21,
+            title: "When to use Context API",
+            duration: "17:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 22,
+            title: "Redux Fundamentals",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 23,
+            title: "Connecting React to Redux",
+            duration: "28:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Middleware in Redux",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Assignment: Shopping Cart",
+            duration: "40:00",
+            preview: false,
+            type: "assignment",
+            questions: [
+              {
+                question: "Which React hook is best for managing cart state?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What is a common way to display cart items?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              },
+              {
+                question: "How do you remove an item from the cart?",
+                options: ["Filter the array", "Push to array", "Use pop()", "Use shift()"],
+                answer: "Filter the array"
+              },
+              {
+                question: "Which event is used to handle checkout?",
+                options: ["onClick", "onChange", "onInput", "onHover"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to persist cart data?",
+                options: ["LocalStorage", "SessionStorage", "Cookies", "All of the above"],
+                answer: "All of the above"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "6. Advanced React Patterns & Deployment",
+        module_description: "Explore advanced techniques and deploy your apps",
+        videos: [
+          {
+            id: 26,
+            title: "Render Props & HOCs",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Performance Optimization",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 28,
+            title: "Testing React Components",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 29,
+            title: "Deployment Strategies",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 30,
+            title: "Course Project: Final Review",
+            duration: "35:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the purpose of a final project review?",
+                options: ["To assess overall understanding", "To introduce new topics", "To skip content", "To delete the project"],
+                answer: "To assess overall understanding"
+              },
+              {
+                question: "Which is a good practice before submitting a project?",
+                options: ["Test all features", "Ignore bugs", "Remove comments", "Change project name"],
+                answer: "Test all features"
+              },
+              {
+                question: "How do you ensure your code is maintainable?",
+                options: ["Write clean code", "Use global variables", "Avoid comments", "Duplicate code"],
+                answer: "Write clean code"
+              },
+              {
+                question: "What should you include in your project documentation?",
+                options: ["Setup instructions", "Personal stories", "Unrelated code", "None of the above"],
+                answer: "Setup instructions"
+              },
+              {
+                question: "How do you deploy a React app?",
+                options: ["Use Netlify/Vercel/Heroku", "Send via email", "Print the code", "Use Notepad"],
+                answer: "Use Netlify/Vercel/Heroku"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 2. Python Data Science (5 sessions)
+  {
+    id: 2,
+    course_name: "Python for Data Science: Complete Bootcamp",
+    description: "Master Pandas, NumPy, Matplotlib for data analysis",
+    image: "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
+    instructor: {
+      name: "Dr. Angela Yu",
+      mailid: "angela@example.com",
+      summary: "Lead Data Science Instructor",
+      overall_rating: 4.8,
+      no_of_courses_released: 15,
+      avatar: "https://placehold.co/100x100?text=Angela",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Dr. Angela Yu. I specialize in lead data science instructor.",
+        "With over 15 courses and a rating of 4.8, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 32,
+    no_of_sessions: 5,
+    no_of_tests_available: 8,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/python-data-science",
+    about_course: {
+      skills: ["Pandas", "NumPy", "Matplotlib", "Data Cleaning"],
+      complete_description:
+        "Learn Python from scratch for data science and analysis.",
+    },
+    outcome: [
+      "Perform data cleaning and preprocessing",
+      "Visualize data effectively",
+      "Build basic machine learning models",
+    ],
+    course_content: [
+      {
+        session: "1. Python Fundamentals",
+        module_description: "Essential Python for data analysis",
+        videos: [
+          {
+            id: 1,
+            title: "Python Basics Review",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "List Comprehensions",
+            duration: "18:30",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Working with Dictionaries",
+            duration: "22:15",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 4,
+            title: "Practice: Data Cleaning",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which Python library is most commonly used for data cleaning?",
+                options: ["pandas", "numpy", "matplotlib", "seaborn"],
+                answer: "pandas"
+              },
+              {
+                question: "What method is used to remove missing values from a DataFrame?",
+                options: ["dropna()", "fillna()", "replace()", "remove()"],
+                answer: "dropna()"
+              },
+              {
+                question: "How do you fill missing values with the mean in pandas?",
+                options: ["fillna(df.mean())", "replace(df.mean())", "dropna(df.mean())", "fill(df.mean())"],
+                answer: "fillna(df.mean())"
+              },
+              {
+                question: "Which function checks for null values in a DataFrame?",
+                options: ["isnull()", "notnull()", "isna()", "all of the above"],
+                answer: "all of the above"
+              },
+              {
+                question: "What is the first step in data cleaning?",
+                options: ["Inspect the data", "Plot the data", "Train a model", "Export to CSV"],
+                answer: "Inspect the data"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Quiz: Python Basics",
+            duration: "15:00",
+            preview: false,
+            type: "quiz",
+            questions: [
+              {
+                question: "Which symbol is used to comment a single line in Python?",
+                options: ["#", "//", "<!--", "--"],
+                answer: "#"
+              },
+              {
+                question: "What is the output of print(2 ** 3)?",
+                options: ["8", "6", "9", "5"],
+                answer: "8"
+              },
+              {
+                question: "Which data type is immutable in Python?",
+                options: ["tuple", "list", "dict", "set"],
+                answer: "tuple"
+              },
+              {
+                question: "How do you create a list in Python?",
+                options: ["[1, 2, 3]", "(1, 2, 3)", "{1, 2, 3}", "<1, 2, 3>"],
+                answer: "[1, 2, 3]"
+              },
+              {
+                question: "What does len([1, 2, 3]) return?",
+                options: ["3", "2", "1", "0"],
+                answer: "3"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "2. NumPy for Numerical Computing",
+        module_description: "Master array operations with NumPy",
+        videos: [
+          {
+            id: 6,
+            title: "NumPy Array Creation",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Array Indexing & Slicing",
+            duration: "15:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Broadcasting",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 9,
+            title: "Practice: Matrix Operations",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which NumPy function is used to create a 2D matrix?",
+                options: ["np.array()", "np.matrix()", "np.mat()", "np.create()"],
+                answer: "np.array()"
+              },
+              {
+                question: "How do you perform matrix multiplication in NumPy?",
+                options: ["np.dot()", "*", "+", "np.mult()"],
+                answer: "np.dot()"
+              },
+              {
+                question: "What does the shape attribute of a NumPy array return?",
+                options: ["Tuple of dimensions", "Sum of elements", "Data type", "First element"],
+                answer: "Tuple of dimensions"
+              },
+              {
+                question: "Which function transposes a matrix in NumPy?",
+                options: [".T", ".transpose()", ".reshape()", ".swapaxes()"],
+                answer: ".T"
+              },
+              {
+                question: "How do you access the element at row 1, column 2 in a 2D array arr?",
+                options: ["arr[0, 1]", "arr[1, 2]", "arr[1][2]", "arr[2, 1]"],
+                answer: "arr[0, 1]"
+              }
+            ]
+          },
+          {
+            id: 10,
+            title: "Understanding Array Shapes",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. Pandas for Data Analysis",
+        module_description: "Powerful data manipulation with Pandas",
+        videos: [
+          {
+            id: 11,
+            title: "Introduction to DataFrames",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Reading CSV and Excel Files",
+            duration: "18:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Missing Data Handling",
+            duration: "20:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 14,
+            title: "Groupby Operations",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which pandas function is used for groupby operations?",
+                options: ["groupby()", "aggregate()", "split()", "combine()"],
+                answer: "groupby()"
+              },
+              {
+                question: "How do you get the mean of each group in pandas?",
+                options: [".mean()", ".sum()", ".count()", ".min()"],
+                answer: ".mean()"
+              },
+              {
+                question: "What does groupby return in pandas?",
+                options: ["GroupBy object", "DataFrame", "Series", "List"],
+                answer: "GroupBy object"
+              },
+              {
+                question: "How do you apply multiple aggregation functions in groupby?",
+                options: ["agg()", "apply()", "map()", "filter()"],
+                answer: "agg()"
+              },
+              {
+                question: "Which method resets the index after groupby?",
+                options: ["reset_index()", "set_index()", "drop_index()", "clear_index()"],
+                answer: "reset_index()"
+              }
+            ]
+          },
+          {
+            id: 15,
+            title: "Merging DataFrames",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Data Visualization with Matplotlib & Seaborn",
+        module_description: "Create stunning visualizations",
+        videos: [
+          {
+            id: 16,
+            title: "Basic Plots with Matplotlib",
+            duration: "16:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Customizing Plots",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Introduction to Seaborn",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Practice: Analyzing Sales Data",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which library is commonly used for data visualization in Python?",
+                options: ["matplotlib", "numpy", "pandas", "scipy"],
+                answer: "matplotlib"
+              },
+              {
+                question: "How do you plot a line chart in matplotlib?",
+                options: ["plt.plot()", "plt.line()", "plt.show()", "plt.draw()"],
+                answer: "plt.plot()"
+              },
+              {
+                question: "What function displays the plot window?",
+                options: ["plt.show()", "plt.display()", "plt.open()", "plt.view()"],
+                answer: "plt.show()"
+              },
+              {
+                question: "Which method is used to add a title to a plot?",
+                options: ["plt.title()", "plt.header()", "plt.caption()", "plt.label()"],
+                answer: "plt.title()"
+              },
+              {
+                question: "How do you save a plot as an image file?",
+                options: ["plt.savefig()", "plt.save()", "plt.export()", "plt.img()"],
+                answer: "plt.savefig()"
+              }
+            ]
+          },
+          {
+            id: 20,
+            title: "Interactive Plots (optional)",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Introduction to Machine Learning",
+        module_description: "Basic concepts of machine learning",
+        videos: [
+          {
+            id: 21,
+            title: "What is Machine Learning?",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Linear Regression Overview",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Building a Simple Model",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Model Evaluation Metrics",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Project: Housing Price Prediction",
+            duration: "40:00",
+            preview: false,
+            type: "assignment",
+            questions: [
+              {
+                question: "Which library is commonly used for linear regression in Python?",
+                options: ["scikit-learn", "pandas", "matplotlib", "numpy"],
+                answer: "scikit-learn"
+              },
+              {
+                question: "What is the target variable in a housing price prediction model?",
+                options: ["Price", "Area", "Location", "Rooms"],
+                answer: "Price"
+              },
+              {
+                question: "Which metric is used to evaluate regression models?",
+                options: ["Mean Squared Error", "Accuracy", "Recall", "F1 Score"],
+                answer: "Mean Squared Error"
+              },
+              {
+                question: "How do you split data into training and test sets?",
+                options: ["train_test_split", "split_data", "divide_data", "partition_data"],
+                answer: "train_test_split"
+              },
+              {
+                question: "What is the first step in building a machine learning model?",
+                options: ["Data preprocessing", "Model evaluation", "Prediction", "Deployment"],
+                answer: "Data preprocessing"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 3. Web Development Bootcamp (8 sessions)
+  {
+    id: 3,
+    course_name: "The Complete Web Developer Bootcamp 2024",
+    description: "HTML, CSS, JavaScript, Node, React, MongoDB",
+    image: "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
+    instructor: {
+      name: "Kyle Simpson",
+      mailid: "kyle@example.com",
+      summary: "JavaScript Evangelist",
+      overall_rating: 4.6,
+      no_of_courses_released: 12,
+      avatar: "https://placehold.co/100x100?text=Kyle",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Kyle Simpson. I specialize in javascript evangelist.",
+        "With over 12 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 60,
+    no_of_sessions: 8,
+    no_of_tests_available: 15,
+    course_rating: 4.9,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/web-dev-bootcamp",
+    about_course: {
+      skills: [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "React",
+      ],
+      complete_description:
+        "Become a full-stack web developer from scratch with this comprehensive bootcamp.",
+    },
+    outcome: [
+      "Build responsive and interactive websites",
+      "Develop RESTful APIs with Node.js",
+      "Create dynamic front-end applications with React",
+    ],
+    course_content: [
+      {
+        session: "1. HTML5 Fundamentals",
+        module_description: "Build modern semantic HTML",
+        videos: [
+          {
+            id: 1,
+            title: "HTML Structure",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Forms & Inputs",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Semantic HTML5",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 4,
+            title: "Practice: Personal Portfolio Page",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which HTML tag is used to display your name on a portfolio page?",
+                options: ["<h1>", "<div>", "<span>", "<section>"],
+                answer: "<h1>"
+              },
+              {
+                question: "What attribute is used to add an image to your portfolio?",
+                options: ["src", "href", "alt", "title"],
+                answer: "src"
+              },
+              {
+                question: "Which tag is best for navigation links?",
+                options: ["<nav>", "<ul>", "<header>", "<footer>"],
+                answer: "<nav>"
+              },
+              {
+                question: "How do you make your email clickable?",
+                options: ["<a href='mailto:...'>", "<button>", "<input>", "<span>"],
+                answer: "<a href='mailto:...'>"
+              },
+              {
+                question: "What is a good practice for organizing sections on a portfolio page?",
+                options: ["Use semantic HTML tags", "Use only <div>", "No structure needed", "Use inline styles only"],
+                answer: "Use semantic HTML tags"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Accessibility Basics",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. CSS3 Styling & Layouts",
+        module_description: "Design beautiful and responsive web pages",
+        videos: [
+          {
+            id: 6,
+            title: "CSS Selectors & Properties",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Flexbox Layout",
+            duration: "22:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Grid Layout",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 9,
+            title: "Responsive Design with Media Queries",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which CSS rule is used for responsive design?",
+                options: ["@media", "@responsive", "@screen", "@size"],
+                answer: "@media"
+              },
+              {
+                question: "How do you target screens smaller than 600px?",
+                options: ["@media (max-width: 600px)", "@media (min-width: 600px)", "@media (width: 600px)", "@media (size: 600px)"],
+                answer: "@media (max-width: 600px)"
+              },
+              {
+                question: "What property makes an image scale with the screen?",
+                options: ["width: 100%", "height: 100px", "display: block", "position: absolute"],
+                answer: "width: 100%"
+              },
+              {
+                question: "Which unit is best for flexible layouts?",
+                options: ["%", "px", "em", "rem"],
+                answer: "%"
+              },
+              {
+                question: "How do you hide an element on mobile only?",
+                options: ["@media (max-width: 600px) { display: none; }", "display: block;", "opacity: 0;", "z-index: -1;"],
+                answer: "@media (max-width: 600px) { display: none; }"
+              }
+            ]
+          },
+          {
+            id: 10,
+            title: "CSS Animations",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. JavaScript Basics for Web",
+        module_description: "Add interactivity to your websites",
+        videos: [
+          {
+            id: 11,
+            title: "Variables & Data Types",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Control Flow & Loops",
+            duration: "18:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Functions & Scope",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 14,
+            title: "DOM Manipulation",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method selects an element by its ID?",
+                options: ["document.getElementById()", "document.querySelectorAll()", "document.getElementsByClassName()", "document.createElement()"],
+                answer: "document.getElementById()"
+              },
+              {
+                question: "How do you change the text of an element in JavaScript?",
+                options: ["element.textContent = 'new text'", "element.value = 'new text'", "element.innerHTML = 'new text'", "element.setText('new text')"],
+                answer: "element.textContent = 'new text'"
+              },
+              {
+                question: "Which event is used for button clicks?",
+                options: ["onclick", "onhover", "onchange", "oninput"],
+                answer: "onclick"
+              },
+              {
+                question: "How do you add a new element to the DOM?",
+                options: ["appendChild()", "removeChild()", "replaceChild()", "insertBefore()"],
+                answer: "appendChild()"
+              },
+              {
+                question: "What method removes an element from the DOM?",
+                options: ["removeChild()", "deleteElement()", "remove()", "detach()"],
+                answer: "removeChild()"
+              }
+            ]
+          },
+          {
+            id: 15,
+            title: "Event Listeners",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Advanced JavaScript & ES6+",
+        module_description: "Deep dive into modern JavaScript",
+        videos: [
+          {
+            id: 16,
+            title: "Arrow Functions & Template Literals",
+            duration: "17:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Asynchronous JavaScript (Promises & Async/Await)",
+            duration: "22:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Modules in JavaScript",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 19,
+            title: "Error Handling",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Practice: API Fetching",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to fetch data from an API in JavaScript?",
+                options: ["fetch()", "get()", "request()", "call()"],
+                answer: "fetch()"
+              },
+              {
+                question: "What does fetch() return?",
+                options: ["Promise", "Array", "String", "Object"],
+                answer: "Promise"
+              },
+              {
+                question: "How do you parse a JSON response from fetch?",
+                options: ["response.json()", "response.text()", "response.parse()", "response.data()"],
+                answer: "response.json()"
+              },
+              {
+                question: "Which HTTP method is used to send data to an API?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "How do you handle errors in fetch?",
+                options: [".catch()", ".then()", ".error()", ".fail()"],
+                answer: ".catch()"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "5. Node.js & Express.js",
+        module_description: "Build server-side applications",
+        videos: [
+          {
+            id: 21,
+            title: "Introduction to Node.js",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Express.js Basics",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "RESTful APIs with Express",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method creates a new resource in REST?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "What is the default port for Express apps?",
+                options: ["3000", "8080", "5000", "80"],
+                answer: "3000"
+              },
+              {
+                question: "Which function defines a route in Express?",
+                options: ["app.get()", "app.route()", "app.listen()", "app.use()"],
+                answer: "app.get()"
+              },
+              {
+                question: "How do you send a JSON response in Express?",
+                options: ["res.json()", "res.send()", "res.write()", "res.data()"],
+                answer: "res.json()"
+              },
+              {
+                question: "Which middleware parses JSON bodies in Express?",
+                options: ["express.json()", "bodyParser.text()", "express.static()", "app.use()"],
+                answer: "express.json()"
+              }
+            ]
+          },
+          {
+            id: 24,
+            title: "Middleware in Express",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 25,
+            title: "Authentication & Authorization",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "6. Databases with MongoDB & Mongoose",
+        module_description: "Store and manage data for your applications",
+        videos: [
+          {
+            id: 26,
+            title: "Introduction to NoSQL & MongoDB",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Mongoose ODM",
+            duration: "22:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 28,
+            title: "CRUD Operations with Mongoose",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method creates a new document in Mongoose?",
+                options: ["Model.create()", "Model.find()", "Model.update()", "Model.delete()"],
+                answer: "Model.create()"
+              },
+              {
+                question: "How do you find all documents in a collection?",
+                options: ["Model.find()", "Model.getAll()", "Model.fetch()", "Model.all()"],
+                answer: "Model.find()"
+              },
+              {
+                question: "Which method updates a document in Mongoose?",
+                options: ["Model.updateOne()", "Model.save()", "Model.edit()", "Model.change()"],
+                answer: "Model.updateOne()"
+              },
+              {
+                question: "How do you delete a document in Mongoose?",
+                options: ["Model.deleteOne()", "Model.remove()", "Model.destroy()", "Model.drop()"],
+                answer: "Model.deleteOne()"
+              },
+              {
+                question: "What is the purpose of Mongoose schemas?",
+                options: ["Define structure of documents", "Style the UI", "Connect to frontend", "Render HTML"],
+                answer: "Define structure of documents"
+              }
+            ]
+          },
+          {
+            id: 29,
+            title: "Data Relationships",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 30,
+            title: "Atlas Cloud Database",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "7. React.js for Front-end Development",
+        module_description: "Build dynamic and interactive UIs",
+        videos: [
+          {
+            id: 31,
+            title: "React Fundamentals",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 32,
+            title: "Components & Props",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 33,
+            title: "State & Lifecycle",
+            duration: "22:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 34,
+            title: "Hooks in React",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 35,
+            title: "Building a Simple Blog",
+            duration: "35:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which React hook is used to manage blog post state?",
+                options: ["useState", "useEffect", "useContext", "useReducer"],
+                answer: "useState"
+              },
+              {
+                question: "How do you render a list of blog posts in React?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              },
+              {
+                question: "Which prop is used to uniquely identify list items in React?",
+                options: ["key", "id", "index", "name"],
+                answer: "key"
+              },
+              {
+                question: "How do you handle form input for new blog posts?",
+                options: ["onChange event", "onClick event", "onSubmit event", "onInput event"],
+                answer: "onChange event"
+              },
+              {
+                question: "What is a good way to separate blog post components?",
+                options: ["Create a BlogPost component", "Use only App.js", "Put all code in index.js", "Use global variables"],
+                answer: "Create a BlogPost component"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "8. Deployment & Best Practices",
+        module_description: "Deploy your full-stack applications",
+        videos: [
+          {
+            id: 36,
+            title: "Hosting with Heroku/Netlify",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 37,
+            title: "Environment Variables",
+            duration: "10:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 38,
+            title: "Security Best Practices",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 39,
+            title: "Performance Optimization",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 40,
+            title: "Final Project Walkthrough",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the first step in starting a final project?",
+                options: ["Plan the project structure", "Write code immediately", "Deploy to production", "Skip planning"],
+                answer: "Plan the project structure"
+              },
+              {
+                question: "Which tool is commonly used for version control?",
+                options: ["Git", "Photoshop", "Excel", "Notepad"],
+                answer: "Git"
+              },
+              {
+                question: "How do you test your application before deployment?",
+                options: ["Run locally and check features", "Deploy first", "Ignore testing", "Ask a friend"],
+                answer: "Run locally and check features"
+              },
+              {
+                question: "What is a good practice for writing project documentation?",
+                options: ["Include setup instructions", "Skip documentation", "Write in code only", "Use screenshots only"],
+                answer: "Include setup instructions"
+              },
+              {
+                question: "How do you deploy a full-stack app?",
+                options: ["Use platforms like Heroku/Netlify", "Send files via email", "Print the code", "Use Notepad"],
+                answer: "Use platforms like Heroku/Netlify"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 4. Advanced JavaScript (5 sessions)
+  {
+    id: 4,
+    course_name: "Advanced JavaScript: Concepts & Techniques",
+    description:
+      "Deep dive into closures, prototypes, asynchronous JS, and more",
+    image: "https://ucarecdn.com/6432eebc-f77b-480f-b1d9-88d89ec4f149/",
+    instructor: {
+      name: "Sarah Miller",
+      mailid: "sarah@example.com",
+      summary: "Senior UX Designer",
+      overall_rating: 4.6,
+      no_of_courses_released: 8,
+      avatar: "https://placehold.co/100x100?text=Sarah",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Sarah Miller. I specialize in senior ux designer.",
+        "With over 8 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Advanced",
+    price: 0,
+    language: "English",
+    total_hours: 35,
+    no_of_sessions: 5,
+    no_of_tests_available: 10,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/advanced-js",
+    about_course: {
+      skills: [
+        "Closures",
+        "Prototypes",
+        "Asynchronous JS",
+        "Design Patterns",
+        "Functional Programming",
+      ],
+      complete_description:
+        "Master advanced JavaScript concepts to write robust and efficient code.",
+    },
+    outcome: [
+      "Understand complex JavaScript patterns",
+      "Write cleaner and more performant code",
+      "Confidently tackle challenging JavaScript problems",
+    ],
+    course_content: [
+      {
+        session: "1. Scope & Closures",
+        module_description: "Master lexical scope and closures",
+        videos: [
+          {
+            id: 1,
+            title: "Understanding Lexical Scope",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Function Scope vs Block Scope",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Practical Closures",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a closure in JavaScript?",
+                options: ["A function with access to its outer scope", "A CSS property", "A type of loop", "A React hook"],
+                answer: "A function with access to its outer scope"
+              },
+              {
+                question: "How do closures help with data privacy?",
+                options: ["By encapsulating variables", "By exposing all variables", "By using global scope", "By using var only"],
+                answer: "By encapsulating variables"
+              },
+              {
+                question: "Which keyword creates a function in JavaScript?",
+                options: ["function", "def", "lambda", "fun"],
+                answer: "function"
+              },
+              {
+                question: "How can you use a closure to create a counter?",
+                options: ["Return a function that increments a variable", "Use a global variable", "Use setTimeout only", "Use a for loop only"],
+                answer: "Return a function that increments a variable"
+              },
+              {
+                question: "What is a common use case for closures?",
+                options: ["Event handlers", "CSS styling", "HTML rendering", "Database queries"],
+                answer: "Event handlers"
+              }
+            ]
+          },
+          {
+            id: 4,
+            title: "Module Pattern",
+            duration: "18:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 5,
+            title: "Closures in Loops",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Prototypes & Object-Oriented JS",
+        module_description: "Deep dive into JavaScript's object model",
+        videos: [
+          {
+            id: 6,
+            title: "Objects & Prototypes",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Prototypal Inheritance",
+            duration: "18:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "Constructor Functions",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 9,
+            title: "Class Syntax (ES6)",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Practice: Custom Objects",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "How do you define a custom object in JavaScript?",
+                options: ["Using object literals or constructors", "Using arrays", "Using functions only", "Using strings"],
+                answer: "Using object literals or constructors"
+              },
+              {
+                question: "Which keyword is used to create a constructor function?",
+                options: ["function", "class", "object", "constructor"],
+                answer: "function"
+              },
+              {
+                question: "How do you add a method to a custom object?",
+                options: ["Assign a function to a property", "Use addMethod()", "Use push()", "Use setMethod()"],
+                answer: "Assign a function to a property"
+              },
+              {
+                question: "What is the purpose of 'this' in object methods?",
+                options: ["Refers to the object itself", "Refers to window", "Refers to parent object", "Refers to null"],
+                answer: "Refers to the object itself"
+              },
+              {
+                question: "How do you create an instance of a custom object?",
+                options: ["Using 'new' keyword", "Using 'create'", "Using 'instanceof'", "Using 'Object()'"],
+                answer: "Using 'new' keyword"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "3. Asynchronous JavaScript",
+        module_description: "Handle async operations effectively",
+        videos: [
+          {
+            id: 11,
+            title: "Callbacks & Callback Hell",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Promises: The Basics",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 13,
+            title: "Async/Await Explained",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 14,
+            title: "Error Handling in Async JS",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 15,
+            title: "Practice: Fetching Data",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to fetch data from an API in JavaScript?",
+                options: ["fetch()", "get()", "request()", "call()"],
+                answer: "fetch()"
+              },
+              {
+                question: "What does fetch() return?",
+                options: ["Promise", "Array", "String", "Object"],
+                answer: "Promise"
+              },
+              {
+                question: "How do you parse a JSON response from fetch?",
+                options: ["response.json()", "response.text()", "response.parse()", "response.data()"],
+                answer: "response.json()"
+              },
+              {
+                question: "Which HTTP method is used to send data to an API?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "How do you handle errors in fetch?",
+                options: [".catch()", ".then()", ".error()", ".fail()"],
+                answer: ".catch()"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "4. Functional Programming Concepts",
+        module_description: "Explore the functional paradigm in JS",
+        videos: [
+          {
+            id: 16,
+            title: "Pure Functions",
+            duration: "16:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Immutability",
+            duration: "12:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Higher-Order Functions",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 19,
+            title: "Currying & Composition",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Practice: Array Transformations",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to transform each element in an array?",
+                options: ["map()", "filter()", "reduce()", "forEach()"],
+                answer: "map()"
+              },
+              {
+                question: "How do you filter elements in an array?",
+                options: ["filter()", "map()", "reduce()", "sort()"],
+                answer: "filter()"
+              },
+              {
+                question: "Which method accumulates a single value from an array?",
+                options: ["reduce()", "map()", "filter()", "forEach()"],
+                answer: "reduce()"
+              },
+              {
+                question: "What does the 'find()' method do?",
+                options: ["Returns first matching element", "Returns all elements", "Removes elements", "Sorts elements"],
+                answer: "Returns first matching element"
+              },
+              {
+                question: "How do you sort an array in JavaScript?",
+                options: ["sort()", "order()", "arrange()", "filter()"],
+                answer: "sort()"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "5. Design Patterns & Best Practices",
+        module_description: "Apply common software design patterns",
+        videos: [
+          {
+            id: 21,
+            title: "Singleton Pattern",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Observer Pattern",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Factory Pattern",
+            duration: "18:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Dependency Injection",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Refactoring Code",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of refactoring code?",
+                options: ["Improve readability and maintainability", "Add new features", "Remove all comments", "Increase file size"],
+                answer: "Improve readability and maintainability"
+              },
+              {
+                question: "Which tool helps identify code smells?",
+                options: ["Linters", "Compilers", "Browsers", "Text editors"],
+                answer: "Linters"
+              },
+              {
+                question: "What is a common refactoring technique?",
+                options: ["Extract function", "Add global variables", "Duplicate code", "Remove all functions"],
+                answer: "Extract function"
+              },
+              {
+                question: "Why is it important to write tests before refactoring?",
+                options: ["Ensure behavior stays the same", "Make code slower", "Increase bugs", "Reduce readability"],
+                answer: "Ensure behavior stays the same"
+              },
+              {
+                question: "What is a code smell?",
+                options: ["A sign of potential problem in code", "A good practice", "A type of comment", "A CSS property"],
+                answer: "A sign of potential problem in code"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 5. UX/UI Design (4 sessions)
+  {
+    id: 5,
+    course_name: "Complete UX/UI Design Masterclass",
+    description: "Learn Figma, user research, wireframing, and prototyping",
+    image: "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
+    instructor: {
+      name: "Adrian Cantrill",
+      mailid: "adrian@example.com",
+      summary: "AWS Certified Solutions Architect",
+      overall_rating: 4.9,
+      no_of_courses_released: 12,
+      avatar: "https://placehold.co/100x100?text=Adrian",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Adrian Cantrill. I specialize in aws certified solutions architect.",
+        "With over 12 courses and a rating of 4.9, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 28,
+    no_of_sessions: 4,
+    no_of_tests_available: 6,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/ux-ui-design",
+    about_course: {
+      skills: [
+        "User Research",
+        "Wireframing",
+        "Prototyping",
+        "Figma",
+        "Usability Testing",
+      ],
+      complete_description:
+        "Design intuitive and beautiful user experiences from start to finish.",
+    },
+    outcome: [
+      "Conduct effective user research",
+      "Create high-fidelity prototypes in Figma",
+      "Build a professional UX/UI design portfolio",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to UX Research",
+        module_description: "Understand users and their needs",
+        videos: [
+          {
+            id: 1,
+            title: "What is UX?",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "User Interview Techniques",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Persona Creation",
+            duration: "22:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 4,
+            title: "Journey Mapping",
+            duration: "18:00",
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a journey map in UX design?",
+                options: ["A visual representation of user experience", "A code diagram", "A database schema", "A marketing plan"],
+                answer: "A visual representation of user experience"
+              },
+              {
+                question: "Which phase comes first in journey mapping?",
+                options: ["Research", "Design", "Testing", "Development"],
+                answer: "Research"
+              },
+              {
+                question: "What is the main goal of journey mapping?",
+                options: ["Identify pain points and opportunities", "Write code", "Create wireframes", "Build prototypes"],
+                answer: "Identify pain points and opportunities"
+              },
+              {
+                question: "Who is the primary focus of a journey map?",
+                options: ["The user", "The developer", "The manager", "The marketer"],
+                answer: "The user"
+              },
+              {
+                question: "What tool is commonly used for journey mapping?",
+                options: ["Sticky notes or digital boards", "Database", "IDE", "Spreadsheet"],
+                answer: "Sticky notes or digital boards"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Competitive Analysis",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Wireframing & Information Architecture",
+        module_description: "Structure content and design layouts",
+        videos: [
+          {
+            id: 6,
+            title: "Low-Fidelity Wireframes",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Sitemap Creation",
+            duration: "15:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "User Flows",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a user flow?",
+                options: ["A path taken by a user to complete a task", "A code function", "A UI element", "A marketing strategy"],
+                answer: "A path taken by a user to complete a task"
+              },
+              {
+                question: "Why are user flows important in UX design?",
+                options: ["They help optimize user experience", "They increase code complexity", "They slow down development", "They are not important"],
+                answer: "They help optimize user experience"
+              },
+              {
+                question: "Which tool can be used to create user flows?",
+                options: ["Figma", "Excel", "Photoshop", "Notepad"],
+                answer: "Figma"
+              },
+              {
+                question: "What is the starting point of a user flow?",
+                options: ["Entry point or trigger", "Final screen", "Database", "Code editor"],
+                answer: "Entry point or trigger"
+              },
+              {
+                question: "What should be included in a user flow diagram?",
+                options: ["All possible user actions and screens", "Only code", "Only UI colors", "Only text"],
+                answer: "All possible user actions and screens"
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: "Mid-Fidelity Wireframes",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Usability Heuristics",
+            duration: "12:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "3. Prototyping with Figma",
+        module_description: "Bring your designs to life",
+        videos: [
+          {
+            id: 11,
+            title: "Figma Interface Tour",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Designing Components",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Interactive Prototypes",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is an interactive prototype?",
+                options: ["A clickable simulation of a product", "A static image", "A code file", "A database"],
+                answer: "A clickable simulation of a product"
+              },
+              {
+                question: "Which tool is popular for creating interactive prototypes?",
+                options: ["Figma", "Excel", "Word", "Notepad"],
+                answer: "Figma"
+              },
+              {
+                question: "Why are interactive prototypes useful?",
+                options: ["They allow user testing before development", "They slow down design", "They are not useful", "They replace all code"],
+                answer: "They allow user testing before development"
+              },
+              {
+                question: "What feature makes a prototype interactive?",
+                options: ["Clickable elements and transitions", "Static images", "Text only", "No interaction"],
+                answer: "Clickable elements and transitions"
+              },
+              {
+                question: "What is a benefit of prototyping?",
+                options: ["Early feedback and iteration", "No feedback needed", "Skip user testing", "Faster coding"],
+                answer: "Early feedback and iteration"
+              }
+            ]
+          },
+          {
+            id: 14,
+            title: "Auto Layout & Variants",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 15,
+            title: "Collaboration in Figma",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "4. UI Design & Usability Testing",
+        module_description: "Create stunning interfaces and validate designs",
+        videos: [
+          {
+            id: 16,
+            title: "Color Theory & Typography",
+            duration: "16:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Iconography & Imagery",
+            duration: "12:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Design Systems Basics",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 19,
+            title: "Conducting Usability Tests",
+            duration: "25:00",
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is usability testing?",
+                options: ["Evaluating a product by testing with users", "Writing code", "Designing UI", "Marketing"],
+                answer: "Evaluating a product by testing with users"
+              },
+              {
+                question: "When should usability testing be conducted?",
+                options: ["Throughout the design process", "Only after launch", "Never", "Only during coding"],
+                answer: "Throughout the design process"
+              },
+              {
+                question: "What is a common method for usability testing?",
+                options: ["User observation and feedback", "Code review", "Automated testing", "Marketing survey"],
+                answer: "User observation and feedback"
+              },
+              {
+                question: "What is the main goal of usability testing?",
+                options: ["Identify usability issues", "Increase code size", "Add new features", "Change UI colors"],
+                answer: "Identify usability issues"
+              },
+              {
+                question: "Who should participate in usability tests?",
+                options: ["Target users", "Developers only", "Managers only", "Marketers only"],
+                answer: "Target users"
+              }
+            ]
+          },
+          {
+            id: 20,
+            title: "Iterative Design & Feedback",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 6. DevOps with AWS (6 sessions)
+  {
+    id: 6,
+    course_name: "DevOps with AWS: From Zero to Hero",
+    description: "Implement CI/CD, automation, and scaling on AWS",
+    image: "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
+    instructor: {
+      name: "Paul Hudson",
+      mailid: "paul@example.com",
+      summary: "Swift & iOS Developer",
+      overall_rating: 4.7,
+      no_of_courses_released: 18,
+      avatar: "https://placehold.co/100x100?text=Paul",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Paul Hudson. I specialize in swift & ios developer.",
+        "With over 18 courses and a rating of 4.7, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 55,
+    no_of_sessions: 6,
+    no_of_tests_available: 15,
+    course_rating: 4.9,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/devops-aws",
+    about_course: {
+      skills: [
+        "AWS EC2",
+        "S3",
+        "VPC",
+        "CloudFormation",
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "Terraform",
+      ],
+      complete_description:
+        "Master DevOps practices and tools on the Amazon Web Services platform.",
+    },
+    outcome: [
+      "Automate infrastructure provisioning",
+      "Set up robust CI/CD pipelines",
+      "Deploy and manage scalable applications on AWS",
+    ],
+    course_content: [
+      {
+        session: "1. AWS Fundamentals for DevOps",
+        module_description: "Core AWS services for building infrastructure",
+        videos: [
+          {
+            id: 1,
+            title: "AWS Account Setup & IAM",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "EC2 & VPC Essentials",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "S3 Storage & CloudFront",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 4,
+            title: "Route 53 & DNS",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 5,
+            title: "Monitoring with CloudWatch",
+            duration: "12:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "2. Infrastructure as Code with CloudFormation & Terraform",
+        module_description: "Automate infrastructure provisioning",
+        videos: [
+          {
+            id: 6,
+            title: "Introduction to IaC",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "CloudFormation Templates",
+            duration: "22:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Terraform Basics",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is Terraform primarily used for?",
+                options: ["Infrastructure as Code", "Web development", "Database management", "UI design"],
+                answer: "Infrastructure as Code"
+              },
+              {
+                question: "Which language is used to write Terraform configuration files?",
+                options: ["HCL", "YAML", "JSON", "XML"],
+                answer: "HCL"
+              },
+              {
+                question: "What command initializes a Terraform working directory?",
+                options: ["terraform init", "terraform start", "terraform apply", "terraform plan"],
+                answer: "terraform init"
+              },
+              {
+                question: "How do you apply changes defined in Terraform files?",
+                options: ["terraform apply", "terraform run", "terraform execute", "terraform deploy"],
+                answer: "terraform apply"
+              },
+              {
+                question: "What is the file extension for Terraform files?",
+                options: [".tf", ".js", ".py", ".rb"],
+                answer: ".tf"
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: "Managing State in Terraform",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 10,
+            title: "Cross-Account Deployments",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. CI/CD with AWS CodePipeline & Jenkins",
+        module_description: "Build automated release pipelines",
+        videos: [
+          {
+            id: 11,
+            title: "CI/CD Principles",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "AWS CodeCommit & CodeBuild",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "AWS CodeDeploy",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 14,
+            title: "Building Jenkins Pipelines",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main purpose of Jenkins in a CI/CD pipeline?",
+                options: ["Automation of builds and deployments", "Database management", "UI design", "Cloud hosting"],
+                answer: "Automation of builds and deployments"
+              },
+              {
+                question: "Which file is commonly used to define a Jenkins pipeline?",
+                options: ["Jenkinsfile", "pipeline.yaml", "build.gradle", "Dockerfile"],
+                answer: "Jenkinsfile"
+              },
+              {
+                question: "What is a Jenkins agent?",
+                options: ["A machine that runs jobs", "A database", "A UI component", "A cloud service"],
+                answer: "A machine that runs jobs"
+              },
+              {
+                question: "Which plugin is used for Git integration in Jenkins?",
+                options: ["Git plugin", "Docker plugin", "Slack plugin", "Pipeline plugin"],
+                answer: "Git plugin"
+              },
+              {
+                question: "What is a stage in a Jenkins pipeline?",
+                options: ["A logical division of the pipeline", "A database table", "A UI element", "A cloud region"],
+                answer: "A logical division of the pipeline"
+              }
+            ]
+          },
+          {
+            id: 15,
+            title: "Integrating with CodePipeline",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Containerization with Docker & ECS/EKS",
+        module_description: "Package and deploy applications efficiently",
+        videos: [
+          {
+            id: 16,
+            title: "Docker Fundamentals",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Building Docker Images",
+            duration: "18:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Amazon ECS & Fargate",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does ECS stand for in AWS?",
+                options: ["Elastic Container Service", "Elastic Compute Service", "External Cloud Service", "Enterprise Cloud Solution"],
+                answer: "Elastic Container Service"
+              },
+              {
+                question: "What is AWS Fargate used for?",
+                options: ["Serverless container hosting", "Database management", "UI design", "Monitoring logs"],
+                answer: "Serverless container hosting"
+              },
+              {
+                question: "Which file defines container configuration in ECS?",
+                options: ["Task definition", "Dockerfile", "Jenkinsfile", "build.gradle"],
+                answer: "Task definition"
+              },
+              {
+                question: "What is the main benefit of using Fargate?",
+                options: ["No server management", "Manual scaling", "UI design", "Database hosting"],
+                answer: "No server management"
+              },
+              {
+                question: "Which AWS service is commonly used with ECS for container images?",
+                options: ["ECR", "S3", "Lambda", "CloudFront"],
+                answer: "ECR"
+              }
+            ]
+          },
+          {
+            id: 19,
+            title: "Introduction to Kubernetes (EKS)",
+            duration: "30:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 20,
+            title: "Service Discovery in Containers",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Monitoring, Logging & Alerting",
+        module_description: "Ensure application health and performance",
+        videos: [
+          {
+            id: 21,
+            title: "Centralized Logging with CloudWatch Logs",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Metrics & Dashboards",
+            duration: "18:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Setting Up Alarms & Notifications",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 24,
+            title: "Distributed Tracing with X-Ray",
+            duration: "22:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Security Best Practices in DevOps",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "6. Serverless DevOps & Advanced Topics",
+        module_description: "Explore advanced DevOps concepts and serverless",
+        videos: [
+          {
+            id: 26,
+            title: "Serverless with AWS Lambda",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "API Gateway for Serverless",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 28,
+            title: "Event-Driven Architectures",
+            duration: "25:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 29,
+            title: "Cost Optimization in AWS",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 30,
+            title: "Disaster Recovery Strategies",
+            duration: "20:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of disaster recovery?",
+                options: ["Restore service after failure", "Increase UI speed", "Add new features", "Reduce costs"],
+                answer: "Restore service after failure"
+              },
+              {
+                question: "Which AWS service is commonly used for backups?",
+                options: ["AWS Backup", "EC2", "Lambda", "CloudFront"],
+                answer: "AWS Backup"
+              },
+              {
+                question: "What is an RTO in disaster recovery?",
+                options: ["Recovery Time Objective", "Resource Transfer Option", "Remote Task Operation", "Redundant Time Output"],
+                answer: "Recovery Time Objective"
+              },
+              {
+                question: "Which strategy involves running a duplicate environment in another region?",
+                options: ["Pilot Light", "Warm Standby", "Cold Standby", "Hot Standby"],
+                answer: "Hot Standby"
+              },
+              {
+                question: "What is a common test for disaster recovery plans?",
+                options: ["Failover test", "UI test", "Unit test", "Integration test"],
+                answer: "Failover test"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 7. iOS Development (7 sessions)
+  {
+    instructor: {
+      name: "Kirill Eremenko",
+      mailid: "kirill@example.com",
+      summary: "Data Scientist",
+      overall_rating: 4.7,
+      no_of_courses_released: 25,
+      avatar: "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Kirill Eremenko. I specialize in data scientist.",
+        "With over 25 courses and a rating of 4.7, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 50,
+    no_of_sessions: 7,
+    no_of_tests_available: 10,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/ios-swift",
+    about_course: {
+      skills: ["Swift", "SwiftUI", "UIKit", "Xcode", "Firebase", "CoreData"],
+      complete_description:
+        "Learn to code in Swift and build stunning iOS applications from scratch.",
+    },
+    outcome: [
+      "Develop engaging iOS applications",
+      "Understand core Swift programming concepts",
+      "Publish your apps to the App Store",
+    ],
+    course_content: [
+      {
+        session: "1. Swift Programming Basics",
+        module_description: "Get started with the Swift language",
+        videos: [
+          {
+            id: 1,
+            title: "Introduction to Swift",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Variables & Constants",
+            duration: "15:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Control Flow",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 4,
+            title: "Functions & Closures",
+            duration: "22:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a closure in Swift?",
+                options: ["A self-contained block of code", "A UI element", "A database", "A network request"],
+                answer: "A self-contained block of code"
+              },
+              {
+                question: "How do you define a function in Swift?",
+                options: ["func myFunction() {}", "function myFunction() {}", "def myFunction() {}", "fn myFunction() {}"],
+                answer: "func myFunction() {}"
+              },
+              {
+                question: "Which keyword is used to return a value from a function?",
+                options: ["return", "output", "yield", "break"],
+                answer: "return"
+              },
+              {
+                question: "What is the syntax for calling a function in Swift?",
+                options: ["myFunction()", "call myFunction", "run myFunction", "execute myFunction"],
+                answer: "myFunction()"
+              },
+              {
+                question: "What is the main use of closures in Swift?",
+                options: ["Passing functionality as a variable", "UI design", "Database management", "Networking"],
+                answer: "Passing functionality as a variable"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Optionals",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. SwiftUI Fundamentals",
+        module_description: "Build declarative UIs with SwiftUI",
+        videos: [
+          {
+            id: 6,
+            title: "Hello SwiftUI",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Views & Modifiers",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "State Management in SwiftUI",
+            duration: "28:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 9,
+            title: "Lists & Navigation",
+            duration: "22:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a List in SwiftUI used for?",
+                options: ["Displaying rows of data", "Storing images", "Networking", "Database management"],
+                answer: "Displaying rows of data"
+              },
+              {
+                question: "Which modifier is used to navigate to a new view?",
+                options: ["NavigationLink", "onTapGesture", "sheet", "alert"],
+                answer: "NavigationLink"
+              },
+              {
+                question: "How do you make a list of items dynamic in SwiftUI?",
+                options: ["ForEach", "VStack", "HStack", "Text"],
+                answer: "ForEach"
+              },
+              {
+                question: "What is the purpose of .navigationTitle()?",
+                options: ["Set the navigation bar title", "Set the list item title", "Set the button label", "Set the view background"],
+                answer: "Set the navigation bar title"
+              },
+              {
+                question: "Which SwiftUI view is used for hierarchical navigation?",
+                options: ["NavigationView", "TabView", "ScrollView", "Form"],
+                answer: "NavigationView"
+              }
+            ]
+          },
+          {
+            id: 10,
+            title: "Gestures",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. UIKit & Xcode Essentials",
+        module_description:
+          "Working with the traditional UIKit framework and Xcode",
+        videos: [
+          {
+            id: 11,
+            title: "Introduction to UIKit",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Xcode Interface Builder",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "View Controllers",
+            duration: "25:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 14,
+            title: "Table Views & Collection Views",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a Table View used for in UIKit?",
+                options: ["Displaying a list of rows", "Showing images", "Networking", "Database management"],
+                answer: "Displaying a list of rows"
+              },
+              {
+                question: "Which delegate method configures each cell in a Table View?",
+                options: ["cellForRowAt", "numberOfRowsInSection", "didSelectRowAt", "heightForRowAt"],
+                answer: "cellForRowAt"
+              },
+              {
+                question: "What is a Collection View used for?",
+                options: ["Displaying grid-like layouts", "Showing alerts", "Networking", "Database management"],
+                answer: "Displaying grid-like layouts"
+              },
+              {
+                question: "Which UIKit class is used for Table Views?",
+                options: ["UITableView", "UICollectionView", "UIView", "UILabel"],
+                answer: "UITableView"
+              },
+              {
+                question: "How do you handle row selection in a Table View?",
+                options: ["didSelectRowAt", "cellForRowAt", "numberOfRowsInSection", "viewForHeaderInSection"],
+                answer: "didSelectRowAt"
+              }
+            ]
+          },
+          {
+            id: 15,
+            title: "Segues & Navigation Controllers",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Data Persistence & Networking",
+        module_description: "Store data and connect to APIs",
+        videos: [
+          {
+            id: 16,
+            title: "User Defaults",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Core Data Basics",
+            duration: "22:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Making Network Requests",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which class is commonly used for network requests in Swift?",
+                options: ["URLSession", "UITableView", "UIView", "UILabel"],
+                answer: "URLSession"
+              },
+              {
+                question: "What is the purpose of a completion handler?",
+                options: ["Handle async response", "Display UI", "Store data", "Show alerts"],
+                answer: "Handle async response"
+              },
+              {
+                question: "Which HTTP method is used to retrieve data?",
+                options: ["GET", "POST", "PUT", "DELETE"],
+                answer: "GET"
+              },
+              {
+                question: "How do you parse JSON in Swift?",
+                options: ["JSONDecoder", "XMLParser", "CSVReader", "HTMLParser"],
+                answer: "JSONDecoder"
+              },
+              {
+                question: "What is the main benefit of using Codable in Swift?",
+                options: ["Easier encoding/decoding", "UI design", "Database management", "Networking"],
+                answer: "Easier encoding/decoding"
+              }
+            ]
+          },
+          {
+            id: 19,
+            title: "JSON Parsing",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 20,
+            title: "Integrating with REST APIs",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Firebase Integration",
+        module_description: "Add backend services to your iOS apps",
+        videos: [
+          {
+            id: 21,
+            title: "Firebase Setup",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Firebase Authentication",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Cloud Firestore Database",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is Cloud Firestore used for?",
+                options: ["Storing and syncing data", "UI design", "Authentication", "Hosting"],
+                answer: "Storing and syncing data"
+              },
+              {
+                question: "Which method is used to add data to Firestore?",
+                options: ["add()", "push()", "insert()", "create()"],
+                answer: "add()"
+              },
+              {
+                question: "What is a Firestore collection?",
+                options: ["A group of documents", "A single document", "A database", "A table"],
+                answer: "A group of documents"
+              },
+              {
+                question: "How do you listen for real-time updates in Firestore?",
+                options: ["onSnapshot()", "get()", "fetch()", "listen()"],
+                answer: "onSnapshot()"
+              },
+              {
+                question: "What is the data format used in Firestore?",
+                options: ["JSON-like objects", "XML", "CSV", "YAML"],
+                answer: "JSON-like objects"
+              }
+            ]
+          },
+          {
+            id: 24,
+            title: "Realtime Database",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 25,
+            title: "Storage & Functions",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "6. Advanced SwiftUI & Design Patterns",
+        module_description:
+          "Explore complex SwiftUI features and architectural patterns",
+        videos: [
+          {
+            id: 26,
+            title: "MVVM Pattern",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Combine Framework",
+            duration: "28:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 28,
+            title: "Accessibility in iOS",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 29,
+            title: "Unit Testing iOS Apps",
+            duration: "20:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the purpose of unit testing?",
+                options: ["Test individual units of code", "Test UI only", "Test network requests", "Test database only"],
+                answer: "Test individual units of code"
+              },
+              {
+                question: "Which framework is commonly used for unit testing in iOS?",
+                options: ["XCTest", "Jest", "Mocha", "JUnit"],
+                answer: "XCTest"
+              },
+              {
+                question: "What is a test case?",
+                options: ["A set of conditions to test code", "A UI element", "A database row", "A network request"],
+                answer: "A set of conditions to test code"
+              },
+              {
+                question: "How do you assert equality in a test?",
+                options: ["XCTAssertEqual", "assertSame", "assertEquals", "expectEqual"],
+                answer: "XCTAssertEqual"
+              },
+              {
+                question: "What is test coverage?",
+                options: ["Percentage of code tested", "Number of tests", "UI coverage", "Database coverage"],
+                answer: "Percentage of code tested"
+              }
+            ]
+          },
+          {
+            id: 30,
+            title: "Animations & Transitions",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "7. App Store Deployment & Monetization",
+        module_description: "Prepare and publish your app",
+        videos: [
+          {
+            id: 31,
+            title: "App Store Connect",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 32,
+            title: "Signing & Provisioning Profiles",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 33,
+            title: "App Store Guidelines",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 34,
+            title: "In-App Purchases & Ads",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 35,
+            title: "Marketing Your App",
+            duration: "10:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 8. Machine Learning (8 sessions)
+  {
+    id: 8,
+    course_name: "Machine Learning A-Z™: AI, Python & R Data Science",
+    description:
+      "Master Machine Learning algorithms and build powerful AI models",
+    image: "https://wallpaperaccess.com/full/3079594.jpg",
+    instructor: {
+      name: "Nathan House",
+      mailid: "nathan@example.com",
+      summary: "Cyber Security Expert",
+      overall_rating: 4.6,
+      no_of_courses_released: 9,
+      avatar: "https://placehold.co/100x100?text=Nathan",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Nathan House. I specialize in cyber security expert.",
+        "With over 9 courses and a rating of 4.6, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 65,
+    no_of_sessions: 8,
+    no_of_tests_available: 12,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/machine-learning",
+    about_course: {
+      skills: [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Deep Learning",
+        "NLP",
+        "Computer Vision",
+        "Scikit-learn",
+        "TensorFlow",
+      ],
+      complete_description:
+        "Learn to implement powerful Machine Learning algorithms in Python and R.",
+    },
+    outcome: [
+      "Build and train various ML models",
+      "Apply ML to real-world problems",
+      "Understand the theoretical foundations of AI",
+    ],
+    course_content: [
+      {
+        session: "1. Data Preprocessing",
+        module_description: "Prepare your data for machine learning",
+        videos: [
+          {
+            id: 1,
+            title: "Importing Libraries",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Handling Missing Data",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Encoding Categorical Data",
+            duration: "22:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 4,
+            title: "Splitting Data into Train/Test",
+            duration: "18:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Why do we split data into train and test sets?",
+                options: ["To evaluate model performance", "To increase data size", "To reduce computation", "To remove outliers"],
+                answer: "To evaluate model performance"
+              },
+              {
+                question: "What is a common split ratio for train/test?",
+                options: ["80/20", "50/50", "30/70", "10/90"],
+                answer: "80/20"
+              },
+              {
+                question: "Which library function is commonly used for splitting data in Python?",
+                options: ["train_test_split", "split_data", "divide_data", "partition_data"],
+                answer: "train_test_split"
+              },
+              {
+                question: "What is the risk of not using a test set?",
+                options: ["Overfitting", "Underfitting", "Faster training", "Better accuracy"],
+                answer: "Overfitting"
+              },
+              {
+                question: "What should the test set represent?",
+                options: ["Unseen data", "Training data", "Random noise", "Outliers only"],
+                answer: "Unseen data"
+              }
+            ]
+          },
+          {
+            id: 5,
+            title: "Feature Scaling",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Regression Models",
+        module_description: "Predict continuous values",
+        videos: [
+          {
+            id: 6,
+            title: "Simple Linear Regression",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Multiple Linear Regression",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Polynomial Regression",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main difference between linear and polynomial regression?",
+                options: ["Polynomial regression fits curves", "Linear regression fits lines", "Polynomial regression is faster", "Linear regression uses more data"],
+                answer: "Polynomial regression fits curves"
+              },
+              {
+                question: "Which library is commonly used for polynomial regression in Python?",
+                options: ["scikit-learn", "pandas", "matplotlib", "numpy"],
+                answer: "scikit-learn"
+              },
+              {
+                question: "What is the purpose of the degree parameter in polynomial regression?",
+                options: ["Controls curve complexity", "Sets learning rate", "Defines data size", "Chooses optimizer"],
+                answer: "Controls curve complexity"
+              },
+              {
+                question: "What is a risk of using a high-degree polynomial?",
+                options: ["Overfitting", "Underfitting", "Faster training", "Better accuracy"],
+                answer: "Overfitting"
+              },
+              {
+                question: "Which function transforms features for polynomial regression?",
+                options: ["PolynomialFeatures", "LinearFeatures", "FeatureScaler", "CurveFitter"],
+                answer: "PolynomialFeatures"
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: "Support Vector Regression (SVR)",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 10,
+            title: "Decision Tree & Random Forest Regression",
+            duration: "35:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. Classification Models",
+        module_description: "Categorize data into classes",
+        videos: [
+          {
+            id: 11,
+            title: "Logistic Regression",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "K-Nearest Neighbors (KNN)",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Support Vector Machine (SVM)",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of SVM?",
+                options: ["Find the optimal separating hyperplane", "Reduce data size", "Increase computation", "Remove outliers"],
+                answer: "Find the optimal separating hyperplane"
+              },
+              {
+                question: "Which kernel is commonly used in SVM?",
+                options: ["RBF", "Linear", "Polynomial", "All of the above"],
+                answer: "All of the above"
+              },
+              {
+                question: "What is a support vector?",
+                options: ["A data point closest to the hyperplane", "A random data point", "A feature", "A label"],
+                answer: "A data point closest to the hyperplane"
+              },
+              {
+                question: "Which parameter controls the margin in SVM?",
+                options: ["C", "gamma", "alpha", "beta"],
+                answer: "C"
+              },
+              {
+                question: "What is the output of SVM for classification?",
+                options: ["Class label", "Probability", "Feature importance", "Loss value"],
+                answer: "Class label"
+              }
+            ]
+          },
+          {
+            id: 14,
+            title: "Kernel SVM",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 15,
+            title: "Naive Bayes & Decision Tree Classification",
+            duration: "30:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Clustering",
+        module_description: "Group similar data points",
+        videos: [
+          {
+            id: 16,
+            title: "K-Means Clustering",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Hierarchical Clustering",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "DBSCAN (optional)",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Evaluating Clustering Performance",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Practice: Customer Segmentation",
+            duration: "35:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the goal of customer segmentation?",
+                options: ["Group similar customers", "Increase prices", "Reduce data", "Remove outliers"],
+                answer: "Group similar customers"
+              },
+              {
+                question: "Which algorithm is commonly used for segmentation?",
+                options: ["K-Means", "Linear Regression", "SVM", "PCA"],
+                answer: "K-Means"
+              },
+              {
+                question: "What is a cluster center?",
+                options: ["Mean of points in a cluster", "A random point", "A label", "A feature"],
+                answer: "Mean of points in a cluster"
+              },
+              {
+                question: "What metric is used to evaluate clustering?",
+                options: ["Silhouette score", "Accuracy", "Precision", "Recall"],
+                answer: "Silhouette score"
+              },
+              {
+                question: "What is a common visualization for clusters?",
+                options: ["Scatter plot", "Bar chart", "Pie chart", "Line plot"],
+                answer: "Scatter plot"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "5. Association Rule Learning & Reinforcement Learning",
+        module_description: "Discover relationships and train agents",
+        videos: [
+          {
+            id: 21,
+            title: "Apriori Algorithm",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Eclat Algorithm",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Introduction to Reinforcement Learning",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 24,
+            title: "Upper Confidence Bound (UCB)",
+            duration: "18:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 25,
+            title: "Thompson Sampling",
+            duration: "22:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of Thompson Sampling?",
+                options: ["Balance exploration and exploitation", "Reduce computation", "Increase data size", "Remove outliers"],
+                answer: "Balance exploration and exploitation"
+              },
+              {
+                question: "Which problem is Thompson Sampling commonly used for?",
+                options: ["Multi-armed bandit", "Linear regression", "Clustering", "Classification"],
+                answer: "Multi-armed bandit"
+              },
+              {
+                question: "What does Thompson Sampling use to make decisions?",
+                options: ["Probability distributions", "Random guessing", "Fixed rules", "Majority voting"],
+                answer: "Probability distributions"
+              },
+              {
+                question: "What is a key benefit of Thompson Sampling?",
+                options: ["Efficient learning", "Slower convergence", "More overfitting", "Less accuracy"],
+                answer: "Efficient learning"
+              },
+              {
+                question: "What is the output of Thompson Sampling?",
+                options: ["Action selection", "Model weights", "Cluster centers", "Feature importance"],
+                answer: "Action selection"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "6. Natural Language Processing (NLP)",
+        module_description: "Process and understand human language",
+        videos: [
+          {
+            id: 26,
+            title: "Text Preprocessing",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Bag of Words Model",
+            duration: "22:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 28,
+            title: "TF-IDF",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 29,
+            title: "Sentiment Analysis",
+            duration: "28:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the goal of sentiment analysis?",
+                options: ["Determine sentiment of text", "Count words", "Translate text", "Summarize text"],
+                answer: "Determine sentiment of text"
+              },
+              {
+                question: "Which library is commonly used for sentiment analysis in Python?",
+                options: ["NLTK", "matplotlib", "numpy", "pandas"],
+                answer: "NLTK"
+              },
+              {
+                question: "What is a common output of sentiment analysis?",
+                options: ["Positive/Negative/Neutral", "Word count", "Topic", "Language"],
+                answer: "Positive/Negative/Neutral"
+              },
+              {
+                question: "Which technique is often used for feature extraction in NLP?",
+                options: ["TF-IDF", "PCA", "K-Means", "SVM"],
+                answer: "TF-IDF"
+              },
+              {
+                question: "What is a challenge in sentiment analysis?",
+                options: ["Sarcasm detection", "Counting words", "Tokenization", "Lowercasing"],
+                answer: "Sarcasm detection"
+              }
+            ]
+          },
+          {
+            id: 30,
+            title: "Word Embeddings (optional)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "7. Deep Learning",
+        module_description: "Build neural networks for complex tasks",
+        videos: [
+          {
+            id: 31,
+            title: "Introduction to Artificial Neural Networks",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 32,
+            title: "Building an ANN in Keras/TensorFlow",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 33,
+            title: "Convolutional Neural Networks (CNNs)",
+            duration: "35:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 34,
+            title: "Recurrent Neural Networks (RNNs)",
+            duration: "28:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 35,
+            title: "Transfer Learning",
+            duration: "20:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is transfer learning?",
+                options: ["Using a pre-trained model for a new task", "Training from scratch", "Data augmentation", "Feature scaling"],
+                answer: "Using a pre-trained model for a new task"
+              },
+              {
+                question: "Which library is commonly used for transfer learning in Python?",
+                options: ["TensorFlow", "pandas", "matplotlib", "numpy"],
+                answer: "TensorFlow"
+              },
+              {
+                question: "What is a benefit of transfer learning?",
+                options: ["Faster training", "More overfitting", "Less accuracy", "Slower convergence"],
+                answer: "Faster training"
+              },
+              {
+                question: "What is fine-tuning in transfer learning?",
+                options: ["Adjusting pre-trained weights", "Training from scratch", "Data cleaning", "Feature selection"],
+                answer: "Adjusting pre-trained weights"
+              },
+              {
+                question: "What is a common application of transfer learning?",
+                options: ["Image classification", "Sorting arrays", "Database management", "UI design"],
+                answer: "Image classification"
+              }
+            ]
+          },
+        ],
+      },
+      {
+        session: "8. Dimensionality Reduction & Model Selection",
+        module_description: "Optimize models and reduce complexity",
+        videos: [
+          {
+            id: 36,
+            title: "PCA (Principal Component Analysis)",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 37,
+            title: "LDA (Linear Discriminant Analysis)",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 38,
+            title: "XGBoost",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 39,
+            title: "Cross-Validation & Grid Search",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 40,
+            title: "Model Deployment Strategies",
+            duration: "22:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is model deployment?",
+                options: ["Making a model available for use", "Training a model", "Cleaning data", "Feature selection"],
+                answer: "Making a model available for use"
+              },
+              {
+                question: "Which service is commonly used for deploying models?",
+                options: ["AWS SageMaker", "pandas", "matplotlib", "numpy"],
+                answer: "AWS SageMaker"
+              },
+              {
+                question: "What is a REST API?",
+                options: ["A way to serve models over HTTP", "A data cleaning tool", "A training algorithm", "A visualization library"],
+                answer: "A way to serve models over HTTP"
+              },
+              {
+                question: "What is a benefit of containerizing a model?",
+                options: ["Portability", "Slower inference", "Less accuracy", "More overfitting"],
+                answer: "Portability"
+              },
+              {
+                question: "What is a challenge in model deployment?",
+                options: ["Scaling", "Training", "Data cleaning", "Feature selection"],
+                answer: "Scaling"
+              }
+            ]
+          },
+        ],
+      },
+    ],
+  },
+
+  // 9. Cybersecurity (5 sessions)
+  {
+    id: 9,
+    course_name: "The Complete Cyber Security Course: Network Security!",
+    description:
+      "Learn ethical hacking, penetration testing, and network security",
+    image: "https://wallpaperaccess.com/full/2407073.jpg",
+    instructor: {
+      name: "Hadelin de Ponteves",
+      mailid: "hadelin@example.com",
+      summary: "AI & Blockchain Expert",
+      overall_rating: 4.5,
+      no_of_courses_released: 7,
+      avatar: "https://placehold.co/100x100?text=Hadelin",
+      total_learners: "1,000,000+",
+      total_reviews: "100,000+",
+      about: [
+        "Hi, I'm Hadelin de Ponteves. I specialize in ai & blockchain expert.",
+        "With over 7 courses and a rating of 4.5, I've trained thousands of students across the globe.",
+        "I believe in hands-on teaching and delivering real-world knowledge.",
+        "Join me and boost your career in this domain!",
+      ],
+      highlights: [
+        "Gain practical knowledge through step-by-step examples.",
+        "Learn industry-relevant skills and tools.",
+        "Build real-world projects from scratch.",
+      ],
+    },
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 40,
+    no_of_sessions: 5,
+    no_of_tests_available: 8,
+    course_rating: 4.6,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/cybersecurity",
+    about_course: {
+      skills: [
+        "Ethical Hacking",
+        "Network Security",
+        "Penetration Testing",
+        "Malware Analysis",
+        "Cryptography",
+      ],
+      complete_description:
+        "Master the fundamentals of cybersecurity and protect yourself from threats.",
+    },
+    outcome: [
+      "Understand common cyber threats",
+      "Implement strong security practices",
+      "Perform basic penetration tests",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to Cyber Security",
+        module_description: "Understand core concepts and threats",
+        videos: [
+          {
+            id: 1,
+            title: "What is Cyber Security?",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Types of Cyber Attacks",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Threat Landscape",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Cyber Security Laws & Ethics",
+            duration: "12:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 5,
+            title: "Setting Up a Secure Environment",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "2. Network Security Fundamentals",
+        module_description: "Secure your networks from intrusions",
+        videos: [
+          {
+            id: 6,
+            title: "Network Topologies",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Firewalls & IDS/IPS",
+            duration: "22:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "VPNs & Secure Communication",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 9,
+            title: "Wireless Security (WPA3)",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Network Scanning Tools",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+        ],
+      },
+      {
+        session: "3. Cryptography & Data Protection",
+        module_description: "Protect sensitive information",
+        videos: [
+          {
+            id: 11,
+            title: "Introduction to Cryptography",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Symmetric vs Asymmetric Encryption",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 13,
+            title: "Hashing & Digital Signatures",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 14,
+            title: "Public Key Infrastructure (PKI)",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 15,
+            title: "Password Security & Management",
+            duration: "10:00",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+      {
+        session: "4. Web Application Security",
+        module_description: "Secure web applications from common attacks",
+        videos: [
+          {
+            id: 16,
+            title: "OWASP Top 10",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "SQL Injection Attacks",
+            duration: "28:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Cross-Site Scripting (XSS)",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Authentication & Session Management",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Security Headers",
+            duration: "10:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "5. Ethical Hacking & Penetration Testing Basics",
+        module_description: "Understand the mindset of an ethical hacker",
+        videos: [
+          {
+            id: 21,
+            title: "Introduction to Ethical Hacking",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Reconnaissance & Footprinting",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Vulnerability Scanning",
+            duration: "20:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 24,
+            title: "Exploitation Basics",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 25,
+            title: "Reporting & Remediation",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 10. Blockchain Basics (4 sessions)
+  {
+    id: 10,
+    course_name: "Blockchain A-Z™: Learn How To Build Your First Blockchain",
+    description:
+      "Understand blockchain technology and build a simple blockchain",
+    image: "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 25,
+    no_of_sessions: 4,
+    no_of_tests_available: 5,
+    course_rating: 4.5,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/blockchain-basics",
+    about_course: {
+      skills: [
+        "Blockchain",
+        "Cryptocurrency",
+        "Smart Contracts",
+        "Decentralization",
+        "Hashing",
+      ],
+      complete_description:
+        "Demystify blockchain technology and learn its core concepts and applications.",
+    },
+    outcome: [
+      "Understand the fundamentals of blockchain",
+      "Explain how cryptocurrencies work",
+      "Build a basic blockchain from scratch",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to Blockchain & Bitcoin",
+        module_description:
+          "Understand the core concepts of decentralized ledger technology",
+        videos: [
+          {
+            id: 1,
+            title: "What is Blockchain?",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "How Bitcoin Works",
+            duration: "22:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Decentralization & Distributed Ledgers",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Cryptocurrency vs. Blockchain",
+            duration: "10:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 5,
+            title: "Blockchain Use Cases Beyond Crypto",
+            duration: "12:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "2. Cryptography & Hashing",
+        module_description: "The cryptographic backbone of blockchain",
+        videos: [
+          {
+            id: 6,
+            title: "Hashing Algorithms",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Digital Signatures",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "Merkle Trees",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 9,
+            title: "Public & Private Keys",
+            duration: "12:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 10,
+            title: "Hands-on: Basic Hashing",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+        ],
+      },
+      {
+        session: "3. Building a Simple Blockchain",
+        module_description: "Code your own basic blockchain",
+        videos: [
+          {
+            id: 11,
+            title: "Blockchain Structure",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Creating Blocks",
+            duration: "28:00",
+            preview: true,
+            type: "coding-exercise",
+          },
+          {
+            id: 13,
+            title: "Proof of Work",
+            duration: "30:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 14,
+            title: "Adding Transactions",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 15,
+            title: "Chain Validation",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Smart Contracts & Future of Blockchain",
+        module_description: "Explore advanced concepts and future trends",
+        videos: [
+          {
+            id: 16,
+            title: "What are Smart Contracts?",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Ethereum & DApps",
+            duration: "22:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Consensus Mechanisms (PoS, DPoS)",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 19,
+            title: "Challenges & Opportunities",
+            duration: "12:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 20,
+            title: "Blockchain in Enterprise",
+            duration: "10:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 11,
+    course_name: "Financial Modeling & Valuation Analyst (FMVA®) Certification",
+    description:
+      "Master financial modeling, valuation, and Excel for corporate finance roles.",
+    image: "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
+    instructor: {
+      name: "CFI - Corporate Finance Institute",
+      mailid: "support@cfi.com",
+      summary: "Leading provider of finance training and certifications",
+      overall_rating: 4.8,
+      no_of_courses_released: 35,
+    },
+    level: "Advanced",
+    price: 0,
+    language: "English",
+    total_hours: 70,
+    no_of_sessions: 7, // Represents core modules, actual is more
+    no_of_tests_available: 15,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/fmva-certification",
+    about_course: {
+      skills: [
+        "Financial Modeling",
+        "Valuation",
+        "Excel for Finance",
+        "Corporate Finance",
+        "Accounting",
+      ],
+      complete_description:
+        "Become a certified Financial Modeling & Valuation Analyst (FMVA) with this comprehensive program covering Excel, accounting, and advanced valuation techniques.",
+    },
+    outcome: [
+      "Build dynamic financial models from scratch",
+      "Perform company valuations using various methods",
+      "Prepare for corporate finance and investment banking roles",
+    ],
+    course_content: [
+      {
+        session: "1. Excel Crash Course for Finance",
+        module_description:
+          "Master essential Excel functions and shortcuts for financial analysis.",
+        videos: [
+          {
+            id: 1,
+            title: "Excel Interface & Navigation",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Essential Formulas (SUM, AVERAGE, IF, VLOOKUP)",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Data Validation & Conditional Formatting",
+            duration: "20:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 4,
+            title: "Pivot Tables for Data Analysis",
+            duration: "35:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 5,
+            title: "Keyboard Shortcuts for Speed",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Accounting & Financial Statement Analysis",
+        module_description:
+          "Understand the three core financial statements and their interrelationships.",
+        videos: [
+          {
+            id: 6,
+            title: "Introduction to Financial Statements",
+            duration: "30:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Income Statement Deep Dive",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "Balance Sheet Explained",
+            duration: "28:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 9,
+            title: "Cash Flow Statement Mechanics",
+            duration: "35:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 10,
+            title: "Linking the Three Statements",
+            duration: "40:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "3. Building a 3-Statement Financial Model",
+        module_description:
+          "Construct a robust financial model integrating income statement, balance sheet, and cash flow.",
+        videos: [
+          {
+            id: 11,
+            title: "Modeling Best Practices",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Building the Revenue Forecast",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Operating Expenses & Depreciation",
+            duration: "35:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 14,
+            title: "Working Capital & Debt Schedules",
+            duration: "45:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 15,
+            title: "Completing the Financial Statements",
+            duration: "50:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "4. Discounted Cash Flow (DCF) Valuation",
+        module_description:
+          "Learn the most common valuation method: Discounted Cash Flow.",
+        videos: [
+          {
+            id: 16,
+            title: "Introduction to Valuation",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Forecasting Free Cash Flow",
+            duration: "40:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Calculating Weighted Average Cost of Capital (WACC)",
+            duration: "35:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Terminal Value Estimation",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 20,
+            title: "Sensitivity Analysis & Scenario Building",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session:
+          "5. Comparable Company Analysis (Comps) & Precedent Transactions",
+        module_description:
+          "Apply relative valuation techniques using public company data and M&A deals.",
+        videos: [
+          {
+            id: 21,
+            title: "Selecting Peer Companies",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Key Valuation Multiples",
+            duration: "30:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Collecting & Adjusting Data",
+            duration: "40:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Analyzing Precedent Transactions",
+            duration: "35:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 25,
+            title: "Valuation Conclusion & Football Field",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "6. Merger Modeling & LBO Analysis (Advanced Topics)",
+        module_description:
+          "Explore complex financial modeling for M&A and leveraged buyouts.",
+        videos: [
+          {
+            id: 26,
+            title: "Accretion/Dilution Analysis",
+            duration: "35:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Synergies & Integration Costs",
+            duration: "25:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 28,
+            title: "Introduction to Leveraged Buyouts (LBOs)",
+            duration: "30:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 29,
+            title: "Building a Simple LBO Model",
+            duration: "45:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 30,
+            title: "Returns Analysis (IRR, MOIC)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "7. Capstone Project & Certification Exam Prep",
+        module_description:
+          "Apply all learned skills to a comprehensive case study and prepare for the FMVA exam.",
+        videos: [
+          {
+            id: 31,
+            title: "Capstone Project Overview",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 32,
+            title: "Model Review & Debugging",
+            duration: "30:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 33,
+            title: "Exam Strategies & Tips",
+            duration: "20:00",
+            preview: false,
+            type: "summary",
+          },
+          {
+            id: 34,
+            title: "Q&A and Live Practice Session",
+            duration: "60:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 35,
+            title: "Career Pathing in Finance",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 22. Generative AI with Python (6 sessions)
+  {
+    id: 12,
+    course_name: "Generative AI with Python: From Zero to GPT",
+    description:
+      "Learn to build, train, and deploy generative models (GANs, Transformers, LLMs) using Python and PyTorch/TensorFlow.",
+    image: "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Advanced",
+    price: 500,
+    language: "English",
+    total_hours: 45,
+    no_of_sessions: 6,
+    no_of_tests_available: 10,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/generative-ai-python",
+    about_course: {
+      skills: [
+        "Generative AI",
+        "GANs",
+        "Transformers",
+        "LLMs",
+        "Stable Diffusion",
+        "PyTorch",
+        "TensorFlow",
+        "NLP",
+        "Computer Vision",
+      ],
+      complete_description:
+        "Dive deep into the world of Generative AI. Understand the theory, build models from scratch, and explore cutting-edge applications like text generation and image synthesis.",
+    },
+    outcome: [
+      "Understand the core architectures of generative models",
+      "Implement and train GANs and VAEs",
+      "Work with Transformer models for text generation and translation",
+      "Build and fine-tune your own large language models",
+      "Explore image generation techniques like Stable Diffusion",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to Generative Models & Deep Learning Refresh",
+        module_description:
+          "Understand what generative AI is, its applications, and refresh deep learning basics.",
+        videos: [
+          {
+            id: 1,
+            title: "What is Generative AI?",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Overview of Neural Networks & Backpropagation",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Autoencoders & Their Purpose",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Setting Up Your PyTorch/TensorFlow Environment",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 5,
+            title: "Loss Functions for Generative Models",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "2. Generative Adversarial Networks (GANs)",
+        module_description:
+          "Learn the architecture and training process of GANs for image generation.",
+        videos: [
+          {
+            id: 6,
+            title: "GAN Architecture: Generator & Discriminator",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Training GANs: Challenges & Best Practices",
+            duration: "30:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "Implementing a Simple GAN (MNIST/Fashion-MNIST)",
+            duration: "45:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main purpose of a GAN?",
+                options: ["Generate new data samples", "Classify images", "Segment images", "Detect objects"],
+                answer: "Generate new data samples"
+              },
+              {
+                question: "What dataset is commonly used for simple GANs?",
+                options: ["MNIST", "CIFAR-10", "ImageNet", "COCO"],
+                answer: "MNIST"
+              },
+              {
+                question: "What are the two main components of a GAN?",
+                options: ["Generator and Discriminator", "Encoder and Decoder", "Input and Output", "Layer and Node"],
+                answer: "Generator and Discriminator"
+              },
+              {
+                question: "What is the loss function for a GAN?",
+                options: ["Adversarial loss", "Cross-entropy", "MSE", "L1 loss"],
+                answer: "Adversarial loss"
+              },
+              {
+                question: "What is a challenge in training GANs?",
+                options: ["Mode collapse", "Overfitting", "Underfitting", "Slow inference"],
+                answer: "Mode collapse"
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: "Conditional GANs (CGANs)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Deep Convolutional GANs (DCGANs)",
+            duration: "35:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "3. Variational Autoencoders (VAEs) & Diffusion Models",
+        module_description:
+          "Explore VAEs for latent space learning and an introduction to diffusion models.",
+        videos: [
+          {
+            id: 11,
+            title: "Introduction to Variational Autoencoders",
+            duration: "28:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Building a VAE for Image Generation",
+            duration: "40:00",
+            preview: true,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does VAE stand for?",
+                options: ["Variational Autoencoder", "Visual Attention Encoder", "Vectorized Autoencoder", "Variable Activation Encoder"],
+                answer: "Variational Autoencoder"
+              },
+              {
+                question: "What is the main use of a VAE?",
+                options: ["Generate new data samples", "Classify images", "Segment images", "Detect objects"],
+                answer: "Generate new data samples"
+              },
+              {
+                question: "What is the latent space in a VAE?",
+                options: ["Compressed representation of data", "Output image", "Input image", "Loss function"],
+                answer: "Compressed representation of data"
+              },
+              {
+                question: "What is the loss function for a VAE?",
+                options: ["Reconstruction + KL divergence", "Cross-entropy", "MSE", "L1 loss"],
+                answer: "Reconstruction + KL divergence"
+              },
+              {
+                question: "What is a benefit of VAEs over GANs?",
+                options: ["Stable training", "Sharper images", "Faster inference", "More parameters"],
+                answer: "Stable training"
+              }
+            ]
+          },
+          {
+            id: 13,
+            title: "Latent Space Interpolation",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 14,
+            title: "Introduction to Diffusion Models",
+            duration: "30:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 15,
+            title: "Denoising Diffusion Probabilistic Models (DDPMs)",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Transformer Architecture & NLP",
+        module_description:
+          "Understand the revolutionary Transformer architecture and its application in NLP.",
+        videos: [
+          {
+            id: 16,
+            title: "Attention Is All You Need: Transformer Overview",
+            duration: "30:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Self-Attention Mechanism Explained",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Encoder-Decoder Architecture",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 19,
+            title: "Positional Encoding",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 20,
+            title: "Building a Simple Transformer for Translation",
+            duration: "45:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main use of a Transformer in NLP?",
+                options: ["Sequence-to-sequence tasks", "Image classification", "Object detection", "Clustering"],
+                answer: "Sequence-to-sequence tasks"
+              },
+              {
+                question: "What is the key innovation in Transformers?",
+                options: ["Self-attention", "Convolutions", "Pooling", "Dropout"],
+                answer: "Self-attention"
+              },
+              {
+                question: "What is the input to a Transformer?",
+                options: ["Token embeddings", "Raw text", "Images", "Audio"],
+                answer: "Token embeddings"
+              },
+              {
+                question: "What is positional encoding used for?",
+                options: ["Inject order information", "Normalize data", "Reduce overfitting", "Increase speed"],
+                answer: "Inject order information"
+              },
+              {
+                question: "What is a common application of Transformers?",
+                options: ["Machine translation", "Sorting arrays", "Database management", "UI design"],
+                answer: "Machine translation"
+              }
+            ]
+          },
+          {
+            id: 21,
+            title: "Large Language Models (LLMs) & Fine-tuning",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Pre-training vs. Fine-tuning",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Using Hugging Face Transformers Library",
+            duration: "35:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Fine-tuning an LLM for Text Summarization",
+            duration: "50:00",
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does LLM stand for?",
+                options: ["Large Language Model", "Long Linear Model", "Latent Learning Model", "Layered Language Model"],
+                answer: "Large Language Model"
+              },
+              {
+                question: "What is fine-tuning?",
+                options: ["Adapting a pre-trained model to a new task", "Training from scratch", "Data cleaning", "Feature selection"],
+                answer: "Adapting a pre-trained model to a new task"
+              },
+              {
+                question: "What is a common dataset for text summarization?",
+                options: ["CNN/Daily Mail", "MNIST", "CIFAR-10", "ImageNet"],
+                answer: "CNN/Daily Mail"
+              },
+              {
+                question: "What is a benefit of fine-tuning?",
+                options: ["Better performance on specific tasks", "Slower training", "Less accuracy", "More overfitting"],
+                answer: "Better performance on specific tasks"
+              },
+              {
+                question: "What is prompt engineering?",
+                options: ["Designing effective prompts for LLMs", "Data cleaning", "Model compression", "Feature selection"],
+                answer: "Designing effective prompts for LLMs"
+              }
+            ]
+          },
+          {
+            id: 25,
+            title: "Prompt Engineering Best Practices",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Advanced Generative AI & Ethical Considerations",
+        module_description:
+          "Cover advanced topics like Stable Diffusion and the ethical implications of generative AI.",
+        videos: [
+          {
+            id: 26,
+            title: "Introduction to Stable Diffusion",
+            duration: "30:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Generating Images with Stable Diffusion (Hands-on)",
+            duration: "40:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 28,
+            title: "Generative AI in Art & Design",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 29,
+            title: "Ethical Concerns & Bias in Generative Models",
+            duration: "25:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 30,
+            title: "Future Trends in Generative AI",
+            duration: "15:00",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 23. Digital Painting in Photoshop (5 sessions)
+  {
+    id: 13,
+    course_name: "Digital Painting Masterclass in Adobe Photoshop",
+    description:
+      "Learn to create stunning digital paintings from scratch using Adobe Photoshop.",
+    image: "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 28,
+    no_of_sessions: 5,
+    no_of_tests_available: 4,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/digital-painting-photoshop",
+    about_course: {
+      skills: [
+        "Digital Painting",
+        "Adobe Photoshop",
+        "Color Theory",
+        "Composition",
+        "Drawing",
+        "Concept Art",
+      ],
+      complete_description:
+        "Unlock your artistic potential! This course teaches you everything you need to start creating beautiful digital paintings in Adobe Photoshop, from basic tools to advanced techniques.",
+    },
+    outcome: [
+      "Master Photoshop tools for digital art",
+      "Understand and apply color theory and light",
+      "Create compelling compositions",
+      "Produce complete digital paintings from concept to finish",
+    ],
+    course_content: [
+      {
+        session: "1. Photoshop Basics for Artists & Drawing Fundamentals",
+        module_description:
+          "Get comfortable with Photoshop's interface and review drawing essentials.",
+        videos: [
+          {
+            id: 1,
+            title: "Workspace & Tools Overview",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Brush Engine & Custom Brushes",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Layers, Masks & Blending Modes",
+            duration: "22:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 4,
+            title: "Line, Shape & Form",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 5,
+            title: "Practice: Simple Object Sketching",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "2. Color Theory, Light & Shadow",
+        module_description:
+          "Understand the principles of color and how light affects forms.",
+        videos: [
+          {
+            id: 6,
+            title: "Color Harmonies & Palettes",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Value & Contrast",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Understanding Light Sources",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 9,
+            title: "Applying Shadows & Highlights",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 10,
+            title: "Practice: Lighting a Simple Sphere",
+            duration: "25:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "3. Composition & Perspective",
+        module_description:
+          "Learn to arrange elements effectively and create depth.",
+        videos: [
+          {
+            id: 11,
+            title: "Rule of Thirds & Golden Ratio",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Leading Lines & Visual Flow",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 13,
+            title: "1-Point Perspective",
+            duration: "25:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 14,
+            title: "2-Point Perspective & Horizon Lines",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 15,
+            title: "Atmospheric Perspective",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Painting Techniques & Textures",
+        module_description:
+          "Explore various painting approaches and how to render different materials.",
+        videos: [
+          {
+            id: 16,
+            title: "Blending Techniques",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Using Reference Photos Effectively",
+            duration: "18:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Painting Skin & Hair",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 19,
+            title: "Rendering Fabric & Metal",
+            duration: "25:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 20,
+            title: "Custom Texture Brushes",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. From Sketch to Finished Painting",
+        module_description:
+          "Apply all learned skills to complete a complex digital painting project.",
+        videos: [
+          {
+            id: 21,
+            title: "Developing Initial Concepts",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Refining Your Sketch",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Blocking in Colors & Values",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 24,
+            title: "Adding Details & Polish",
+            duration: "40:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 25,
+            title: "Final Touches & Exporting",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 24. IoT Development with Arduino (5 sessions)
+  {
+    id: 14,
+    course_name: "IoT Development with Arduino & ESP32: Build Smart Devices",
+    description:
+      "Learn to build Internet of Things (IoT) projects using Arduino, ESP32, and cloud platforms.",
+    image: "https://wallpaperaccess.com/full/3202442.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 35,
+    no_of_sessions: 5,
+    no_of_tests_available: 7,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/iot-arduino-esp32",
+    about_course: {
+      skills: [
+        "Arduino",
+        "ESP32",
+        "IoT",
+        "Sensors",
+        "Actuators",
+        "MQTT",
+        "Cloud Platforms (AWS IoT/Google Cloud IoT)",
+        "Embedded C++",
+      ],
+      complete_description:
+        "This course guides you through building practical IoT projects, from basic sensor integration to cloud connectivity and data visualization, using popular microcontrollers.",
+    },
+    outcome: [
+      "Program Arduino and ESP32 microcontrollers",
+      "Connect sensors and actuators to IoT devices",
+      "Send data to cloud platforms (AWS IoT, Google Cloud IoT)",
+      "Build intelligent, connected devices for home automation or monitoring",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to IoT & Arduino Basics",
+        module_description:
+          "Understand IoT fundamentals and get started with Arduino hardware and software.",
+        videos: [
+          {
+            id: 1,
+            title: "What is the Internet of Things (IoT)?",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Arduino UNO Setup & IDE",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Digital I/O & LEDs (Blink Project)",
+            duration: "25:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 4,
+            title: "Analog I/O & Potentiometers",
+            duration: "18:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 5,
+            title: "Introduction to Sensors",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Working with Sensors & Actuators",
+        module_description:
+          "Integrate various sensors and control actuators with your microcontroller.",
+        videos: [
+          {
+            id: 6,
+            title: "Reading Temperature & Humidity (DHT11)",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 7,
+            title: "Ultrasonic Sensor (Distance Measurement)",
+            duration: "20:00",
+            preview: true,
+            type: "coding-exercise",
+          },
+          {
+            id: 8,
+            title: "Controlling Servos & Motors",
+            duration: "28:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 9,
+            title: "LDR (Light Dependent Resistor) Interfacing",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Introduction to I2C & SPI",
+            duration: "12:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "3. ESP32 & Wi-Fi Connectivity",
+        module_description:
+          "Leverage the power of ESP32 for Wi-Fi enabled IoT applications.",
+        videos: [
+          {
+            id: 11,
+            title: "ESP32 Board Setup & IDE Configuration",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Connecting ESP32 to Wi-Fi",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Setting up a Simple Web Server on ESP32",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 14,
+            title: "HTTP GET/POST Requests from ESP32",
+            duration: "22:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 15,
+            title: "JSON Parsing on ESP32",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. IoT Cloud Platforms & MQTT",
+        module_description:
+          "Connect your devices to the cloud using MQTT and popular cloud services.",
+        videos: [
+          {
+            id: 16,
+            title: "Introduction to MQTT Protocol",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Connecting ESP32 to a MQTT Broker (e.g., Mosquitto)",
+            duration: "28:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "AWS IoT Core Setup & Device Registration",
+            duration: "35:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 19,
+            title: "Publishing & Subscribing Data to AWS IoT",
+            duration: "40:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 20,
+            title: "Introduction to Google Cloud IoT Core (overview)",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "5. Building Complete IoT Projects & Best Practices",
+        module_description:
+          "Develop end-to-end IoT solutions and learn about security and power management.",
+        videos: [
+          {
+            id: 21,
+            title: "Project: Smart Home Temperature Monitor",
+            duration: "45:00",
+            preview: true,
+            type: "coding-exercise",
+          },
+          {
+            id: 22,
+            title: "Project: Remote LED Control via Web App",
+            duration: "50:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 23,
+            title: "IoT Security Best Practices",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 24,
+            title: "Power Management for IoT Devices",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Troubleshooting Common IoT Issues",
+            duration: "10:00",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 25. Ethical Hacking & Kali Linux (6 sessions)
+  {
+    id: 15,
+    course_name: "Ethical Hacking & Penetration Testing with Kali Linux",
+    description:
+      "Become an ethical hacker! Learn advanced penetration testing techniques, vulnerability assessment, and exploit development using Kali Linux.",
+    image: "https://www.kali.org/wallpapers/images/2025/kali-tiles.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 50,
+    no_of_sessions: 6,
+    no_of_tests_available: 10,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/ethical-hacking-kali",
+    about_course: {
+      skills: [
+        "Ethical Hacking",
+        "Penetration Testing",
+        "Kali Linux",
+        "Network Scanning",
+        "Vulnerability Assessment",
+        "Exploitation",
+        "Post-Exploitation",
+        "Web App Hacking",
+        "Wireless Hacking",
+      ],
+      complete_description:
+        "This hands-on course teaches you real-world ethical hacking techniques using Kali Linux. You'll master reconnaissance, scanning, exploitation, and post-exploitation, gaining the skills to identify and secure vulnerabilities.",
+    },
+    outcome: [
+      "Set up a complete penetration testing lab",
+      "Perform various reconnaissance and scanning techniques",
+      "Identify and exploit common vulnerabilities",
+      "Understand post-exploitation strategies and privilege escalation",
+      "Secure systems against common attack vectors",
+    ],
+    course_content: [
+      {
+        session: "1. Setting Up Your Hacking Lab & Kali Linux Basics",
+        module_description:
+          "Prepare your virtual environment for ethical hacking practice.",
+        videos: [
+          {
+            id: 1,
+            title: "Virtualization (VirtualBox/VMware)",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Kali Linux Installation & Configuration",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Basic Linux Commands for Hacking",
+            duration: "25:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 4,
+            title: "Networking Fundamentals for Hackers",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 5,
+            title: "Anonymity & VPNs",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Reconnaissance & Footprinting",
+        module_description:
+          "Gather information about your target without direct interaction.",
+        videos: [
+          {
+            id: 6,
+            title: "Passive Reconnaissance Techniques",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Using OSINT Tools (Maltego, theHarvester)",
+            duration: "35:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Active Reconnaissance: Ping Scans & DNS Lookups",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 9,
+            title: "Nmap Basics: Host Discovery",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 10,
+            title: "Google Dorking",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. Scanning & Vulnerability Analysis",
+        module_description:
+          "Identify open ports, services, and vulnerabilities on target systems.",
+        videos: [
+          {
+            id: 11,
+            title: "Nmap Advanced: Port Scanning Techniques",
+            duration: "30:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Service Version Detection & OS Fingerprinting",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Vulnerability Scanners (Nessus, OpenVAS)",
+            duration: "40:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 14,
+            title: "Vulnerability Databases (CVE, Exploit-DB)",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 15,
+            title: "Analyzing Scan Results",
+            duration: "15:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "4. Exploitation: Gaining Access",
+        module_description:
+          "Leverage identified vulnerabilities to gain unauthorized access.",
+        videos: [
+          {
+            id: 16,
+            title: "Metasploit Framework Overview",
+            duration: "35:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Exploiting Common Vulnerabilities (e.g., EternalBlue)",
+            duration: "45:00",
+            preview: true,
+            type: "coding-exercise",
+          },
+          {
+            id: 18,
+            title: "Buffer Overflows (Conceptual)",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 19,
+            title: "Client-Side Attacks (Phishing, Social Engineering)",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Payloads & Listeners",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "5. Post-Exploitation & Maintaining Access",
+        module_description:
+          "Once inside, learn to escalate privileges, pivot, and maintain persistence.",
+        videos: [
+          {
+            id: 21,
+            title: "Privilege Escalation Techniques (Windows/Linux)",
+            duration: "40:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Hashing & Cracking Passwords (Hashcat, John the Ripper)",
+            duration: "35:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Pivoting & Lateral Movement",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 24,
+            title: "Backdoors & Persistence Mechanisms",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Clearing Tracks & Anti-Forensics",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "6. Web Application Hacking & Wireless Security",
+        module_description:
+          "Focus on vulnerabilities specific to web applications and wireless networks.",
+        videos: [
+          {
+            id: 26,
+            title: "OWASP Top 10 Revisited",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "SQL Injection & XSS with Burp Suite",
+            duration: "40:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 28,
+            title: "Basic Wireless Hacking (WEP/WPA2 Crack)",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 29,
+            title: "Deauthentication Attacks & Evil Twin",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 30,
+            title: "Reporting & Remediation",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 26. No-Code Web Development (4 sessions)
+  {
+    id: 16,
+    course_name: "No-Code Web Development: Build Websites & Apps Without Code",
+    description:
+      "Create powerful websites, web apps, and online businesses using no-code platforms like Webflow and Bubble.",
+    image: "https://wallpaperaccess.com/full/3239444.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 25,
+    no_of_sessions: 4,
+    no_of_tests_available: 5,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/no-code-webdev",
+    about_course: {
+      skills: [
+        "Webflow",
+        "Bubble.io",
+        "UI/UX Design",
+        "Database Design",
+        "API Integration",
+        "Business Automation",
+      ],
+      complete_description:
+        "Learn to build professional, fully functional websites and web applications without writing a single line of code. Launch your ideas faster and iterate with agility.",
+    },
+    outcome: [
+      "Design and launch responsive websites with Webflow",
+      "Build interactive web applications with user logins and databases using Bubble",
+      "Integrate third-party services via APIs without coding",
+      "Understand the principles of good UI/UX design for no-code projects",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to No-Code & Webflow Basics",
+        module_description:
+          "Understand the no-code movement and build your first responsive website.",
+        videos: [
+          {
+            id: 1,
+            title: "What is No-Code? Why Now?",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Webflow Interface Tour",
+            duration: "20:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Building a Landing Page (Sections, Text, Images)",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 4,
+            title: "Responsive Design with Flexbox in Webflow",
+            duration: "25:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 5,
+            title: "Publishing Your Webflow Site",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Advanced Webflow & CMS",
+        module_description:
+          "Create dynamic content and advanced interactions in Webflow.",
+        videos: [
+          {
+            id: 6,
+            title: "Webflow CMS: Creating Collections",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Connecting CMS Data to Your Design",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Interactions & Animations in Webflow",
+            duration: "28:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 9,
+            title: "Forms & Integrations (Mailchimp, Zapier)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "E-commerce Basics in Webflow (overview)",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "3. Introduction to Bubble.io: Building Web Apps",
+        module_description:
+          "Dive into Bubble.io to create interactive and dynamic web applications.",
+        videos: [
+          {
+            id: 11,
+            title: "Bubble Interface & Core Concepts",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Database Design & Data Types in Bubble",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Workflows & Conditional Logic",
+            duration: "35:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 14,
+            title: "User Authentication (Login/Signup)",
+            duration: "30:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 15,
+            title: "Building a Basic Task Manager App",
+            duration: "40:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+        ],
+      },
+      {
+        session: "4. Advanced Bubble & Integrations",
+        module_description:
+          "Enhance your Bubble apps with external APIs and more complex features.",
+        videos: [
+          {
+            id: 16,
+            title: "Repeating Groups & Displaying Data",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "API Connector: Integrating External Services",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Payment Gateways (Stripe Integration)",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 19,
+            title: "Deploying & Launching Your Bubble App",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "No-Code Best Practices & Future Trends",
+            duration: "10:00",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 27. Quantum Computing Fundamentals (5 sessions)
+  {
+    id: 17,
+    course_name: "Quantum Computing Fundamentals: A Gentle Introduction",
+    description:
+      "Explore the mind-bending world of quantum computing, from qubits to quantum algorithms.",
+    image: "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 20,
+    no_of_sessions: 5,
+    no_of_tests_available: 5,
+    course_rating: 4.6,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/quantum-computing-intro",
+    about_course: {
+      skills: [
+        "Quantum Mechanics",
+        "Qubits",
+        "Superposition",
+        "Entanglement",
+        "Quantum Gates",
+        "Quantum Algorithms",
+        "Qiskit",
+      ],
+      complete_description:
+        "Demystify quantum computing with this accessible introduction. Learn the core principles, understand how quantum computers differ from classical ones, and even write your first quantum programs.",
+    },
+    outcome: [
+      "Understand the fundamental concepts of quantum mechanics relevant to computing",
+      "Differentiate between bits and qubits, and classical and quantum operations",
+      "Grasp the concepts of superposition and entanglement",
+      "Write simple quantum circuits using a quantum programming framework (Qiskit)",
+      "Appreciate the potential applications and limitations of quantum computing",
+    ],
+    course_content: [
+      {
+        session: "1. Classical Computing vs. Quantum Computing",
+        module_description:
+          "Set the stage by comparing traditional and quantum computational paradigms.",
+        videos: [
+          {
+            id: 1,
+            title: "The Limits of Classical Computers",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Introduction to Qubits",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "The Promise of Quantum Computing",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Mathematical Prerequisites (Linear Algebra Overview)",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 5,
+            title: "Setting Up Qiskit Environment",
+            duration: "20:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "2. Superposition & Entanglement",
+        module_description:
+          "Dive into the mysterious core concepts of quantum mechanics.",
+        videos: [
+          {
+            id: 6,
+            title: "Understanding Superposition",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Quantum Measurement & Collapse",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "The Magic of Entanglement",
+            duration: "28:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 9,
+            title: "Bell States Explained",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 10,
+            title: "Hands-on: Simulating Superposition in Qiskit",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+        ],
+      },
+      {
+        session: "3. Quantum Gates & Circuits",
+        module_description: "Learn the building blocks of quantum computation.",
+        videos: [
+          {
+            id: 11,
+            title: "Single Qubit Gates (Pauli-X, Y, Z, Hadamard)",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Multi-Qubit Gates (CNOT, Toffoli)",
+            duration: "28:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 13,
+            title: "Building Basic Quantum Circuits",
+            duration: "35:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+          {
+            id: 14,
+            title: "Quantum Teleportation (Conceptual)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 15,
+            title: "Running Circuits on Real Quantum Hardware (Optional)",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+        ],
+      },
+      {
+        session: "4. Quantum Algorithms: Foundations",
+        module_description:
+          "Explore the first groundbreaking quantum algorithms.",
+        videos: [
+          {
+            id: 16,
+            title: "Deutsch-Jozsa Algorithm",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Grover's Search Algorithm (Overview)",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Shor's Factoring Algorithm (Overview)",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 19,
+            title: "Quantum Supremacy & Its Implications",
+            duration: "15:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 20,
+            title: "Hands-on: Implementing Deutsch-Jozsa",
+            duration: "30:00",
+            preview: false,
+            type: "coding-exercise",
+          },
+        ],
+      },
+      {
+        session: "5. Quantum Computing Applications & Future",
+        module_description:
+          "Discuss the potential impact and future challenges of quantum computing.",
+        videos: [
+          {
+            id: 21,
+            title: "Quantum Chemistry & Drug Discovery",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Financial Modeling with Quantum Computers",
+            duration: "12:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Quantum Machine Learning (QML)",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 24,
+            title: "Challenges & Roadblocks to Universal Quantum Computers",
+            duration: "18:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 25,
+            title: "The Future of Quantum Computing",
+            duration: "10:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 28. Supply Chain Management (6 sessions)
+  {
+    id: 18,
+    course_name:
+      "Complete Supply Chain Management: From Procurement to Delivery",
+    description:
+      "Learn end-to-end supply chain strategies, logistics, and operations for business efficiency.",
+    image: "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Intermediate",
+    price: 0,
+    language: "English",
+    total_hours: 40,
+    no_of_sessions: 6,
+    no_of_tests_available: 8,
+    course_rating: 4.6,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/supply-chain-management",
+    about_course: {
+      skills: [
+        "Supply Chain Strategy",
+        "Logistics",
+        "Inventory Management",
+        "Procurement",
+        "Warehousing",
+        "Transportation",
+        "Demand Planning",
+      ],
+      complete_description:
+        "Master the principles of modern supply chain management. This course covers everything from sourcing raw materials to delivering finished products, optimizing efficiency and reducing costs.",
+    },
+    outcome: [
+      "Design and optimize efficient supply chain networks",
+      "Implement effective inventory management strategies",
+      "Improve procurement processes and supplier relationships",
+      "Understand global logistics and transportation challenges",
+      "Enhance operational efficiency and customer satisfaction",
+    ],
+    course_content: [
+      {
+        session: "1. Introduction to Supply Chain Management",
+        module_description:
+          "Define supply chain, its importance, and key components.",
+        videos: [
+          {
+            id: 1,
+            title: "What is Supply Chain Management?",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Evolution of Supply Chains",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Key Drivers of Supply Chain Performance",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Supply Chain Strategy & Design",
+            duration: "25:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 5,
+            title: "Case Study: Zara's Supply Chain",
+            duration: "12:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "2. Demand Planning & Forecasting",
+        module_description:
+          "Accurately predict demand to optimize inventory and production.",
+        videos: [
+          {
+            id: 6,
+            title: "Importance of Demand Forecasting",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Qualitative Forecasting Methods",
+            duration: "15:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 8,
+            title: "Quantitative Forecasting: Time Series Analysis",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 9,
+            title: "Forecast Error Measurement",
+            duration: "22:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 10,
+            title:
+              "Collaborative Planning, Forecasting, and Replenishment (CPFR)",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. Inventory Management",
+        module_description:
+          "Optimize inventory levels to meet demand while minimizing costs.",
+        videos: [
+          {
+            id: 11,
+            title: "Types of Inventory",
+            duration: "15:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Economic Order Quantity (EOQ)",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Safety Stock & Reorder Point",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 14,
+            title: "Inventory Control Systems (ABC Analysis, Just-in-Time)",
+            duration: "28:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 15,
+            title: "Warehouse Management Systems (WMS) Overview",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Procurement & Supplier Relationship Management",
+        module_description:
+          "Strategically source materials and manage supplier networks.",
+        videos: [
+          {
+            id: 16,
+            title: "Strategic Sourcing Process",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Supplier Selection & Evaluation",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Negotiation Strategies",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 19,
+            title: "Contract Management",
+            duration: "15:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 20,
+            title: "Building Long-Term Supplier Relationships",
+            duration: "25:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "5. Logistics & Transportation",
+        module_description: "Plan and execute the efficient flow of goods.",
+        videos: [
+          {
+            id: 21,
+            title: "Modes of Transportation",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Network Design & Facility Location",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 23,
+            title: "Fleet Management & Route Optimization",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 24,
+            title: "Reverse Logistics & Returns Management",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Customs & International Trade",
+            duration: "15:00",
+            preview: false,
+            type: "discussion",
+          },
+        ],
+      },
+      {
+        session: "6. Supply Chain Analytics & Digital Transformation",
+        module_description:
+          "Leverage data and technology to optimize your supply chain.",
+        videos: [
+          {
+            id: 26,
+            title: "Introduction to Supply Chain Analytics",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Big Data & AI in Supply Chain",
+            duration: "20:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 28,
+            title: "Blockchain for Supply Chain Traceability",
+            duration: "18:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 29,
+            title: "Sustainability in Supply Chain",
+            duration: "15:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 30,
+            title: "Risk Management & Resilience",
+            duration: "25:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 29. Video Editing with Adobe Premiere Pro (5 sessions)
+  {
+    id: 19,
+    course_name: "Adobe Premiere Pro CC: Master Video Editing for Beginners",
+    description:
+      "Learn to edit professional-quality videos for YouTube, social media, and film using Adobe Premiere Pro.",
+    image: "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Beginner",
+    price: 0,
+    language: "English",
+    total_hours: 30,
+    no_of_sessions: 5,
+    no_of_tests_available: 6,
+    course_rating: 4.7,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/premiere-pro-editing",
+    about_course: {
+      skills: [
+        "Adobe Premiere Pro",
+        "Video Editing",
+        "Color Grading",
+        "Audio Mixing",
+        "Transitions",
+        "Graphics",
+        "Filmmaking",
+      ],
+      complete_description:
+        "From importing footage to exporting a polished film, this course covers every essential aspect of video editing in Adobe Premiere Pro CC, perfect for aspiring YouTubers, marketers, and filmmakers.",
+    },
+    outcome: [
+      "Navigate the Premiere Pro interface confidently",
+      "Perform professional video and audio edits",
+      "Apply transitions, effects, and basic color correction",
+      "Create titles, graphics, and motion effects",
+      "Export videos in various formats for different platforms",
+    ],
+    course_content: [
+      {
+        session: "1. Premiere Pro Interface & Workflow",
+        module_description:
+          "Get familiar with the software and set up your first project.",
+        videos: [
+          {
+            id: 1,
+            title: "Premiere Pro Workspace Tour",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "Creating a New Project & Sequence",
+            duration: "15:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 3,
+            title: "Importing Media & Organization",
+            duration: "25:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 4,
+            title: "Basic Editing Tools (Cut, Trim, Ripple)",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 5,
+            title: "Keyboard Shortcuts for Efficiency",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "2. Advanced Editing & Transitions",
+        module_description: "Refine your edits and add creative transitions.",
+        videos: [
+          {
+            id: 6,
+            title: "J-Cut & L-Cut Techniques",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Speed Ramping & Time Remapping",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Video Transitions: Basic to Creative",
+            duration: "30:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 9,
+            title: "Using Markers for Organization",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 10,
+            title: "Nested Sequences",
+            duration: "12:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "3. Audio Editing & Mixing",
+        module_description:
+          "Clean up your audio and create a balanced sound mix.",
+        videos: [
+          {
+            id: 11,
+            title: "Audio Panel & Levels",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Reducing Noise & Echo",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Adding Music & Sound Effects",
+            duration: "18:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 14,
+            title: "Audio Mixing Best Practices",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 15,
+            title: "Applying Audio Effects",
+            duration: "12:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "4. Color Correction, Grading & Effects",
+        module_description: "Enhance the visual appeal of your footage.",
+        videos: [
+          {
+            id: 16,
+            title: "Lumetri Color Panel Overview",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Basic Color Correction",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 18,
+            title: "Creative Color Grading (Looks & LUTs)",
+            duration: "28:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 19,
+            title: "Applying Video Effects",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Keyframing Effects",
+            duration: "15:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "5. Titles, Graphics & Exporting",
+        module_description:
+          "Add professional titles and prepare your final video for output.",
+        videos: [
+          {
+            id: 21,
+            title: "Essential Graphics Panel: Basic Titles",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Creating Lower Thirds & Callouts",
+            duration: "25:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Motion Graphics Templates",
+            duration: "18:00",
+            preview: false,
+            type: "exercise",
+          },
+          {
+            id: 24,
+            title: "Export Settings for YouTube, Social Media, etc.",
+            duration: "30:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 25,
+            title: "Troubleshooting Export Issues",
+            duration: "10:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+    ],
+  },
+
+  // 30. Cloud Security on Google Cloud Platform (6 sessions)
+  {
+    id: 20,
+    course_name: "Cloud Security Professional: Google Cloud Platform (GCP)",
+    description:
+      "Master security best practices and services on Google Cloud Platform to protect your infrastructure and data.",
+    image: "https://cdn-thumbs.comidoc.net/750/5654326_5a69.jpg",
+    instructor: {
+      name: "Maximilian Schwarzmüller",
+      mailid: "max@example.com",
+      summary: "Professional Web Developer and Instructor",
+      avatar: "https://placehold.co/100x100?text=Max",
+      overall_rating: 4.7,
+      no_of_courses_released: 28,
+      total_learners: "2,159,428",
+      total_reviews: "481,798",
+      about: [
+        "Hi, I'm Maximilian! I'm one of LearnSphere's Top Instructors and all my premium courses have earned the best-selling status for outstanding performance and student satisfaction.",
+        "I'm a full-stack web developer and designer with a passion for building beautiful web interfaces from scratch. I've been building websites and apps since 2010 and also have a Master's degree in Engineering.",
+        "I discovered my passion for teaching and helping others by sharing everything I knew during college. This passion led me to LearnSphere in 2015, where I now have the privilege of training over 2,000,000 learners in the field of web development.",
+        "What learners love the most about all my courses is the fact that I take the time to explain every single concept in a way that everyone can easily understand.",
+      ],
+      highlights: [
+        "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
+        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Or maybe you want to build modern and powerful front-end applications with React?",
+      ],
+    },
+
+    level: "Advanced",
+    price: 0,
+    language: "English",
+    total_hours: 45,
+    no_of_sessions: 6,
+    no_of_tests_available: 12,
+    course_rating: 4.8,
+    certification: true,
+    pdf_available: true,
+    preview: "https://example.com/preview/gcp-cloud-security",
+    about_course: {
+      skills: [
+        "Google Cloud Platform (GCP)",
+        "Cloud Security",
+        "IAM",
+        "VPC Security",
+        "Data Encryption",
+        "Security Command Center",
+        "DDoS Protection",
+        "Compliance",
+      ],
+      complete_description:
+        "Secure your cloud environments on Google Cloud Platform. This course covers identity and access management, network security, data protection, compliance, and incident response specific to GCP.",
+    },
+    outcome: [
+      "Implement strong IAM policies and manage access control on GCP",
+      "Design and secure virtual networks within GCP",
+      "Protect data at rest and in transit with various encryption methods",
+      "Utilize GCP security services for monitoring and threat detection",
+      "Understand compliance and governance in a cloud context",
+    ],
+    course_content: [
+      {
+        session: "1. GCP Security Fundamentals & Shared Responsibility",
+        module_description:
+          "Understand the cloud security model and core GCP security concepts.",
+        videos: [
+          {
+            id: 1,
+            title: "Cloud Security Shared Responsibility Model",
+            duration: "18:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 2,
+            title: "GCP Resource Hierarchy & Organizations",
+            duration: "22:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 3,
+            title: "Introduction to Google Cloud Security Services",
+            duration: "20:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 4,
+            title: "Setting Up Billing Accounts & Projects",
+            duration: "15:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 5,
+            title: "GCP Free Tier & Quotas",
+            duration: "10:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "2. Identity & Access Management (IAM) on GCP",
+        module_description: "Manage who can do what on your GCP resources.",
+        videos: [
+          {
+            id: 6,
+            title: "IAM Roles & Permissions",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 7,
+            title: "Service Accounts & Best Practices",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 8,
+            title: "Custom Roles & Conditional IAM",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a custom role in GCP IAM?",
+                options: ["A user-defined set of permissions", "A default admin role", "A billing account", "A network policy"],
+                answer: "A user-defined set of permissions"
+              },
+              {
+                question: "What is the benefit of conditional IAM policies?",
+                options: ["Granular access control", "Faster billing", "More storage", "Better UI"],
+                answer: "Granular access control"
+              },
+              {
+                question: "Which resource can you assign a custom role to?",
+                options: ["Project", "Folder", "Organization", "All of the above"],
+                answer: "All of the above"
+              },
+              {
+                question: "What is a common use case for conditional IAM?",
+                options: ["Time-based access", "UI customization", "Faster networking", "Cheaper storage"],
+                answer: "Time-based access"
+              },
+              {
+                question: "What is the format for IAM policy bindings?",
+                options: ["JSON", "XML", "CSV", "YAML"],
+                answer: "JSON"
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: "Managing Members & Bindings",
+            duration: "18:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 10,
+            title: "Audit Logs & Access Transparency",
+            duration: "15:00",
+            preview: false,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "3. Network Security on Google Cloud",
+        module_description:
+          "Secure your virtual networks, firewalls, and connectivity.",
+        videos: [
+          {
+            id: 11,
+            title: "VPC Networking & Subnets",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 12,
+            title: "Firewall Rules & Network Tags",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 13,
+            title: "Cloud VPN & Interconnect",
+            duration: "20:00",
+            preview: false,
+            type: "theory",
+          },
+          {
+            id: 14,
+            title: "Load Balancing & Security Policies",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 15,
+            title: "Cloud Armor (DDoS Protection & WAF)",
+            duration: "28:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "4. Data Protection & Encryption",
+        module_description:
+          "Ensure the confidentiality and integrity of your data on GCP.",
+        videos: [
+          {
+            id: 16,
+            title: "Encryption at Rest (CMEK, CSEK)",
+            duration: "22:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 17,
+            title: "Encryption in Transit",
+            duration: "18:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 18,
+            title: "Cloud Key Management Service (KMS)",
+            duration: "30:00",
+            preview: false,
+            type: "demo",
+          },
+          {
+            id: 19,
+            title: "Cloud Storage Security Best Practices",
+            duration: "25:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 20,
+            title: "Data Loss Prevention (DLP) API",
+            duration: "20:00",
+            preview: false,
+            type: "exercise",
+          },
+        ],
+      },
+      {
+        session: "5. Security Operations & Monitoring",
+        module_description:
+          "Monitor, detect, and respond to security threats on GCP.",
+        videos: [
+          {
+            id: 21,
+            title: "Security Command Center (SCC) Overview",
+            duration: "25:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 22,
+            title: "Cloud Logging & Monitoring for Security Events",
+            duration: "30:00",
+            preview: true,
+            type: "demo",
+          },
+          {
+            id: 23,
+            title: "Cloud Audit Logs for Compliance",
+            duration: "20:00",
+            preview: false,
+            type: "walkthrough",
+          },
+          {
+            id: 24,
+            title: "Cloud IDS & Threat Detection",
+            duration: "22:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 25,
+            title: "Incident Response in the Cloud",
+            duration: "18:00",
+            preview: false,
+            type: "theory",
+          },
+        ],
+      },
+      {
+        session: "6. Compliance, Governance & Advanced Topics",
+        module_description:
+          "Understand regulatory compliance and advanced security considerations.",
+        videos: [
+          {
+            id: 26,
+            title: "GCP Compliance Offerings (HIPAA, GDPR, PCI DSS)",
+            duration: "20:00",
+            preview: true,
+            type: "video",
+          },
+          {
+            id: 27,
+            title: "Resource Manager & Organizations Policies",
+            duration: "25:00",
+            preview: true,
+            type: "theory",
+          },
+          {
+            id: 28,
+            title: "Container Security (GKE Security)",
+            duration: "22:00",
+            preview: false,
+            type: "video",
+          },
+          {
+            id: 29,
+            title: "Serverless Security (Cloud Functions, App Engine)",
+            duration: "18:00",
+            preview: false,
+            type: "discussion",
+          },
+          {
+            id: 30,
+            title: "DevSecOps on GCP",
+            duration: "15:00",
+            preview: false,
+            type: "summary",
+          },
+        ],
+      },
+    ],
+  },
+];
+export default courseData;

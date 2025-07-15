@@ -3,9 +3,115 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  /* font-weight: 400; */
 
   color-scheme: light dark;
   color: #333A2F;
   background-color: #EBEDDF;
+}
+
+/* Handle browser zoom scaling */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+  padding-top: 80px; /* Add padding for fixed header */
+}
+
+/* Fixed header styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  height: 80px; /* Fixed height for consistent spacing */
+}
+
+/* Ensure content doesn't hide behind fixed header */
+main {
+  padding-top: 0;
+}
+
+/* Dashboard specific spacing for fixed header */
+.dashboard-content {
+  padding-top: 1rem;
+}
+
+/* Ensure consistent container sizing */
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+/* Responsive container sizes */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Handle zoom level adjustments */
+@media screen and (min-resolution: 1.1dppx) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-resolution: 1.5dppx) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* Ensure all elements use border-box */
+* {
+  box-sizing: border-box;
+}
+
+/* Hide header and footer in quiz fullscreen mode */
+.quiz-fullscreen header,
+.quiz-fullscreen footer {
+  display: none !important;
 }

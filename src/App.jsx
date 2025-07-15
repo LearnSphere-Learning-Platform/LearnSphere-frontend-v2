@@ -1,35 +1,58 @@
 import React from 'react';
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import { BrowserRouter , Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Courses from './components/Courses';
-import About from './components/About';
-import Contact from './components/Contact';
+import Hero from './landing/Hero';
+import Features from './landing/Features';
+import Courses from './landing/Courses';
+import About from './landing/About';
+import Contact from './landing/Contact';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
 import Signup from './pages/Signup';
+import InstructorRouteWrapper from "./catalog/InstructorRouteWrapper";
+import { CourseCatalog } from "./catalog/CourseCatalog";
+import CoursePageWrapper from "./catalog/CoursePageWrapper"; // ⬅️ new component
+import DashBoard from './dashboard/DashBoard';
+import ScrollToTop from './ScrollToTop';
+import QuizLoader from './quiz/QuizLoader';
+import DashboardQuizLoader from './dashboard/components/DashboardQuizLoader';
+
+function AppContent() {
+  const location = useLocation();
+  const hideFooter = location.pathname === '/login' || location.pathname === '/signup';
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <Features />
+            <Courses />
+            <About />
+            <Contact />
+          </>
+        } />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/catalog" element={<CourseCatalog />} />
+        <Route path="/course/:id" element={<CoursePageWrapper />} />
+        <Route path="/course/:id/dashboard" element={<DashBoard />} />
+        <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
+        <Route path="/course/:courseId/test/:moduleId" element={<QuizLoader />} />
+        <Route path="/dashboard/course/:courseId/test/:lessonId" element={<DashboardQuizLoader />} />
+      </Routes>
+      {!hideFooter && <Footer />}
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white">
-        <Header />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Features />
-              <Courses />
-              <About />
-              <Contact />
-              <Footer />
-            </>
-          } />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </div>
+      <ScrollToTop />
+      <AppContent />
     </BrowserRouter>
   );
 }
