@@ -16,6 +16,7 @@ import DashBoard from "./dashboard/DashBoard";
 import ScrollToTop from "./ScrollToTop";
 import CourseAddingForm from "./instructor/CourseAddingForm";
 import InstructorAnnouncementForm from "./instructor/InstructorAnnouncementForm";
+import InstructorDashboard from "./dashboard/InstructorDashboard";
 
 function AppContent() {
   const location = useLocation();
@@ -46,6 +47,12 @@ function AppContent() {
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
         <Route path="/course-adding" element={<CourseAddingForm />} />
         <Route path="/announcement" element={<InstructorAnnouncementForm />} />
+
+  {/* ✅ Added Instructor Dashboard Route */}
+        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
+
+
+
       </Routes>
       {!hideFooter && <Footer />}
     </div>
@@ -61,4 +68,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
