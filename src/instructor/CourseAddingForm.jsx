@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CourseTemplate } from "./utils/CourseTemplata";
 import SessionFormList from "./SessionFormList";
-import useSelectedCourse from "../hooks/useSelectedCourse";
 import {
   BookOpen,
   DollarSign,
@@ -12,12 +11,48 @@ import {
   CheckCircle2,
   Target,
   Image,
+  ArrowLeft,
 } from "lucide-react";
 
-const CourseAddingForm = () => {
-  const [selectedCourse, updateSelectedCourse] = useSelectedCourse();
-
+const CourseAddingForm = ({ editingCourse, onSave, onCancel }) => {
   const [course, setCourse] = useState({ ...CourseTemplate });
+
+  // Populate form with existing course data when editing
+  useEffect(() => {
+    if (editingCourse) {
+      setCourse({
+        ...CourseTemplate,
+        ...editingCourse,
+        // Ensure all required fields are properly mapped
+        course_name: editingCourse.course_name || editingCourse.title || "",
+        about_course: {
+          ...CourseTemplate.about_course,
+          ...editingCourse.about_course,
+        },
+        outcome:
+          editingCourse.outcome?.length > 0 ? editingCourse.outcome : [""],
+        course_content:
+          editingCourse.course_content?.length > 0
+            ? editingCourse.course_content
+            : [],
+        no_of_sessions: editingCourse.course_content?.length || 0,
+        // Convert values to match form expectations
+        total_no_hours:
+          editingCourse.total_no_hours || editingCourse.total_hours || "",
+        price: editingCourse.price || 0,
+        level: editingCourse.level || "",
+        language: editingCourse.language || "",
+        certification: editingCourse.certification || false,
+        pdf_available: editingCourse.pdf_available || false,
+        tests_available: editingCourse.tests_available || false,
+        no_of_tests_available: editingCourse.no_of_tests_available || 0,
+        video_url: editingCourse.video_url || "",
+        image_url: editingCourse.image_url || editingCourse.image || "",
+      });
+    } else {
+      setCourse({ ...CourseTemplate });
+    }
+  }, [editingCourse]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -70,16 +105,23 @@ const CourseAddingForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newCourse = {
+    const courseData = {
       ...course,
-      id: Date.now(),
-      created_at: new Date().toISOString(),
+      title: course.course_name, // Ensure title is set for display
+      description: course.about_course.complete_description, // Ensure description is set
+      no_of_sessions: course.course_content.length, // Update session count
+      created_at: editingCourse
+        ? editingCourse.created_at
+        : new Date().toISOString(),
+      updated_at: new Date().toISOString(),
     };
 
-    updateSelectedCourse(newCourse);
-
-    console.log("Course saved:", newCourse);
-    alert("Course saved successfully!");
+    onSave(courseData);
+    alert(
+      editingCourse
+        ? "Course updated successfully!"
+        : "Course created successfully!"
+    );
   };
 
   return (
@@ -88,12 +130,25 @@ const CourseAddingForm = () => {
       style={{ backgroundColor: "#EBEDDF" }}
     >
       <div className="max-w-5xl mx-auto">
+        {/* Header with back button */}
+        <div className="flex items-center gap-4 mb-8">
+          <button
+            onClick={onCancel}
+            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Courses
+          </button>
+        </div>
+
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4" style={{ color: "#333A2F" }}>
-            Create New Course
+            {editingCourse ? "Edit Course" : "Create New Course"}
           </h1>
           <p className="text-xl" style={{ color: "#333A2F" }}>
-            Build an engaging learning experience for your students
+            {editingCourse
+              ? "Update your course information"
+              : "Build an engaging learning experience for your students"}
           </p>
         </div>
 
@@ -216,34 +271,34 @@ const CourseAddingForm = () => {
                   className="block text-sm font-semibold"
                   style={{ color: "#333A2F" }}
                 >
-                  Course Video
+                  Course Video URL
                 </label>
                 <input
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
                   style={{ "--tw-ring-color": "#333A2F" }}
-                  type="file"
+                  type="url"
                   name="video_url"
-                  accept="video/*"
+                  placeholder="Enter video URL"
                   value={course.video_url}
                   onChange={handleInputChange}
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="mt-6 space-y-2">
               <label
                 className="flex items-center gap-2 text-sm font-semibold"
                 style={{ color: "#333A2F" }}
               >
                 <Image className="w-4 h-4" />
-                Course Image
+                Course Image URL
               </label>
               <input
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
                 style={{ "--tw-ring-color": "#333A2F" }}
-                type="file"
+                type="url"
                 name="image_url"
-                accept="image/*"
+                placeholder="Enter image URL"
                 value={course.image_url}
                 onChange={handleInputChange}
               />
@@ -451,14 +506,21 @@ const CourseAddingForm = () => {
           <SessionFormList course={course} setCourse={setCourse} />
 
           {/* Submit Button */}
-          <div className="text-center">
+          <div className="flex justify-center gap-4">
+            <button
+              type="button"
+              onClick={onCancel}
+              className="px-8 py-4 text-gray-700 font-semibold rounded-xl border border-gray-300 hover:bg-gray-50 transition-all duration-200"
+            >
+              Cancel
+            </button>
             <button
               type="submit"
               className="inline-flex items-center gap-3 px-8 py-4 text-white font-semibold rounded-xl shadow-lg hover:opacity-90 transform hover:scale-105 transition-all duration-200"
               style={{ backgroundColor: "#333A2F" }}
             >
               <BookOpen className="w-5 h-5" />
-              Save Course
+              {editingCourse ? "Update Course" : "Save Course"}
             </button>
           </div>
         </form>

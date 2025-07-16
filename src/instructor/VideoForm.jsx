@@ -22,16 +22,6 @@ const VideoForm = ({ index, video, onChange, onRemove }) => {
     });
   };
 
-  const videoTypeIcons = {
-    video: <Play className="w-4 h-4" />,
-    demo: <Eye className="w-4 h-4" />,
-    theory: <BookOpen className="w-4 h-4" />,
-    "coding-exercise": <Code className="w-4 h-4" />,
-    assignment: <FileText className="w-4 h-4" />,
-    summary: <CheckCircle className="w-4 h-4" />,
-    discussion: <MessageCircle className="w-4 h-4" />,
-  };
-
   return (
     <div className="border border-gray-200 rounded-lg p-4 sm:p-5 bg-gray-50 hover:bg-white transition-colors duration-200">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3 sm:gap-0">
@@ -112,14 +102,15 @@ const VideoForm = ({ index, video, onChange, onRemove }) => {
 
         <div className="space-y-2">
           <label className="block text-xs sm:text-sm font-semibold text-[#333A2F]">
-            Video File
+            Video URL
           </label>
           <input
-            className="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] bg-white text-sm sm:text-base min-h-[44px] file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#333A2F] file:text-white hover:file:bg-[#333A2F]/90"
-            type="file"
+            type="url"
             name="video_url"
-            accept="video/*"
+            placeholder="Enter video URL"
+            value={video.video_url}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] bg-white text-sm sm:text-base min-h-[44px]"
           />
         </div>
       </div>

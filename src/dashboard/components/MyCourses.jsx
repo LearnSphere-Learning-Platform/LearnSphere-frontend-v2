@@ -11,13 +11,14 @@ import {
   Clock,
 } from "lucide-react";
 
-const CourseCard = ({ course, onDelete }) => {
+const CourseCard = ({ course, onDelete, onEdit }) => {
   const getStatusBadge = (status) => {
     const badges = {
       published: "bg-green-100 text-green-800",
       draft: "bg-yellow-100 text-yellow-800",
       intermediate: "bg-orange-100 text-orange-800",
       advanced: "bg-red-100 text-red-800",
+      beginner: "bg-blue-100 text-blue-800",
     };
 
     return (
@@ -40,8 +41,12 @@ const CourseCard = ({ course, onDelete }) => {
       <div className="px-4 pb-4">
         <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
           <img
-            src={course.thumbnail}
-            alt={course.title}
+            src={
+              course.image ||
+              course.image_url ||
+              "https://via.placeholder.com/300x200?text=Course"
+            }
+            alt={course.title || course.course_name || "Course"}
             className="w-full h-full object-cover"
           />
         </div>
@@ -50,25 +55,32 @@ const CourseCard = ({ course, onDelete }) => {
       {/* Course Info */}
       <div className="p-4 pt-0">
         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-          {course.title}
+          {course.title || course.course_name || "Untitled Course"}
         </h3>
         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-          {course.description}
+          {course.description ||
+            course.about_course?.complete_description ||
+            "No description available"}
         </p>
 
         {/* Stats */}
         <div className="flex items-center space-x-4 mb-4 text-sm text-gray-500">
           <div className="flex items-center space-x-1">
             <Star className="h-4 w-4 text-yellow-400 fill-current" />
-            <span>{course.rating}</span>
+            <span>{course.rating || course.course_rating || 0}</span>
           </div>
           <div className="flex items-center space-x-1">
             <Users className="h-4 w-4" />
-            <span>{course.students.toLocaleString()}</span>
+            <span>{(course.students || 0).toLocaleString()}</span>
           </div>
           <div className="flex items-center space-x-1">
             <Clock className="h-4 w-4" />
-            <span>{course.duration}</span>
+            <span>
+              {course.duration ||
+                course.total_hours ||
+                course.total_no_hours ||
+                "0h 0m"}
+            </span>
           </div>
         </div>
 
@@ -78,7 +90,11 @@ const CourseCard = ({ course, onDelete }) => {
             <Eye className="h-4 w-4" />
             <span>View Course</span>
           </button>
-          <button className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">
+          <button
+            onClick={() => onEdit(course)}
+            // onClick={() => onEdit(course)}
+            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+          >
             <Edit className="h-4 w-4" />
           </button>
           <button
@@ -93,14 +109,25 @@ const CourseCard = ({ course, onDelete }) => {
   );
 };
 
-const MyCourses = ({ courses = [], onCreateCourse, onDeleteCourse }) => {
+const MyCourses = ({
+  courses = [],
+  onCreateCourse,
+  onEditCourse,
+  onDeleteCourse,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCourses = courses.filter(
-    (course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredCourses = courses.filter((course) => {
+    const title = (course.title || course.course_name || "").toLowerCase();
+    const description = (
+      course.description ||
+      course.about_course?.complete_description ||
+      ""
+    ).toLowerCase();
+    const search = searchTerm.toLowerCase();
+
+    return title.includes(search) || description.includes(search);
+  });
 
   return (
     <div className="bg-white rounded-lg shadow-sm">
@@ -167,6 +194,8 @@ const MyCourses = ({ courses = [], onCreateCourse, onDeleteCourse }) => {
                 key={course.id}
                 course={course}
                 onDelete={onDeleteCourse}
+                onEdit={onEditCourse}
+                // onEdit={onEditCourse}
               />
             ))}
           </div>

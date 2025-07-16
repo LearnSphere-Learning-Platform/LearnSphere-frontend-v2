@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { BookOpen, Star, Users, Clock, TrendingUp } from "lucide-react";
 import MyCourses from "./components/MyCourses";
 import Announcements from "./components/Announcements";
+import CourseAddingForm from "../instructor/CourseAddingForm";
+import useAllCourses from "../hooks/useAllCourses"; // Import the hook
 
 const StatsCards = ({ stats }) => {
   const formatNumber = (num) => {
@@ -68,26 +70,104 @@ const StatsCards = ({ stats }) => {
 };
 
 // Main Dashboard Component
-const InstructorDashboard = ({ courses = [], onDeleteCourse }) => {
-  const navigate = useNavigate();
+const InstructorDashboard = () => {
+  // const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("courses");
+  const [currentView, setCurrentView] = useState("dashboard"); // New state for view management
+  const [editingCourse, setEditingCourse] = useState(null); // New state for editing course
+  const initialCourses = useAllCourses(); // Use the hook to get initial courses
+  const [courses, setCourses] = useState(initialCourses); // Local state for course management
+
+  // Update local courses when hook data changes
+  React.useEffect(() => {
+    setCourses(initialCourses);
+  }, [initialCourses]);
 
   const handleCreateCourse = () => {
-    navigate("/course-adding");
+    setEditingCourse(null);
+    setCurrentView("form");
+  };
+
+  const handleEditCourse = (course) => {
+    setEditingCourse(course);
+    setCurrentView("form");
+  };
+
+  const handleBackToDashboard = () => {
+    setCurrentView("dashboard");
+    setEditingCourse(null);
+  };
+
+  const handleSaveCourse = (courseData) => {
+    if (editingCourse) {
+      // Update existing course
+      setCourses((prevCourses) =>
+        prevCourses.map((course) =>
+          course.id === editingCourse.id
+            ? {
+                ...courseData,
+                id: editingCourse.id,
+                created_at: editingCourse.created_at,
+                updated_at: new Date().toISOString(),
+              }
+            : course
+        )
+      );
+    } else {
+      // Create new course
+      const newCourse = {
+        ...courseData,
+        id: Date.now(),
+        created_at: new Date().toISOString(),
+        status: "draft",
+        rating: 0,
+        students: 0,
+        duration: courseData.total_no_hours || "0h",
+      };
+      setCourses((prevCourses) => [...prevCourses, newCourse]);
+    }
+
+    setCurrentView("dashboard");
+    setEditingCourse(null);
+  };
+
+  const handleDeleteCourse = (courseId) => {
+    if (window.confirm("Are you sure you want to delete this course?")) {
+      setCourses((prevCourses) =>
+        prevCourses.filter((course) => course.id !== courseId)
+      );
+    }
   };
 
   const stats = {
-    totalCourses: courses?.length || 0,
-    totalStudents: courses.reduce((sum, course) => sum + course.students, 0),
+    totalCourses: courses.length,
+    totalStudents: courses.reduce(
+      (sum, course) => sum + (course.students || 0),
+      0
+    ),
     averageRating:
-      courses?.length > 0
-        ? courses.reduce((sum, course) => sum + course.rating, 0) /
-          courses.length
+      courses.length > 0
+        ? courses.reduce(
+            (sum, course) => sum + (course.rating || course.course_rating || 0),
+            0
+          ) / courses.length
         : 0,
-    publishedCourses: courses?.filter((course) => course.status === "published")
+    publishedCourses: courses.filter((course) => course.status === "published")
       .length,
   };
 
+  // If we're in form view, show the CourseAddingForm
+  if (currentView === "form") {
+    return (
+      <CourseAddingForm
+        editingCourse={editingCourse}
+        onSave={handleSaveCourse}
+        onCancel={handleBackToDashboard}
+      />
+    );
+  }
+
+  // Otherwise, show the dashboard
   return (
     <div className="min-h-screen bg-[#EBEDDF]">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -126,7 +206,8 @@ const InstructorDashboard = ({ courses = [], onDeleteCourse }) => {
           <MyCourses
             courses={courses}
             onCreateCourse={handleCreateCourse}
-            onDeleteCourse={onDeleteCourse}
+            onEditCourse={handleEditCourse}
+            onDeleteCourse={handleDeleteCourse}
           />
         )}
 
