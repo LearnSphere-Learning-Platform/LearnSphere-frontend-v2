@@ -5,6 +5,8 @@ import { CourseSidebar } from "./CourseSidebar";
 import { CourseGrid } from "./CourseGrid";
 import { SearchBar } from "./SearchBar";
 import courseData from "./CourseData";
+import React from 'react';
+import Breadcrumb from '../components/Breadcrumb';
 
 const courses = courseData;
 
@@ -54,6 +56,7 @@ export function CourseCatalog() {
 
   return (
     <div className="flex min-h-screen bg-[#f5f5f5] mt-23">
+      
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div

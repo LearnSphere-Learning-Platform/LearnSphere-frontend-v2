@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Breadcrumb from './Breadcrumb';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg fixed top-0 left-0 w-full z-90">
+    <header className="bg-white shadow-lg fixed top-0 left-0 w-full z-90 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -121,6 +122,24 @@ const Header = () => {
             </nav>
           </div>
         )}
+        {/* Hanging Breadcrumb */}
+        <div className="w-full flex justify-end pointer-events-none" style={{ position: 'relative', height: 0 }}>
+          <div
+            className="pointer-events-auto px-0 py-0 mr-4"
+            style={{
+              position: 'absolute',
+              top: 'calc(100%)', // right below the border
+              right: 0,
+              minWidth: '180px',
+              zIndex: 60,
+              background: 'none',
+              padding: 0,
+              border: 'none',
+            }}
+          >
+            <Breadcrumb />
+          </div>
+        </div>
       </div>
     </header>
   );
