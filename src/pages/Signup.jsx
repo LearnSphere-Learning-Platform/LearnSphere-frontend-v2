@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaGoogle, FaEyeSlash, FaEye, FaUser, FaUserTag, FaArrowLeft, FaCheck } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
@@ -11,12 +11,71 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [isInstructor, setIsInstructor] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // Prevent background scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    // Add base users if not present
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.length === 0) {
+      const baseUsers = [
+        { fullName: "user", email: "user@learnsphere.com", password: "12345", isInstructor: false },
+        { fullName: "admin", email: "admin@learnsphere.com", password: "12345", isInstructor: false },
+        { fullName: "instructor", email: "instructor@learnsphere.com", password: "12345", isInstructor: true },
+      ];
+      localStorage.setItem("users", JSON.stringify(baseUsers));
+    }
     return () => { document.body.style.overflow = ''; };
   }, []);
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    // Simulate delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    if (!fullName || !email || !password || !confirmPassword) {
+      setError("All fields are required.");
+      setIsLoading(false);
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      setIsLoading(false);
+      return;
+    }
+    if (!agreeTerms) {
+      setError("You must agree to the Terms and Conditions.");
+      setIsLoading(false);
+      return;
+    }
+    // Get users from localStorage
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.find((u) => u.fullName === fullName)) {
+      setError("Full Name already exists.");
+      setIsLoading(false);
+      return;
+    }
+    if (users.find((u) => u.email === email)) {
+      setError("Email already registered.");
+      setIsLoading(false);
+      return;
+    }
+    // Add new user
+    users.push({ fullName, email, password, isInstructor });
+    localStorage.setItem("users", JSON.stringify(users));
+    window.alert("Signup Successful! You can now log in with your new account.");
+    setIsLoading(false);
+    setTimeout(() => navigate("/login"), 1200);
+  };
 
   return (
     <div
@@ -59,7 +118,7 @@ const Signup = () => {
       <main className="flex-1 w-full flex items-center justify-center p-6 md:p-12 relative">
         <div className="w-full max-w-xl p-8 z-10">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Sign Up</h1>
-          <form className="auth-form space-y-4">
+          <form className="auth-form space-y-4" onSubmit={handleSignup}>
             {/* Full Name Field */}
             <div className="auth-form__span-2">
               <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="fullName">
@@ -73,6 +132,9 @@ const Signup = () => {
                 placeholder="Enter Full Name"
                 autoFocus
                 required
+                value={fullName}
+                onChange={e => setFullName(e.target.value)}
+                disabled={isLoading}
               />
             </div>
             {/* Email Field */}
@@ -87,6 +149,9 @@ const Signup = () => {
                 className="input w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors"
                 placeholder="Enter E-mail Address"
                 required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                disabled={isLoading}
               />
             </div>
             {/* Password Field */}
@@ -102,6 +167,9 @@ const Signup = () => {
                   className="input w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors"
                   placeholder="Create Password"
                   required
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  disabled={isLoading}
                 />
                 <span
                   className="login-wrap-hide-pwd togglePassword absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700 text-lg"
@@ -124,6 +192,9 @@ const Signup = () => {
                   className="input w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors"
                   placeholder="Confirm Password"
                   required
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  disabled={isLoading}
                 />
                 <span
                   className="login-wrap-hide-pwd togglePassword absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700 text-lg"
@@ -179,15 +250,18 @@ const Signup = () => {
                 </span>
               </label>
             </div>
+            {/* Error Message */}
+            {error && <div className="text-red-600 text-sm font-medium text-center">{error}</div>}
             {/* Sign Up Button */}
             <button
               id="submitSignup"
               name="submitSignup"
-              type="button"
-              className="signup-btn auth-form__button w-full text-white py-3 px-4 text-base font-medium transition-colors duration-200 flex items-center justify-center rounded-lg"
+              type="submit"
+              className="signup-btn auth-form__button w-full text-white py-3 px-4 text-base font-medium transition-colors duration-200 flex items-center justify-center rounded-lg cursor-pointer"
               style={{ backgroundColor: '#333A2F' }}
+              disabled={isLoading}
             >
-              Sign Up
+              {isLoading ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
           {/* Divider */}

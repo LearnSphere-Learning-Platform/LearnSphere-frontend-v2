@@ -16,15 +16,17 @@ import DashBoard from './dashboard/DashBoard';
 import ScrollToTop from './ScrollToTop';
 import CoursePaymentWrapper from "./catalog/CoursePaymentWrapper";
 import { getCourseById } from './hooks/useSelectedCourse';
+import ForgotPassword from './pages/ForgotPassword';
 
 function AppContent() {
   const location = useLocation();
   const hideFooter = location.pathname === '/login' || location.pathname === '/signup';
   const hideHeader = location.pathname === '/login' || location.pathname === '/signup';
+  const hideHeaderForgotPassword = location.pathname === '/forgot-password';
 
   return (
     <div className="min-h-screen bg-white">
-      {!hideHeader && <Header />}
+      {!hideHeader && !hideHeaderForgotPassword && <Header />}
       <Routes>
         <Route path="/" element={
           <>
@@ -37,6 +39,7 @@ function AppContent() {
         } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/catalog" element={<CourseCatalog />} />
         <Route path="/course/:id" element={<CoursePageWrapper />} />
         <Route path="/course/:id/payment" element={<CoursePaymentWrapper />} />

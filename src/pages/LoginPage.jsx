@@ -1,20 +1,69 @@
 import React, { useState, useEffect } from "react";
 import { FaGoogle, FaEyeSlash, FaEye, FaUser, FaUserTag, FaCheck } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
 import bgLeft from "../assets/bg-left.webp";
+// Remove: import { useToast } from "@/components/ui/use-toast";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const { toast } = useToast(); // Removed as per edit hint
+  const navigate = useNavigate();
 
   // Prevent background scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    // Add base users if not present
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.length === 0) {
+      const baseUsers = [
+        { fullName: "user", email: "user@learnsphere.com", password: "12345", isInstructor: false },
+        { fullName: "admin", email: "admin@learnsphere.com", password: "12345", isInstructor: false },
+        { fullName: "instructor", email: "instructor@learnsphere.com", password: "12345", isInstructor: true },
+      ];
+      localStorage.setItem("users", JSON.stringify(baseUsers));
+    }
     return () => { document.body.style.overflow = ''; };
   }, []);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Simulate loading delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Get users from localStorage
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const foundUser = users.find(
+      (u) =>
+        (u.fullName === username || u.username === username || u.email === username) &&
+        u.password === password
+    );
+
+    if (
+      (username === "admin" && password === "admin") ||
+      foundUser
+    ) {
+      window.alert("Login Successful! Welcome back. Redirecting to dashboard...");
+      // Store authentication state
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("username", foundUser ? foundUser.fullName : username);
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } else {
+      window.alert("Login Failed! Invalid username/email or password.");
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div
@@ -60,7 +109,7 @@ const LoginPage = () => {
             {/* Email Field */}
             <div className="auth-form__span-2">
               <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="email">
-                E-mail Address
+                Username or Email
               </label>
               <input
                 id="txtLoginEmailId"
@@ -70,6 +119,9 @@ const LoginPage = () => {
                 placeholder="Enter E-mail Address"
                 autoFocus
                 required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                disabled={isLoading}
               />
             </div>
             {/* Password Field */}
@@ -85,6 +137,9 @@ const LoginPage = () => {
                   className="input w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] focus:border-[#333A2F] outline-none transition-colors"
                   placeholder="Enter Password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={isLoading}
                 />
                 <span
                   className="login-wrap-hide-pwd togglePassword absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700 text-lg"
@@ -130,8 +185,10 @@ const LoginPage = () => {
               type="button"
               className="login-btn auth-form__button w-full text-white py-3 px-4 text-base font-medium transition-colors duration-200 flex items-center justify-center rounded-lg"
               style={{ backgroundColor: '#333A2F' }}
+              onClick={handleLogin}
+              disabled={isLoading}
             >
-              Sign In
+              {isLoading ? "Logging In..." : "Sign In"}
             </button>
           </form>
           {/* Divider */}
