@@ -30,14 +30,13 @@ export default function CourseView() {
   }
 
   return (
-    <div className="min-h-screen bg-[#EBEDDF]">
+    <div className="min-h-screen bg-[#EBEDDF] mt-32">
       <DashboardHeader
         selectedTimeRange={selectedTimeRange}
         onTimeRangeChange={setSelectedTimeRange}
         course={course}
       />
       <div className="max-w-7xl mx-auto p-6">
-        
         <div className="space-y-8">
           <MetricsCards course={course} />
           <DashboardTabs course={course} />
