@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUserCircle, FaUser, FaBook, FaHistory, FaSignOutAlt } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Breadcrumb from './Breadcrumb';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const username = localStorage.getItem('username');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -31,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-90">
+    <header className="bg-white shadow-lg fixed top-0 left-0 w-full z-90 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -74,7 +77,60 @@ const Header = () => {
                 Sign In
               </Link>
             </nav>
-
+            {/* Profile Icon & Dropdown */}
+            {username && (
+              <div className="relative">
+                <button
+                  className="focus:outline-none"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                  aria-label="Profile menu"
+                >
+                  <FaUserCircle size={32} className="text-[#333A2F] hover:text-blue-600 transition-colors" />
+                </button>
+                {showProfileMenu && (
+                  <div
+                    className="absolute right-0 mt-2 w-56 rounded-lg shadow-lg z-50"
+                    style={{
+                      background: 'linear-gradient(139deg, rgba(36,40,50,1) 0%, rgba(36,40,50,1) 0%, rgba(37,28,40,1) 100%)',
+                      color: '#fff',
+                      border: '1.5px solid #42434a',
+                      padding: '0',
+                    }}
+                  >
+                    <div className="px-5 py-4 border-b border-[#42434a] flex items-center gap-3">
+                      <FaUserCircle size={28} className="text-blue-400" />
+                      <div>
+                        <div className="font-bold text-lg">{username}</div>
+                        <div className="text-xs text-[#bd89ff]">Logged in</div>
+                      </div>
+                    </div>
+                    <ul className="py-2">
+                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/profile'); }}>
+                        <FaUser />
+                        Profile
+                      </li>
+                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/dashboard'); }}>
+                        <FaBook />
+                        My Learning
+                      </li>
+                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/payment-history'); }}>
+                        <FaHistory />
+                        Payment History
+                      </li>
+                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#8e2a2a] hover:text-white transition-all" onClick={() => {
+                        localStorage.removeItem('isAuthenticated');
+                        localStorage.removeItem('username');
+                        setShowProfileMenu(false);
+                        navigate('/login');
+                      }}>
+                        <FaSignOutAlt />
+                        Logout
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
@@ -121,6 +177,24 @@ const Header = () => {
             </nav>
           </div>
         )}
+        {/* Hanging Breadcrumb */}
+        <div className="w-full flex justify-end pointer-events-none" style={{ position: 'relative', height: 0 }}>
+          <div
+            className="pointer-events-auto px-0 py-0 mr-4"
+            style={{
+              position: 'absolute',
+              top: 'calc(100%)', // right below the border
+              right: 0,
+              minWidth: '180px',
+              zIndex: 60,
+              background: 'none',
+              padding: 0,
+              border: 'none',
+            }}
+          >
+            <Breadcrumb />
+          </div>
+        </div>
       </div>
     </header>
   );

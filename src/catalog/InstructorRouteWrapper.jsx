@@ -16,7 +16,7 @@ const InstructorRouteWrapper = () => {
     );
   }
 
-  return <InstructorDetails courseData={selected} />;
+  return  <InstructorDetails courseData={selected} />;
 };
 
 export default InstructorRouteWrapper;

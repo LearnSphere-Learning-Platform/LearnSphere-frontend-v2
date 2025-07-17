@@ -1,5 +1,5 @@
 // catalog/CoursePageWrapper.jsx
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getCourseById } from "../hooks/useSelectedCourse";
 import Enrollment from "./Enrollment";
 import CourseInfo from "./CourseInfo";
@@ -8,13 +8,18 @@ import CourseInstructor from "./CourseInstructor";
 
 const CoursePageWrapper = () => {
   const { id } = useParams();
+  console.log('CoursePageWrapper param id:', id);
   const course = getCourseById(id);
+  console.log('CoursePageWrapper found course:', course);
+  const location = useLocation();
 
   if (!course) {
     return (
       <div className="text-center p-6 text-gray-700">Course not found</div>
     );
   }
+
+  // Only show payment page on /course/:id/payment route (handled by a separate component/route)
 
   return (
     <div className="max-w-10xl mx-auto px-4 bg-[#EBEDDF] pb-10">
