@@ -13,6 +13,15 @@ const Breadcrumb = () => {
     return course ? course.course_name : id;
   };
 
+  // Custom label mapping for static pages
+  const customLabels = {
+    'profile': 'Profile',
+    'my-learning': 'My Learning',
+    'payment-history': 'Payment History',
+    'instructor-dashboard': 'Instructor Dashboard',
+    'dashboard': 'Dashboard',
+  };
+
   // Find courseId in the path (after 'catalog', 'course', or 'instructor')
   let courseId = null;
   pathnames.forEach((segment, idx) => {
@@ -21,10 +30,17 @@ const Breadcrumb = () => {
     }
   });
 
-  // Build the breadcrumb segments: course name (if present), Catlog, Home
+  // Build the breadcrumb segments
   let segments = [];
   if (courseId) {
     segments.push({ label: getCourseTitle(courseId), to: `/course/${courseId}` });
+  }
+  // Add custom page if matched
+  if (!courseId && pathnames.length > 0) {
+    const last = pathnames[pathnames.length - 1];
+    if (customLabels[last]) {
+      segments.push({ label: customLabels[last], to: location.pathname });
+    }
   }
   segments.push({ label: 'Catlog', to: '/catalog' });
   segments.push({ label: 'Home', to: '/' });

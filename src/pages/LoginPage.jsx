@@ -56,6 +56,8 @@ const LoginPage = () => {
       // Store authentication state
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("username", foundUser ? foundUser.fullName : username);
+      // Store isInstructor flag
+      localStorage.setItem("isInstructor", foundUser ? foundUser.isInstructor : false);
       setTimeout(() => {
         navigate("/");
       }, 1500);

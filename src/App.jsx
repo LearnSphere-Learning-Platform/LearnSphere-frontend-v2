@@ -22,6 +22,9 @@ import CourseAddingForm from "./instructor/CourseAddingForm";
 import InstructorAnnouncementForm from "./instructor/InstructorAnnouncementForm";
 import InstructorDashboard from "./dashboard/InstructorDashboard";
 import CourseView from "./instructor/CourseView";
+import CoursePaymentHistory from "./pages/CoursePaymentHistory";
+import MyLearningPage from "./pages/MyLearningPage";
+import Profile from "./pages/Profile";
 
 function AppContent() {
   const location = useLocation();
@@ -59,6 +62,9 @@ function AppContent() {
         <Route path="/announcement" element={<InstructorAnnouncementForm />} />
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
         <Route path="/instructor-dashboard/course/:id" element={<CourseView />} />
+        <Route path="/payment-history" element={<CoursePaymentHistory />} />
+        <Route path="/my-learning" element={<MyLearningPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       {!hideFooter && <Footer />}
     </div>

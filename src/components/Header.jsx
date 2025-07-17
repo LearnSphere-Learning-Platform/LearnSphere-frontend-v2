@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FaBars, FaTimes, FaUserCircle, FaUser, FaBook, FaHistory, FaSignOutAlt } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
+import MyLearningPage from '../pages/MyLearningPage';
+import Profile from '../pages/Profile';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +11,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const username = localStorage.getItem('username');
+  const isInstructor = localStorage.getItem('isInstructor') === 'true';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -73,9 +76,11 @@ const Header = () => {
               >
                 Contact Us
               </button>
-              <Link to="/login" className="text-[#333A2F] font-medium hover:text-[#2a3028] transition-colors">
-                Sign In
-              </Link>
+              {!username && (
+                <Link to="/login" className="text-[#333A2F] font-medium hover:text-[#2a3028] transition-colors">
+                  Sign In
+                </Link>
+              )}
             </nav>
             {/* Profile Icon & Dropdown */}
             {username && (
@@ -89,9 +94,10 @@ const Header = () => {
                 </button>
                 {showProfileMenu && (
                   <div
-                    className="absolute right-0 mt-2 w-56 rounded-lg shadow-lg z-50"
+                    className="absolute right-0 mt-10 w-56 rounded-lg shadow-lg z-110"
                     style={{
                       background: 'linear-gradient(139deg, rgba(36,40,50,1) 0%, rgba(36,40,50,1) 0%, rgba(37,28,40,1) 100%)',
+                      // background: '#333A2F',
                       color: '#fff',
                       border: '1.5px solid #42434a',
                       padding: '0',
@@ -105,21 +111,37 @@ const Header = () => {
                       </div>
                     </div>
                     <ul className="py-2">
-                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/profile'); }}>
+                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all" onClick={() => { setShowProfileMenu(false); navigate('/profile'); }}>
                         <FaUser />
                         Profile
                       </li>
-                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/dashboard'); }}>
-                        <FaBook />
-                        My Learning
-                      </li>
-                      <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#5353ff] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/payment-history'); }}>
-                        <FaHistory />
-                        Payment History
-                      </li>
+                      {isInstructor ? (
+                        <>
+                          <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-white transition-all" onClick={() => { setShowProfileMenu(false); navigate('/instructor-dashboard'); }}>
+                            <FaBook />
+                            Dashboard
+                          </li>
+                          <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all" onClick={() => { setShowProfileMenu(false); navigate('/my-learning'); }}>
+                            <FaBook />
+                            My Learning
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all" onClick={() => { setShowProfileMenu(false); navigate('/my-learning'); }}>
+                            <FaBook />
+                            My Learning
+                          </li>
+                          <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all" onClick={() => { setShowProfileMenu(false); navigate('/payment-history'); }}>
+                            <FaHistory />
+                            Payment History
+                          </li>
+                        </>
+                      )}
                       <li className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#8e2a2a] hover:text-white transition-all" onClick={() => {
                         localStorage.removeItem('isAuthenticated');
                         localStorage.removeItem('username');
+                        localStorage.removeItem('isInstructor');
                         setShowProfileMenu(false);
                         navigate('/login');
                       }}>
