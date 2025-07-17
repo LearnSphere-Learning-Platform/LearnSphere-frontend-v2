@@ -17,7 +17,7 @@ import ScrollToTop from "./ScrollToTop";
 import CourseAddingForm from "./instructor/CourseAddingForm";
 import InstructorAnnouncementForm from "./instructor/InstructorAnnouncementForm";
 import InstructorDashboard from "./dashboard/InstructorDashboard";
-
+import CourseView from "./instructor/CourseView";
 function AppContent() {
   const location = useLocation();
   const hideFooter =
@@ -48,11 +48,12 @@ function AppContent() {
         <Route path="/course-adding" element={<CourseAddingForm />} />
         <Route path="/announcement" element={<InstructorAnnouncementForm />} />
 
-  {/* ✅ Added Instructor Dashboard Route */}
+        {/* ✅ Added Instructor Dashboard Route */}
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
-
-
-
+        <Route
+          path="/instructor-dashboard/course/:id"
+          element={<CourseView />}
+        />
       </Routes>
       {!hideFooter && <Footer />}
     </div>
@@ -68,4 +69,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
