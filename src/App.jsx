@@ -14,6 +14,8 @@ import { CourseCatalog } from "./catalog/CourseCatalog";
 import CoursePageWrapper from "./catalog/CoursePageWrapper"; // ⬅️ new component
 import DashBoard from './dashboard/DashBoard';
 import ScrollToTop from './ScrollToTop';
+import CoursePaymentWrapper from "./catalog/CoursePaymentWrapper";
+import { getCourseById } from './hooks/useSelectedCourse';
 
 function AppContent() {
   const location = useLocation();
@@ -37,6 +39,7 @@ function AppContent() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/catalog" element={<CourseCatalog />} />
         <Route path="/course/:id" element={<CoursePageWrapper />} />
+        <Route path="/course/:id/payment" element={<CoursePaymentWrapper />} />
         <Route path="/course/:id/dashboard" element={<DashBoard />} />
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
       </Routes>
@@ -45,6 +48,9 @@ function AppContent() {
     </div>
   );
 }
+
+// Wrapper to provide course prop to CoursePayment
+// (moved to src/catalog/CoursePaymentWrapper.jsx)
 
 function App() {
   return (

@@ -11,7 +11,7 @@ const Enrollment = () => {
   const course = getCourseById(id);
 
   // Use selectedCourse if available, otherwise fall back to course from URL
-  const courseToDisplay = selectedCourse || course;
+  const courseToDisplay = course;
 
   if (!courseToDisplay) {
     return <div className="text-white text-center p-4">Loading...</div>;

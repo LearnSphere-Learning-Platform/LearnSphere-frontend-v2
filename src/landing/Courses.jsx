@@ -29,7 +29,7 @@ const Courses = () => {
             <div
               key={course.id}
               className="bg-white rounded-xl overflow-hidden shadow-lg transition-shadow hover:shadow-xl cursor-pointer"
-              onClick={() => navigate(`/course/${course.id}/dashboard`)}
+              onClick={() => { console.log('Navigating to course id:', course.id); navigate(`/course/${course.id}`); }}
             >
               <div className="relative">
                 <img 
