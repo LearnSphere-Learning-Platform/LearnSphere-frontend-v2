@@ -97,20 +97,20 @@ const CourseCard = ({ course, onDelete, onEdit }) => {
         <div className="flex space-x-2">
           <button
             onClick={handleViewCourse}
-            className="flex-1 bg-gray-50 border border-gray-200 text-gray-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
+            className="flex-1 bg-gray-50 border border-gray-200 text-gray-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 cursor-pointer"
           >
             <Eye className="h-4 w-4" />
             <span>View Course</span>
           </button>
           <button
             onClick={() => onEdit(course)}
-            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer"
           >
             <Edit className="h-4 w-4" />
           </button>
           <button
             onClick={() => onDelete(course.id)}
-            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
           >
             <Trash2 className="h-4 w-4" />
           </button>
@@ -154,7 +154,7 @@ const MyCourses = ({
           </div>
           <button
             onClick={onCreateCourse}
-            className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2"
+            className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2 cursor-pointer"
           >
             <Plus className="h-4 w-4" />
             <span>Create Course</span>
@@ -192,7 +192,7 @@ const MyCourses = ({
             {!searchTerm && (
               <button
                 onClick={onCreateCourse}
-                className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2 mx-auto"
+                className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2 mx-auto cursor-pointer"
               >
                 <Plus className="h-4 w-4" />
                 <span>Create Your First Course</span>

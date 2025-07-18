@@ -23,7 +23,7 @@ const courseData = [
       ],
       highlights: [
         "So, do you want to learn how to build awesome websites with modern HTML and CSS?",
-        "Looking for a complete JavaScript course that takes you from zero to an advanced developer?",
+        "Looking      a complete JavaScript course that takes you from zero to an advanced developer?",
         "Or maybe you want to build modern and powerful front-end applications with React?",
       ],
     },

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { CheckCircle, PlayCircle, Clock, Star } from "lucide-react";
 
 const CourseTabs = ({ courseData }) => {
   const [activeTab, setActiveTab] = useState("about");
+  const [showEnrollModal, setShowEnrollModal] = useState(false);
 
   const tabs = [
     { id: "about", label: "About" },
@@ -64,16 +65,19 @@ const CourseTabs = ({ courseData }) => {
       </h3>
       <div className="space-y-4">
         {courseData.course_content.map((session, sessionIndex) => (
-                      <div
-              key={sessionIndex}
-              className="border border-gray-200 rounded-lg overflow-hidden"
-            >
-              <div className="bg-[#EBEDDF] p-4">
-                <h4 className="font-semibold text-[#333A2F]">{session.session}</h4>
-                <p className="text-sm text-gray-600 mt-1">
-                  {session.module_description}
-                </p>
-              </div>
+          <div
+            key={sessionIndex}
+            className="border border-gray-200 rounded-lg overflow-hidden cursor-pointer"
+            onClick={() => setShowEnrollModal(true)}
+          >
+            <div className="bg-[#EBEDDF] p-4">
+              <h4 className="font-semibold text-[#333A2F]">
+                {session.session}
+              </h4>
+              <p className="text-sm text-gray-600 mt-1">
+                {session.module_description}
+              </p>
+            </div>
             <div className="p-4">
               <div className="space-y-2">
                 {session.videos.map((video, videoIndex) => (
@@ -103,6 +107,36 @@ const CourseTabs = ({ courseData }) => {
           </div>
         ))}
       </div>
+      {/* Enroll Modal */}
+      {showEnrollModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full text-center">
+            <h2 className="text-xl font-bold mb-4 text-[#333A2F]">
+              Enroll to View Content
+            </h2>
+            <p className="mb-6 text-gray-600">
+              You need to enroll in this course to view the full curriculum and
+              content.
+            </p>
+            <button
+              className="bg-[#333A2F] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#2a3028] transition-colors mr-5 cursor-pointer"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                setShowEnrollModal(false);
+                // Optionally trigger enroll flow here
+              }}
+            >
+              Enroll Now
+            </button>
+            <button
+              className="bg-[#fff] border border-[#333A2F] px-6 py-2 rounded-lg font-semibold mt-3 text-gray-500 hover:text-[#333A2F]  cursor-pointer"
+              onClick={() => setShowEnrollModal(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -127,7 +161,7 @@ const CourseTabs = ({ courseData }) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`px-6 py-4 text-sm font-medium border-b-2 transition-colors cursor-pointer ${
                 activeTab === tab.id
                   ? "border-[#333A2F] text-[#333A2F] bg-[#EBEDDF]"
                   : "border-transparent text-gray-500 hover:text-[#333A2F] hover:border-gray-300"

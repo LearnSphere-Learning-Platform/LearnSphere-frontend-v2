@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { FaPlay, FaCheck, FaUsers, FaAward, FaGlobe } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { FaPlay, FaCheck, FaUsers, FaAward, FaGlobe } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const DEMO_VIDEO_URL = 'https://www.youtube.com/embed/ZK-rNEhJIDs'; // Use embed link for iframe
+const DEMO_VIDEO_URL = "https://www.youtube.com/embed/ZK-rNEhJIDs"; // Use embed link for iframe
 
 const Hero = () => {
   const [showDemo, setShowDemo] = useState(false);
@@ -20,19 +20,20 @@ const Hero = () => {
                 <span className="block text-[#333A2F]">Limits</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Start, switch, or advance your career with thousands of courses from world-class universities and companies.
+                Start, switch, or advance your career with thousands of courses
+                from world-class universities and companies.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                className="flex items-center justify-center px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg transition-colors hover:bg-[#2a3028]"
-                onClick={() => navigate('/catalog')}
+                className="flex items-center justify-center px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg transition-colors hover:bg-[#2a3028] cursor-pointer"
+                onClick={() => navigate("/catalog")}
               >
                 Get Started
               </button>
               <button
-                className="flex items-center justify-center px-8 py-4 bg-white text-gray-800 rounded-lg font-bold text-lg border border-gray-300 transition-colors hover:bg-gray-50"
+                className="flex items-center justify-center px-8 py-4 bg-white text-gray-800 rounded-lg font-bold text-lg border border-gray-300 transition-colors hover:bg-gray-50 cursor-pointer"
                 onClick={() => setShowDemo(true)}
               >
                 <FaPlay className="mr-2" />
@@ -68,8 +69,8 @@ const Hero = () => {
               <div className="relative h-full">
                 {/* Background Image */}
                 <div className="absolute inset-0 rounded-xl overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  <img
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                     alt="Student learning online"
                     className="w-full h-full object-cover rounded-xl opacity-80"
                   />
@@ -79,8 +80,12 @@ const Hero = () => {
                 {/* Main content area */}
                 <div className="relative z-10 flex items-center justify-center h-full">
                   <div className="text-center p-6">
-                    <h3 className="text-2xl lg:text-3xl font-bold text-[#333A2F] mb-4">Interactive Learning</h3>
-                    <p className="text-gray-600 text-lg">Experience hands-on learning with our interactive platform</p>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-[#333A2F] mb-4">
+                      Interactive Learning
+                    </h3>
+                    <p className="text-gray-600 text-lg">
+                      Experience hands-on learning with our interactive platform
+                    </p>
                   </div>
                 </div>
 
