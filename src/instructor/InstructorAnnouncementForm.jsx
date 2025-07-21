@@ -1,17 +1,24 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import useAllCourses from "../hooks/useAllCourses";
 
 const InstructorAnnouncementForm = () => {
   const navigate = useNavigate();
-  const [announcement, setAnnouncement] = useState({
-    title: "",
-    message: "",
-    type: "info",
-    course: "",
-    attachment: "",
-  });
+  const location = useLocation();
+  const isEdit = location.state?.isEdit;
+  const editAnnouncement = location.state?.announcement;
+  const [announcement, setAnnouncement] = useState(
+    isEdit && editAnnouncement
+      ? { ...editAnnouncement }
+      : {
+          title: "",
+          message: "",
+          type: "info",
+          course: "",
+          attachment: "",
+        }
+  );
 
   const courses = useAllCourses();
 
@@ -22,8 +29,8 @@ const InstructorAnnouncementForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Announcement Submitted:", announcement);
-    navigate("/");
+    // Instead of just logging, navigate back and pass the announcement and edit flag
+    navigate("/instructor-dashboard", { state: { announcement, isEdit } });
   };
 
   const getSelectedCourse = () => {
@@ -55,7 +62,7 @@ const InstructorAnnouncementForm = () => {
           </button>
           <div>
             <h1 className="text-xl font-medium text-gray-800">
-              Create New Announcement
+              {isEdit ? "Edit Announcement" : "Create New Announcement"}
             </h1>
             <p className="text-gray-600 text-[13px] mt-[2px]">
               Build an engaging learning experience for your students
@@ -96,8 +103,7 @@ const InstructorAnnouncementForm = () => {
                   ) : (
                     courses.map((course) => (
                       <option key={course.id} value={course.id}>
-                        {course.name} ({course.section}) - {course.students}{" "}
-                        students
+                        {course.course_name} 
                       </option>
                     ))
                   )}
@@ -109,10 +115,6 @@ const InstructorAnnouncementForm = () => {
                       <span className="font-medium">Selected:</span>{" "}
                       {getSelectedCourse()?.name} -{" "}
                       {getSelectedCourse()?.section}
-                    </p>
-                    <p className="text-xs text-blue-600 mt-1">
-                      This announcement will be sent to{" "}
-                      {getSelectedCourse()?.students} students
                     </p>
                   </div>
                 )}
@@ -205,10 +207,9 @@ const InstructorAnnouncementForm = () => {
                     {announcement.course && (
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="px-3 py-1 bg-[#333A2F] text-white rounded-full text-xs font-medium">
-                          {getSelectedCourse()?.id}
+                          {getSelectedCourse()?.name}
                         </span>
                         <span className="text-sm font-medium text-gray-700">
-                          {getSelectedCourse()?.name} -{" "}
                           {getSelectedCourse()?.section}
                         </span>
                         <span className="text-xs text-gray-500 ml-auto">
@@ -291,7 +292,7 @@ const InstructorAnnouncementForm = () => {
                   }
                   className="w-full sm:w-auto bg-gradient-to-r from-[#333A2F] to-[#3a4235] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:from-[#3a4235] hover:to-[#404739] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 focus:ring-2 focus:ring-[#333A2F] focus:ring-offset-2 shadow-lg"
                 >
-                  Post Announcement
+                  {isEdit ? "Save Changes" : "Post Announcement"}
                 </button>
               </div>
             </div>

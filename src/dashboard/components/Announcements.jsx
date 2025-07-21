@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Megaphone,
@@ -116,14 +116,14 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
         </div>
         <div className="flex space-x-2">
           <button
-            onClick={() => onEdit(announcement.id)}
-            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+            onClick={() => onEdit(announcement)}
+            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer"
           >
             <Edit className="h-4 w-4" />
           </button>
           <button
             onClick={() => onDelete(announcement.id)}
-            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
           >
             <Trash2 className="h-4 w-4" />
           </button>
@@ -160,10 +160,6 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
             </div>
           )}
         </div>
-        <button className="flex items-center space-x-1 text-blue-600 hover:text-blue-800 transition-colors">
-          <Eye className="h-4 w-4" />
-          <span>View Details</span>
-        </button>
       </div>
     </div>
   );
@@ -174,15 +170,49 @@ const Announcements = () => {
   const [announcements, setAnnouncements] = useState(sampleAnnouncements);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
+  useEffect(() => {
+    if (
+      window.history.state &&
+      window.history.state.usr &&
+      window.history.state.usr.announcement
+    ) {
+      const { announcement, isEdit } = window.history.state.usr;
+      setAnnouncements((prev) => {
+        if (isEdit) {
+          // Edit: update the existing announcement
+          return prev.map((a) =>
+            a.id === announcement.id ? { ...announcement } : a
+          );
+        } else {
+          // New: add to the list
+          return [
+            {
+              ...announcement,
+              id: Date.now().toString(),
+              createdAt: new Date().toISOString(),
+              isPublished: true,
+            },
+            ...prev,
+          ];
+        }
+      });
+      // Clean up navigation state
+      window.history.replaceState({}, document.title);
+    }
+  }, []);
 
   const handleDeleteAnnouncement = (announcementId) => {
-    setAnnouncements(
-      announcements.filter((announcement) => announcement.id !== announcementId)
-    );
+    if (window.confirm("Are you sure you want to delete this announcement?")) {
+      setAnnouncements(
+        announcements.filter(
+          (announcement) => announcement.id !== announcementId
+        )
+      );
+    }
   };
 
-  const handleEditAnnouncement = (announcementId) => {
-    console.log("Edit announcement:", announcementId);
+  const handleEditAnnouncement = (announcement) => {
+    navigate("/announcement", { state: { announcement, isEdit: true } });
   };
 
   const handleCreateAnnouncement = () => {
