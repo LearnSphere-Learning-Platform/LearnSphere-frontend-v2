@@ -3,8 +3,21 @@ const courseData = [
   {
     id: 1,
     course_name: "React - The Complete Guide (2024 Edition)",
+    level: "intermediate",
+    language: "English",
+    total_no_hours: "48h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 12,
+
+    // Additional fields from original data
     description: "Master React with hooks, context API, Redux, and more",
-    image: "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
+    image:
+      "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
+    preview: "https://youtu.be/CgkZ7MvWUAA?si=yQV3pUWCsik5NTUq",
+    course_rating: 4.8,
 
     instructor: {
       name: "Maximilian Schwarzmüller",
@@ -28,276 +41,332 @@ const courseData = [
       ],
     },
 
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 48,
-    no_of_sessions: 6,
-    no_of_tests_available: 12,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://youtu.be/CgkZ7MvWUAA?si=yQV3pUWCsik5NTUq",
     about_course: {
       skills: ["React Hooks", "Redux", "React Router", "Context API"],
       complete_description:
         "The most comprehensive React course - from basics to advanced patterns.",
     },
+
     outcome: [
       "Build enterprise-grade React applications",
       "Master state management",
       "Create reusable component libraries",
     ],
+
     course_content: [
       {
-        session: "1. Getting Started with React",
+        session: "Getting Started with React",
         module_description:
           "Setup development environment and learn core concepts",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Why React?",
-            duration: "8:32",
-            preview: true,
             type: "video",
+            duration: "8:32",
+            description: "Introduction to React and its benefits",
+            preview: true,
             resources: ["Course Slides"],
           },
           {
             id: 2,
             title: "Creating Your First App",
+            type: "video",
             duration: "12:45",
+            description:
+              "Step-by-step guide to creating your first React application",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Understanding Components",
+            type: "video",
             duration: "14:20",
-            preview: false,
-            type: "theory",
+            description: "Deep dive into React components and their structure",
+            preview: true,
           },
           {
             id: 4,
             title: "Practice: Build a Profile Card",
+            type: "assignment",
             duration: "18:00",
+            description: "Hands-on project to build a profile card component",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 5,
             title: "Session Recap",
+            type: "video",
             duration: "5:10",
+            description: "Summary of key concepts covered in this session",
             preview: false,
-            type: "summary",
           },
         ],
       },
       {
-        session: "2. Components & Props Deep Dive",
+        session: "Components & Props Deep Dive",
         module_description: "Master component composition and props",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Props vs State",
+            type: "video",
             duration: "15:22",
+            description: "Understanding the difference between props and state",
             preview: true,
-            type: "theory",
           },
           {
             id: 7,
             title: "Building a Product Card",
+            type: "coding",
             duration: "22:30",
-            preview: false,
-            type: "demo",
+            description: "Interactive coding exercise to build a product card",
+            preview: true,
           },
           {
             id: 8,
             title: "Component Lifecycle",
+            type: "pdf",
             duration: "19:15",
+            description: "Comprehensive guide to React component lifecycle",
             preview: false,
-            type: "video",
+            file_size: "1.2 MB",
           },
           {
             id: 9,
             title: "Assignment: E-commerce Item",
-            duration: "30:00",
-            preview: false,
             type: "assignment",
+            duration: "30:00",
+            description: "Build an e-commerce item component with props",
+            preview: true,
           },
           {
             id: 10,
             title: "Q&A Session",
+            type: "video",
             duration: "10:45",
+            description: "Questions and answers about components and props",
             preview: false,
-            type: "discussion",
           },
         ],
       },
       {
-        session: "3. State Management with Hooks",
+        session: "State Management with Hooks",
         module_description: "Understand and implement React Hooks for state",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Introducing useState",
-            duration: "16:00",
-            preview: true,
             type: "video",
+            duration: "16:00",
+            description:
+              "Learn how to use the useState hook for state management",
+            preview: true,
           },
           {
             id: 12,
             title: "Understanding useEffect",
+            type: "video",
             duration: "20:00",
+            description: "Master the useEffect hook for side effects",
             preview: true,
-            type: "theory",
           },
           {
             id: 13,
             title: "Building a Counter App",
+            type: "coding",
             duration: "25:00",
+            description:
+              "Hands-on coding exercise to build a counter application",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 14,
             title: "Custom Hooks",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "demo",
+            description: "Learn how to create and use custom hooks",
+            preview: true,
           },
           {
             id: 15,
             title: "Debugging Hooks",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Common hook debugging techniques and best practices",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. React Router & Navigation",
+        session: "React Router & Navigation",
         module_description: "Implement routing in React applications",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Introduction to React Router",
-            duration: "14:30",
-            preview: true,
             type: "video",
+            duration: "14:30",
+            description: "Getting started with React Router for navigation",
+            preview: true,
           },
           {
             id: 17,
             title: "Nested Routes",
+            type: "video",
             duration: "19:00",
-            preview: false,
-            type: "demo",
+            description: "Implementing nested routing structures",
+            preview: true,
           },
           {
             id: 18,
             title: "Programmatic Navigation",
+            type: "video",
             duration: "16:00",
-            preview: false,
-            type: "theory",
+            description: "Navigate programmatically using React Router",
+            preview: true,
           },
           {
             id: 19,
             title: "Practice: Blog Navigation",
+            type: "assignment",
             duration: "28:00",
+            description: "Build a complete blog navigation system",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 20,
             title: "Route Guards",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Implementing route protection and guards",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. Context API & Redux for Global State",
+        session: "Context API & Redux for Global State",
         module_description: "Manage application-wide state effectively",
-        videos: [
+        content: [
           {
             id: 21,
             title: "When to use Context API",
+            type: "video",
             duration: "17:00",
+            description: "Understanding when and how to use React Context API",
             preview: true,
-            type: "theory",
           },
           {
             id: 22,
             title: "Redux Fundamentals",
+            type: "pdf",
             duration: "22:00",
+            description: "Complete guide to Redux state management",
             preview: true,
-            type: "video",
+            file_size: "3.1 MB",
           },
           {
             id: 23,
             title: "Connecting React to Redux",
+            type: "video",
             duration: "28:00",
-            preview: false,
-            type: "demo",
+            description: "Integrating Redux with React applications",
+            preview: true,
           },
           {
             id: 24,
             title: "Middleware in Redux",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Understanding and implementing Redux middleware",
+            preview: true,
           },
           {
             id: 25,
             title: "Assignment: Shopping Cart",
-            duration: "40:00",
-            preview: false,
             type: "assignment",
+            duration: "40:00",
+            description: "Build a complete shopping cart with Redux",
+            preview: true,
           },
         ],
       },
       {
-        session: "6. Advanced React Patterns & Deployment",
+        session: "Advanced React Patterns & Deployment",
         module_description: "Explore advanced techniques and deploy your apps",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Render Props & HOCs",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Advanced patterns: Render Props and Higher-Order Components",
+            preview: true,
           },
           {
             id: 27,
             title: "Performance Optimization",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Techniques for optimizing React application performance",
+            preview: true,
           },
           {
             id: 28,
             title: "Testing React Components",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description: "Comprehensive guide to testing React components",
+            preview: true,
           },
           {
             id: 29,
             title: "Deployment Strategies",
+            type: "pdf",
             duration: "15:00",
-            preview: false,
-            type: "video",
+            description: "Various strategies for deploying React applications",
+            preview: true,
+            file_size: "2.8 MB",
           },
           {
             id: 30,
             title: "Course Project: Final Review",
+            type: "coding",
             duration: "35:00",
+            description: "Final project review and code walkthrough",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Evaluate your understanding of React concepts",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: React Mastery",
+            type: "quiz",
+            duration: "25:00",
+            description: "Comprehensive test covering all React concepts",
             preview: false,
-            type: "coding-exercise",
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 7,
+    status: "published",
+    rating: 4.8,
+    students: 125847,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 48,
+    video_file: null,
+    image_file: null,
   },
 
   // 2. Python Data Science (5 sessions)
@@ -305,7 +374,8 @@ const courseData = [
     id: 2,
     course_name: "Python for Data Science: Complete Bootcamp",
     description: "Master Pandas, NumPy, Matplotlib for data analysis",
-    image: "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
+    image:
+      "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
     instructor: {
       name: "Dr. Angela Yu",
       mailid: "angela@example.com",
@@ -561,7 +631,8 @@ const courseData = [
     id: 3,
     course_name: "The Complete Web Developer Bootcamp 2024",
     description: "HTML, CSS, JavaScript, Node, React, MongoDB",
-    image: "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
+    image:
+      "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
     instructor: {
       name: "Kyle Simpson",
       mailid: "kyle@example.com",
@@ -1211,7 +1282,8 @@ const courseData = [
     id: 5,
     course_name: "Complete UX/UI Design Masterclass",
     description: "Learn Figma, user research, wireframing, and prototyping",
-    image: "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
+    image:
+      "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
     instructor: {
       name: "Adrian Cantrill",
       mailid: "adrian@example.com",
@@ -1432,7 +1504,8 @@ const courseData = [
     id: 6,
     course_name: "DevOps with AWS: From Zero to Hero",
     description: "Implement CI/CD, automation, and scaling on AWS",
-    image: "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
+    image:
+      "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
     instructor: {
       name: "Paul Hudson",
       mailid: "paul@example.com",
@@ -1741,7 +1814,8 @@ const courseData = [
       summary: "Data Scientist",
       overall_rating: 4.7,
       no_of_courses_released: 25,
-      avatar: "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
+      avatar:
+        "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -2726,7 +2800,8 @@ const courseData = [
     course_name: "Blockchain A-Z™: Learn How To Build Your First Blockchain",
     description:
       "Understand blockchain technology and build a simple blockchain",
-    image: "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
+    image:
+      "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -2948,7 +3023,8 @@ const courseData = [
     course_name: "Financial Modeling & Valuation Analyst (FMVA®) Certification",
     description:
       "Master financial modeling, valuation, and Excel for corporate finance roles.",
-    image: "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
+    image:
+      "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
     instructor: {
       name: "CFI - Corporate Finance Institute",
       mailid: "support@cfi.com",
@@ -3287,7 +3363,8 @@ const courseData = [
     course_name: "Generative AI with Python: From Zero to GPT",
     description:
       "Learn to build, train, and deploy generative models (GANs, Transformers, LLMs) using Python and PyTorch/TensorFlow.",
-    image: "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
+    image:
+      "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -3604,7 +3681,8 @@ const courseData = [
     course_name: "Digital Painting Masterclass in Adobe Photoshop",
     description:
       "Learn to create stunning digital paintings from scratch using Adobe Photoshop.",
-    image: "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
+    image:
+      "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4694,7 +4772,8 @@ const courseData = [
     course_name: "Quantum Computing Fundamentals: A Gentle Introduction",
     description:
       "Explore the mind-bending world of quantum computing, from qubits to quantum algorithms.",
-    image: "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
+    image:
+      "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4967,7 +5046,8 @@ const courseData = [
       "Complete Supply Chain Management: From Procurement to Delivery",
     description:
       "Learn end-to-end supply chain strategies, logistics, and operations for business efficiency.",
-    image: "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -5282,7 +5362,8 @@ const courseData = [
     course_name: "Adobe Premiere Pro CC: Master Video Editing for Beginners",
     description:
       "Learn to edit professional-quality videos for YouTube, social media, and film using Adobe Premiere Pro.",
-    image: "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
+    image:
+      "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",

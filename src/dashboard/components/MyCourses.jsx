@@ -1,4 +1,3 @@
-// MyCourses.jsx
 import React, { useState } from "react";
 import {
   BookOpen,
@@ -13,7 +12,6 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// ======================= CourseCard ===========================
 const CourseCard = ({ course, onDelete, onEdit }) => {
   const navigate = useNavigate();
 
@@ -120,7 +118,6 @@ const CourseCard = ({ course, onDelete, onEdit }) => {
   );
 };
 
-// ======================= MyCourses ===========================
 const MyCourses = ({
   courses = [],
   onCreateCourse,
@@ -203,7 +200,7 @@ const MyCourses = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course) => (
               <CourseCard
-                key={course.id || course._id} // Ensure key is unique
+                key={course.id || course._id}
                 course={course}
                 onDelete={onDeleteCourse}
                 onEdit={onEditCourse}

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BookOpen, Star, Users, Clock, TrendingUp } from "lucide-react";
 import MyCourses from "./components/MyCourses";
 import Announcements from "./components/Announcements";
-import CourseAddingForm from "../instructor/CourseAddingForm";
-import useAllCourses from "../hooks/useAllCourses"; // Import the hook
+import useAllCourses from "../hooks/useAllCourses";
 
 const StatsCards = ({ stats }) => {
   const formatNumber = (num) => {
@@ -69,75 +68,70 @@ const StatsCards = ({ stats }) => {
   );
 };
 
-// Main Dashboard Component
 const InstructorDashboard = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("courses");
-  const [currentView, setCurrentView] = useState("dashboard"); // New state for view management
-  const [editingCourse, setEditingCourse] = useState(null); // New state for editing course
-  const initialCourses = useAllCourses(); // Use the hook to get initial courses
-  const [courses, setCourses] = useState(initialCourses); // Local state for course management
+  const initialCourses = useAllCourses();
+  const [courses, setCourses] = useState(initialCourses);
 
   // Update local courses when hook data changes
   React.useEffect(() => {
     setCourses(initialCourses);
   }, [initialCourses]);
 
+  // Load courses from localStorage on component mount
+  React.useEffect(() => {
+    const savedCourses = localStorage.getItem("instructorCourses");
+    if (savedCourses) {
+      try {
+        const parsedCourses = JSON.parse(savedCourses);
+        setCourses([...initialCourses, ...parsedCourses]);
+      } catch (error) {
+        console.error("Error parsing saved courses:", error);
+      }
+    }
+  }, [initialCourses]);
+
   const handleCreateCourse = () => {
-    setEditingCourse(null);
-    setCurrentView("form");
+    navigate("/course-adding");
   };
 
   const handleEditCourse = (course) => {
-    setEditingCourse(course);
-    setCurrentView("form");
-  };
-
-  const handleBackToDashboard = () => {
-    setCurrentView("dashboard");
-    setEditingCourse(null);
-  };
-
-  const handleSaveCourse = (courseData) => {
-    if (editingCourse) {
-      // Update existing course
-      setCourses((prevCourses) =>
-        prevCourses.map((course) =>
-          course.id === editingCourse.id
-            ? {
-                ...courseData,
-                id: editingCourse.id,
-                created_at: editingCourse.created_at,
-                updated_at: new Date().toISOString(),
-              }
-            : course
-        )
-      );
-    } else {
-      // Create new course
-      const newCourse = {
-        ...courseData,
-        id: Date.now(),
-        created_at: new Date().toISOString(),
-        status: "draft",
-        rating: 0,
-        students: 0,
-        duration: courseData.total_no_hours || "0h",
-      };
-      setCourses((prevCourses) => [...prevCourses, newCourse]);
-    }
-
-    setCurrentView("dashboard");
-    setEditingCourse(null);
+    // Store the course data in localStorage for the form to access
+    localStorage.setItem("editingCourse", JSON.stringify(course));
+    navigate(`/course-adding/${course.id}`);
   };
 
   const handleDeleteCourse = (courseId) => {
     if (window.confirm("Are you sure you want to delete this course?")) {
-      setCourses((prevCourses) =>
-        prevCourses.filter((course) => course.id !== courseId)
+      const updatedCourses = courses.filter((course) => course.id !== courseId);
+      setCourses(updatedCourses);
+
+      // Update localStorage
+      const customCourses = updatedCourses.filter(
+        (course) => !initialCourses.find((initial) => initial.id === course.id)
       );
+      localStorage.setItem("instructorCourses", JSON.stringify(customCourses));
     }
   };
+
+  // Listen for course updates from the form
+  React.useEffect(() => {
+    const handleStorageChange = () => {
+      const savedCourses = localStorage.getItem("instructorCourses");
+      if (savedCourses) {
+        try {
+          const parsedCourses = JSON.parse(savedCourses);
+          setCourses([...initialCourses, ...parsedCourses]);
+        } catch (error) {
+          console.error("Error parsing saved courses:", error);
+        }
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, [initialCourses]);
 
   const stats = {
     totalCourses: courses.length,
@@ -156,18 +150,6 @@ const InstructorDashboard = () => {
       .length,
   };
 
-  // If we're in form view, show the CourseAddingForm
-  if (currentView === "form") {
-    return (
-      <CourseAddingForm
-        editingCourse={editingCourse}
-        onSave={handleSaveCourse}
-        onCancel={handleBackToDashboard}
-      />
-    );
-  }
-
-  // Otherwise, show the dashboard
   return (
     <div className="min-h-screen bg-[#EBEDDF]">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
