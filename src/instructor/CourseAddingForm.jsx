@@ -1074,6 +1074,9 @@ const CourseAddingForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
+              onClick={() => {
+                console.log(JSON.stringify(course, null, 2));
+              }}
               className="inline-flex items-center gap-3 px-8 py-4 text-white font-semibold rounded-xl shadow-lg hover:opacity-90 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               style={{ backgroundColor: "#333A2F" }}
             >
