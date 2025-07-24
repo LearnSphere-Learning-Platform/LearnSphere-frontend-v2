@@ -30,16 +30,18 @@ import CourseView from "./instructor/CourseView";
 import CoursePaymentHistory from "./pages/CoursePaymentHistory";
 import MyLearningPage from "./pages/MyLearningPage";
 import Profile from "./pages/Profile";
+import InstructorDetails from "./pages/InstructorDetails";
 
 function AppContent() {
   const location = useLocation();
 
   const hideFooter =
-    location.pathname === "/login" || location.pathname === "/signup";
+    location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/forgot-password" || location.pathname === "/instructor-details";
   const hideHeader =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
-    location.pathname === "/forgot-password";
+    location.pathname === "/forgot-password" ||
+    location.pathname === "/instructor-details";
 
   return (
     <div className="min-h-screen bg-white">
@@ -69,13 +71,12 @@ function AppContent() {
         <Route path="/course-adding/:courseId" element={<CourseAddingForm />} />
         <Route path="/announcement" element={<InstructorAnnouncementForm />} />
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
-        <Route
-          path="/instructor-dashboard/course/:id"
-          element={<CourseView />}
-        />
+        <Route path="/instructor-dashboard/course/:id" element={<CourseView />} />
+        {/* <Route path="/instructor-dashboard/profile" element={<Profile />} /> */}
         <Route path="/payment-history" element={<CoursePaymentHistory />} />
         <Route path="/my-learning" element={<MyLearningPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/instructor-details" element={<InstructorDetails />} />
       </Routes>
       {!hideFooter && <Footer />}
     </div>

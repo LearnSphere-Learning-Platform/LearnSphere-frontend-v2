@@ -69,12 +69,24 @@ const Signup = () => {
       setIsLoading(false);
       return;
     }
-    // Add new user
-    users.push({ fullName, email, password, isInstructor });
-    localStorage.setItem("users", JSON.stringify(users));
-    window.alert("Signup Successful! You can now log in with your new account.");
-    setIsLoading(false);
-    setTimeout(() => navigate("/login"), 1200);
+    // Store basic signup data
+    localStorage.setItem('signupData', JSON.stringify({
+      fullName,
+      email,
+      isInstructor
+    }));
+
+    if (isInstructor) {
+      setIsLoading(false);
+      navigate('/instructor-details');
+    } else {
+      // Add new user
+      users.push({ fullName, email, password, isInstructor });
+      localStorage.setItem("users", JSON.stringify(users));
+      window.alert("Signup Successful! You can now log in with your new account.");
+      setIsLoading(false);
+      setTimeout(() => navigate("/login"), 1200);
+    }
   };
 
   return (
