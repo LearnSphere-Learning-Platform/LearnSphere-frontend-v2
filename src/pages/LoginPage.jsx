@@ -58,6 +58,15 @@ const LoginPage = () => {
       localStorage.setItem("username", foundUser ? foundUser.fullName : username);
       // Store isInstructor flag
       localStorage.setItem("isInstructor", foundUser ? foundUser.isInstructor : false);
+      // Store full user object for profile page
+      if (foundUser) {
+        localStorage.setItem("user", JSON.stringify(foundUser));
+        if (foundUser.isInstructor) {
+          localStorage.setItem("instructorData", JSON.stringify(foundUser));
+        } else {
+          localStorage.removeItem("instructorData");
+        }
+      }
       setTimeout(() => {
         navigate("/");
       }, 1500);

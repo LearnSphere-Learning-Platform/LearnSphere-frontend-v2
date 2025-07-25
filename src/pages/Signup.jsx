@@ -73,6 +73,7 @@ const Signup = () => {
     localStorage.setItem('signupData', JSON.stringify({
       fullName,
       email,
+      password, // Ensure password is included
       isInstructor
     }));
 

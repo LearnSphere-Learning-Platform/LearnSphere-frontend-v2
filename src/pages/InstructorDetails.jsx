@@ -140,6 +140,10 @@ const InstructorDetails = () => {
       
       // ALSO, create the user session object so the profile page knows we are logged in.
       localStorage.setItem('user', JSON.stringify(completeData));
+      // Add instructor to users array for login
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      users.push(completeData);
+      localStorage.setItem('users', JSON.stringify(users));
       
       toast({
         title: "Success",

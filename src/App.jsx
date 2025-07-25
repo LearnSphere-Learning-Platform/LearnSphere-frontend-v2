@@ -31,6 +31,7 @@ import CoursePaymentHistory from "./pages/CoursePaymentHistory";
 import MyLearningPage from "./pages/MyLearningPage";
 import Profile from "./pages/Profile";
 import InstructorDetails from "./pages/InstructorDetails";
+import InstructorProfile from "./pages/InstructorProfile";
 
 function AppContent() {
   const location = useLocation();
@@ -76,6 +77,7 @@ function AppContent() {
         <Route path="/payment-history" element={<CoursePaymentHistory />} />
         <Route path="/my-learning" element={<MyLearningPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/instructor-profile" element={<InstructorProfileWrapper />} />
         <Route path="/instructor-details" element={<InstructorDetails />} />
       </Routes>
       {!hideFooter && <Footer />}
@@ -90,6 +92,15 @@ function App() {
       <AppContent />
     </BrowserRouter>
   );
+}
+
+function InstructorProfileWrapper() {
+  // Get instructor data from localStorage
+  const instructorDataString = localStorage.getItem('instructorData');
+  const profile = instructorDataString ? JSON.parse(instructorDataString) : null;
+  // You can add editing logic if needed, for now just show profile
+  if (!profile) return <div>Loading...</div>;
+  return <InstructorProfile profile={profile} isEditing={false} handleChange={() => {}} />;
 }
 
 export default App;

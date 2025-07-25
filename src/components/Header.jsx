@@ -137,7 +137,11 @@ const Header = () => {
                         className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all"
                         onClick={() => {
                           setShowProfileMenu(false);
-                          navigate("/profile");
+                          if (isInstructor) {
+                            navigate("/instructor-profile");
+                          } else {
+                            navigate("/profile");
+                          }
                         }}
                       >
                         <FaUser />
