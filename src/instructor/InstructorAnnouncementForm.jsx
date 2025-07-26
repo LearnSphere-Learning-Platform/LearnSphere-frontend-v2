@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import useAllCourses from "../hooks/useAllCourses";
+import Swal from "sweetalert2";
 
 const InstructorAnnouncementForm = () => {
   const navigate = useNavigate();
@@ -49,14 +50,31 @@ const InstructorAnnouncementForm = () => {
     };
     return emojis[type] || "📢";
   };
+  const handleCancel = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "All unsaved changes will be lost.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, cancel it!",
+      cancelButtonText: "No, stay here",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("editingCourse");
+        navigate("/instructor-dashboard");
+      }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[#EBEDDF] p-4 sm:p-6 lg:p-8">
       <div className="w-full max-w-4xl mx-auto">
         <div className="flex items-baseline mb-8 mt-24">
           <button
-            onClick={() => navigate(-1)}
-            className="text-gray-600 hover:text-gray-900 transition-colors mr-2 flex"
+            onClick={handleCancel}
+            className="text-gray-600 hover:text-gray-900 transition-colors mr-2 flex cursor-pointer"
           >
             <ArrowLeft className="h-[18px] w-[18px] mt-[3px]" />
           </button>
@@ -103,7 +121,7 @@ const InstructorAnnouncementForm = () => {
                   ) : (
                     courses.map((course) => (
                       <option key={course.id} value={course.id}>
-                        {course.course_name} 
+                        {course.course_name}
                       </option>
                     ))
                   )}

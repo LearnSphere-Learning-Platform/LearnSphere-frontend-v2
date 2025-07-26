@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CourseTemplate from "./utils/CourseTemplata";
 import SessionFormList from "./SessionFormList";
+import Swal from "sweetalert2";
 import {
   BookOpen,
   IndianRupee,
@@ -422,14 +423,21 @@ const CourseAddingForm = () => {
   };
 
   const handleCancel = () => {
-    if (
-      window.confirm(
-        "Are you sure you want to cancel? All unsaved changes will be lost."
-      )
-    ) {
-      localStorage.removeItem("editingCourse");
-      navigate("/instructor-dashboard");
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "All unsaved changes will be lost.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, cancel it!",
+      cancelButtonText: "No, stay here",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("editingCourse");
+        navigate("/instructor-dashboard");
+      }
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -551,7 +559,7 @@ const CourseAddingForm = () => {
         <div className="flex items-center justify-between mb-10">
           <button
             onClick={handleCancel}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Courses
