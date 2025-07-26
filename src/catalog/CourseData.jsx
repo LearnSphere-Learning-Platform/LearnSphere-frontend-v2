@@ -84,7 +84,7 @@ const courseData = [
             title: "Practice: Build a Profile Card",
             duration: "18:00",
             preview: false,
-            type: "project",
+            type: "assignment",
           },
           {
             id: 5,
@@ -132,7 +132,7 @@ const courseData = [
             title: "Q&A Session",
             duration: "10:45",
             preview: false,
-            type: "discussion",
+            type: "video",
           },
         ],
       },
@@ -166,7 +166,7 @@ const courseData = [
             title: "Custom Hooks",
             duration: "18:00",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 15,
@@ -207,7 +207,7 @@ const courseData = [
             title: "Practice: Blog Navigation",
             duration: "28:00",
             preview: false,
-            type: "project",
+            type: "assignment",
           },
           {
             id: 20,
@@ -308,7 +308,7 @@ const courseData = [
           {
             id: 31,
             title: "Final Test: React Mastery",
-            type: "quiz",
+            type: "assignment",
             duration: "25:00",
             description: "Comprehensive test covering all React concepts",
             preview: false,
@@ -579,7 +579,7 @@ const courseData = [
         {
           id: 23,
           title: "Building a Simple Model",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description: "Hands-on coding exercise to build your first ML model",
           preview: true,
@@ -809,7 +809,7 @@ const courseData = [
         {
           id: 14,
           title: "DOM Manipulation",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description: "Interactive coding exercise for DOM manipulation",
           preview: false,
@@ -894,7 +894,7 @@ const courseData = [
         {
           id: 23,
           title: "RESTful APIs with Express",
-          type: "coding",
+          type: "coding-exercise",
           duration: "30:00",
           description: "Hands-on coding exercise to build REST APIs",
           preview: false,
@@ -941,7 +941,7 @@ const courseData = [
         {
           id: 28,
           title: "CRUD Operations with Mongoose",
-          type: "coding",
+          type: "video",
           duration: "28:00",
           description: "Implement Create, Read, Update, Delete operations",
           preview: false,
@@ -1004,7 +1004,7 @@ const courseData = [
         {
           id: 35,
           title: "Building a Simple Blog",
-          type: "coding",
+          type: "coding-exercise",
           duration: "35:00",
           description: "Complete coding project to build a blog application",
           preview: false,
@@ -1170,7 +1170,7 @@ const courseData = [
         {
           id: 3,
           title: "Practical Closures",
-          type: "coding",
+          type: "assignment",
           duration: "25:00",
           description: "Hands-on coding exercise with closures",
           preview: false,
@@ -1371,7 +1371,7 @@ const courseData = [
         {
           id: 25,
           title: "Refactoring Code",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description: "Hands-on code refactoring exercise",
           preview: false,
@@ -2016,7 +2016,7 @@ const courseData = [
         {
           id: 30,
           title: "Disaster Recovery Strategies",
-          type: "coding",
+          type: "coding-exercise",
           duration: "20:00",
           description: "Implementing disaster recovery solutions",
           preview: true,
@@ -2137,7 +2137,7 @@ const courseData = [
         {
           id: 4,
           title: "Functions & Closures",
-          type: "coding",
+          type: "coding-exercise",
           duration: "22:00",
           description: "Creating functions and understanding closures",
           preview: false,
@@ -2184,7 +2184,7 @@ const courseData = [
         {
           id: 9,
           title: "Lists & Navigation",
-          type: "coding",
+          type: "coding-exercise",
           duration: "22:00",
           description: "Creating lists and navigation views",
           preview: true,
@@ -3398,7 +3398,7 @@ const courseData = [
         {
           id: 10,
           title: "Practice: Basic Hashing",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description:
             "Hands-on coding exercise implementing basic hashing functions",
@@ -3422,7 +3422,7 @@ const courseData = [
         {
           id: 12,
           title: "Creating Blocks",
-          type: "coding",
+          type: "coding-exercise",
           duration: "28:00",
           description:
             "Interactive coding session to create blockchain blocks",
@@ -3439,7 +3439,7 @@ const courseData = [
         {
           id: 14,
           title: "Adding Transactions",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description:
             "Implementing transaction functionality in the blockchain",
@@ -3698,7 +3698,7 @@ const courseData = [
         {
           id: 12,
           title: "Building the Revenue Forecast",
-          type: "coding",
+          type: "coding-exercise",
           duration: "30:00",
           description:
             "Interactive session building revenue forecasting models",
@@ -3707,7 +3707,7 @@ const courseData = [
         {
           id: 13,
           title: "Operating Expenses & Depreciation",
-          type: "coding",
+          type: "coding-exercise",
           duration: "35:00",
           description:
             "Modeling operating expenses and depreciation schedules",
@@ -3748,7 +3748,7 @@ const courseData = [
         {
           id: 17,
           title: "Forecasting Free Cash Flow",
-          type: "coding",
+          type: "coding-exercise",
           duration: "40:00",
           description: "Building free cash flow projections for DCF analysis",
           preview: true,
@@ -3806,7 +3806,7 @@ const courseData = [
         {
           id: 23,
           title: "Collecting & Adjusting Data",
-          type: "coding",
+          type: "coding-exercise",
           duration: "40:00",
           description: "Gathering and normalizing comparable company data",
           preview: false,
@@ -3864,7 +3864,7 @@ const courseData = [
         {
           id: 29,
           title: "Building a Simple LBO Model",
-          type: "coding",
+          type: "coding-exercise",
           duration: "45:00",
           description: "Step-by-step LBO model construction",
           preview: false,
@@ -4080,7 +4080,7 @@ const courseData = [
         {
           id: 8,
           title: "Implementing a Simple GAN (MNIST/Fashion-MNIST)",
-          type: "coding",
+          type: "coding-exercise",
           duration: "45:00",
           description: "Build and train a simple GAN to generate images from the MNIST or Fashion-MNIST dataset.",
           preview: true,
@@ -4118,7 +4118,7 @@ const courseData = [
         {
           id: 12,
           title: "Building a VAE for Image Generation",
-          type: "coding",
+          type: "coding-exercise",
           duration: "40:00",
           description: "Implement a VAE to generate new images from learned latent space representations.",
           preview: true,
@@ -4188,7 +4188,7 @@ const courseData = [
         {
           id: 20,
           title: "Building a Simple Transformer for Translation",
-          type: "coding",
+          type: "coding-exercise",
           duration: "45:00",
           description: "Implement a simple Transformer model for machine translation tasks using PyTorch or TensorFlow.",
           preview: true,
@@ -4226,7 +4226,7 @@ const courseData = [
         {
           id: 24,
           title: "Fine-tuning an LLM for Text Summarization",
-          type: "coding",
+          type: "coding-exercise",
           duration: "50:00",
           description: "Implement fine-tuning of a pre-trained LLM for text summarization tasks.",
           preview: true,
@@ -4723,7 +4723,7 @@ const courseData = [
         {
           id: 3,
           title: "Digital I/O & LEDs (Blink Project)",
-          type: "coding",
+          type: "coding-exercise",
           duration: "25:00",
           description: "Hands-on coding exercise creating your first Arduino project",
           preview: false,
@@ -4761,7 +4761,7 @@ const courseData = [
         {
           id: 7,
           title: "Ultrasonic Sensor (Distance Measurement)",
-          type: "coding",
+          type: "coding-exercise",
           duration: "20:00",
           description: "Interactive coding session using ultrasonic sensors for distance measurement",
           preview: true,
@@ -4815,7 +4815,7 @@ const courseData = [
         {
           id: 13,
           title: "Setting up a Simple Web Server on ESP32",
-          type: "coding",
+          type: "coding-exercise",
           duration: "30:00",
           description: "Building a web server to control IoT devices remotely",
           preview: false,
@@ -4869,7 +4869,7 @@ const courseData = [
         {
           id: 19,
           title: "Publishing & Subscribing Data to AWS IoT",
-          type: "coding",
+          type: "coding-exercise",
           duration: "40:00",
           description: "Hands-on implementation of AWS IoT data communication",
           preview: false,
@@ -4891,7 +4891,7 @@ const courseData = [
         {
           id: 21,
           title: "Project: Smart Home Temperature Monitor",
-          type: "coding",
+          type: "coding-exercise",
           duration: "45:00",
           description: "Complete project building a smart temperature monitoring system",
           preview: true,
@@ -4899,7 +4899,7 @@ const courseData = [
         {
           id: 22,
           title: "Project: Remote LED Control via Web App",
-          type: "coding",
+          type: "coding-exercise",
           duration: "50:00",
           description: "Building a web application to control LEDs remotely",
           preview: false,
@@ -5086,7 +5086,7 @@ const courseData = [
         {
           id: 9,
           title: "Nmap Basics: Host Discovery",
-          type: "coding",
+          type: "coding-exercise",
           duration: "30:00",
           description: "Using Nmap for network discovery and host identification",
           preview: false,
@@ -5162,7 +5162,7 @@ const courseData = [
         {
           id: 17,
           title: "Exploiting Common Vulnerabilities (e.g., EternalBlue)",
-          type: "coding",
+          type: "coding-exercise",
           duration: "45:00",
           description: "Hands-on exploitation of well-known vulnerabilities",
           preview: true,
@@ -5262,7 +5262,7 @@ const courseData = [
         {
           id: 28,
           title: "Basic Wireless Hacking (WEP/WPA2 Crack)",
-          type: "coding",
+          type: "coding-exercise",
           duration: "30:00",
           description: "Attacking wireless networks and encryption protocols",
           preview: false,
@@ -6064,7 +6064,7 @@ const courseData = [
         {
           id: 9,
           title: "Forecast Error Measurement",
-          type: "coding",
+          type: "coding-exercise",
           duration: "22:00",
           description: "Learn how to measure forecast accuracy using metrics like Mean Absolute Deviation (MAD) and Mean Squared Error (MSE).",
           preview: true,
@@ -6718,7 +6718,7 @@ const courseData = [
           {
             id: 4,
             title: "Setting Up Billing Accounts & Projects",
-            type: "demo",
+            type: "video",
             duration: "15:00",
             description: "Hands-on demonstration of setting up GCP billing and projects",
             preview: false,
@@ -6748,7 +6748,7 @@ const courseData = [
           {
             id: 7,
             title: "Service Accounts & Best Practices",
-            type: "demo",
+            type: "video",
             duration: "30:00",
             description: "Creating and managing service accounts with security best practices",
             preview: true,
@@ -6794,7 +6794,7 @@ const courseData = [
           {
             id: 12,
             title: "Firewall Rules & Network Tags",
-            type: "demo",
+            type: "video",
             duration: "30:00",
             description: "Configuring firewall rules and implementing network segmentation",
             preview: true,
@@ -6848,7 +6848,7 @@ const courseData = [
           {
             id: 18,
             title: "Cloud Key Management Service (KMS)",
-            type: "demo",
+            type: "video",
             duration: "30:00",
             description: "Practical implementation of Cloud KMS for key management",
             preview: false,
@@ -6886,7 +6886,7 @@ const courseData = [
           {
             id: 22,
             title: "Cloud Logging & Monitoring for Security Events",
-            type: "demo",
+            type: "video",
             duration: "30:00",
             description: "Setting up comprehensive security monitoring and alerting",
             preview: true,
