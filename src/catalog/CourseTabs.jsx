@@ -80,7 +80,7 @@ const CourseTabs = ({ courseData }) => {
             </div>
             <div className="p-4">
               <div className="space-y-2">
-                {session.videos.map((video, videoIndex) => (
+                {(session.videos || session.content || []).map((video, videoIndex) => (
                   <div
                     key={video.id}
                     className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0"
@@ -95,7 +95,7 @@ const CourseTabs = ({ courseData }) => {
                           <Clock className="w-3 h-3" />
                           <span>{video.duration}</span>
                           <span className="capitalize bg-[#EBEDDF] px-2 py-0.5 rounded text-[#333A2F]">
-                            {video.type.replace("-", " ")}
+                            {video.type && video.type.replace("-", " ")}
                           </span>
                         </div>
                       </div>

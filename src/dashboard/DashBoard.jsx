@@ -31,7 +31,7 @@ import LessonSidebar from './components/LessonSidebar';
 import TabNavigation from './components/TabNavigation';
 import TestContent from './components/TestContent';
 import CourseList from './components/CourseList';
-import courseData from './catalogData';
+import courseData from '../catalog/CourseData';
 import LessonInfo from './components/LessonInfo';
 import NotesTab from './components/NotesTab';
 import DiscussionTab from './components/DiscussionTab';
@@ -79,7 +79,7 @@ const Dashboard = () => {
         modules: course.course_content.map((session, index) => ({
           id: index + 1,
           title: session.session,
-          lessons: session.videos.map((video, videoIndex) => ({
+          lessons: (session.videos || session.content || []).map((video, videoIndex) => ({
             id: video.id,
             title: video.title,
             duration: video.duration,
