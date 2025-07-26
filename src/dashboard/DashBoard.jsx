@@ -41,7 +41,9 @@ import QATab from './components/QATab';
 
 const Dashboard = () => {
   const { id } = useParams();
+  console.log('Dashboard Debug - URL params:', { id });
   const course = courseData.find(c => String(c.id) === String(id));
+  console.log('Dashboard Debug - Found course:', course);
 
   // If course not found, show message
   if (!course) {

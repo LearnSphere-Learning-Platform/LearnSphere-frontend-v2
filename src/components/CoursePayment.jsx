@@ -29,8 +29,9 @@ const CoursePayment = (props) => {
   // Use the passed-in course prop if available, otherwise fallback to the first course
   const course = props.course || courseData[0]
 
-  // Calculate total videos for stats
-  const totalVideos = course.course_content.reduce((total, session) => total + session.videos.length, 0)
+  // Defensive: handle missing or malformed course_content
+  const courseContent = course && Array.isArray(course.course_content) ? course.course_content : [];
+  const totalVideos = courseContent.reduce((total, session) => total + (session.videos ? session.videos.length : 0), 0)
 
   // Move these inside the component
   const countryOptions = Country.getAllCountries();
@@ -151,15 +152,15 @@ const CoursePayment = (props) => {
                 <div className="space-y-2">
                   <h4 className="font-semibold text-[#333A2F]">Course Structure:</h4>
                   <div className="space-y-2">
-                    {course.course_content.slice(0, 3).map((session, index) => (
+                    {courseContent.slice(0, 3).map((session, index) => (
                       <div key={index} className="text-sm">
                         <div className="font-medium text-[#333A2F]">{session.session}</div>
                         <div className="text-[#333A2F] text-xs">{session.module_description}</div>
-                        <div className="text-[#333A2F] text-xs">{session.videos.length} lessons</div>
+                        <div className="text-[#333A2F] text-xs">{session.videos ? session.videos.length : 0} lessons</div>
                       </div>
                     ))}
-                    {course.course_content.length > 3 && (
-                      <div className="text-sm text-[#333A2F]">+{course.course_content.length - 3} more sessions</div>
+                    {courseContent.length > 3 && (
+                      <div className="text-sm text-[#333A2F]">+{courseContent.length - 3} more sessions</div>
                     )}
                   </div>
                 </div>

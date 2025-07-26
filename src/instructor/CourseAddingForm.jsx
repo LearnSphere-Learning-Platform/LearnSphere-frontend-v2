@@ -64,11 +64,11 @@ const CourseAddingForm = () => {
 
       // If course not found, show error and redirect
       alert("Course not found!");
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     } catch (error) {
       console.error("Error loading course for editing:", error);
       alert("Error loading course data!");
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     }
   };
 
@@ -428,7 +428,7 @@ const CourseAddingForm = () => {
       )
     ) {
       localStorage.removeItem("editingCourse");
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     }
   };
 
@@ -532,7 +532,7 @@ const CourseAddingForm = () => {
           : "Course created successfully!"
       );
 
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     } catch (error) {
       console.error("Error saving course:", error);
       alert("An error occurred while saving the course. Please try again.");

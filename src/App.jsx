@@ -33,6 +33,9 @@ import Profile from "./pages/Profile";
 import InstructorDetails from "./pages/InstructorDetails";
 import InstructorProfile from "./pages/InstructorProfile";
 
+import RoleRoute from "./RoleRoute";
+import NotAuthorized from "./pages/NotAuthorized";
+
 function AppContent() {
   const location = useLocation();
 
@@ -48,6 +51,7 @@ function AppContent() {
     <div className="min-h-screen bg-white">
       {!hideHeader && <Header />}
       <Routes>
+        {/* Public routes */}
         <Route
           path="/"
           element={
@@ -65,20 +69,33 @@ function AppContent() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/catalog" element={<CourseCatalog />} />
         <Route path="/course/:id" element={<CoursePageWrapper />} />
-        <Route path="/course/:id/payment" element={<CoursePaymentWrapper />} />
-        <Route path="/course/:id/dashboard" element={<DashBoard />} />
+        <Route path="/user/course/:id/payment" element={<CoursePaymentWrapper />} />
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
-        <Route path="/course-adding" element={<CourseAddingForm />} />
-        <Route path="/course-adding/:courseId" element={<CourseAddingForm />} />
-        <Route path="/announcement" element={<InstructorAnnouncementForm />} />
-        <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
-        <Route path="/instructor-dashboard/course/:id" element={<CourseView />} />
-        {/* <Route path="/instructor-dashboard/profile" element={<Profile />} /> */}
-        <Route path="/payment-history" element={<CoursePaymentHistory />} />
-        <Route path="/my-learning" element={<MyLearningPage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/instructor-profile" element={<InstructorProfileWrapper />} />
         <Route path="/instructor-details" element={<InstructorDetails />} />
+        <Route path="/not-authorized" element={<NotAuthorized />} />
+        {/* User (student) routes */}
+        <Route element={<RoleRoute allowedRoles={['student']} />}>
+          <Route path="/user/dashboard" element={<DashBoard />} />
+          <Route path="/user/my-learning" element={<MyLearningPage />} />
+          <Route path="/user/profile" element={<Profile />} />
+          <Route path="/user/payment-history" element={<CoursePaymentHistory />} />
+          <Route path="/user/course/:id/dashboard" element={<DashBoard />} />
+          <Route path="/user/course/:id" element={<CoursePageWrapper />} />
+        </Route>
+        {/* Instructor routes (instructor and admin) */}
+        <Route element={<RoleRoute allowedRoles={['instructor', 'admin']} />}>
+          <Route path="/instructor/dashboard" element={<InstructorDashboard />} />
+          <Route path="/instructor/course-adding" element={<CourseAddingForm />} />
+          <Route path="/instructor/course-adding/:courseId" element={<CourseAddingForm />} />
+          <Route path="/instructor/announcement" element={<InstructorAnnouncementForm />} />
+          <Route path="/instructor/course/:id" element={<CourseView />} />
+          <Route path="/instructor/profile" element={<InstructorProfileWrapper />} />
+        </Route>
+        {/* Admin routes */}
+        <Route element={<RoleRoute allowedRoles={['admin']} />}>
+          <Route path="/admin/dashboard" element={<div>Admin Dashboard</div>} />
+          {/* Add more admin routes here */}
+        </Route>
       </Routes>
       {!hideFooter && <Footer />}
     </div>

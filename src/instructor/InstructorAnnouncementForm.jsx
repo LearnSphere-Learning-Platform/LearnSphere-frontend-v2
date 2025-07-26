@@ -30,7 +30,7 @@ const InstructorAnnouncementForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Instead of just logging, navigate back and pass the announcement and edit flag
-    navigate("/instructor-dashboard", { state: { announcement, isEdit } });
+    navigate("/instructor/dashboard", { state: { announcement, isEdit } });
   };
 
   const getSelectedCourse = () => {

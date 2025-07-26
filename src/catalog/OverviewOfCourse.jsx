@@ -95,11 +95,11 @@ const ActionButtons = ({ price, course }) => {
   };
 
   const handleStartLearning = () => {
-    navigate(`/course/${course.id}/dashboard`);
+    navigate(`/user/course/${course.id}/dashboard`);
   };
 
   const handleBuyNow = () => {
-    navigate(`/course/${course.id}/payment`);
+    navigate(`/user/course/${course.id}/payment`);
   };
 
   return (
