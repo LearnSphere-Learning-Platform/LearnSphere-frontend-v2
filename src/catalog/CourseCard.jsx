@@ -17,6 +17,16 @@ export function CourseCard({ course }) {
     navigate(`/course/${course.id}`);
   };
 
+  const handleEnroll = (e) => {
+    e.stopPropagation();
+    updateSelectedCourse(course);
+    if (course.price > 0) {
+      navigate(`/course/${course.id}/payment`);
+    } else {
+      navigate(`/course/${course.id}`);
+    }
+  };
+
   const learners = course.instructor?.total_learners
     ? Number(
         course.instructor.total_learners.replace(/,/g, "")
@@ -109,9 +119,13 @@ export function CourseCard({ course }) {
         {/* Footer */}
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-[#333A2F]">
-            {course.price === 0 ? "Free" : `$${course.price}`}
+            {course.price === 0 ? "Free" : `₹${course.price}`}
           </div>
-          <button className="bg-[#333A2F] hover:bg-[#2a3028] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          <button
+            type="button"
+            className="bg-[#333A2F] hover:bg-[#2a3028] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            onClick={handleEnroll}
+          >
             Enroll Now
           </button>
         </div>

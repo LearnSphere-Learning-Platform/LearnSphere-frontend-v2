@@ -1,7 +1,9 @@
+import React from 'react';
+
 import { Star, BookOpen, TrendingUp } from "lucide-react";
 
-const CourseInfo = ({ courseData }) => {
-  return (
+const CourseInfo = (props) => (
+  <div>
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Number of Sessions */}
@@ -11,7 +13,7 @@ const CourseInfo = ({ courseData }) => {
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-1">Sessions</h3>
           <p className="text-2xl font-bold text-blue-600">
-            {courseData.no_of_sessions}
+            {props.courseData.no_of_sessions}
           </p>
           <p className="text-sm text-gray-500">Total Sessions</p>
         </div>
@@ -24,7 +26,7 @@ const CourseInfo = ({ courseData }) => {
           <h3 className="text-lg font-semibold text-gray-800 mb-1">Rating</h3>
           <div className="flex items-center mb-1">
             <p className="text-2xl font-bold text-yellow-600">
-              {courseData.course_rating}
+              {props.courseData.course_rating}
             </p>
             <Star className="w-5 h-5 text-yellow-400 fill-current ml-1" />
           </div>
@@ -38,13 +40,13 @@ const CourseInfo = ({ courseData }) => {
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-1">Level</h3>
           <p className="text-2xl font-bold text-green-600">
-            {courseData.level}
+            {props.courseData.level}
           </p>
           <p className="text-sm text-gray-500">Difficulty Level</p>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default CourseInfo;

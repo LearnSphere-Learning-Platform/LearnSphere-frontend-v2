@@ -60,15 +60,15 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#333A2F]" />
-                <span className="text-gray-600">info@learnsphere.com</span>
+                <span className="text-gray-600">learnsphere@kce.ac.in</span>
               </div>
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-[#333A2F]" />
-                <span className="text-gray-600">+1 (555) 123-4567</span>
+                <span className="text-gray-600">91 7339390000</span>
               </div>
               <div className="flex items-center space-x-3">
                 <FaMapMarkerAlt className="text-[#333A2F]" />
-                <span className="text-gray-600">123 Learning St, Education City</span>
+                <span className="text-gray-600">C Block , Kce , Othakalmandapam</span>
               </div>
             </div>
 
@@ -147,7 +147,7 @@ const Footer = () => {
               <p className="text-gray-600 mb-4">
                 Subscribe to our newsletter for the latest courses and learning tips.
               </p>
-              <div className="flex max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row max-w-md mx-auto">
                 <input
                   type="email"
                   placeholder="Enter your email"

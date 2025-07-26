@@ -6,25 +6,25 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-2xl text-[#333A2F]" />,
       title: "Phone",
-      details: "+1 (555) 123-4567",
+      details: "+91 7339390000",
       description: "Call us anytime"
     },
     {
       icon: <FaEnvelope className="text-2xl text-[#333A2F]" />,
       title: "Email",
-      details: "info@learnsphere.com",
+      details: "learnsphere@kce.ac.in",
       description: "Send us a message"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl text-[#333A2F]" />,
       title: "Address",
-      details: "123 Learning St, Education City",
+      details: "C Block , Kce , Othakalmandapam",
       description: "Visit our office"
     },
     {
       icon: <FaClock className="text-2xl text-[#333A2F]" />,
       title: "Working Hours",
-      details: "Mon - Fri: 9AM - 6PM",
+      details: "Mon - Fri: 9AM - 9PM",
       description: "We're here to help"
     }
   ];

@@ -5,23 +5,23 @@ const About = () => {
   const stats = [
     {
       icon: <FaUsers className="text-3xl text-[#333A2F]" />,
-      number: "50K+",
+      number: "100+",
       label: "Students"
     },
     {
       icon: <FaGraduationCap className="text-3xl text-[#333A2F]" />,
-      number: "200+",
+      number: "20+",
       label: "Courses"
     },
     {
       icon: <FaAward className="text-3xl text-[#333A2F]" />,
-      number: "98%",
+      number: "90%",
       label: "Success Rate"
     },
     {
       icon: <FaGlobe className="text-3xl text-[#333A2F]" />,
-      number: "150+",
-      label: "Countries"
+      number: "1",
+      label: "Country"
     }
   ];
 
@@ -91,7 +91,7 @@ const About = () => {
                 {/* Floating Stats Card */}
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[#333A2F]">2024</div>
+                    <div className="text-3xl font-bold text-[#333A2F]">2</div>
                     <div className="text-sm text-gray-600">Years of Excellence</div>
                   </div>
                 </div>

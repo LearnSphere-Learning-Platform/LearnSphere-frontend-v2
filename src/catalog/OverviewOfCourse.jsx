@@ -32,7 +32,7 @@ const CourseMetadata = ({ course }) => (
 
 const ActionButtons = ({ price, course }) => {
   const [isEnrolled, setIsEnrolled] = useState(false);
-  const navigate = useNavigate ? useNavigate() : () => {};
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Initialize enrollment status
@@ -98,10 +98,14 @@ const ActionButtons = ({ price, course }) => {
     navigate(`/course/${course.id}/dashboard`);
   };
 
+  const handleBuyNow = () => {
+    navigate(`/course/${course.id}/payment`);
+  };
+
   return (
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 mt-6">
       {price > 0 ? (
-        <Button onClick={() => console.log("Buy Now clicked")}> 
+        <Button onClick={handleBuyNow}> 
           <FaCreditCard className="inline-block text-blue-400 mr-2" />
           Buy Now
         </Button>

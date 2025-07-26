@@ -1,11 +1,13 @@
-// hooks/useSelectedCourse.js
 import { useEffect, useState } from "react";
 import courseData from "../catalog/CourseData";
 
 const useSelectedCourse = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
-  
+
   useEffect(() => {
+    // ✅ Print all courses once when the hook runs
+    console.log("All Courses:", courseData);
+
     const stored = localStorage.getItem("selectedCourse");
     const parsed = stored ? JSON.parse(stored) : null;
     setSelectedCourse(parsed);

@@ -4,7 +4,8 @@ const courseData = [
     id: 1,
     course_name: "React - The Complete Guide (2024 Edition)",
     description: "Master React with hooks, context API, Redux, and more",
-    image: "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
+    image:
+      "https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg",
 
     instructor: {
       name: "Maximilian Schwarzmüller",
@@ -32,7 +33,7 @@ const courseData = [
     price: 0,
     language: "English",
     total_hours: 48,
-    no_of_sessions: 6,
+    no_of_sessions: 7,
     no_of_tests_available: 12,
     course_rating: 4.8,
     certification: true,
@@ -58,6 +59,7 @@ const courseData = [
             id: 1,
             title: "Why React?",
             duration: "8:32",
+            description: "Introduction to React and its benefits",
             preview: true,
             type: "video",
             resources: ["Course Slides"],
@@ -66,21 +68,26 @@ const courseData = [
             id: 2,
             title: "Creating Your First App",
             duration: "12:45",
+            description:
+              "Step-by-step guide to creating your first React application",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 3,
             title: "Understanding Components",
             duration: "14:20",
-            preview: false,
-            type: "theory",
+            preview: true,
+            type: "video",
           },
           {
             id: 4,
             title: "Practice: Build a Profile Card",
             duration: "18:00",
             preview: false,
+<<<<<<< alertmodify
+            type: "project",
+=======
             type: "test",
             questions: [
               {
@@ -109,6 +116,7 @@ const courseData = [
                 answer: "Use CSS modules or styled-components"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -128,27 +136,31 @@ const courseData = [
             title: "Props vs State",
             duration: "15:22",
             preview: true,
+<<<<<<< alertmodify
+            type: "video",
+=======
             type: "demo",
+>>>>>>> main
           },
           {
             id: 7,
             title: "Building a Product Card",
             duration: "22:30",
-            preview: false,
-            type: "demo",
+            preview: true,
+            type: "coding-exercise",
           },
           {
             id: 8,
             title: "Component Lifecycle",
             duration: "19:15",
             preview: false,
-            type: "video",
+            type: "pdf",
           },
           {
             id: 9,
             title: "Assignment: E-commerce Item",
             duration: "30:00",
-            preview: false,
+            preview: true,
             type: "assignment",
             questions: [
               {
@@ -203,7 +215,11 @@ const courseData = [
             title: "Understanding useEffect",
             duration: "20:00",
             preview: true,
+<<<<<<< alertmodify
+            type: "video",
+=======
             type: "demo",
+>>>>>>> main
           },
           {
             id: 13,
@@ -243,14 +259,14 @@ const courseData = [
             id: 14,
             title: "Custom Hooks",
             duration: "18:00",
-            preview: false,
+            preview: true,
             type: "demo",
           },
           {
             id: 15,
             title: "Debugging Hooks",
             duration: "12:00",
-            preview: false,
+            preview: true,
             type: "video",
           },
         ],
@@ -270,21 +286,24 @@ const courseData = [
             id: 17,
             title: "Nested Routes",
             duration: "19:00",
-            preview: false,
-            type: "demo",
+            preview: true,
+            type: "video",
           },
           {
             id: 18,
             title: "Programmatic Navigation",
             duration: "16:00",
-            preview: false,
-            type: "theory",
+            preview: true,
+            type: "video",
           },
           {
             id: 19,
             title: "Practice: Blog Navigation",
             duration: "28:00",
             preview: false,
+<<<<<<< alertmodify
+            type: "project",
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -313,12 +332,13 @@ const courseData = [
                 answer: "<Link>"
               }
             ]
+>>>>>>> main
           },
           {
             id: 20,
             title: "Route Guards",
             duration: "10:00",
-            preview: false,
+            preview: true,
             type: "video",
           },
         ],
@@ -332,34 +352,34 @@ const courseData = [
             title: "When to use Context API",
             duration: "17:00",
             preview: true,
-            type: "theory",
+            type: "video",
           },
           {
             id: 22,
             title: "Redux Fundamentals",
             duration: "22:00",
-            preview: true,
-            type: "video",
+            preview: false,
+            type: "pdf",
           },
           {
             id: 23,
             title: "Connecting React to Redux",
             duration: "28:00",
-            preview: false,
-            type: "demo",
+            preview: true,
+            type: "video",
           },
           {
             id: 24,
             title: "Middleware in Redux",
             duration: "15:00",
-            preview: false,
+            preview: true,
             type: "video",
           },
           {
             id: 25,
             title: "Assignment: Shopping Cart",
             duration: "40:00",
-            preview: false,
+            preview: true,
             type: "assignment",
             questions: [
               {
@@ -406,28 +426,28 @@ const courseData = [
             id: 27,
             title: "Performance Optimization",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            preview: true,
+            type: "video",
           },
           {
             id: 28,
             title: "Testing React Components",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            preview: true,
+            type: "video",
           },
           {
             id: 29,
             title: "Deployment Strategies",
             duration: "15:00",
             preview: false,
-            type: "video",
+            type: "pdf",
           },
           {
             id: 30,
             title: "Course Project: Final Review",
             duration: "35:00",
-            preview: false,
+            preview: true,
             type: "coding-exercise",
             questions: [
               {
@@ -459,22 +479,49 @@ const courseData = [
           },
         ],
       },
+      {
+        session: "Final Assessment",
+        module_description: "Evaluate your understanding of React concepts",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: React Mastery",
+            type: "quiz",
+            duration: "25:00",
+            description: "Comprehensive test covering all React concepts",
+            preview: false,
+          },
+        ],
+      },
     ],
   },
-
-  // 2. Python Data Science (5 sessions)
+  // Course ID 2 - Python for Data Science: Complete Bootcamp
   {
     id: 2,
     course_name: "Python for Data Science: Complete Bootcamp",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "32h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 8,
+
+    // Additional fields from original data
     description: "Master Pandas, NumPy, Matplotlib for data analysis",
-    image: "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
+    image:
+      "https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg",
+    preview: "https://example.com/preview/python-data-science",
+    course_rating: 4.7,
+
     instructor: {
       name: "Dr. Angela Yu",
       mailid: "angela@example.com",
       summary: "Lead Data Science Instructor",
+      avatar: "https://placehold.co/100x100?text=Angela",
       overall_rating: 4.8,
       no_of_courses_released: 15,
-      avatar: "https://placehold.co/100x100?text=Angela",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -489,57 +536,60 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 32,
-    no_of_sessions: 5,
-    no_of_tests_available: 8,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/python-data-science",
+
     about_course: {
       skills: ["Pandas", "NumPy", "Matplotlib", "Data Cleaning"],
       complete_description:
         "Learn Python from scratch for data science and analysis.",
     },
+
     outcome: [
       "Perform data cleaning and preprocessing",
       "Visualize data effectively",
       "Build basic machine learning models",
     ],
+
     course_content: [
       {
-        session: "1. Python Fundamentals",
+        session: "Python Fundamentals",
         module_description: "Essential Python for data analysis",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Python Basics Review",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Comprehensive review of Python basics for data science",
+            preview: true,
+            resources: ["Python Cheat Sheet"],
           },
           {
             id: 2,
             title: "List Comprehensions",
+            type: "video",
             duration: "18:30",
+            description:
+              "Master list comprehensions for efficient data processing",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Working with Dictionaries",
+            type: "video",
             duration: "22:15",
-            preview: false,
-            type: "walkthrough",
+            description: "Advanced dictionary operations for data manipulation",
+            preview: true,
           },
           {
             id: 4,
             title: "Practice: Data Cleaning",
+            type: "assignment",
             duration: "30:00",
+            description: "Hands-on project to clean messy datasets",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -568,12 +618,17 @@ const courseData = [
                 answer: "Inspect the data"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
             title: "Quiz: Python Basics",
+            type: "quiz",
             duration: "15:00",
+            description: "Test your understanding of Python fundamentals",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "quiz",
             questions: [
               {
@@ -602,39 +657,48 @@ const courseData = [
                 answer: "3"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "2. NumPy for Numerical Computing",
+        session: "NumPy for Numerical Computing",
         module_description: "Master array operations with NumPy",
-        videos: [
+        content: [
           {
             id: 6,
             title: "NumPy Array Creation",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Learn different methods to create NumPy arrays",
+            preview: true,
           },
           {
             id: 7,
             title: "Array Indexing & Slicing",
+            type: "video",
             duration: "15:00",
+            description: "Master array indexing and slicing techniques",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Broadcasting",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Understand NumPy broadcasting for efficient operations",
+            preview: true,
           },
           {
             id: 9,
             title: "Practice: Matrix Operations",
+            type: "assignment",
             duration: "25:00",
+            description: "Implement matrix operations using NumPy",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -663,45 +727,55 @@ const courseData = [
                 answer: "arr[0, 1]"
               }
             ]
+>>>>>>> main
           },
           {
             id: 10,
             title: "Understanding Array Shapes",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Deep dive into array shapes and dimensions",
+            preview: false,
           },
         ],
       },
       {
-        session: "3. Pandas for Data Analysis",
+        session: "Pandas for Data Analysis",
         module_description: "Powerful data manipulation with Pandas",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Introduction to DataFrames",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description: "Get started with Pandas DataFrames",
+            preview: true,
           },
           {
             id: 12,
             title: "Reading CSV and Excel Files",
+            type: "video",
             duration: "18:00",
+            description: "Import data from various file formats",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Missing Data Handling",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "walkthrough",
+            description: "Techniques for handling missing data effectively",
+            preview: true,
           },
           {
             id: 14,
             title: "Groupby Operations",
+            type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
+            description: "Master groupby operations for data aggregation",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -731,45 +805,59 @@ const courseData = [
                 answer: "reset_index()"
               }
             ]
+>>>>>>> main
           },
           {
             id: 15,
             title: "Merging DataFrames",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Combine multiple DataFrames using different join methods",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Data Visualization with Matplotlib & Seaborn",
+        session: "Data Visualization with Matplotlib & Seaborn",
         module_description: "Create stunning visualizations",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Basic Plots with Matplotlib",
-            duration: "16:00",
-            preview: true,
             type: "video",
+            duration: "16:00",
+            description: "Create basic plots using Matplotlib",
+            preview: true,
           },
           {
             id: 17,
             title: "Customizing Plots",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description: "Customize plots with colors, labels, and styles",
+            preview: true,
           },
           {
             id: 18,
             title: "Introduction to Seaborn",
+            type: "pdf",
             duration: "18:00",
+            description:
+              "Comprehensive guide to statistical visualization with Seaborn",
             preview: false,
-            type: "theory",
+            file_size: "2.3 MB",
           },
           {
             id: 19,
             title: "Practice: Analyzing Sales Data",
+            type: "assignment",
             duration: "30:00",
+<<<<<<< alertmodify
+            description:
+              "Build comprehensive visualizations for sales analysis",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -799,53 +887,79 @@ const courseData = [
                 answer: "plt.savefig()"
               }
             ]
+>>>>>>> main
           },
           {
             id: 20,
             title: "Interactive Plots (optional)",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Create interactive plots using Plotly",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. Introduction to Machine Learning",
+        session: "Introduction to Machine Learning",
         module_description: "Basic concepts of machine learning",
-        videos: [
+        content: [
           {
             id: 21,
             title: "What is Machine Learning?",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Understanding machine learning fundamentals",
+            preview: true,
           },
           {
             id: 22,
             title: "Linear Regression Overview",
+            type: "video",
             duration: "20:00",
+            description: "Introduction to linear regression concepts",
             preview: true,
-            type: "theory",
           },
           {
             id: 23,
             title: "Building a Simple Model",
+            type: "coding",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Hands-on coding exercise to build your first ML model",
+            preview: true,
           },
           {
             id: 24,
             title: "Model Evaluation Metrics",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Learn how to evaluate machine learning models",
+            preview: true,
           },
           {
             id: 25,
             title: "Project: Housing Price Prediction",
+            type: "assignment",
             duration: "40:00",
+            description: "Complete project predicting housing prices",
             preview: false,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description:
+          "Evaluate your understanding of Python for Data Science",
+        content: [
+          {
+            id: 26,
+            title: "Final Test: Python for Data Science",
+            type: "quiz",
+            duration: "25:00",
+            description: "Covers Pandas, NumPy, Matplotlib, and data workflows",
+            preview: false,
+<<<<<<< alertmodify
+=======
             type: "assignment",
             questions: [
               {
@@ -874,29 +988,56 @@ const courseData = [
                 answer: "Data preprocessing"
               }
             ]
+>>>>>>> main
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.7,
+    students: 89432,
+    created_at: "2024-01-20T10:00:00Z",
+    updated_at: "2024-01-20T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 32,
+    video_file: null,
+    image_file: null,
   },
 
-  // 3. Web Development Bootcamp (8 sessions)
+  // Course ID 3 - The Complete Web Developer Bootcamp 2024
   {
     id: 3,
     course_name: "The Complete Web Developer Bootcamp 2024",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "60h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 15,
+
+    // Additional fields from original data
     description: "HTML, CSS, JavaScript, Node, React, MongoDB",
-    image: "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
+    image:
+      "https://www.oneeducation.org.uk/wp-content/uploads/2024/06/The-Front-End-Web-Developer-Bootcamp-HTML-CSS-JS-React.png",
+    preview: "https://example.com/preview/web-dev-bootcamp",
+    course_rating: 4.9,
+
     instructor: {
       name: "Kyle Simpson",
       mailid: "kyle@example.com",
       summary: "JavaScript Evangelist",
+      avatar: "https://placehold.co/100x100?text=Kyle",
       overall_rating: 4.6,
       no_of_courses_released: 12,
-      avatar: "https://placehold.co/100x100?text=Kyle",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
-        "Hi, I'm Kyle Simpson. I specialize in javascript evangelist.",
+        "Hi, I'm Kyle Simpson. I specialize in JavaScript evangelism and full-stack development.",
         "With over 12 courses and a rating of 4.6, I've trained thousands of students across the globe.",
         "I believe in hands-on teaching and delivering real-world knowledge.",
         "Join me and boost your career in this domain!",
@@ -907,16 +1048,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 60,
-    no_of_sessions: 8,
-    no_of_tests_available: 15,
-    course_rating: 4.9,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/web-dev-bootcamp",
+
     about_course: {
       skills: [
         "HTML5",
@@ -930,42 +1062,52 @@ const courseData = [
       complete_description:
         "Become a full-stack web developer from scratch with this comprehensive bootcamp.",
     },
+
     outcome: [
       "Build responsive and interactive websites",
       "Develop RESTful APIs with Node.js",
       "Create dynamic front-end applications with React",
     ],
+
     course_content: [
       {
-        session: "1. HTML5 Fundamentals",
+        session: "HTML5 Fundamentals",
         module_description: "Build modern semantic HTML",
-        videos: [
+        content: [
           {
             id: 1,
             title: "HTML Structure",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Learn the fundamental structure of HTML documents",
+            preview: true,
+            resources: ["HTML Reference Guide"],
           },
           {
             id: 2,
             title: "Forms & Inputs",
+            type: "video",
             duration: "20:00",
+            description: "Master HTML forms and input elements",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Semantic HTML5",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Use semantic HTML5 elements for better structure",
+            preview: true,
           },
           {
             id: 4,
             title: "Practice: Personal Portfolio Page",
+            type: "assignment",
             duration: "25:00",
+            description: "Build your first HTML portfolio page",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -994,46 +1136,56 @@ const courseData = [
                 answer: "Use semantic HTML tags"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
             title: "Accessibility Basics",
+            type: "pdf",
             duration: "10:00",
+            description: "Web accessibility guidelines and best practices",
             preview: false,
-            type: "video",
+            file_size: "1.5 MB",
           },
         ],
       },
       {
-        session: "2. CSS3 Styling & Layouts",
+        session: "CSS3 Styling & Layouts",
         module_description: "Design beautiful and responsive web pages",
-        videos: [
+        content: [
           {
             id: 6,
             title: "CSS Selectors & Properties",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Master CSS selectors and essential properties",
+            preview: true,
           },
           {
             id: 7,
             title: "Flexbox Layout",
+            type: "video",
             duration: "22:00",
+            description: "Create flexible layouts using Flexbox",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Grid Layout",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description: "Build complex layouts with CSS Grid",
+            preview: true,
           },
           {
             id: 9,
             title: "Responsive Design with Media Queries",
+            type: "assignment",
             duration: "25:00",
+            description: "Create responsive designs for all devices",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1062,46 +1214,55 @@ const courseData = [
                 answer: "@media (max-width: 600px) { display: none; }"
               }
             ]
+>>>>>>> main
           },
           {
             id: 10,
             title: "CSS Animations",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Add smooth animations and transitions",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. JavaScript Basics for Web",
+        session: "JavaScript Basics for Web",
         module_description: "Add interactivity to your websites",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Variables & Data Types",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Understanding JavaScript variables and data types",
+            preview: true,
           },
           {
             id: 12,
             title: "Control Flow & Loops",
+            type: "video",
             duration: "18:00",
+            description: "Master conditionals and loops in JavaScript",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Functions & Scope",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description: "Learn JavaScript functions and scope concepts",
+            preview: true,
           },
           {
             id: 14,
             title: "DOM Manipulation",
+            type: "coding",
             duration: "25:00",
+            description: "Interactive coding exercise for DOM manipulation",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1130,53 +1291,64 @@ const courseData = [
                 answer: "removeChild()"
               }
             ]
+>>>>>>> main
           },
           {
             id: 15,
             title: "Event Listeners",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Handle user interactions with event listeners",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Advanced JavaScript & ES6+",
+        session: "Advanced JavaScript & ES6+",
         module_description: "Deep dive into modern JavaScript",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Arrow Functions & Template Literals",
-            duration: "17:00",
-            preview: true,
             type: "video",
+            duration: "17:00",
+            description: "Modern JavaScript syntax and features",
+            preview: true,
           },
           {
             id: 17,
             title: "Asynchronous JavaScript (Promises & Async/Await)",
+            type: "video",
             duration: "22:00",
-            preview: false,
-            type: "theory",
+            description: "Handle asynchronous operations effectively",
+            preview: true,
           },
           {
             id: 18,
             title: "Modules in JavaScript",
+            type: "pdf",
             duration: "15:00",
+            description: "Guide to JavaScript modules and imports",
             preview: false,
-            type: "demo",
+            file_size: "1.8 MB",
           },
           {
             id: 19,
             title: "Error Handling",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Implement proper error handling in JavaScript",
+            preview: true,
           },
           {
             id: 20,
             title: "Practice: API Fetching",
+            type: "assignment",
             duration: "30:00",
+            description: "Build applications that consume APIs",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1205,32 +1377,39 @@ const courseData = [
                 answer: ".catch()"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "5. Node.js & Express.js",
+        session: "Node.js & Express.js",
         module_description: "Build server-side applications",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Introduction to Node.js",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Getting started with Node.js development",
+            preview: true,
           },
           {
             id: 22,
             title: "Express.js Basics",
+            type: "video",
             duration: "25:00",
+            description: "Build web servers with Express.js",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "RESTful APIs with Express",
+            type: "coding",
             duration: "30:00",
+            description: "Hands-on coding exercise to build REST APIs",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1259,46 +1438,56 @@ const courseData = [
                 answer: "express.json()"
               }
             ]
+>>>>>>> main
           },
           {
             id: 24,
             title: "Middleware in Express",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Understanding and implementing Express middleware",
+            preview: true,
           },
           {
             id: 25,
             title: "Authentication & Authorization",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Implement user authentication and authorization",
+            preview: true,
           },
         ],
       },
       {
-        session: "6. Databases with MongoDB & Mongoose",
+        session: "Databases with MongoDB & Mongoose",
         module_description: "Store and manage data for your applications",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Introduction to NoSQL & MongoDB",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Understanding NoSQL databases and MongoDB",
+            preview: true,
           },
           {
             id: 27,
             title: "Mongoose ODM",
+            type: "pdf",
             duration: "22:00",
-            preview: true,
-            type: "demo",
+            description: "Complete guide to Mongoose Object Document Mapping",
+            preview: false,
+            file_size: "2.7 MB",
           },
           {
             id: 28,
             title: "CRUD Operations with Mongoose",
+            type: "coding",
             duration: "28:00",
+            description: "Implement Create, Read, Update, Delete operations",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1327,60 +1516,72 @@ const courseData = [
                 answer: "Define structure of documents"
               }
             ]
+>>>>>>> main
           },
           {
             id: 29,
             title: "Data Relationships",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Model data relationships in MongoDB",
+            preview: true,
           },
           {
             id: 30,
             title: "Atlas Cloud Database",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Deploy MongoDB to the cloud with Atlas",
+            preview: true,
           },
         ],
       },
       {
-        session: "7. React.js for Front-end Development",
+        session: "React.js for Front-end Development",
         module_description: "Build dynamic and interactive UIs",
-        videos: [
+        content: [
           {
             id: 31,
             title: "React Fundamentals",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Introduction to React library and concepts",
+            preview: true,
           },
           {
             id: 32,
             title: "Components & Props",
+            type: "video",
             duration: "25:00",
+            description: "Building reusable React components",
             preview: true,
-            type: "demo",
           },
           {
             id: 33,
             title: "State & Lifecycle",
+            type: "pdf",
             duration: "22:00",
+            description: "Managing component state and lifecycle methods",
             preview: false,
-            type: "theory",
+            file_size: "2.1 MB",
           },
           {
             id: 34,
             title: "Hooks in React",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Modern React development with hooks",
+            preview: true,
           },
           {
             id: 35,
             title: "Building a Simple Blog",
+            type: "coding",
             duration: "35:00",
+            description: "Complete coding project to build a blog application",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1409,46 +1610,72 @@ const courseData = [
                 answer: "Create a BlogPost component"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "8. Deployment & Best Practices",
+        session: "Deployment & Best Practices",
         module_description: "Deploy your full-stack applications",
-        videos: [
+        content: [
           {
             id: 36,
             title: "Hosting with Heroku/Netlify",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Deploy applications to cloud platforms",
+            preview: true,
           },
           {
             id: 37,
             title: "Environment Variables",
+            type: "pdf",
             duration: "10:00",
+            description: "Managing configuration and secrets securely",
             preview: false,
-            type: "theory",
+            file_size: "1.3 MB",
           },
           {
             id: 38,
             title: "Security Best Practices",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Implement security measures in web applications",
+            preview: true,
           },
           {
             id: 39,
             title: "Performance Optimization",
+            type: "pdf",
             duration: "20:00",
+            description: "Optimize application performance and loading times",
             preview: false,
-            type: "demo",
+            file_size: "2.4 MB",
           },
           {
             id: 40,
             title: "Final Project Walkthrough",
+            type: "assignment",
             duration: "30:00",
+            description: "Complete full-stack project implementation",
             preview: false,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Evaluate your full-stack web development skills",
+        content: [
+          {
+            id: 41,
+            title: "Final Test: Web Development",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "HTML, CSS, JavaScript, Node, React, MongoDB topics covered",
+            preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1477,26 +1704,52 @@ const courseData = [
                 answer: "Use platforms like Heroku/Netlify"
               }
             ]
+>>>>>>> main
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 9,
+    status: "published",
+    rating: 4.9,
+    students: 156789,
+    created_at: "2024-01-25T10:00:00Z",
+    updated_at: "2024-01-25T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 60,
+    video_file: null,
+    image_file: null,
   },
 
-  // 4. Advanced JavaScript (5 sessions)
+  // Course ID 4 - Advanced JavaScript (converted to pattern 1)
   {
     id: 4,
     course_name: "Advanced JavaScript: Concepts & Techniques",
+    level: "Advanced",
+    language: "English",
+    total_no_hours: "35h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 10,
+
+    // Additional fields from original data
     description:
       "Deep dive into closures, prototypes, asynchronous JS, and more",
     image: "https://ucarecdn.com/6432eebc-f77b-480f-b1d9-88d89ec4f149/",
+    preview: "https://example.com/preview/advanced-js",
+    course_rating: 4.8,
+
     instructor: {
       name: "Sarah Miller",
       mailid: "sarah@example.com",
       summary: "Senior UX Designer",
+      avatar: "https://placehold.co/100x100?text=Sarah",
       overall_rating: 4.6,
       no_of_courses_released: 8,
-      avatar: "https://placehold.co/100x100?text=Sarah",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -1511,16 +1764,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Advanced",
-    price: 0,
-    language: "English",
-    total_hours: 35,
-    no_of_sessions: 5,
-    no_of_tests_available: 10,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/advanced-js",
+
     about_course: {
       skills: [
         "Closures",
@@ -1532,35 +1776,45 @@ const courseData = [
       complete_description:
         "Master advanced JavaScript concepts to write robust and efficient code.",
     },
+
     outcome: [
       "Understand complex JavaScript patterns",
       "Write cleaner and more performant code",
       "Confidently tackle challenging JavaScript problems",
     ],
+
     course_content: [
       {
-        session: "1. Scope & Closures",
+        session: "Scope & Closures",
         module_description: "Master lexical scope and closures",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Understanding Lexical Scope",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn the fundamentals of lexical scope in JavaScript",
+            preview: true,
           },
           {
             id: 2,
             title: "Function Scope vs Block Scope",
+            type: "video",
             duration: "15:00",
+            description:
+              "Understanding the difference between function and block scope",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Practical Closures",
+            type: "coding",
             duration: "25:00",
+            description: "Hands-on coding exercise with closures",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1589,60 +1843,74 @@ const courseData = [
                 answer: "Event handlers"
               }
             ]
+>>>>>>> main
           },
           {
             id: 4,
             title: "Module Pattern",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "demo",
+            description: "Implementing the module pattern using closures",
+            preview: true,
           },
           {
             id: 5,
             title: "Closures in Loops",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description:
+              "Common closure pitfalls in loops and how to solve them",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Prototypes & Object-Oriented JS",
+        session: "Prototypes & Object-Oriented JS",
         module_description: "Deep dive into JavaScript's object model",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Objects & Prototypes",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Understanding JavaScript's prototype-based inheritance",
+            preview: true,
           },
           {
             id: 7,
             title: "Prototypal Inheritance",
+            type: "video",
             duration: "18:00",
+            description: "Implementing inheritance using prototypes",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "Constructor Functions",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description: "Creating objects using constructor functions",
+            preview: true,
           },
           {
             id: 9,
             title: "Class Syntax (ES6)",
+            type: "pdf",
             duration: "15:00",
+            description: "Modern class syntax in ES6 and beyond",
             preview: false,
-            type: "video",
+            file_size: "1.5 MB",
           },
           {
             id: 10,
             title: "Practice: Custom Objects",
+            type: "assignment",
             duration: "30:00",
+            description: "Build custom objects with inheritance",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1671,46 +1939,55 @@ const courseData = [
                 answer: "Using 'new' keyword"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "3. Asynchronous JavaScript",
+        session: "Asynchronous JavaScript",
         module_description: "Handle async operations effectively",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Callbacks & Callback Hell",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Understanding callbacks and their limitations",
+            preview: true,
           },
           {
             id: 12,
             title: "Promises: The Basics",
+            type: "video",
             duration: "25:00",
+            description: "Introduction to JavaScript Promises",
             preview: true,
-            type: "theory",
           },
           {
             id: 13,
             title: "Async/Await Explained",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description: "Modern async programming with async/await",
+            preview: true,
           },
           {
             id: 14,
             title: "Error Handling in Async JS",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Best practices for handling async errors",
+            preview: true,
           },
           {
             id: 15,
             title: "Practice: Fetching Data",
+            type: "assignment",
             duration: "25:00",
+            description: "Build an app that fetches and displays data",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1739,46 +2016,55 @@ const courseData = [
                 answer: ".catch()"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "4. Functional Programming Concepts",
+        session: "Functional Programming Concepts",
         module_description: "Explore the functional paradigm in JS",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Pure Functions",
-            duration: "16:00",
-            preview: true,
             type: "video",
+            duration: "16:00",
+            description: "Understanding and writing pure functions",
+            preview: true,
           },
           {
             id: 17,
             title: "Immutability",
+            type: "video",
             duration: "12:00",
+            description: "Principles of immutable data structures",
             preview: true,
-            type: "theory",
           },
           {
             id: 18,
             title: "Higher-Order Functions",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description: "Functions that operate on other functions",
+            preview: true,
           },
           {
             id: 19,
             title: "Currying & Composition",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Advanced functional programming techniques",
+            preview: true,
           },
           {
             id: 20,
             title: "Practice: Array Transformations",
+            type: "assignment",
             duration: "28:00",
+            description: "Transform arrays using functional programming",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1807,46 +2093,70 @@ const courseData = [
                 answer: "sort()"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "5. Design Patterns & Best Practices",
+        session: "Design Patterns & Best Practices",
         module_description: "Apply common software design patterns",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Singleton Pattern",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Implementing the singleton design pattern",
+            preview: true,
           },
           {
             id: 22,
             title: "Observer Pattern",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description: "Event-driven programming with observer pattern",
+            preview: true,
           },
           {
             id: 23,
             title: "Factory Pattern",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "demo",
+            description: "Creating objects using the factory pattern",
+            preview: true,
           },
           {
             id: 24,
             title: "Dependency Injection",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Managing dependencies in JavaScript applications",
+            preview: true,
           },
           {
             id: 25,
             title: "Refactoring Code",
+            type: "coding",
             duration: "25:00",
+            description: "Hands-on code refactoring exercise",
             preview: false,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your advanced JavaScript knowledge",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: Advanced JavaScript",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Comprehensive test covering closures, prototypes, async JS, and more",
+            preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -1875,25 +2185,52 @@ const courseData = [
                 answer: "A sign of potential problem in code"
               }
             ]
+>>>>>>> main
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.8,
+    students: 85420,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 35,
+    video_file: null,
+    image_file: null,
   },
 
-  // 5. UX/UI Design (4 sessions)
+  // Course ID 5 - Complete UX/UI Design Masterclass (converted to pattern 1)
   {
     id: 5,
     course_name: "Complete UX/UI Design Masterclass",
+    level: "Beginner",
+    language: "English",
+    total_no_hours: "28h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 6,
+
+    // Additional fields from original data
     description: "Learn Figma, user research, wireframing, and prototyping",
-    image: "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
+    image:
+      "https://www.aqskill.com/wp-content/uploads/2022/02/5809368-2-scaled.jpg",
+    preview: "https://example.com/preview/ux-ui-design",
+    course_rating: 4.7,
+
     instructor: {
       name: "Adrian Cantrill",
       mailid: "adrian@example.com",
       summary: "AWS Certified Solutions Architect",
+      avatar: "https://placehold.co/100x100?text=Adrian",
       overall_rating: 4.9,
       no_of_courses_released: 12,
-      avatar: "https://placehold.co/100x100?text=Adrian",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -1908,16 +2245,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 28,
-    no_of_sessions: 4,
-    no_of_tests_available: 6,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/ux-ui-design",
+
     about_course: {
       skills: [
         "User Research",
@@ -1929,41 +2257,52 @@ const courseData = [
       complete_description:
         "Design intuitive and beautiful user experiences from start to finish.",
     },
+
     outcome: [
       "Conduct effective user research",
       "Create high-fidelity prototypes in Figma",
       "Build a professional UX/UI design portfolio",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to UX Research",
+        session: "Introduction to UX Research",
         module_description: "Understand users and their needs",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is UX?",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Introduction to User Experience design principles",
+            preview: true,
           },
           {
             id: 2,
             title: "User Interview Techniques",
+            type: "video",
             duration: "20:00",
+            description:
+              "Learn effective techniques for conducting user interviews",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Persona Creation",
+            type: "video",
             duration: "22:00",
-            preview: false,
-            type: "demo",
+            description: "Create detailed user personas based on research",
+            preview: true,
           },
           {
             id: 4,
             title: "Journey Mapping",
+            type: "video",
             duration: "18:00",
+<<<<<<< alertmodify
+            description: "Map user journeys to understand pain points",
+            preview: true,
+=======
             preview: false,
             type: "exercise",
             questions: [
@@ -1993,38 +2332,47 @@ const courseData = [
                 answer: "Sticky notes or digital boards"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
             title: "Competitive Analysis",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Analyze competitors to identify opportunities",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Wireframing & Information Architecture",
+        session: "Wireframing & Information Architecture",
         module_description: "Structure content and design layouts",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Low-Fidelity Wireframes",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Create basic wireframes to outline structure",
+            preview: true,
           },
           {
             id: 7,
             title: "Sitemap Creation",
+            type: "video",
             duration: "15:00",
+            description: "Plan website structure with sitemaps",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "User Flows",
+            type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
+            description: "Design user flows for optimal navigation",
+            preview: true,
+=======
             preview: false,
             type: "exercise",
             questions: [
@@ -2054,45 +2402,56 @@ const courseData = [
                 answer: "All possible user actions and screens"
               }
             ]
+>>>>>>> main
           },
           {
             id: 9,
             title: "Mid-Fidelity Wireframes",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Develop more detailed wireframes",
+            preview: true,
           },
           {
             id: 10,
             title: "Usability Heuristics",
+            type: "pdf",
             duration: "12:00",
+            description: "Comprehensive guide to usability principles",
             preview: false,
-            type: "theory",
+            file_size: "2.1 MB",
           },
         ],
       },
       {
-        session: "3. Prototyping with Figma",
+        session: "Prototyping with Figma",
         module_description: "Bring your designs to life",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Figma Interface Tour",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Complete walkthrough of Figma's interface",
+            preview: true,
           },
           {
             id: 12,
             title: "Designing Components",
+            type: "video",
             duration: "25:00",
+            description: "Create reusable design components in Figma",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Interactive Prototypes",
+            type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
+            description: "Build interactive prototypes with animations",
+            preview: true,
+=======
             preview: false,
             type: "exercise",
             questions: [
@@ -2122,52 +2481,63 @@ const courseData = [
                 answer: "Early feedback and iteration"
               }
             ]
+>>>>>>> main
           },
           {
             id: 14,
             title: "Auto Layout & Variants",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Master advanced Figma features",
+            preview: true,
           },
           {
             id: 15,
             title: "Collaboration in Figma",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Work effectively with teams in Figma",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. UI Design & Usability Testing",
+        session: "UI Design & Usability Testing",
         module_description: "Create stunning interfaces and validate designs",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Color Theory & Typography",
-            duration: "16:00",
-            preview: true,
             type: "video",
+            duration: "16:00",
+            description: "Choose colors and fonts that enhance usability",
+            preview: true,
           },
           {
             id: 17,
             title: "Iconography & Imagery",
+            type: "video",
             duration: "12:00",
-            preview: false,
-            type: "theory",
+            description: "Select and design effective visual elements",
+            preview: true,
           },
           {
             id: 18,
             title: "Design Systems Basics",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description: "Create consistent design systems",
+            preview: true,
           },
           {
             id: 19,
             title: "Conducting Usability Tests",
+            type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
+            description: "Plan and execute effective usability tests",
+            preview: true,
+=======
             preview: false,
             type: "exercise",
             questions: [
@@ -2197,32 +2567,76 @@ const courseData = [
                 answer: "Target users"
               }
             ]
+>>>>>>> main
           },
           {
             id: 20,
             title: "Iterative Design & Feedback",
+            type: "pdf",
             duration: "18:00",
+            description: "Guide to incorporating feedback and iterating",
             preview: false,
-            type: "video",
+            file_size: "1.8 MB",
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Review your UX/UI design skills",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: UX/UI Design",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Comprehensive test covering Figma, wireframes, user research, and prototyping",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 5,
+    status: "published",
+    rating: 4.7,
+    students: 67891,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 28,
+    video_file: null,
+    image_file: null,
   },
 
-  // 6. DevOps with AWS (6 sessions)
+  // Course ID 6: DevOps with AWS - Converted to ID 1 pattern
   {
     id: 6,
     course_name: "DevOps with AWS: From Zero to Hero",
+    level: "intermediate",
+    language: "English",
+    total_no_hours: "55h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 15,
+
+    // Additional fields from original data
     description: "Implement CI/CD, automation, and scaling on AWS",
-    image: "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
+    image:
+      "https://www.tekcent.com/media/yncjty2t/devops-1600x900-1423173157.jpg",
+    preview: "https://example.com/preview/devops-aws",
+    course_rating: 4.9,
+
     instructor: {
       name: "Paul Hudson",
       mailid: "paul@example.com",
       summary: "Swift & iOS Developer",
+      avatar: "https://placehold.co/100x100?text=Paul",
       overall_rating: 4.7,
       no_of_courses_released: 18,
-      avatar: "https://placehold.co/100x100?text=Paul",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -2237,16 +2651,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 55,
-    no_of_sessions: 6,
-    no_of_tests_available: 15,
-    course_rating: 4.9,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/devops-aws",
+
     about_course: {
       skills: [
         "AWS EC2",
@@ -2261,75 +2666,90 @@ const courseData = [
       complete_description:
         "Master DevOps practices and tools on the Amazon Web Services platform.",
     },
+
     outcome: [
       "Automate infrastructure provisioning",
       "Set up robust CI/CD pipelines",
       "Deploy and manage scalable applications on AWS",
     ],
+
     course_content: [
       {
-        session: "1. AWS Fundamentals for DevOps",
+        session: "AWS Fundamentals for DevOps",
         module_description: "Core AWS services for building infrastructure",
-        videos: [
+        content: [
           {
             id: 1,
             title: "AWS Account Setup & IAM",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Complete AWS account setup and IAM configuration",
+            preview: true,
           },
           {
             id: 2,
             title: "EC2 & VPC Essentials",
+            type: "video",
             duration: "25:00",
+            description: "Understanding EC2 instances and VPC networking",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "S3 Storage & CloudFront",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Object storage and content delivery networks",
+            preview: true,
           },
           {
             id: 4,
             title: "Route 53 & DNS",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "DNS management and domain routing",
+            preview: true,
           },
           {
             id: 5,
             title: "Monitoring with CloudWatch",
+            type: "pdf",
             duration: "12:00",
+            description: "Complete guide to AWS CloudWatch monitoring",
             preview: false,
-            type: "demo",
+            file_size: "2.1 MB",
           },
         ],
       },
       {
-        session: "2. Infrastructure as Code with CloudFormation & Terraform",
+        session: "Infrastructure as Code with CloudFormation & Terraform",
         module_description: "Automate infrastructure provisioning",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Introduction to IaC",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Infrastructure as Code principles and benefits",
+            preview: true,
           },
           {
             id: 7,
             title: "CloudFormation Templates",
+            type: "video",
             duration: "22:00",
+            description: "Creating and managing CloudFormation templates",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Terraform Basics",
+            type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
+            description: "Getting started with Terraform for AWS",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2359,52 +2779,64 @@ const courseData = [
                 answer: ".tf"
               }
             ]
+>>>>>>> main
           },
           {
             id: 9,
             title: "Managing State in Terraform",
+            type: "pdf",
             duration: "20:00",
+            description: "Terraform state management best practices",
             preview: false,
-            type: "theory",
+            file_size: "1.8 MB",
           },
           {
             id: 10,
             title: "Cross-Account Deployments",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Deploying resources across multiple AWS accounts",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. CI/CD with AWS CodePipeline & Jenkins",
+        session: "CI/CD with AWS CodePipeline & Jenkins",
         module_description: "Build automated release pipelines",
-        videos: [
+        content: [
           {
             id: 11,
             title: "CI/CD Principles",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Continuous Integration and Deployment fundamentals",
+            preview: true,
           },
           {
             id: 12,
             title: "AWS CodeCommit & CodeBuild",
+            type: "video",
             duration: "25:00",
+            description: "Source control and build automation with AWS",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "AWS CodeDeploy",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "exercise",
+            description: "Automated application deployment strategies",
+            preview: true,
           },
           {
             id: 14,
             title: "Building Jenkins Pipelines",
+            type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
+            description: "Creating robust CI/CD pipelines with Jenkins",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2434,38 +2866,47 @@ const courseData = [
                 answer: "A logical division of the pipeline"
               }
             ]
+>>>>>>> main
           },
           {
             id: 15,
             title: "Integrating with CodePipeline",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Combining Jenkins with AWS CodePipeline",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Containerization with Docker & ECS/EKS",
+        session: "Containerization with Docker & ECS/EKS",
         module_description: "Package and deploy applications efficiently",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Docker Fundamentals",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Introduction to containerization with Docker",
+            preview: true,
           },
           {
             id: 17,
             title: "Building Docker Images",
+            type: "video",
             duration: "18:00",
+            description: "Creating optimized Docker images",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "Amazon ECS & Fargate",
+            type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
+            description: "Container orchestration with ECS and Fargate",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2495,101 +2936,133 @@ const courseData = [
                 answer: "ECR"
               }
             ]
+>>>>>>> main
           },
           {
             id: 19,
             title: "Introduction to Kubernetes (EKS)",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "theory",
+            description: "Kubernetes fundamentals and Amazon EKS",
+            preview: true,
           },
           {
             id: 20,
             title: "Service Discovery in Containers",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Container networking and service discovery",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. Monitoring, Logging & Alerting",
+        session: "Monitoring, Logging & Alerting",
         module_description: "Ensure application health and performance",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Centralized Logging with CloudWatch Logs",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Setting up centralized logging systems",
+            preview: true,
           },
           {
             id: 22,
             title: "Metrics & Dashboards",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "demo",
+            description: "Creating comprehensive monitoring dashboards",
+            preview: true,
           },
           {
             id: 23,
             title: "Setting Up Alarms & Notifications",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "exercise",
+            description: "Automated alerting and notification systems",
+            preview: true,
           },
           {
             id: 24,
             title: "Distributed Tracing with X-Ray",
-            duration: "22:00",
-            preview: false,
             type: "video",
+            duration: "22:00",
+            description: "Application performance monitoring with X-Ray",
+            preview: true,
           },
           {
             id: 25,
             title: "Security Best Practices in DevOps",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Implementing security throughout the DevOps pipeline",
+            preview: true,
           },
         ],
       },
       {
-        session: "6. Serverless DevOps & Advanced Topics",
+        session: "Serverless DevOps & Advanced Topics",
         module_description: "Explore advanced DevOps concepts and serverless",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Serverless with AWS Lambda",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Building serverless applications with Lambda",
+            preview: true,
           },
           {
             id: 27,
             title: "API Gateway for Serverless",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "demo",
+            description: "Creating APIs with Amazon API Gateway",
+            preview: true,
           },
           {
             id: 28,
             title: "Event-Driven Architectures",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "theory",
+            description: "Designing event-driven serverless systems",
+            preview: true,
           },
           {
             id: 29,
             title: "Cost Optimization in AWS",
+            type: "pdf",
             duration: "18:00",
+            description: "Strategies for optimizing AWS costs",
             preview: false,
-            type: "video",
+            file_size: "2.5 MB",
           },
           {
             id: 30,
             title: "Disaster Recovery Strategies",
+            type: "coding",
             duration: "20:00",
+            description: "Implementing disaster recovery solutions",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Evaluate your AWS DevOps knowledge",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: AWS DevOps",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "CI/CD pipelines, automation, deployment strategies on AWS",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -2618,21 +3091,54 @@ const courseData = [
                 answer: "Failover test"
               }
             ]
+>>>>>>> main
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 7,
+    status: "published",
+    rating: 4.9,
+    students: 89234,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 55,
+    video_file: null,
+    image_file: null,
   },
 
-  // 7. iOS Development (7 sessions)
+  // Course ID 7: iOS Development - Converted to ID 1 pattern
   {
+    id: 7,
+    course_name: "iOS Development with Swift",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "50h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 10,
+
+    // Additional fields from original data
+    description:
+      "Learn to code in Swift and build stunning iOS applications from scratch",
+    image:
+      "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
+    preview: "https://example.com/preview/ios-swift",
+    course_rating: 4.8,
+
     instructor: {
       name: "Kirill Eremenko",
       mailid: "kirill@example.com",
       summary: "Data Scientist",
+      avatar:
+        "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
       overall_rating: 4.7,
       no_of_courses_released: 25,
-      avatar: "https://www.webisolution.com/wp-content/uploads/2020/07/iphone-app-development-1024x455.jpg",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -2647,57 +3153,57 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 50,
-    no_of_sessions: 7,
-    no_of_tests_available: 10,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/ios-swift",
+
     about_course: {
       skills: ["Swift", "SwiftUI", "UIKit", "Xcode", "Firebase", "CoreData"],
       complete_description:
         "Learn to code in Swift and build stunning iOS applications from scratch.",
     },
+
     outcome: [
       "Develop engaging iOS applications",
       "Understand core Swift programming concepts",
       "Publish your apps to the App Store",
     ],
+
     course_content: [
       {
-        session: "1. Swift Programming Basics",
+        session: "Swift Programming Basics",
         module_description: "Get started with the Swift language",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Introduction to Swift",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Swift language fundamentals and syntax",
+            preview: true,
           },
           {
             id: 2,
             title: "Variables & Constants",
+            type: "video",
             duration: "15:00",
+            description: "Understanding variables, constants, and data types",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Control Flow",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Loops, conditionals, and control structures",
+            preview: true,
           },
           {
             id: 4,
             title: "Functions & Closures",
+            type: "coding",
             duration: "22:00",
+            description: "Creating functions and understanding closures",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -2726,45 +3232,56 @@ const courseData = [
                 answer: "Passing functionality as a variable"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
             title: "Optionals",
+            type: "pdf",
             duration: "10:00",
+            description: "Complete guide to Swift optionals",
             preview: false,
-            type: "video",
+            file_size: "1.5 MB",
           },
         ],
       },
       {
-        session: "2. SwiftUI Fundamentals",
+        session: "SwiftUI Fundamentals",
         module_description: "Build declarative UIs with SwiftUI",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Hello SwiftUI",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description: "Introduction to SwiftUI framework",
+            preview: true,
           },
           {
             id: 7,
             title: "Views & Modifiers",
+            type: "video",
             duration: "20:00",
+            description: "Building views and applying modifiers",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "State Management in SwiftUI",
+            type: "video",
             duration: "28:00",
-            preview: false,
-            type: "theory",
+            description: "Managing state with @State and @Binding",
+            preview: true,
           },
           {
             id: 9,
             title: "Lists & Navigation",
+            type: "coding",
             duration: "22:00",
+<<<<<<< alertmodify
+            description: "Creating lists and navigation views",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2794,47 +3311,57 @@ const courseData = [
                 answer: "NavigationView"
               }
             ]
+>>>>>>> main
           },
           {
             id: 10,
             title: "Gestures",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Implementing touch gestures in SwiftUI",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. UIKit & Xcode Essentials",
+        session: "UIKit & Xcode Essentials",
         module_description:
           "Working with the traditional UIKit framework and Xcode",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Introduction to UIKit",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "UIKit framework fundamentals",
+            preview: true,
           },
           {
             id: 12,
             title: "Xcode Interface Builder",
+            type: "video",
             duration: "20:00",
+            description: "Using Interface Builder for UI design",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "View Controllers",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "theory",
+            description: "Understanding and implementing view controllers",
+            preview: true,
           },
           {
             id: 14,
             title: "Table Views & Collection Views",
+            type: "pdf",
             duration: "30:00",
+            description: "Comprehensive guide to table and collection views",
             preview: false,
+<<<<<<< alertmodify
+            file_size: "3.2 MB",
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -2863,38 +3390,47 @@ const courseData = [
                 answer: "didSelectRowAt"
               }
             ]
+>>>>>>> main
           },
           {
             id: 15,
             title: "Segues & Navigation Controllers",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Navigation patterns in UIKit",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Data Persistence & Networking",
+        session: "Data Persistence & Networking",
         module_description: "Store data and connect to APIs",
-        videos: [
+        content: [
           {
             id: 16,
             title: "User Defaults",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Simple data persistence with UserDefaults",
+            preview: true,
           },
           {
             id: 17,
             title: "Core Data Basics",
+            type: "video",
             duration: "22:00",
+            description: "Introduction to Core Data framework",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "Making Network Requests",
+            type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
+            description: "HTTP requests and URL sessions",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2924,45 +3460,55 @@ const courseData = [
                 answer: "Easier encoding/decoding"
               }
             ]
+>>>>>>> main
           },
           {
             id: 19,
             title: "JSON Parsing",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Parsing JSON data in Swift",
+            preview: true,
           },
           {
             id: 20,
             title: "Integrating with REST APIs",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Complete REST API integration",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. Firebase Integration",
+        session: "Firebase Integration",
         module_description: "Add backend services to your iOS apps",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Firebase Setup",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Setting up Firebase for iOS projects",
+            preview: true,
           },
           {
             id: 22,
             title: "Firebase Authentication",
+            type: "video",
             duration: "25:00",
+            description: "User authentication with Firebase Auth",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "Cloud Firestore Database",
+            type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
+            description: "NoSQL database with Cloud Firestore",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -2992,53 +3538,64 @@ const courseData = [
                 answer: "JSON-like objects"
               }
             ]
+>>>>>>> main
           },
           {
             id: 24,
             title: "Realtime Database",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Real-time data synchronization",
+            preview: true,
           },
           {
             id: 25,
             title: "Storage & Functions",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "File storage and cloud functions",
+            preview: true,
           },
         ],
       },
       {
-        session: "6. Advanced SwiftUI & Design Patterns",
+        session: "Advanced SwiftUI & Design Patterns",
         module_description:
           "Explore complex SwiftUI features and architectural patterns",
-        videos: [
+        content: [
           {
             id: 26,
             title: "MVVM Pattern",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description: "Model-View-ViewModel architecture pattern",
+            preview: true,
           },
           {
             id: 27,
             title: "Combine Framework",
+            type: "video",
             duration: "28:00",
-            preview: false,
-            type: "theory",
+            description: "Reactive programming with Combine",
+            preview: true,
           },
           {
             id: 28,
             title: "Accessibility in iOS",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "demo",
+            description: "Making apps accessible for all users",
+            preview: true,
           },
           {
             id: 29,
             title: "Unit Testing iOS Apps",
+            type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
+            description: "Testing strategies for iOS applications",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3068,74 +3625,121 @@ const courseData = [
                 answer: "Percentage of code tested"
               }
             ]
+>>>>>>> main
           },
           {
             id: 30,
             title: "Animations & Transitions",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Creating smooth animations and transitions",
+            preview: true,
           },
         ],
       },
       {
-        session: "7. App Store Deployment & Monetization",
+        session: "App Store Deployment & Monetization",
         module_description: "Prepare and publish your app",
-        videos: [
+        content: [
           {
             id: 31,
             title: "App Store Connect",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Managing apps with App Store Connect",
+            preview: true,
           },
           {
             id: 32,
             title: "Signing & Provisioning Profiles",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description: "Code signing and provisioning setup",
+            preview: true,
           },
           {
             id: 33,
             title: "App Store Guidelines",
+            type: "pdf",
             duration: "18:00",
+            description: "Complete App Store review guidelines",
             preview: false,
-            type: "theory",
+            file_size: "2.8 MB",
           },
           {
             id: 34,
             title: "In-App Purchases & Ads",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Monetization strategies for iOS apps",
+            preview: true,
           },
           {
             id: 35,
             title: "Marketing Your App",
+            type: "assignment",
             duration: "10:00",
+            description: "App marketing and promotion strategies",
             preview: false,
-            type: "summary",
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Evaluate your iOS development knowledge",
+        content: [
+          {
+            id: 36,
+            title: "Final Test: iOS Development",
+            type: "quiz",
+            duration: "25:00",
+            description: "Covers Swift, Xcode, UIKit, and iOS app architecture",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 8,
+    status: "published",
+    rating: 4.8,
+    students: 67891,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 50,
+    video_file: null,
+    image_file: null,
   },
 
-  // 8. Machine Learning (8 sessions)
+  // Course ID 8: Machine Learning A-Z™
   {
     id: 8,
     course_name: "Machine Learning A-Z™: AI, Python & R Data Science",
+    level: "intermediate",
+    language: "English",
+    total_no_hours: "65h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 12,
+
+    // Additional fields from original data
     description:
       "Master Machine Learning algorithms and build powerful AI models",
     image: "https://wallpaperaccess.com/full/3079594.jpg",
+    preview: "https://example.com/preview/machine-learning",
+    course_rating: 4.7,
+
     instructor: {
       name: "Nathan House",
       mailid: "nathan@example.com",
       summary: "Cyber Security Expert",
+      avatar: "https://placehold.co/100x100?text=Nathan",
       overall_rating: 4.6,
       no_of_courses_released: 9,
-      avatar: "https://placehold.co/100x100?text=Nathan",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -3150,16 +3754,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 65,
-    no_of_sessions: 8,
-    no_of_tests_available: 12,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/machine-learning",
+
     about_course: {
       skills: [
         "Supervised Learning",
@@ -3173,41 +3768,52 @@ const courseData = [
       complete_description:
         "Learn to implement powerful Machine Learning algorithms in Python and R.",
     },
+
     outcome: [
       "Build and train various ML models",
       "Apply ML to real-world problems",
       "Understand the theoretical foundations of AI",
     ],
+
     course_content: [
       {
-        session: "1. Data Preprocessing",
+        session: "Data Preprocessing",
         module_description: "Prepare your data for machine learning",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Importing Libraries",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description:
+              "Learn how to import essential libraries for machine learning",
+            preview: true,
           },
           {
             id: 2,
             title: "Handling Missing Data",
+            type: "video",
             duration: "20:00",
+            description: "Techniques for dealing with missing data in datasets",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Encoding Categorical Data",
+            type: "video",
             duration: "22:00",
-            preview: false,
-            type: "theory",
+            description: "Convert categorical variables into numerical format",
+            preview: true,
           },
           {
             id: 4,
             title: "Splitting Data into Train/Test",
+            type: "video",
             duration: "18:00",
+<<<<<<< alertmodify
+            description: "Properly split your dataset for training and testing",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3237,38 +3843,49 @@ const courseData = [
                 answer: "Unseen data"
               }
             ]
+>>>>>>> main
           },
           {
             id: 5,
             title: "Feature Scaling",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description:
+              "Normalize and standardize features for better performance",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Regression Models",
+        session: "Regression Models",
         module_description: "Predict continuous values",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Simple Linear Regression",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description: "Build your first regression model with one variable",
+            preview: true,
           },
           {
             id: 7,
             title: "Multiple Linear Regression",
+            type: "video",
             duration: "30:00",
+            description: "Extend to multiple variables and features",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Polynomial Regression",
+            type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
+            description:
+              "Handle non-linear relationships with polynomial features",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3298,45 +3915,56 @@ const courseData = [
                 answer: "PolynomialFeatures"
               }
             ]
+>>>>>>> main
           },
           {
             id: 9,
             title: "Support Vector Regression (SVR)",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description: "Apply SVM concepts to regression problems",
+            preview: true,
           },
           {
             id: 10,
             title: "Decision Tree & Random Forest Regression",
-            duration: "35:00",
-            preview: false,
             type: "video",
+            duration: "35:00",
+            description: "Tree-based models for regression tasks",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. Classification Models",
+        session: "Classification Models",
         module_description: "Categorize data into classes",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Logistic Regression",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Binary and multiclass classification with logistic regression",
+            preview: true,
           },
           {
             id: 12,
             title: "K-Nearest Neighbors (KNN)",
+            type: "video",
             duration: "20:00",
+            description: "Instance-based learning with KNN algorithm",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Support Vector Machine (SVM)",
+            type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
+            description: "Powerful classification with support vector machines",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3366,60 +3994,74 @@ const courseData = [
                 answer: "Class label"
               }
             ]
+>>>>>>> main
           },
           {
             id: 14,
             title: "Kernel SVM",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description: "Non-linear classification with kernel tricks",
+            preview: true,
           },
           {
             id: 15,
             title: "Naive Bayes & Decision Tree Classification",
-            duration: "30:00",
-            preview: false,
             type: "video",
+            duration: "30:00",
+            description: "Probabilistic and tree-based classification methods",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Clustering",
+        session: "Clustering",
         module_description: "Group similar data points",
-        videos: [
+        content: [
           {
             id: 16,
             title: "K-Means Clustering",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Partition data into k clusters using K-means algorithm",
+            preview: true,
           },
           {
             id: 17,
             title: "Hierarchical Clustering",
+            type: "video",
             duration: "25:00",
+            description:
+              "Build cluster hierarchies with agglomerative clustering",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "DBSCAN (optional)",
+            type: "pdf",
             duration: "15:00",
+            description: "Density-based clustering algorithm",
             preview: false,
-            type: "theory",
+            file_size: "0.8 MB",
           },
           {
             id: 19,
             title: "Evaluating Clustering Performance",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Metrics and techniques for evaluating clusters",
+            preview: true,
           },
           {
             id: 20,
             title: "Practice: Customer Segmentation",
+            type: "assignment",
             duration: "35:00",
+            description: "Real-world project on customer segmentation",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -3448,45 +4090,56 @@ const courseData = [
                 answer: "Scatter plot"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "5. Association Rule Learning & Reinforcement Learning",
+        session: "Association Rule Learning & Reinforcement Learning",
         module_description: "Discover relationships and train agents",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Apriori Algorithm",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Find frequent itemsets and association rules",
+            preview: true,
           },
           {
             id: 22,
             title: "Eclat Algorithm",
+            type: "pdf",
             duration: "15:00",
-            preview: true,
-            type: "theory",
+            description: "Alternative approach to association rule mining",
+            preview: false,
+            file_size: "1.1 MB",
           },
           {
             id: 23,
             title: "Introduction to Reinforcement Learning",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Learn how agents interact with environments",
+            preview: true,
           },
           {
             id: 24,
             title: "Upper Confidence Bound (UCB)",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "demo",
+            description: "Solve the multi-armed bandit problem",
+            preview: true,
           },
           {
             id: 25,
             title: "Thompson Sampling",
+            type: "video",
             duration: "22:00",
+<<<<<<< alertmodify
+            description: "Bayesian approach to multi-armed bandits",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3516,39 +4169,48 @@ const courseData = [
                 answer: "Action selection"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "6. Natural Language Processing (NLP)",
+        session: "Natural Language Processing (NLP)",
         module_description: "Process and understand human language",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Text Preprocessing",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Clean and prepare text data for analysis",
+            preview: true,
           },
           {
             id: 27,
             title: "Bag of Words Model",
+            type: "video",
             duration: "22:00",
+            description: "Convert text into numerical vectors",
             preview: true,
-            type: "demo",
           },
           {
             id: 28,
             title: "TF-IDF",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Term frequency-inverse document frequency weighting",
+            preview: true,
           },
           {
             id: 29,
             title: "Sentiment Analysis",
+            type: "pdf",
             duration: "28:00",
+            description: "Analyze sentiment in text data",
             preview: false,
+<<<<<<< alertmodify
+            file_size: "2.3 MB",
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -3577,52 +4239,63 @@ const courseData = [
                 answer: "Sarcasm detection"
               }
             ]
+>>>>>>> main
           },
           {
             id: 30,
             title: "Word Embeddings (optional)",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description: "Dense vector representations of words",
+            preview: true,
           },
         ],
       },
       {
-        session: "7. Deep Learning",
+        session: "Deep Learning",
         module_description: "Build neural networks for complex tasks",
-        videos: [
+        content: [
           {
             id: 31,
             title: "Introduction to Artificial Neural Networks",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description: "Fundamentals of neural networks and backpropagation",
+            preview: true,
           },
           {
             id: 32,
             title: "Building an ANN in Keras/TensorFlow",
+            type: "video",
             duration: "30:00",
+            description: "Hands-on implementation of neural networks",
             preview: true,
-            type: "demo",
           },
           {
             id: 33,
             title: "Convolutional Neural Networks (CNNs)",
+            type: "video",
             duration: "35:00",
-            preview: false,
-            type: "theory",
+            description: "Deep learning for computer vision tasks",
+            preview: true,
           },
           {
             id: 34,
             title: "Recurrent Neural Networks (RNNs)",
-            duration: "28:00",
-            preview: false,
             type: "video",
+            duration: "28:00",
+            description: "Sequential data processing with RNNs and LSTMs",
+            preview: true,
           },
           {
             id: 35,
             title: "Transfer Learning",
+            type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
+            description: "Leverage pre-trained models for new tasks",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -3652,46 +4325,69 @@ const courseData = [
                 answer: "Image classification"
               }
             ]
+>>>>>>> main
           },
         ],
       },
       {
-        session: "8. Dimensionality Reduction & Model Selection",
+        session: "Dimensionality Reduction & Model Selection",
         module_description: "Optimize models and reduce complexity",
-        videos: [
+        content: [
           {
             id: 36,
             title: "PCA (Principal Component Analysis)",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Reduce dimensionality while preserving information",
+            preview: true,
           },
           {
             id: 37,
             title: "LDA (Linear Discriminant Analysis)",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Supervised dimensionality reduction technique",
+            preview: true,
           },
           {
             id: 38,
             title: "XGBoost",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description: "Gradient boosting for high-performance models",
+            preview: true,
           },
           {
             id: 39,
             title: "Cross-Validation & Grid Search",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Model validation and hyperparameter tuning",
+            preview: true,
           },
           {
             id: 40,
             title: "Model Deployment Strategies",
+            type: "video",
             duration: "22:00",
+            description: "Deploy your models to production environments",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your ML fundamentals and implementation",
+        content: [
+          {
+            id: 41,
+            title: "Final Test: Machine Learning",
+            type: "quiz",
+            duration: "25:00",
+            description: "Covers ML algorithms, model evaluation, Python & R",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -3720,26 +4416,52 @@ const courseData = [
                 answer: "Scaling"
               }
             ]
+>>>>>>> main
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 9,
+    status: "published",
+    rating: 4.7,
+    students: 850000,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 65,
+    video_file: null,
+    image_file: null,
   },
 
-  // 9. Cybersecurity (5 sessions)
+  // Course ID 9: Cybersecurity
   {
     id: 9,
     course_name: "The Complete Cyber Security Course: Network Security!",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "40h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 8,
+
+    // Additional fields from original data
     description:
       "Learn ethical hacking, penetration testing, and network security",
     image: "https://wallpaperaccess.com/full/2407073.jpg",
+    preview: "https://example.com/preview/cybersecurity",
+    course_rating: 4.6,
+
     instructor: {
       name: "Hadelin de Ponteves",
       mailid: "hadelin@example.com",
       summary: "AI & Blockchain Expert",
+      avatar: "https://placehold.co/100x100?text=Hadelin",
       overall_rating: 4.5,
       no_of_courses_released: 7,
-      avatar: "https://placehold.co/100x100?text=Hadelin",
       total_learners: "1,000,000+",
       total_reviews: "100,000+",
       about: [
@@ -3754,16 +4476,7 @@ const courseData = [
         "Build real-world projects from scratch.",
       ],
     },
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 40,
-    no_of_sessions: 5,
-    no_of_tests_available: 8,
-    course_rating: 4.6,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/cybersecurity",
+
     about_course: {
       skills: [
         "Ethical Hacking",
@@ -3775,227 +4488,304 @@ const courseData = [
       complete_description:
         "Master the fundamentals of cybersecurity and protect yourself from threats.",
     },
+
     outcome: [
       "Understand common cyber threats",
       "Implement strong security practices",
       "Perform basic penetration tests",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to Cyber Security",
+        session: "Introduction to Cyber Security",
         module_description: "Understand core concepts and threats",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is Cyber Security?",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description: "Fundamentals of cybersecurity and its importance",
+            preview: true,
           },
           {
             id: 2,
             title: "Types of Cyber Attacks",
+            type: "video",
             duration: "20:00",
+            description: "Overview of common cyber attack vectors and methods",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Threat Landscape",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Current cybersecurity threat environment and trends",
+            preview: true,
           },
           {
             id: 4,
             title: "Cyber Security Laws & Ethics",
+            type: "pdf",
             duration: "12:00",
+            description: "Legal and ethical considerations in cybersecurity",
             preview: false,
-            type: "discussion",
+            file_size: "1.5 MB",
           },
           {
             id: 5,
             title: "Setting Up a Secure Environment",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Best practices for creating secure computing environments",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Network Security Fundamentals",
+        session: "Network Security Fundamentals",
         module_description: "Secure your networks from intrusions",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Network Topologies",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Understanding different network structures and their security implications",
+            preview: true,
           },
           {
             id: 7,
             title: "Firewalls & IDS/IPS",
+            type: "video",
             duration: "22:00",
+            description:
+              "Implementing firewalls and intrusion detection/prevention systems",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "VPNs & Secure Communication",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Virtual private networks and secure communication protocols",
+            preview: true,
           },
           {
             id: 9,
             title: "Wireless Security (WPA3)",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Securing wireless networks with modern protocols",
+            preview: true,
           },
           {
             id: 10,
             title: "Network Scanning Tools",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "coding-exercise",
+            description:
+              "Using tools like Nmap for network discovery and security testing",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. Cryptography & Data Protection",
+        session: "Cryptography & Data Protection",
         module_description: "Protect sensitive information",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Introduction to Cryptography",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Basic principles of cryptography and encryption",
+            preview: true,
           },
           {
             id: 12,
             title: "Symmetric vs Asymmetric Encryption",
+            type: "video",
             duration: "15:00",
+            description: "Understanding different encryption methodologies",
             preview: true,
-            type: "theory",
           },
           {
             id: 13,
             title: "Hashing & Digital Signatures",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description: "Data integrity and authentication mechanisms",
+            preview: true,
           },
           {
             id: 14,
             title: "Public Key Infrastructure (PKI)",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Certificate management and PKI implementations",
+            preview: true,
           },
           {
             id: 15,
             title: "Password Security & Management",
+            type: "pdf",
             duration: "10:00",
+            description: "Best practices for password creation and management",
             preview: false,
-            type: "discussion",
+            file_size: "0.9 MB",
           },
         ],
       },
       {
-        session: "4. Web Application Security",
+        session: "Web Application Security",
         module_description: "Secure web applications from common attacks",
-        videos: [
+        content: [
           {
             id: 16,
             title: "OWASP Top 10",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description: "Most critical web application security risks",
+            preview: true,
           },
           {
             id: 17,
             title: "SQL Injection Attacks",
+            type: "video",
             duration: "28:00",
+            description:
+              "Understanding and preventing SQL injection vulnerabilities",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "Cross-Site Scripting (XSS)",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "theory",
+            description: "XSS attack vectors and prevention techniques",
+            preview: true,
           },
           {
             id: 19,
             title: "Authentication & Session Management",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Secure user authentication and session handling",
+            preview: true,
           },
           {
             id: 20,
             title: "Security Headers",
+            type: "pdf",
             duration: "10:00",
+            description: "HTTP security headers for web application protection",
             preview: false,
-            type: "exercise",
+            file_size: "0.7 MB",
           },
         ],
       },
       {
-        session: "5. Ethical Hacking & Penetration Testing Basics",
+        session: "Ethical Hacking & Penetration Testing Basics",
         module_description: "Understand the mindset of an ethical hacker",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Introduction to Ethical Hacking",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description: "Principles and methodology of ethical hacking",
+            preview: true,
           },
           {
             id: 22,
             title: "Reconnaissance & Footprinting",
+            type: "video",
             duration: "25:00",
+            description:
+              "Information gathering techniques for security testing",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "Vulnerability Scanning",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "coding-exercise",
+            description:
+              "Automated tools and techniques for finding vulnerabilities",
+            preview: true,
           },
           {
             id: 24,
             title: "Exploitation Basics",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description: "Basic exploitation techniques and tools",
+            preview: true,
           },
           {
             id: 25,
             title: "Reporting & Remediation",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description: "Writing security reports and remediation strategies",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Assess your cybersecurity knowledge",
+        content: [
+          {
+            id: 26,
+            title: "Final Test: Network Security",
+            type: "quiz",
+            duration: "25:00",
+            description: "Ethical hacking, firewalls, and secure networking",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.6,
+    students: 750000,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 40,
+    video_file: null,
+    image_file: null,
   },
 
-  // 10. Blockchain Basics (4 sessions)
   {
     id: 10,
     course_name: "Blockchain A-Z™: Learn How To Build Your First Blockchain",
+    level: "Beginner",
+    language: "English",
+    total_no_hours: "25h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 5,
+
+    // Additional fields from original data
     description:
       "Understand blockchain technology and build a simple blockchain",
-    image: "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
+    image:
+      "https://images.spiceworks.com/wp-content/uploads/2022/10/04121130/Concept-depicting-block-validation-in-the-blockchain-and-digital-ledger.jpg",
+    preview: "https://example.com/preview/blockchain-basics",
+    course_rating: 4.5,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4018,16 +4808,6 @@ const courseData = [
       ],
     },
 
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 25,
-    no_of_sessions: 4,
-    no_of_tests_available: 5,
-    course_rating: 4.5,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/blockchain-basics",
     about_course: {
       skills: [
         "Blockchain",
@@ -4039,202 +4819,273 @@ const courseData = [
       complete_description:
         "Demystify blockchain technology and learn its core concepts and applications.",
     },
+
     outcome: [
       "Understand the fundamentals of blockchain",
       "Explain how cryptocurrencies work",
       "Build a basic blockchain from scratch",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to Blockchain & Bitcoin",
+        session: "Introduction to Blockchain & Bitcoin",
         module_description:
           "Understand the core concepts of decentralized ledger technology",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is Blockchain?",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Introduction to blockchain technology and its fundamental concepts",
+            preview: true,
+            resources: ["Course Slides"],
           },
           {
             id: 2,
             title: "How Bitcoin Works",
+            type: "video",
             duration: "22:00",
+            description:
+              "Deep dive into Bitcoin mechanics and transaction processing",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Decentralization & Distributed Ledgers",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Understanding distributed systems and decentralized networks",
+            preview: false,
           },
           {
             id: 4,
             title: "Cryptocurrency vs. Blockchain",
+            type: "video",
             duration: "10:00",
+            description:
+              "Distinguishing between blockchain technology and cryptocurrencies",
             preview: false,
-            type: "discussion",
           },
           {
             id: 5,
             title: "Blockchain Use Cases Beyond Crypto",
+            type: "video",
             duration: "12:00",
+            description:
+              "Exploring blockchain applications in various industries",
             preview: false,
-            type: "summary",
           },
         ],
       },
       {
-        session: "2. Cryptography & Hashing",
+        session: "Cryptography & Hashing",
         module_description: "The cryptographic backbone of blockchain",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Hashing Algorithms",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Understanding cryptographic hash functions and their properties",
+            preview: true,
           },
           {
             id: 7,
             title: "Digital Signatures",
+            type: "video",
             duration: "15:00",
+            description:
+              "Learn how digital signatures ensure transaction authenticity",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "Merkle Trees",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Understanding Merkle trees and their role in blockchain",
+            preview: false,
           },
           {
             id: 9,
             title: "Public & Private Keys",
+            type: "video",
             duration: "12:00",
+            description: "Asymmetric cryptography and key pair generation",
             preview: false,
-            type: "demo",
           },
           {
             id: 10,
-            title: "Hands-on: Basic Hashing",
+            title: "Practice: Basic Hashing",
+            type: "coding",
             duration: "25:00",
+            description:
+              "Hands-on coding exercise implementing basic hashing functions",
             preview: false,
-            type: "coding-exercise",
           },
         ],
       },
       {
-        session: "3. Building a Simple Blockchain",
+        session: "Building a Simple Blockchain",
         module_description: "Code your own basic blockchain",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Blockchain Structure",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Understanding the structure and components of a blockchain",
+            preview: true,
           },
           {
             id: 12,
             title: "Creating Blocks",
+            type: "coding",
             duration: "28:00",
+            description:
+              "Interactive coding session to create blockchain blocks",
             preview: true,
-            type: "coding-exercise",
           },
           {
             id: 13,
             title: "Proof of Work",
+            type: "video",
             duration: "30:00",
+            description: "Understanding consensus mechanisms and proof of work",
             preview: false,
-            type: "theory",
           },
           {
             id: 14,
             title: "Adding Transactions",
+            type: "coding",
             duration: "25:00",
+            description:
+              "Implementing transaction functionality in the blockchain",
             preview: false,
-            type: "demo",
           },
           {
             id: 15,
             title: "Chain Validation",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Implementing blockchain validation and integrity checks",
+            preview: false,
           },
         ],
       },
       {
-        session: "4. Smart Contracts & Future of Blockchain",
+        session: "Smart Contracts & Future of Blockchain",
         module_description: "Explore advanced concepts and future trends",
-        videos: [
+        content: [
           {
             id: 16,
             title: "What are Smart Contracts?",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Introduction to smart contracts and their capabilities",
+            preview: true,
           },
           {
             id: 17,
             title: "Ethereum & DApps",
+            type: "video",
             duration: "22:00",
+            description:
+              "Understanding Ethereum platform and decentralized applications",
             preview: false,
-            type: "theory",
           },
           {
             id: 18,
             title: "Consensus Mechanisms (PoS, DPoS)",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Exploring alternative consensus mechanisms",
+            preview: false,
           },
           {
             id: 19,
             title: "Challenges & Opportunities",
+            type: "video",
             duration: "12:00",
+            description:
+              "Discussion on blockchain challenges and future opportunities",
             preview: false,
-            type: "discussion",
           },
           {
             id: 20,
             title: "Blockchain in Enterprise",
+            type: "video",
             duration: "10:00",
+            description:
+              "Summary of blockchain adoption in enterprise environments",
             preview: false,
-            type: "summary",
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 4,
+    status: "published",
+    rating: 4.5,
+    students: 89432,
+    created_at: "2024-01-20T09:00:00Z",
+    updated_at: "2024-01-20T09:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 25,
+    video_file: null,
+    image_file: null,
   },
   {
     id: 11,
     course_name: "Financial Modeling & Valuation Analyst (FMVA®) Certification",
+    level: "Advanced",
+    language: "English",
+    total_no_hours: "70h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 15,
+
+    // Additional fields from original data
     description:
       "Master financial modeling, valuation, and Excel for corporate finance roles.",
-    image: "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
+    image:
+      "https://globaltraining.org/wp-content/uploads/2022/02/shutterstock_1567979338-scaled.jpeg",
+    preview: "https://example.com/preview/fmva-certification",
+    course_rating: 4.8,
+
     instructor: {
       name: "CFI - Corporate Finance Institute",
       mailid: "support@cfi.com",
       summary: "Leading provider of finance training and certifications",
+      avatar: "https://placehold.co/100x100?text=CFI",
       overall_rating: 4.8,
       no_of_courses_released: 35,
+      total_learners: "1,500,000",
+      total_reviews: "325,000",
+      about: [
+        "CFI is the leading provider of online financial analyst certification programs. We help professionals advance their careers in finance and accounting through comprehensive training programs.",
+        "Our courses are designed by industry experts with decades of experience in investment banking, corporate finance, and financial analysis.",
+        "We've trained over 1.5 million professionals worldwide and our certifications are recognized by top employers globally.",
+        "Our interactive learning approach combines theory with practical application to ensure you can immediately apply what you learn.",
+      ],
+      highlights: [
+        "Become a certified Financial Modeling & Valuation Analyst (FMVA®)",
+        "Master Excel for finance and build dynamic financial models",
+        "Learn from industry experts with real-world experience",
+      ],
     },
-    level: "Advanced",
-    price: 0,
-    language: "English",
-    total_hours: 70,
-    no_of_sessions: 7, // Represents core modules, actual is more
-    no_of_tests_available: 15,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/fmva-certification",
+
     about_course: {
       skills: [
         "Financial Modeling",
@@ -4246,317 +5097,399 @@ const courseData = [
       complete_description:
         "Become a certified Financial Modeling & Valuation Analyst (FMVA) with this comprehensive program covering Excel, accounting, and advanced valuation techniques.",
     },
+
     outcome: [
       "Build dynamic financial models from scratch",
       "Perform company valuations using various methods",
       "Prepare for corporate finance and investment banking roles",
     ],
+
     course_content: [
       {
-        session: "1. Excel Crash Course for Finance",
+        session: "Excel Crash Course for Finance",
         module_description:
           "Master essential Excel functions and shortcuts for financial analysis.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Excel Interface & Navigation",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Get familiar with Excel interface and navigation shortcuts",
+            preview: true,
+            resources: ["Excel Template", "Shortcuts Guide"],
           },
           {
             id: 2,
             title: "Essential Formulas (SUM, AVERAGE, IF, VLOOKUP)",
+            type: "video",
             duration: "30:00",
+            description:
+              "Master the most important Excel formulas for financial analysis",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Data Validation & Conditional Formatting",
+            type: "video",
             duration: "20:00",
+            description:
+              "Learn to validate data and apply conditional formatting",
             preview: false,
-            type: "walkthrough",
           },
           {
             id: 4,
             title: "Pivot Tables for Data Analysis",
+            type: "assignment",
             duration: "35:00",
+            description:
+              "Hands-on exercise creating and analyzing data with pivot tables",
             preview: false,
-            type: "exercise",
           },
           {
             id: 5,
             title: "Keyboard Shortcuts for Speed",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Essential keyboard shortcuts to work faster in Excel",
+            preview: false,
           },
         ],
       },
       {
-        session: "2. Accounting & Financial Statement Analysis",
+        session: "Accounting & Financial Statement Analysis",
         module_description:
           "Understand the three core financial statements and their interrelationships.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Introduction to Financial Statements",
-            duration: "30:00",
-            preview: true,
             type: "video",
+            duration: "30:00",
+            description: "Overview of the three main financial statements",
+            preview: true,
           },
           {
             id: 7,
             title: "Income Statement Deep Dive",
+            type: "video",
             duration: "25:00",
+            description:
+              "Comprehensive analysis of income statement components",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "Balance Sheet Explained",
-            duration: "28:00",
-            preview: false,
             type: "video",
+            duration: "28:00",
+            description: "Understanding balance sheet structure and key items",
+            preview: false,
           },
           {
             id: 9,
             title: "Cash Flow Statement Mechanics",
+            type: "video",
             duration: "35:00",
+            description: "Master cash flow statement preparation and analysis",
             preview: false,
-            type: "demo",
           },
           {
             id: 10,
             title: "Linking the Three Statements",
+            type: "assignment",
             duration: "40:00",
+            description:
+              "Practical exercise linking income statement, balance sheet, and cash flow",
             preview: false,
-            type: "exercise",
           },
         ],
       },
       {
-        session: "3. Building a 3-Statement Financial Model",
+        session: "Building a 3-Statement Financial Model",
         module_description:
           "Construct a robust financial model integrating income statement, balance sheet, and cash flow.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Modeling Best Practices",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Learn industry best practices for financial modeling",
+            preview: true,
           },
           {
             id: 12,
             title: "Building the Revenue Forecast",
+            type: "coding-exercise",
             duration: "30:00",
+            description:
+              "Interactive session building revenue forecasting models",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Operating Expenses & Depreciation",
+            type: "video",
             duration: "35:00",
+            description:
+              "Modeling operating expenses and depreciation schedules",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 14,
             title: "Working Capital & Debt Schedules",
+            type: "video",
             duration: "45:00",
+            description: "Understanding and modeling working capital and debt",
             preview: false,
-            type: "walkthrough",
           },
           {
             id: 15,
             title: "Completing the Financial Statements",
+            type: "video",
             duration: "50:00",
+            description:
+              "Final exercise completing the integrated financial model",
             preview: false,
-            type: "exercise",
           },
         ],
       },
       {
-        session: "4. Discounted Cash Flow (DCF) Valuation",
+        session: "Discounted Cash Flow (DCF) Valuation",
         module_description:
           "Learn the most common valuation method: Discounted Cash Flow.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Introduction to Valuation",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Overview of company valuation methods and principles",
+            preview: true,
           },
           {
             id: 17,
             title: "Forecasting Free Cash Flow",
+            type: "video",
             duration: "40:00",
+            description: "Building free cash flow projections for DCF analysis",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "Calculating Weighted Average Cost of Capital (WACC)",
+            type: "video",
             duration: "35:00",
+            description:
+              "Understanding and calculating WACC for discount rates",
             preview: false,
-            type: "theory",
           },
           {
             id: 19,
             title: "Terminal Value Estimation",
+            type: "assignment",
             duration: "30:00",
+            description: "Methods for estimating terminal value in DCF models",
             preview: false,
-            type: "exercise",
           },
           {
             id: 20,
             title: "Sensitivity Analysis & Scenario Building",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Testing model assumptions with sensitivity analysis",
+            preview: false,
           },
         ],
       },
       {
-        session:
-          "5. Comparable Company Analysis (Comps) & Precedent Transactions",
+        session: "Comparable Company Analysis (Comps) & Precedent Transactions",
         module_description:
           "Apply relative valuation techniques using public company data and M&A deals.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Selecting Peer Companies",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Criteria and methods for selecting comparable companies",
+            preview: true,
           },
           {
             id: 22,
             title: "Key Valuation Multiples",
+            type: "video",
             duration: "30:00",
+            description:
+              "Understanding and calculating important valuation multiples",
             preview: true,
-            type: "theory",
           },
           {
             id: 23,
             title: "Collecting & Adjusting Data",
+            type: "video",
             duration: "40:00",
+            description: "Gathering and normalizing comparable company data",
             preview: false,
-            type: "demo",
           },
           {
             id: 24,
             title: "Analyzing Precedent Transactions",
+            type: "assignment",
             duration: "35:00",
+            description: "Using M&A transactions for valuation benchmarks",
             preview: false,
-            type: "exercise",
           },
           {
             id: 25,
             title: "Valuation Conclusion & Football Field",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Synthesizing valuation methods into final recommendation",
+            preview: false,
           },
         ],
       },
       {
-        session: "6. Merger Modeling & LBO Analysis (Advanced Topics)",
+        session: "Merger Modeling & LBO Analysis (Advanced Topics)",
         module_description:
           "Explore complex financial modeling for M&A and leveraged buyouts.",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Accretion/Dilution Analysis",
-            duration: "35:00",
-            preview: true,
             type: "video",
+            duration: "35:00",
+            description:
+              "Analyzing the impact of M&A transactions on earnings per share",
+            preview: true,
           },
           {
             id: 27,
             title: "Synergies & Integration Costs",
+            type: "video",
             duration: "25:00",
+            description:
+              "Modeling synergies and integration costs in M&A deals",
             preview: false,
-            type: "theory",
           },
           {
             id: 28,
             title: "Introduction to Leveraged Buyouts (LBOs)",
-            duration: "30:00",
-            preview: false,
             type: "video",
+            duration: "30:00",
+            description: "Understanding LBO structure and mechanics",
+            preview: false,
           },
           {
             id: 29,
             title: "Building a Simple LBO Model",
+            type: "video",
             duration: "45:00",
+            description: "Step-by-step LBO model construction",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 30,
             title: "Returns Analysis (IRR, MOIC)",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description: "Calculating and interpreting LBO returns metrics",
+            preview: false,
           },
         ],
       },
       {
-        session: "7. Capstone Project & Certification Exam Prep",
+        session: "Capstone Project & Certification Exam Prep",
         module_description:
           "Apply all learned skills to a comprehensive case study and prepare for the FMVA exam.",
-        videos: [
+        content: [
           {
             id: 31,
             title: "Capstone Project Overview",
+            type: "assignment",
             duration: "15:00",
+            description: "Introduction to the comprehensive capstone project",
             preview: true,
-            type: "video",
           },
           {
             id: 32,
             title: "Model Review & Debugging",
+            type: "video",
             duration: "30:00",
+            description:
+              "Best practices for reviewing and debugging financial models",
             preview: false,
-            type: "discussion",
           },
           {
             id: 33,
             title: "Exam Strategies & Tips",
+            type: "video",
             duration: "20:00",
+            description:
+              "Preparation strategies for the FMVA certification exam",
             preview: false,
-            type: "summary",
           },
           {
             id: 34,
-            title: "Q&A and Live Practice Session",
+            title: "Practice Session",
+            type: "quiz",
             duration: "60:00",
+            description:
+              "Live session addressing questions and practice problems",
             preview: false,
-            type: "discussion",
           },
           {
             id: 35,
             title: "Career Pathing in Finance",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Career opportunities and next steps after FMVA certification",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 7,
+    status: "published",
+    rating: 4.8,
+    students: 45621,
+    created_at: "2024-01-18T14:30:00Z",
+    updated_at: "2024-01-18T14:30:00Z",
+    manual_total_hours: false,
+    calculated_hours: 70,
+    video_file: null,
+    image_file: null,
   },
 
-  // 22. Generative AI with Python (6 sessions)
+  // 12. Generative AI with Python (6 sessions)
   {
     id: 12,
     course_name: "Generative AI with Python: From Zero to GPT",
+    level: "advanced",
+    language: "English",
+    total_no_hours: "45h",
+    price: 500,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 10,
+
+    // Additional fields from original data
     description:
       "Learn to build, train, and deploy generative models (GANs, Transformers, LLMs) using Python and PyTorch/TensorFlow.",
-    image: "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
+    image:
+      "https://www.eweek.com/wp-content/uploads/2023/05/top-generative-ai-apps-tools.png",
+    preview: "https://example.com/preview/generative-ai-python",
+    course_rating: 4.7,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4579,16 +5512,6 @@ const courseData = [
       ],
     },
 
-    level: "Advanced",
-    price: 500,
-    language: "English",
-    total_hours: 45,
-    no_of_sessions: 6,
-    no_of_tests_available: 10,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/generative-ai-python",
     about_course: {
       skills: [
         "Generative AI",
@@ -4604,6 +5527,7 @@ const courseData = [
       complete_description:
         "Dive deep into the world of Generative AI. Understand the theory, build models from scratch, and explore cutting-edge applications like text generation and image synthesis.",
     },
+
     outcome: [
       "Understand the core architectures of generative models",
       "Implement and train GANs and VAEs",
@@ -4611,72 +5535,94 @@ const courseData = [
       "Build and fine-tune your own large language models",
       "Explore image generation techniques like Stable Diffusion",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to Generative Models & Deep Learning Refresh",
+        session: "Introduction to Generative Models & Deep Learning Refresh",
         module_description:
           "Understand what generative AI is, its applications, and refresh deep learning basics.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is Generative AI?",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn the fundamentals of generative AI and its significance in modern applications.",
+            preview: true,
+            resources: ["Generative AI Overview"],
           },
           {
             id: 2,
             title: "Overview of Neural Networks & Backpropagation",
+            type: "video",
             duration: "25:00",
+            description:
+              "Refresh your knowledge on neural networks, activation functions, and backpropagation.",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Autoencoders & Their Purpose",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Understand autoencoders and their role in unsupervised learning.",
+            preview: true,
           },
           {
             id: 4,
             title: "Setting Up Your PyTorch/TensorFlow Environment",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn how to set up your Python environment for deep learning projects.",
+            preview: true,
           },
           {
             id: 5,
             title: "Loss Functions for Generative Models",
+            type: "pdf",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Explore different loss functions used in training generative models.",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Generative Adversarial Networks (GANs)",
+        session: "Generative Adversarial Networks (GANs)",
         module_description:
           "Learn the architecture and training process of GANs for image generation.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "GAN Architecture: Generator & Discriminator",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Understand the architecture of GANs, including the roles of the generator and discriminator.",
+            preview: true,
           },
           {
             id: 7,
             title: "Training GANs: Challenges & Best Practices",
+            type: "pdf",
             duration: "30:00",
+            description:
+              "Learn about the challenges in training GANs and best practices to overcome them.",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "Implementing a Simple GAN (MNIST/Fashion-MNIST)",
+            type: "coding",
             duration: "45:00",
+<<<<<<< alertmodify
+            description:
+              "Build and train a simple GAN to generate images from the MNIST or Fashion-MNIST dataset.",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -4706,40 +5652,52 @@ const courseData = [
                 answer: "Mode collapse"
               }
             ]
+>>>>>>> main
           },
           {
             id: 9,
             title: "Conditional GANs (CGANs)",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Explore Conditional GANs and how they allow for controlled image generation.",
+            preview: true,
           },
           {
             id: 10,
             title: "Deep Convolutional GANs (DCGANs)",
+            type: "video",
             duration: "35:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn about DCGANs and how they improve image quality in GANs.",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. Variational Autoencoders (VAEs) & Diffusion Models",
+        session: "Variational Autoencoders (VAEs) & Diffusion Models",
         module_description:
           "Explore VAEs for latent space learning and an introduction to diffusion models.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Introduction to Variational Autoencoders",
-            duration: "28:00",
-            preview: true,
             type: "video",
+            duration: "28:00",
+            description:
+              "Understand the concept of VAEs and how they differ from traditional autoencoders.",
+            preview: true,
           },
           {
             id: 12,
             title: "Building a VAE for Image Generation",
+            type: "coding",
             duration: "40:00",
+            description:
+              "Implement a VAE to generate new images from learned latent space representations.",
             preview: true,
+<<<<<<< alertmodify
+=======
             type: "coding-exercise",
             questions: [
               {
@@ -4768,67 +5726,100 @@ const courseData = [
                 answer: "Stable training"
               }
             ]
+>>>>>>> main
           },
           {
             id: 13,
             title: "Latent Space Interpolation",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn how to interpolate between points in the latent space to generate new images.",
+            preview: true,
           },
           {
             id: 14,
             title: "Introduction to Diffusion Models",
+            type: "pdf",
             duration: "30:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Explore diffusion models and their application in generative tasks.",
+            preview: true,
           },
           {
             id: 15,
             title: "Denoising Diffusion Probabilistic Models (DDPMs)",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description:
+              "Learn about DDPMs and how they generate high-quality images through iterative denoising.",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Transformer Architecture & NLP",
+        session: "Transformer Architecture & NLP",
         module_description:
           "Understand the revolutionary Transformer architecture and its application in NLP.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Attention Is All You Need: Transformer Overview",
-            duration: "30:00",
-            preview: true,
             type: "video",
+            duration: "30:00",
+            description:
+              "Learn about the Transformer architecture and how it revolutionized NLP tasks.",
+            preview: true,
           },
           {
             id: 17,
             title: "Self-Attention Mechanism Explained",
+            type: "video",
             duration: "25:00",
+            description:
+              "Understand the self-attention mechanism and its role in capturing dependencies in sequences.",
             preview: true,
-            type: "theory",
           },
           {
             id: 18,
             title: "Encoder-Decoder Architecture",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Explore the encoder-decoder architecture and its application in sequence-to-sequence tasks.",
+            preview: true,
           },
           {
             id: 19,
             title: "Positional Encoding",
+            type: "pdf",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Learn about positional encoding and how it helps Transformers understand sequence order.",
+            preview: true,
           },
           {
             id: 20,
             title: "Building a Simple Transformer for Translation",
+            type: "coding",
             duration: "45:00",
+<<<<<<< alertmodify
+            description:
+              "Implement a simple Transformer model for machine translation tasks using PyTorch or TensorFlow.",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Large Language Models (LLMs) & Fine-tuning",
+        module_description:
+          "Explore LLMs like GPT and learn how to fine-tune them for specific tasks.",
+        content: [
+          {
+            id: 21,
+            title: "Evolution of LLMs (GPT, BERT, T5)",
+            type: "video",
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -4862,28 +5853,40 @@ const courseData = [
           {
             id: 21,
             title: "Large Language Models (LLMs) & Fine-tuning",
+>>>>>>> main
             duration: "25:00",
+            description:
+              "Understand the evolution of large language models and their architectures.",
             preview: true,
-            type: "video",
           },
           {
             id: 22,
             title: "Pre-training vs. Fine-tuning",
+            type: "video",
             duration: "20:00",
+            description:
+              "Learn the difference between pre-training and fine-tuning LLMs for specific tasks.",
             preview: true,
-            type: "theory",
           },
           {
             id: 23,
             title: "Using Hugging Face Transformers Library",
+            type: "pdf",
             duration: "35:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Explore the Hugging Face Transformers library for working with pre-trained models.",
+            preview: true,
           },
           {
             id: 24,
             title: "Fine-tuning an LLM for Text Summarization",
+            type: "coding",
             duration: "50:00",
+<<<<<<< alertmodify
+            description:
+              "Implement fine-tuning of a pre-trained LLM for text summarization tasks.",
+            preview: true,
+=======
             preview: false,
             type: "coding-exercise",
             questions: [
@@ -4913,68 +5916,126 @@ const courseData = [
                 answer: "Designing effective prompts for LLMs"
               }
             ]
+>>>>>>> main
           },
           {
             id: 25,
             title: "Prompt Engineering Best Practices",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Learn best practices for prompt engineering to get the most out of LLMs.",
+            preview: true,
           },
         ],
       },
       {
+<<<<<<< alertmodify
+        session: "Advanced Generative AI & Ethical Considerations",
+=======
         session: "5. Advanced Generative AI & Ethical Considerations",
+>>>>>>> main
         module_description:
           "Cover advanced topics like Stable Diffusion and the ethical implications of generative AI.",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Introduction to Stable Diffusion",
-            duration: "30:00",
-            preview: true,
             type: "video",
+            duration: "30:00",
+            description:
+              "Learn about Stable Diffusion and its application in generating high-quality images.",
+            preview: true,
           },
           {
             id: 27,
             title: "Generating Images with Stable Diffusion (Hands-on)",
+            type: "pdf",
             duration: "40:00",
+            description:
+              "Implement image generation using Stable Diffusion and explore its capabilities.",
             preview: true,
-            type: "demo",
           },
           {
             id: 28,
             title: "Generative AI in Art & Design",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Explore how generative AI is transforming the fields of art and design.",
+            preview: true,
           },
           {
             id: 29,
             title: "Ethical Concerns & Bias in Generative Models",
+            type: "pdf",
             duration: "25:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Discuss the ethical implications of generative AI, including bias and misinformation.",
+            preview: true,
           },
           {
             id: 30,
             title: "Future Trends in Generative AI",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Explore future trends and advancements in generative AI technologies.",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your knowledge of Generative AI",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: Generative AI with Python",
+            type: "quiz",
+            duration: "30:00",
+            description:
+              "Comprehensive exam covering all topics in the Generative AI with Python course.",
+            preview: true,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.7,
+    students: 0, // Since it's a new course
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 45,
+    video_file: null,
+    image_file: null,
   },
 
-  // 23. Digital Painting in Photoshop (5 sessions)
+  // 13. Digital Painting in Photoshop (5 sessions)
   {
     id: 13,
     course_name: "Digital Painting Masterclass in Adobe Photoshop",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "28h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 4,
+
+    // Additional fields from original data
     description:
       "Learn to create stunning digital paintings from scratch using Adobe Photoshop.",
-    image: "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
+    image:
+      "https://coursegate.co.uk/wp-content/uploads/2023/07/Photoshop-Digital-Painting.png",
+    preview: "https://example.com/preview/digital-painting-photoshop",
+    course_rating: 4.7,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -4997,16 +6058,6 @@ const courseData = [
       ],
     },
 
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 28,
-    no_of_sessions: 5,
-    no_of_tests_available: 4,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/digital-painting-photoshop",
     about_course: {
       skills: [
         "Digital Painting",
@@ -5019,233 +6070,329 @@ const courseData = [
       complete_description:
         "Unlock your artistic potential! This course teaches you everything you need to start creating beautiful digital paintings in Adobe Photoshop, from basic tools to advanced techniques.",
     },
+
     outcome: [
       "Master Photoshop tools for digital art",
       "Understand and apply color theory and light",
       "Create compelling compositions",
       "Produce complete digital paintings from concept to finish",
     ],
+
     course_content: [
       {
-        session: "1. Photoshop Basics for Artists & Drawing Fundamentals",
+        session: "Photoshop Basics for Artists & Drawing Fundamentals",
         module_description:
           "Get comfortable with Photoshop's interface and review drawing essentials.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Workspace & Tools Overview",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Familiarize yourself with Photoshop's workspace, tools, and settings for digital painting.",
+            preview: true,
+            resources: ["Photoshop Workspace Guide"],
           },
           {
             id: 2,
             title: "Brush Engine & Custom Brushes",
+            type: "video",
             duration: "25:00",
+            description:
+              "Learn how to use Photoshop's brush engine and create custom brushes for your artwork.",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Layers, Masks & Blending Modes",
+            type: "video",
             duration: "22:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Understand how to use layers, masks, and blending modes to enhance your digital paintings.",
+            preview: true,
           },
           {
             id: 4,
             title: "Line, Shape & Form",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Review the fundamentals of line, shape, and form in drawing to build a strong foundation.",
+            preview: true,
           },
           {
             id: 5,
             title: "Practice: Simple Object Sketching",
+            type: "assignment",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Apply your drawing skills by sketching simple objects to practice form and perspective.",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Color Theory, Light & Shadow",
+        session: "Color Theory, Light & Shadow",
         module_description:
           "Understand the principles of color and how light affects forms.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Color Harmonies & Palettes",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Learn about color harmonies and how to create effective color palettes for your paintings.",
+            preview: true,
           },
           {
             id: 7,
             title: "Value & Contrast",
+            type: "pdf",
             duration: "20:00",
+            description:
+              "Understand the importance of value and contrast in creating depth and interest in your artwork.",
             preview: true,
+<<<<<<< alertmodify
+=======
             type: "demo",
+>>>>>>> main
           },
           {
             id: 8,
             title: "Understanding Light Sources",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Explore how different light sources affect the appearance of objects and their surroundings.",
+            preview: true,
           },
           {
             id: 9,
             title: "Applying Shadows & Highlights",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn how to apply shadows and highlights to create realistic lighting effects in your paintings.",
+            preview: true,
           },
           {
             id: 10,
             title: "Practice: Lighting a Simple Sphere",
+            type: "assignment",
             duration: "25:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Practice applying light and shadow by rendering a simple sphere with different light sources.",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. Composition & Perspective",
+        session: "Composition & Perspective",
         module_description:
           "Learn to arrange elements effectively and create depth.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Rule of Thirds & Golden Ratio",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Understand the rule of thirds and golden ratio to create balanced compositions.",
+            preview: true,
           },
           {
             id: 12,
             title: "Leading Lines & Visual Flow",
+            type: "video",
             duration: "15:00",
+            description:
+              "Learn how to use leading lines and visual flow to guide the viewer's eye through your artwork.",
             preview: true,
-            type: "theory",
           },
           {
             id: 13,
             title: "1-Point Perspective",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Explore 1-point perspective to create depth in your compositions and understand spatial relationships.",
+            preview: true,
           },
           {
             id: 14,
             title: "2-Point Perspective & Horizon Lines",
+            type: "assignment",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn about 2-point perspective and how to use horizon lines to establish depth in your artwork.",
+            preview: true,
           },
           {
             id: 15,
             title: "Atmospheric Perspective",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description:
+              "Understand atmospheric perspective and how to create a sense of distance in your paintings.",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Painting Techniques & Textures",
+        session: "Painting Techniques & Textures",
         module_description:
           "Explore various painting approaches and how to render different materials.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Blending Techniques",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Learn different blending techniques to create smooth transitions between colors and values.",
+            preview: true,
           },
           {
             id: 17,
             title: "Using Reference Photos Effectively",
+            type: "pdf",
             duration: "18:00",
+            description:
+              "Understand how to use reference photos to improve your painting accuracy and detail.",
             preview: true,
-            type: "theory",
           },
           {
             id: 18,
             title: "Painting Skin & Hair",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn techniques for painting realistic skin tones and hair textures in your digital portraits.",
+            preview: true,
           },
           {
             id: 19,
             title: "Rendering Fabric & Metal",
+            type: "assignment",
             duration: "25:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Explore techniques for rendering different materials like fabric and metal in your paintings.",
+            preview: true,
           },
           {
             id: 20,
             title: "Custom Texture Brushes",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Create and use custom texture brushes to add detail and interest to your artwork.",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. From Sketch to Finished Painting",
+        session: "From Sketch to Finished Painting",
         module_description:
           "Apply all learned skills to complete a complex digital painting project.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Developing Initial Concepts",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn how to develop initial concepts and sketches for your digital painting project.",
+            preview: true,
           },
           {
             id: 22,
             title: "Refining Your Sketch",
+            type: "pdf",
             duration: "25:00",
+            description:
+              "Refine your initial sketch by adding details and preparing it for painting.",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "Blocking in Colors & Values",
+            type: "assignment",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Block in the main colors and values of your painting to establish the overall composition.",
+            preview: true,
           },
           {
             id: 24,
             title: "Adding Details & Polish",
+            type: "video",
             duration: "40:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Add final details and polish to your painting, focusing on areas that need refinement.",
+            preview: true,
           },
           {
             id: 25,
             title: "Final Touches & Exporting",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Learn how to add final touches to your painting and export it for sharing or printing.",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your digital painting skills",
+        content: [
+          {
+            id: 26,
+            title: "Final Test: Complete Digital Painting",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Create a complete digital painting that showcases all the skills learned in this course.",
+            preview: true,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 5,
+    status: "published",
+    rating: 4.7,
+    students: 0, // Since it's a new course
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 28,
+    video_file: null,
+    image_file: null,
   },
 
-  // 24. IoT Development with Arduino (5 sessions)
   {
     id: 14,
     course_name: "IoT Development with Arduino & ESP32: Build Smart Devices",
+    level: "Intermediate",
+    language: "English",
+    total_no_hours: "35h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 7,
+
+    // Additional fields from original data
     description:
       "Learn to build Internet of Things (IoT) projects using Arduino, ESP32, and cloud platforms.",
     image: "https://wallpaperaccess.com/full/3202442.jpg",
+    preview: "https://example.com/preview/iot-arduino-esp32",
+    course_rating: 4.7,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -5268,16 +6415,6 @@ const courseData = [
       ],
     },
 
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 35,
-    no_of_sessions: 5,
-    no_of_tests_available: 7,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/iot-arduino-esp32",
     about_course: {
       skills: [
         "Arduino",
@@ -5292,233 +6429,302 @@ const courseData = [
       complete_description:
         "This course guides you through building practical IoT projects, from basic sensor integration to cloud connectivity and data visualization, using popular microcontrollers.",
     },
+
     outcome: [
       "Program Arduino and ESP32 microcontrollers",
       "Connect sensors and actuators to IoT devices",
       "Send data to cloud platforms (AWS IoT, Google Cloud IoT)",
       "Build intelligent, connected devices for home automation or monitoring",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to IoT & Arduino Basics",
+        session: "Introduction to IoT & Arduino Basics",
         module_description:
           "Understand IoT fundamentals and get started with Arduino hardware and software.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is the Internet of Things (IoT)?",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description:
+              "Comprehensive introduction to IoT concepts and applications",
+            preview: true,
+            resources: ["IoT Overview Slides", "Project Kit Guide"],
           },
           {
             id: 2,
             title: "Arduino UNO Setup & IDE",
+            type: "video",
             duration: "20:00",
+            description:
+              "Step-by-step setup of Arduino development environment",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Digital I/O & LEDs (Blink Project)",
+            type: "coding",
             duration: "25:00",
+            description:
+              "Hands-on coding exercise creating your first Arduino project",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 4,
             title: "Analog I/O & Potentiometers",
+            type: "assignment",
             duration: "18:00",
+            description:
+              "Practice reading analog values and controlling outputs",
             preview: false,
-            type: "exercise",
           },
           {
             id: 5,
             title: "Introduction to Sensors",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Overview of common sensors used in IoT projects",
+            preview: false,
           },
         ],
       },
       {
-        session: "2. Working with Sensors & Actuators",
+        session: "Working with Sensors & Actuators",
         module_description:
           "Integrate various sensors and control actuators with your microcontroller.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Reading Temperature & Humidity (DHT11)",
+            type: "video",
             duration: "25:00",
+            description:
+              "Learn to interface with DHT11 temperature and humidity sensor",
             preview: true,
-            type: "demo",
           },
           {
             id: 7,
             title: "Ultrasonic Sensor (Distance Measurement)",
+            type: "coding",
             duration: "20:00",
+            description:
+              "Interactive coding session using ultrasonic sensors for distance measurement",
             preview: true,
-            type: "coding-exercise",
           },
           {
             id: 8,
             title: "Controlling Servos & Motors",
+            type: "assignment",
             duration: "28:00",
+            description:
+              "Hands-on exercise controlling servo motors and DC motors",
             preview: false,
-            type: "exercise",
           },
           {
             id: 9,
             title: "LDR (Light Dependent Resistor) Interfacing",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Working with light sensors for automatic lighting systems",
+            preview: false,
           },
           {
             id: 10,
             title: "Introduction to I2C & SPI",
+            type: "video",
             duration: "12:00",
+            description:
+              "Understanding communication protocols for sensor integration",
             preview: false,
-            type: "theory",
           },
         ],
       },
       {
-        session: "3. ESP32 & Wi-Fi Connectivity",
+        session: "ESP32 & Wi-Fi Connectivity",
         module_description:
           "Leverage the power of ESP32 for Wi-Fi enabled IoT applications.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "ESP32 Board Setup & IDE Configuration",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Setting up ESP32 development environment and board configuration",
+            preview: true,
           },
           {
             id: 12,
             title: "Connecting ESP32 to Wi-Fi",
+            type: "video",
             duration: "25:00",
+            description:
+              "Establishing Wi-Fi connection and network configuration",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Setting up a Simple Web Server on ESP32",
+            type: "coding",
             duration: "30:00",
+            description:
+              "Building a web server to control IoT devices remotely",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 14,
             title: "HTTP GET/POST Requests from ESP32",
+            type: "assignment",
             duration: "22:00",
+            description: "Making HTTP requests to interact with web services",
             preview: false,
-            type: "exercise",
           },
           {
             id: 15,
             title: "JSON Parsing on ESP32",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description: "Processing JSON data for API communication",
+            preview: false,
           },
         ],
       },
       {
-        session: "4. IoT Cloud Platforms & MQTT",
+        session: "IoT Cloud Platforms & MQTT",
         module_description:
           "Connect your devices to the cloud using MQTT and popular cloud services.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Introduction to MQTT Protocol",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Understanding MQTT messaging protocol for IoT communication",
+            preview: true,
           },
           {
             id: 17,
             title: "Connecting ESP32 to a MQTT Broker (e.g., Mosquitto)",
+            type: "video",
             duration: "28:00",
+            description:
+              "Setting up MQTT broker connection and message handling",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "AWS IoT Core Setup & Device Registration",
+            type: "video",
             duration: "35:00",
+            description: "Configuring AWS IoT Core and registering IoT devices",
             preview: false,
-            type: "walkthrough",
           },
           {
             id: 19,
             title: "Publishing & Subscribing Data to AWS IoT",
+            type: "coding",
             duration: "40:00",
+            description:
+              "Hands-on implementation of AWS IoT data communication",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 20,
             title: "Introduction to Google Cloud IoT Core (overview)",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Overview of Google Cloud IoT platform capabilities",
+            preview: false,
           },
         ],
       },
       {
-        session: "5. Building Complete IoT Projects & Best Practices",
+        session: "Building Complete IoT Projects & Best Practices",
         module_description:
           "Develop end-to-end IoT solutions and learn about security and power management.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Project: Smart Home Temperature Monitor",
+            type: "coding",
             duration: "45:00",
+            description:
+              "Complete project building a smart temperature monitoring system",
             preview: true,
-            type: "coding-exercise",
           },
           {
             id: 22,
             title: "Project: Remote LED Control via Web App",
+            type: "coding",
             duration: "50:00",
+            description: "Building a web application to control LEDs remotely",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 23,
             title: "IoT Security Best Practices",
+            type: "video",
             duration: "20:00",
+            description:
+              "Essential security considerations for IoT device development",
             preview: false,
-            type: "theory",
           },
           {
             id: 24,
             title: "Power Management for IoT Devices",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Optimizing power consumption for battery-powered IoT devices",
+            preview: false,
           },
           {
             id: 25,
             title: "Troubleshooting Common IoT Issues",
+            type: "video",
             duration: "10:00",
+            description: "Common problems and solutions in IoT development",
             preview: false,
-            type: "discussion",
           },
         ],
       },
     ],
-  },
 
-  // 25. Ethical Hacking & Kali Linux (6 sessions)
+    // Form-specific fields
+    no_of_sessions: 5,
+    status: "published",
+    rating: 4.7,
+    students: 67843,
+    created_at: "2024-01-22T11:15:00Z",
+    updated_at: "2024-01-22T11:15:00Z",
+    manual_total_hours: false,
+    calculated_hours: 35,
+    video_file: null,
+    image_file: null,
+  },
   {
     id: 15,
     course_name: "Ethical Hacking & Penetration Testing with Kali Linux",
+    level: "Intermediate",
+    language: "English",
+    total_no_hours: "50h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 10,
+
+    // Additional fields from original data
     description:
       "Become an ethical hacker! Learn advanced penetration testing techniques, vulnerability assessment, and exploit development using Kali Linux.",
     image: "https://www.kali.org/wallpapers/images/2025/kali-tiles.jpg",
+    preview: "https://example.com/preview/ethical-hacking-kali",
+    course_rating: 4.8,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -5541,16 +6747,6 @@ const courseData = [
       ],
     },
 
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 50,
-    no_of_sessions: 6,
-    no_of_tests_available: 10,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/ethical-hacking-kali",
     about_course: {
       skills: [
         "Ethical Hacking",
@@ -5566,6 +6762,7 @@ const courseData = [
       complete_description:
         "This hands-on course teaches you real-world ethical hacking techniques using Kali Linux. You'll master reconnaissance, scanning, exploitation, and post-exploitation, gaining the skills to identify and secure vulnerabilities.",
     },
+
     outcome: [
       "Set up a complete penetration testing lab",
       "Perform various reconnaissance and scanning techniques",
@@ -5573,260 +6770,320 @@ const courseData = [
       "Understand post-exploitation strategies and privilege escalation",
       "Secure systems against common attack vectors",
     ],
+
     course_content: [
       {
-        session: "1. Setting Up Your Hacking Lab & Kali Linux Basics",
+        session: "Setting Up Your Hacking Lab & Kali Linux Basics",
         module_description:
           "Prepare your virtual environment for ethical hacking practice.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Virtualization (VirtualBox/VMware)",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Setting up virtual machines for safe ethical hacking practice",
+            preview: true,
+            resources: ["VM Setup Guide", "Lab Environment Templates"],
           },
           {
             id: 2,
             title: "Kali Linux Installation & Configuration",
+            type: "video",
             duration: "30:00",
+            description:
+              "Complete installation and initial configuration of Kali Linux",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Basic Linux Commands for Hacking",
+            type: "assignment",
             duration: "25:00",
+            description:
+              "Essential command line skills for penetration testing",
             preview: false,
-            type: "exercise",
           },
           {
             id: 4,
             title: "Networking Fundamentals for Hackers",
+            type: "video",
             duration: "15:00",
+            description: "Network concepts essential for ethical hacking",
             preview: false,
-            type: "theory",
           },
           {
             id: 5,
             title: "Anonymity & VPNs",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description: "Protecting your identity during penetration testing",
+            preview: false,
           },
         ],
       },
       {
-        session: "2. Reconnaissance & Footprinting",
+        session: "Reconnaissance & Footprinting",
         module_description:
           "Gather information about your target without direct interaction.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Passive Reconnaissance Techniques",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Information gathering without direct target interaction",
+            preview: true,
           },
           {
             id: 7,
             title: "Using OSINT Tools (Maltego, theHarvester)",
+            type: "video",
             duration: "35:00",
+            description:
+              "Leveraging open source intelligence tools for reconnaissance",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Active Reconnaissance: Ping Scans & DNS Lookups",
+            type: "assignment",
             duration: "20:00",
+            description:
+              "Hands-on practice with active information gathering techniques",
             preview: false,
-            type: "exercise",
           },
           {
             id: 9,
             title: "Nmap Basics: Host Discovery",
+            type: "coding",
             duration: "30:00",
+            description:
+              "Using Nmap for network discovery and host identification",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 10,
             title: "Google Dorking",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Advanced Google search techniques for information gathering",
+            preview: false,
           },
         ],
       },
       {
-        session: "3. Scanning & Vulnerability Analysis",
+        session: "Scanning & Vulnerability Analysis",
         module_description:
           "Identify open ports, services, and vulnerabilities on target systems.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Nmap Advanced: Port Scanning Techniques",
-            duration: "30:00",
-            preview: true,
             type: "video",
+            duration: "30:00",
+            description:
+              "Advanced port scanning methods and stealth techniques",
+            preview: true,
           },
           {
             id: 12,
             title: "Service Version Detection & OS Fingerprinting",
+            type: "video",
             duration: "25:00",
+            description:
+              "Identifying services and operating systems on target hosts",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Vulnerability Scanners (Nessus, OpenVAS)",
+            type: "video",
             duration: "40:00",
+            description: "Using automated vulnerability scanning tools",
             preview: false,
-            type: "walkthrough",
           },
           {
             id: 14,
             title: "Vulnerability Databases (CVE, Exploit-DB)",
+            type: "video",
             duration: "20:00",
+            description: "Research vulnerabilities using public databases",
             preview: false,
-            type: "theory",
           },
           {
             id: 15,
             title: "Analyzing Scan Results",
+            type: "assignment",
             duration: "15:00",
+            description:
+              "Interpreting and prioritizing vulnerability scan results",
             preview: false,
-            type: "exercise",
           },
         ],
       },
       {
-        session: "4. Exploitation: Gaining Access",
+        session: "Exploitation: Gaining Access",
         module_description:
           "Leverage identified vulnerabilities to gain unauthorized access.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Metasploit Framework Overview",
-            duration: "35:00",
-            preview: true,
             type: "video",
+            duration: "35:00",
+            description:
+              "Introduction to the powerful Metasploit exploitation framework",
+            preview: true,
           },
           {
             id: 17,
             title: "Exploiting Common Vulnerabilities (e.g., EternalBlue)",
+            type: "coding",
             duration: "45:00",
+            description: "Hands-on exploitation of well-known vulnerabilities",
             preview: true,
-            type: "coding-exercise",
           },
           {
             id: 18,
             title: "Buffer Overflows (Conceptual)",
+            type: "video",
             duration: "20:00",
+            description:
+              "Understanding buffer overflow vulnerabilities and exploitation",
             preview: false,
-            type: "theory",
           },
           {
             id: 19,
             title: "Client-Side Attacks (Phishing, Social Engineering)",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description:
+              "Human-focused attack vectors and social engineering techniques",
+            preview: false,
           },
           {
             id: 20,
             title: "Payloads & Listeners",
+            type: "video",
             duration: "30:00",
+            description: "Creating and managing payloads for remote access",
             preview: false,
-            type: "demo",
           },
         ],
       },
       {
-        session: "5. Post-Exploitation & Maintaining Access",
+        session: "Post-Exploitation & Maintaining Access",
         module_description:
           "Once inside, learn to escalate privileges, pivot, and maintain persistence.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Privilege Escalation Techniques (Windows/Linux)",
-            duration: "40:00",
-            preview: true,
             type: "video",
+            duration: "40:00",
+            description:
+              "Methods to gain higher privileges on compromised systems",
+            preview: true,
           },
           {
             id: 22,
             title: "Hashing & Cracking Passwords (Hashcat, John the Ripper)",
+            type: "video",
             duration: "35:00",
+            description: "Password cracking techniques and tools",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "Pivoting & Lateral Movement",
+            type: "assignment",
             duration: "30:00",
+            description: "Moving through networks to reach additional targets",
             preview: false,
-            type: "exercise",
           },
           {
             id: 24,
             title: "Backdoors & Persistence Mechanisms",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description: "Maintaining access to compromised systems",
+            preview: false,
           },
           {
             id: 25,
             title: "Clearing Tracks & Anti-Forensics",
+            type: "video",
             duration: "15:00",
+            description: "Covering your tracks and evading detection",
             preview: false,
-            type: "theory",
           },
         ],
       },
       {
-        session: "6. Web Application Hacking & Wireless Security",
+        session: "Web Application Hacking & Wireless Security",
         module_description:
           "Focus on vulnerabilities specific to web applications and wireless networks.",
-        videos: [
+        content: [
           {
             id: 26,
             title: "OWASP Top 10 Revisited",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Common web application vulnerabilities and exploitation",
+            preview: true,
           },
           {
             id: 27,
             title: "SQL Injection & XSS with Burp Suite",
+            type: "video",
             duration: "40:00",
+            description: "Web application testing using professional tools",
             preview: true,
-            type: "demo",
           },
           {
             id: 28,
             title: "Basic Wireless Hacking (WEP/WPA2 Crack)",
+            type: "coding",
             duration: "30:00",
+            description: "Attacking wireless networks and encryption protocols",
             preview: false,
-            type: "coding-exercise",
           },
           {
             id: 29,
             title: "Deauthentication Attacks & Evil Twin",
+            type: "video",
             duration: "20:00",
+            description: "Advanced wireless attack techniques",
             preview: false,
-            type: "theory",
           },
           {
             id: 30,
             title: "Reporting & Remediation",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description: "Professional penetration testing report writing",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.8,
+    students: 54321,
+    created_at: "2024-01-25T16:45:00Z",
+    updated_at: "2024-01-25T16:45:00Z",
+    manual_total_hours: false,
+    calculated_hours: 50,
+    video_file: null,
+    image_file: null,
   },
 
   // 26. No-Code Web Development (4 sessions)
@@ -5896,35 +7153,46 @@ const courseData = [
             id: 1,
             title: "What is No-Code? Why Now?",
             duration: "15:00",
+            description:
+              "Explore the no-code movement, its benefits, and how it empowers non-technical users  to build software.",
             preview: true,
             type: "video",
+            resources: ["No-Code website building overview"],
           },
           {
             id: 2,
             title: "Webflow Interface Tour",
             duration: "20:00",
+            description:
+              "Get familiar with the Webflow interface, including the designer, CMS, and editor modes to start building your first site.",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 3,
             title: "Building a Landing Page (Sections, Text, Images)",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn how to create a responsive landing page layout using sections, text blocks, and images in Webflow.",
+            preview: true,
+            type: "ccoding-exercise",
           },
           {
             id: 4,
             title: "Responsive Design with Flexbox in Webflow",
             duration: "25:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Understand how to use Flexbox in Webflow to create flexible, responsive layouts that adapt to different screen sizes.",
+            preview: true,
+            type: "video",
           },
           {
             id: 5,
             title: "Publishing Your Webflow Site",
             duration: "10:00",
-            preview: false,
+            description:
+              "Learn how to publish your Webflow site to a custom domain or Webflow's free subdomain, making it live for the world to see.",
+            preview: true,
             type: "video",
           },
         ],
@@ -5938,6 +7206,8 @@ const courseData = [
             id: 6,
             title: "Webflow CMS: Creating Collections",
             duration: "25:00",
+            description:
+              "Learn how to set up collections in Webflow CMS to manage dynamic content like blog posts or product listings.",
             preview: true,
             type: "video",
           },
@@ -5945,29 +7215,37 @@ const courseData = [
             id: 7,
             title: "Connecting CMS Data to Your Design",
             duration: "30:00",
+            description:
+              "Understand how to bind CMS data to your design elements, allowing you to display dynamic content on your pages.",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 8,
             title: "Interactions & Animations in Webflow",
             duration: "28:00",
-            preview: false,
+            description:
+              "Create engaging user experiences by adding interactions and animations to your Webflow site, enhancing visual appeal.",
+            preview: true,
             type: "exercise",
           },
           {
             id: 9,
             title: "Forms & Integrations (Mailchimp, Zapier)",
             duration: "20:00",
-            preview: false,
+            description:
+              "Learn how to create forms in Webflow and integrate them with services like Mailchimp for email marketing or Zapier for automation.",
+            preview: true,
             type: "video",
           },
           {
             id: 10,
             title: "E-commerce Basics in Webflow (overview)",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Get an overview of Webflow's e-commerce capabilities, including product management, cart functionality, and checkout processes.",
+            preview: true,
+            type: "video",
           },
         ],
       },
@@ -5980,6 +7258,8 @@ const courseData = [
             id: 11,
             title: "Bubble Interface & Core Concepts",
             duration: "20:00",
+            description:
+              "Familiarize yourself with the Bubble.io interface, including the design editor, workflow editor, and database management.",
             preview: true,
             type: "video",
           },
@@ -5987,28 +7267,36 @@ const courseData = [
             id: 12,
             title: "Database Design & Data Types in Bubble",
             duration: "25:00",
+            description:
+              "Learn how to design your application's database in Bubble, including creating data types and fields to store user-generated content.",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 13,
             title: "Workflows & Conditional Logic",
             duration: "35:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Understand how to create workflows in Bubble to define the logic of your application, including user interactions and data manipulation.",
+            preview: true,
+            type: "pdf",
           },
           {
             id: 14,
             title: "User Authentication (Login/Signup)",
             duration: "30:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Implement user authentication in your Bubble app, allowing users to sign up, log in, and manage their accounts securely.",
+            preview: true,
+            type: "video",
           },
           {
             id: 15,
             title: "Building a Basic Task Manager App",
             duration: "40:00",
-            preview: false,
+            description:
+              "Create a simple task manager application in Bubble, applying the concepts learned so far to build a functional web app.",
+            preview: true,
             type: "coding-exercise",
           },
         ],
@@ -6022,6 +7310,8 @@ const courseData = [
             id: 16,
             title: "Repeating Groups & Displaying Data",
             duration: "25:00",
+            description:
+              "Learn how to use repeating groups in Bubble to display lists of data dynamically, such as user-generated content or database records.",
             preview: true,
             type: "video",
           },
@@ -6029,29 +7319,52 @@ const courseData = [
             id: 17,
             title: "API Connector: Integrating External Services",
             duration: "30:00",
+            description:
+              "Understand how to use Bubble's API Connector to integrate external services and APIs, allowing your app to interact with third-party data.",
             preview: true,
-            type: "demo",
+            type: "video",
           },
           {
             id: 18,
             title: "Payment Gateways (Stripe Integration)",
             duration: "20:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn how to integrate payment gateways like Stripe into your Bubble app, enabling users to make payments securely.",
+            preview: true,
+            type: "video",
           },
           {
             id: 19,
             title: "Deploying & Launching Your Bubble App",
             duration: "15:00",
-            preview: false,
+            description:
+              "Understand the process of deploying your Bubble application to production, making it accessible to users worldwide.",
+            preview: true,
             type: "video",
           },
           {
             id: 20,
             title: "No-Code Best Practices & Future Trends",
             duration: "10:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Explore best practices for no-code development and discuss future trends in the no-code space, including AI integration and advanced automation.",
+            preview: true,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your no-code web development skills",
+        content: [
+          {
+            id: 21,
+            title: "Final Test: Build a Complete No-Code Web App",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Develop a complete no-code web application using Webflow and Bubble, demonstrating all the skills learned in this course.",
+            preview: true,
           },
         ],
       },
@@ -6064,7 +7377,8 @@ const courseData = [
     course_name: "Quantum Computing Fundamentals: A Gentle Introduction",
     description:
       "Explore the mind-bending world of quantum computing, from qubits to quantum algorithms.",
-    image: "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
+    image:
+      "https://www.raconteur.net/wp-content/uploads/2022/09/Quantum-computing-iStock-1346925522.jpg",
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -6127,36 +7441,47 @@ const courseData = [
             id: 1,
             title: "The Limits of Classical Computers",
             duration: "15:00",
+            description:
+              "Explore the limitations of classical computers and why quantum computing is a game-changer.",
             preview: true,
             type: "video",
+            resources: ["Classical vs Quantum Overview"],
           },
           {
             id: 2,
             title: "Introduction to Qubits",
             duration: "20:00",
+            description:
+              "Learn about qubits, the fundamental building blocks of quantum computing, and how they differ from classical bits.",
             preview: true,
-            type: "theory",
+            type: "video",
           },
           {
             id: 3,
             title: "The Promise of Quantum Computing",
             duration: "10:00",
-            preview: false,
+            description:
+              "Understand the potential applications of quantum computing in various fields such as cryptography, optimization, and drug discovery.",
+            preview: true,
             type: "video",
           },
           {
             id: 4,
             title: "Mathematical Prerequisites (Linear Algebra Overview)",
             duration: "18:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Get a brief overview of the linear algebra concepts necessary for understanding quantum mechanics and quantum computing  such as vectors, matrices, and complex numbers.",
+            preview: true,
+            type: "video",
           },
           {
             id: 5,
             title: "Setting Up Qiskit Environment",
             duration: "20:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn how to set up your development environment for quantum programming using Qiskit, a popular quantum computing framework.",
+            preview: true,
+            type: "video",
           },
         ],
       },
@@ -6169,6 +7494,8 @@ const courseData = [
             id: 6,
             title: "Understanding Superposition",
             duration: "25:00",
+            description:
+              "Explore the concept of superposition, where qubits can exist in multiple states simultaneously, and how this is different from classical bits.",
             preview: true,
             type: "video",
           },
@@ -6176,28 +7503,36 @@ const courseData = [
             id: 7,
             title: "Quantum Measurement & Collapse",
             duration: "20:00",
+            description:
+              "Learn about quantum measurement, how it affects the state of a qubit, and the concept of wave function collapse.",
             preview: true,
-            type: "theory",
+            type: "pdf",
           },
           {
             id: 8,
             title: "The Magic of Entanglement",
             duration: "28:00",
-            preview: false,
+            description:
+              "Discover the phenomenon of entanglement, where qubits become interconnected in such a way that the state of one instantly influences the state of another, regardless of distance.",
+            preview: true,
             type: "video",
           },
           {
             id: 9,
             title: "Bell States Explained",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Understand Bell states, which are specific quantum states of two qubits that exhibit maximum entanglement.",
+            preview: true,
+            type: "pdf",
           },
           {
             id: 10,
             title: "Hands-on: Simulating Superposition in Qiskit",
             duration: "30:00",
-            preview: false,
+            description:
+              "Write your first quantum program in Qiskit to create and visualize superposition states, demonstrating the principles learned in this session.",
+            preview: true,
             type: "coding-exercise",
           },
         ],
@@ -6210,6 +7545,8 @@ const courseData = [
             id: 11,
             title: "Single Qubit Gates (Pauli-X, Y, Z, Hadamard)",
             duration: "25:00",
+            description:
+              "Explore single qubit gates, which manipulate the state of a single qubit, including  Pauli gates and the Hadamard gate that creates superposition.",
             preview: true,
             type: "video",
           },
@@ -6217,29 +7554,37 @@ const courseData = [
             id: 12,
             title: "Multi-Qubit Gates (CNOT, Toffoli)",
             duration: "28:00",
+            description:
+              "Learn about multi-qubit gates, such as the CNOT gate that creates entanglement between two qubits, and the Toffoli gate that acts on three qubits.",
             preview: true,
-            type: "theory",
+            type: "pdf",
           },
           {
             id: 13,
             title: "Building Basic Quantum Circuits",
             duration: "35:00",
-            preview: false,
+            description:
+              "Understand how to construct basic quantum circuits using quantum gates, and how to visualize them using  Qiskit.",
+            preview: true,
             type: "coding-exercise",
           },
           {
             id: 14,
             title: "Quantum Teleportation (Conceptual)",
             duration: "20:00",
-            preview: false,
+            description:
+              "Explore the concept of quantum teleportation, a process by which the state of a qubit can be transmitted from one location to another without physically moving the qubit itself.",
+            preview: true,
             type: "video",
           },
           {
             id: 15,
             title: "Running Circuits on Real Quantum Hardware (Optional)",
             duration: "15:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Learn how to run your quantum circuits on real quantum hardware using IBM's Quantum Experience platform, allowing you to see the results of your quantum programs in action.",
+            preview: true,
+            type: "video",
           },
         ],
       },
@@ -6252,6 +7597,8 @@ const courseData = [
             id: 16,
             title: "Deutsch-Jozsa Algorithm",
             duration: "22:00",
+            description:
+              "Learn about the Deutsch-Jozsa algorithm, which demonstrates the power of quantum computing by solving a specific problem faster than any classical algorithm.",
             preview: true,
             type: "video",
           },
@@ -6259,28 +7606,36 @@ const courseData = [
             id: 17,
             title: "Grover's Search Algorithm (Overview)",
             duration: "20:00",
+            description:
+              "Get an overview of Grover's algorithm, which provides a quadratic speedup for unstructured search problems compared to classical algorithms.",
             preview: true,
-            type: "theory",
+            type: "pdf",
           },
           {
             id: 18,
             title: "Shor's Factoring Algorithm (Overview)",
             duration: "18:00",
-            preview: false,
+            description:
+              "Understand the significance of Shor's algorithm, which can factor large integers exponentially faster than the best-known classical algorithms, posing a threat to current cryptographic systems.",
+            preview: true,
             type: "video",
           },
           {
             id: 19,
             title: "Quantum Supremacy & Its Implications",
             duration: "15:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Discuss the concept of quantum supremacy, where a quantum computer can perform a task that is infeasible for classical computers, and its implications for the future of computing.",
+            preview: true,
+            type: "video",
           },
           {
             id: 20,
             title: "Hands-on: Implementing Deutsch-Jozsa",
             duration: "30:00",
-            preview: false,
+            description:
+              "Write your first quantum algorithm in Qiskit by implementing the Deutsch-Jozsa algorithm, demonstrating the principles learned in this session.",
+            preview: true,
             type: "coding-exercise",
           },
         ],
@@ -6294,6 +7649,8 @@ const courseData = [
             id: 21,
             title: "Quantum Chemistry & Drug Discovery",
             duration: "15:00",
+            description:
+              "Explore how quantum computing can revolutionize fields like quantum chemistry and drug discovery by simulating molecular interactions at unprecedented scales.",
             preview: true,
             type: "video",
           },
@@ -6301,29 +7658,52 @@ const courseData = [
             id: 22,
             title: "Financial Modeling with Quantum Computers",
             duration: "12:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Learn about the potential applications of quantum computing in finance, including portfolio optimization and risk analysis using quantum algorithms.",
+            preview: true,
+            type: "video",
           },
           {
             id: 23,
             title: "Quantum Machine Learning (QML)",
             duration: "20:00",
-            preview: false,
+            description:
+              "Understand the intersection of quantum computing and machine learning, and how quantum algorithms can enhance machine learning tasks.",
+            preview: true,
             type: "video",
           },
           {
             id: 24,
             title: "Challenges & Roadblocks to Universal Quantum Computers",
             duration: "18:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Discuss the current challenges in building universal quantum computers, including error rates, qubit coherence times, and scalability issues.",
+            preview: true,
+            type: "pdf",
           },
           {
             id: 25,
             title: "The Future of Quantum Computing",
             duration: "10:00",
-            preview: false,
-            type: "summary",
+            description:
+              "Speculate on the future of quantum computing, including advancements in hardware, software, and potential breakthroughs that could change the landscape of computing.",
+            preview: true,
+            type: "video",
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your quantum computing knowledge",
+        content: [
+          {
+            id: 26,
+            title: "Final Test: Build a Quantum Circuit",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Create a quantum circuit that implements a simple quantum algorithm, demonstrating your understanding of the concepts covered in this course.",
+            preview: true,
           },
         ],
       },
@@ -6335,9 +7715,23 @@ const courseData = [
     id: 18,
     course_name:
       "Complete Supply Chain Management: From Procurement to Delivery",
+    level: "intermediate",
+    language: "English",
+    total_no_hours: "40h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 8,
+
+    // Additional fields from original data
     description:
       "Learn end-to-end supply chain strategies, logistics, and operations for business efficiency.",
-    image: "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/024/061/719/large_2x/intelligent-logistics-ai-powered-supply-chain-management-illustration-ai-generated-free-photo.jpg",
+    preview: "https://example.com/preview/supply-chain-management",
+    course_rating: 4.6,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -6360,16 +7754,6 @@ const courseData = [
       ],
     },
 
-    level: "Intermediate",
-    price: 0,
-    language: "English",
-    total_hours: 40,
-    no_of_sessions: 6,
-    no_of_tests_available: 8,
-    course_rating: 4.6,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/supply-chain-management",
     about_course: {
       skills: [
         "Supply Chain Strategy",
@@ -6383,6 +7767,7 @@ const courseData = [
       complete_description:
         "Master the principles of modern supply chain management. This course covers everything from sourcing raw materials to delivering finished products, optimizing efficiency and reducing costs.",
     },
+
     outcome: [
       "Design and optimize efficient supply chain networks",
       "Implement effective inventory management strategies",
@@ -6390,269 +7775,376 @@ const courseData = [
       "Understand global logistics and transportation challenges",
       "Enhance operational efficiency and customer satisfaction",
     ],
+
     course_content: [
       {
-        session: "1. Introduction to Supply Chain Management",
+        session: "Introduction to Supply Chain Management",
         module_description:
           "Define supply chain, its importance, and key components.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "What is Supply Chain Management?",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Understand the definition of supply chain management and its critical role in business operations.",
+            preview: true,
+            resources: ["Supply Chain Overview"],
           },
           {
             id: 2,
             title: "Evolution of Supply Chains",
+            type: "pdf",
             duration: "15:00",
+            description:
+              "Explore the historical development of supply chains and how they have evolved with technology and globalization.",
             preview: true,
-            type: "theory",
           },
           {
             id: 3,
             title: "Key Drivers of Supply Chain Performance",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn about the key drivers that influence supply chain performance, including cost, quality, speed, and flexibility.",
+            preview: true,
           },
           {
             id: 4,
             title: "Supply Chain Strategy & Design",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Understand how to design a supply chain strategy that aligns with business goals and customer needs.",
+            preview: true,
           },
           {
             id: 5,
             title: "Case Study: Zara's Supply Chain",
+            type: "video",
             duration: "12:00",
-            preview: false,
-            type: "summary",
+            description:
+              "Analyze Zara's supply chain model to understand how it achieves rapid response and flexibility in fashion retail.",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Demand Planning & Forecasting",
+        session: "Demand Planning & Forecasting",
         module_description:
           "Accurately predict demand to optimize inventory and production.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "Importance of Demand Forecasting",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn why accurate demand forecasting is crucial for supply chain efficiency and how it impacts inventory management.",
+            preview: true,
           },
           {
             id: 7,
             title: "Qualitative Forecasting Methods",
+            type: "pdf",
             duration: "15:00",
+            description:
+              "Explore qualitative forecasting techniques such as expert judgment and market research to predict future demand.",
             preview: true,
-            type: "theory",
           },
           {
             id: 8,
             title: "Quantitative Forecasting: Time Series Analysis",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Understand quantitative forecasting methods, including time series analysis and regression models, to analyze historical data and predict future demand.",
+            preview: true,
           },
           {
             id: 9,
             title: "Forecast Error Measurement",
+            type: "coding",
             duration: "22:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn how to measure forecast accuracy using metrics like Mean Absolute Deviation (MAD) and Mean Squared Error (MSE).",
+            preview: true,
           },
           {
             id: 10,
             title:
               "Collaborative Planning, Forecasting, and Replenishment (CPFR)",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Explore the concept of CPFR, which involves collaboration between supply chain partners to improve forecasting accuracy and inventory management.",
+            preview: true,
           },
         ],
       },
       {
-        session: "3. Inventory Management",
+        session: "Inventory Management",
         module_description:
           "Optimize inventory levels to meet demand while minimizing costs.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Types of Inventory",
-            duration: "15:00",
-            preview: true,
             type: "video",
+            duration: "15:00",
+            description:
+              "Understand the different types of inventory, including raw materials, work-in-progress, and finished goods, and their roles in the supply chain.",
+            preview: true,
           },
           {
             id: 12,
             title: "Economic Order Quantity (EOQ)",
+            type: "video",
             duration: "25:00",
+            description:
+              "Learn how to calculate the Economic Order Quantity (EOQ) to determine the optimal order quantity that minimizes total inventory costs.",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Safety Stock & Reorder Point",
+            type: "video",
             duration: "20:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Explore the concepts of safety stock and reorder point to ensure you have enough inventory to meet unexpected demand fluctuations.",
+            preview: true,
           },
           {
             id: 14,
             title: "Inventory Control Systems (ABC Analysis, Just-in-Time)",
+            type: "pdf",
             duration: "28:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Learn about inventory control systems such as ABC analysis to categorize inventory based on value and Just-in-Time (JIT) to reduce holding costs.",
+            preview: true,
+            file_size: "2.1 MB",
           },
           {
             id: 15,
             title: "Warehouse Management Systems (WMS) Overview",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description:
+              "Get an overview of Warehouse Management Systems (WMS) and how they help manage inventory, optimize storage, and improve order fulfillment.",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Procurement & Supplier Relationship Management",
+        session: "Procurement & Supplier Relationship Management",
         module_description:
           "Strategically source materials and manage supplier networks.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Strategic Sourcing Process",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Learn the strategic sourcing process, including supplier selection, negotiation, and contract management to ensure quality and cost-effectiveness.",
+            preview: true,
           },
           {
             id: 17,
             title: "Supplier Selection & Evaluation",
+            type: "pdf",
             duration: "20:00",
+            description:
+              "Understand how to select and evaluate suppliers based on criteria such as quality, reliability, and cost to build a strong supplier base.",
             preview: true,
-            type: "theory",
+            file_size: "1.8 MB",
           },
           {
             id: 18,
             title: "Negotiation Strategies",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Explore effective negotiation strategies to achieve favorable terms and conditions with suppliers while maintaining positive relationships.",
+            preview: true,
           },
           {
             id: 19,
             title: "Contract Management",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Learn the essentials of contract management, including drafting, monitoring, and enforcing contracts to ensure compliance and performance.",
+            preview: true,
           },
           {
             id: 20,
             title: "Building Long-Term Supplier Relationships",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "summary",
+            description:
+              "Understand the importance of building long-term relationships with suppliers to foster collaboration, innovation, and mutual growth.",
+            preview: true,
           },
         ],
       },
       {
-        session: "5. Logistics & Transportation",
+        session: "Logistics & Transportation",
         module_description: "Plan and execute the efficient flow of goods.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Modes of Transportation",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Explore the different modes of transportation used in supply chains, including road, rail, air, and sea, and their advantages and disadvantages.",
+            preview: true,
           },
           {
             id: 22,
             title: "Network Design & Facility Location",
+            type: "pdf",
             duration: "25:00",
+            description:
+              "Learn how to design an efficient logistics network and determine optimal facility locations to minimize transportation costs and improve service levels.",
             preview: true,
-            type: "theory",
+            file_size: "2.5 MB",
           },
           {
             id: 23,
             title: "Fleet Management & Route Optimization",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "demo",
+            description:
+              "Understand fleet management principles and how to optimize transportation routes to reduce costs and improve delivery times.",
+            preview: true,
           },
           {
             id: 24,
             title: "Reverse Logistics & Returns Management",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Explore the concept of reverse logistics, which involves managing the return of products from customers back to the supply chain, and how to handle returns efficiently.",
+            preview: true,
           },
           {
             id: 25,
             title: "Customs & International Trade",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Learn about customs regulations and international trade considerations that impact the movement of goods across borders, including tariffs and trade agreements.",
+            preview: true,
           },
         ],
       },
       {
-        session: "6. Supply Chain Analytics & Digital Transformation",
+        session: "Supply Chain Analytics & Digital Transformation",
         module_description:
           "Leverage data and technology to optimize your supply chain.",
-        videos: [
+        content: [
           {
             id: 26,
             title: "Introduction to Supply Chain Analytics",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Understand the role of analytics in supply chain management and how data-driven decisions can improve efficiency and performance.",
+            preview: true,
           },
           {
             id: 27,
             title: "Big Data & AI in Supply Chain",
+            type: "pdf",
             duration: "20:00",
+            description:
+              "Explore how big data and artificial intelligence are transforming supply chain operations, enabling predictive analytics and real-time decision-making.",
             preview: true,
-            type: "theory",
+            file_size: "3.2 MB",
           },
           {
             id: 28,
             title: "Blockchain for Supply Chain Traceability",
-            duration: "18:00",
-            preview: false,
             type: "video",
+            duration: "18:00",
+            description:
+              "Learn about the potential of blockchain technology to enhance supply chain transparency, traceability, and security.",
+            preview: true,
           },
           {
             id: 29,
             title: "Sustainability in Supply Chain",
+            type: "video",
             duration: "15:00",
-            preview: false,
-            type: "discussion",
+            description:
+              "Discuss the importance of sustainability in supply chain management and how to implement eco-friendly practices to reduce environmental impact.",
+            preview: true,
           },
           {
             id: 30,
             title: "Risk Management & Resilience",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "summary",
+            description:
+              "Understand how to identify and mitigate risks in the supply chain, ensuring resilience against disruptions such as natural disasters or geopolitical events.",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description: "Test your supply chain management knowledge",
+        content: [
+          {
+            id: 31,
+            title: "Final Test: Supply Chain Strategy Simulation",
+            type: "quiz",
+            duration: "30:00",
+            description:
+              "Apply your knowledge by simulating a supply chain strategy, making decisions on procurement, logistics, and inventory management to optimize performance.",
+            preview: true,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.6,
+    students: 0, // Since it's a new course
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 40,
+    video_file: null,
+    image_file: null,
   },
 
   // 29. Video Editing with Adobe Premiere Pro (5 sessions)
   {
     id: 19,
     course_name: "Adobe Premiere Pro CC: Master Video Editing for Beginners",
+    level: "beginner",
+    language: "English",
+    total_no_hours: "30h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 6,
+
+    // Additional fields from original data
     description:
       "Learn to edit professional-quality videos for YouTube, social media, and film using Adobe Premiere Pro.",
-    image: "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
+    image:
+      "https://fixthephoto.com/blog/UserFiles/adobe-premiere-pro-2018-download-interface.png",
+    preview: "https://example.com/preview/premiere-pro-editing",
+    course_rating: 4.7,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -6675,16 +8167,6 @@ const courseData = [
       ],
     },
 
-    level: "Beginner",
-    price: 0,
-    language: "English",
-    total_hours: 30,
-    no_of_sessions: 5,
-    no_of_tests_available: 6,
-    course_rating: 4.7,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/premiere-pro-editing",
     about_course: {
       skills: [
         "Adobe Premiere Pro",
@@ -6698,6 +8180,7 @@ const courseData = [
       complete_description:
         "From importing footage to exporting a polished film, this course covers every essential aspect of video editing in Adobe Premiere Pro CC, perfect for aspiring YouTubers, marketers, and filmmakers.",
     },
+
     outcome: [
       "Navigate the Premiere Pro interface confidently",
       "Perform professional video and audio edits",
@@ -6705,225 +8188,322 @@ const courseData = [
       "Create titles, graphics, and motion effects",
       "Export videos in various formats for different platforms",
     ],
+
     course_content: [
       {
-        session: "1. Premiere Pro Interface & Workflow",
+        session: "Premiere Pro Interface & Workflow",
         module_description:
           "Get familiar with the software and set up your first project.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Premiere Pro Workspace Tour",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Explore the Premiere Pro interface, including panels, tools, and workspace customization.",
+            preview: true,
+            resources: ["Workspace Overview"],
           },
           {
             id: 2,
             title: "Creating a New Project & Sequence",
+            type: "video",
             duration: "15:00",
+            description:
+              "Learn how to create a new project, set up sequences, and understand project settings.",
             preview: true,
-            type: "demo",
           },
           {
             id: 3,
             title: "Importing Media & Organization",
+            type: "video",
             duration: "25:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Master the process of importing media files and organizing them in the project panel for efficient workflow.",
+            preview: true,
           },
           {
             id: 4,
             title: "Basic Editing Tools (Cut, Trim, Ripple)",
+            type: "assignment",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn the essential editing tools in Premiere Pro, including cutting, trimming, and ripple edits to refine your footage.",
+            preview: true,
           },
           {
             id: 5,
             title: "Keyboard Shortcuts for Efficiency",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description:
+              "Discover useful keyboard shortcuts to speed up your editing process and improve productivity.",
+            preview: true,
           },
         ],
       },
       {
-        session: "2. Advanced Editing & Transitions",
+        session: "Advanced Editing & Transitions",
         module_description: "Refine your edits and add creative transitions.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "J-Cut & L-Cut Techniques",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn advanced editing techniques like J-cuts and L-cuts to create seamless audio transitions between clips.",
+            preview: true,
           },
           {
             id: 7,
             title: "Speed Ramping & Time Remapping",
+            type: "video",
             duration: "25:00",
+            description:
+              "Explore speed ramping and time remapping to create dynamic slow-motion and fast-motion effects in your videos.",
             preview: true,
-            type: "demo",
           },
           {
             id: 8,
             title: "Video Transitions: Basic to Creative",
+            type: "pdf",
             duration: "30:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Master the use of video transitions, from basic cuts to creative effects like cross dissolves and wipes.",
+            preview: true,
+            file_size: "2.3 MB",
           },
           {
             id: 9,
             title: "Using Markers for Organization",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Learn how to use markers to annotate your timeline, making it easier to navigate and organize your project.",
+            preview: true,
           },
           {
             id: 10,
             title: "Nested Sequences",
+            type: "pdf",
             duration: "12:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Understand how to create nested sequences for complex edits, allowing you to group clips and apply effects more efficiently.",
+            preview: true,
+            file_size: "1.5 MB",
           },
         ],
       },
       {
-        session: "3. Audio Editing & Mixing",
+        session: "Audio Editing & Mixing",
         module_description:
           "Clean up your audio and create a balanced sound mix.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "Audio Panel & Levels",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn how to use the audio panel to adjust audio levels, balance, and panning for your clips.",
+            preview: true,
           },
           {
             id: 12,
             title: "Reducing Noise & Echo",
+            type: "video",
             duration: "25:00",
+            description:
+              "Explore techniques to reduce background noise and echo in your audio tracks for cleaner sound quality.",
             preview: true,
-            type: "demo",
           },
           {
             id: 13,
             title: "Adding Music & Sound Effects",
+            type: "video",
             duration: "18:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Learn how to import and sync music and sound effects to enhance the audio experience of your videos.",
+            preview: true,
           },
           {
             id: 14,
             title: "Audio Mixing Best Practices",
+            type: "pdf",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Understand audio mixing techniques to create a balanced sound mix, including volume adjustments and equalization.",
+            preview: true,
+            file_size: "1.7 MB",
           },
           {
             id: 15,
             title: "Applying Audio Effects",
-            duration: "12:00",
-            preview: false,
             type: "video",
+            duration: "12:00",
+            description:
+              "Discover how to apply audio effects like reverb, delay, and compression to enhance your audio tracks.",
+            preview: true,
           },
         ],
       },
       {
-        session: "4. Color Correction, Grading & Effects",
+        session: "Color Correction, Grading & Effects",
         module_description: "Enhance the visual appeal of your footage.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Lumetri Color Panel Overview",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Get familiar with the Lumetri Color panel for color correction and grading, including basic color adjustments.",
+            preview: true,
           },
           {
             id: 17,
             title: "Basic Color Correction",
+            type: "video",
             duration: "30:00",
+            description:
+              "Learn how to perform basic color correction to fix exposure, contrast, and white balance issues in your footage.",
             preview: true,
-            type: "demo",
           },
           {
             id: 18,
             title: "Creative Color Grading (Looks & LUTs)",
+            type: "video",
             duration: "28:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Explore creative color grading techniques using looks and LUTs (Look-Up Tables) to give your videos a unique style.",
+            preview: true,
           },
           {
             id: 19,
             title: "Applying Video Effects",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description:
+              "Discover how to apply video effects like blur, sharpen, and stylize to enhance your footage creatively.",
+            preview: true,
           },
           {
             id: 20,
             title: "Keyframing Effects",
+            type: "pdf",
             duration: "15:00",
-            preview: false,
-            type: "theory",
+            description:
+              "Learn how to use keyframes to animate effects and create dynamic visual changes over time in your video clips.",
+            preview: true,
+            file_size: "1.9 MB",
           },
         ],
       },
       {
-        session: "5. Titles, Graphics & Exporting",
+        session: "Titles, Graphics & Exporting",
         module_description:
           "Add professional titles and prepare your final video for output.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Essential Graphics Panel: Basic Titles",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description:
+              "Learn how to create basic titles and text graphics using the Essential Graphics panel in Premiere Pro.",
+            preview: true,
           },
           {
             id: 22,
             title: "Creating Lower Thirds & Callouts",
+            type: "video",
             duration: "25:00",
+            description:
+              "Explore how to create lower thirds and callouts to highlight important information in your videos.",
             preview: true,
-            type: "demo",
           },
           {
             id: 23,
             title: "Motion Graphics Templates",
+            type: "assignment",
             duration: "18:00",
-            preview: false,
-            type: "exercise",
+            description:
+              "Discover how to use motion graphics templates to add animated graphics and effects to your videos quickly.",
+            preview: true,
           },
           {
             id: 24,
             title: "Export Settings for YouTube, Social Media, etc.",
+            type: "video",
             duration: "30:00",
-            preview: false,
-            type: "walkthrough",
+            description:
+              "Learn how to export your final video with the best settings for various platforms like YouTube, Instagram, and Facebook.",
+            preview: true,
           },
           {
             id: 25,
             title: "Troubleshooting Export Issues",
-            duration: "10:00",
-            preview: false,
             type: "video",
+            duration: "10:00",
+            description:
+              "Understand common export issues in Premiere Pro and how to troubleshoot them effectively.",
+            preview: true,
+          },
+        ],
+      },
+      {
+        session: "Final Assessment",
+        module_description:
+          "Apply your skills by creating a complete video project.",
+        content: [
+          {
+            id: 26,
+            title: "Final Test: Edit a Short Film",
+            type: "quiz",
+            duration: "25:00",
+            description:
+              "Create a short film using the skills learned in this course, including editing, audio mixing, color grading, and adding titles.",
+            preview: true,
           },
         ],
       },
     ],
+
+    // Form-specific fields
+    no_of_sessions: 5,
+    status: "published",
+    rating: 4.7,
+    students: 0, // Since it's a new course
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 30,
+    video_file: null,
+    image_file: null,
   },
 
   // 30. Cloud Security on Google Cloud Platform (6 sessions)
   {
     id: 20,
     course_name: "Cloud Security Professional: Google Cloud Platform (GCP)",
+    level: "advanced",
+    language: "English",
+    total_no_hours: "45h",
+    price: 0,
+    certification: true,
+    pdf_available: true,
+    tests_available: true,
+    no_of_tests_available: 12,
+
+    // Additional fields from original data
     description:
       "Master security best practices and services on Google Cloud Platform to protect your infrastructure and data.",
     image: "https://cdn-thumbs.comidoc.net/750/5654326_5a69.jpg",
+    preview: "https://example.com/preview/gcp-cloud-security",
+    course_rating: 4.8,
+
     instructor: {
       name: "Maximilian Schwarzmüller",
       mailid: "max@example.com",
@@ -6946,16 +8526,6 @@ const courseData = [
       ],
     },
 
-    level: "Advanced",
-    price: 0,
-    language: "English",
-    total_hours: 45,
-    no_of_sessions: 6,
-    no_of_tests_available: 12,
-    course_rating: 4.8,
-    certification: true,
-    pdf_available: true,
-    preview: "https://example.com/preview/gcp-cloud-security",
     about_course: {
       skills: [
         "Google Cloud Platform (GCP)",
@@ -6970,6 +8540,7 @@ const courseData = [
       complete_description:
         "Secure your cloud environments on Google Cloud Platform. This course covers identity and access management, network security, data protection, compliance, and incident response specific to GCP.",
     },
+
     outcome: [
       "Implement strong IAM policies and manage access control on GCP",
       "Design and secure virtual networks within GCP",
@@ -6977,72 +8548,91 @@ const courseData = [
       "Utilize GCP security services for monitoring and threat detection",
       "Understand compliance and governance in a cloud context",
     ],
+
     course_content: [
       {
-        session: "1. GCP Security Fundamentals & Shared Responsibility",
+        session: "GCP Security Fundamentals & Shared Responsibility",
         module_description:
           "Understand the cloud security model and core GCP security concepts.",
-        videos: [
+        content: [
           {
             id: 1,
             title: "Cloud Security Shared Responsibility Model",
-            duration: "18:00",
-            preview: true,
             type: "video",
+            duration: "18:00",
+            description:
+              "Understanding the shared responsibility model in cloud security",
+            preview: true,
           },
           {
             id: 2,
             title: "GCP Resource Hierarchy & Organizations",
-            duration: "22:00",
-            preview: true,
             type: "theory",
+            duration: "22:00",
+            description:
+              "Learn about GCP's organizational structure and resource hierarchy",
+            preview: true,
           },
           {
             id: 3,
             title: "Introduction to Google Cloud Security Services",
-            duration: "20:00",
-            preview: false,
             type: "video",
+            duration: "20:00",
+            description: "Overview of key security services available in GCP",
+            preview: false,
           },
           {
             id: 4,
             title: "Setting Up Billing Accounts & Projects",
-            duration: "15:00",
-            preview: false,
             type: "demo",
+            duration: "15:00",
+            description:
+              "Hands-on demonstration of setting up GCP billing and projects",
+            preview: false,
           },
           {
             id: 5,
             title: "GCP Free Tier & Quotas",
-            duration: "10:00",
-            preview: false,
             type: "summary",
+            duration: "10:00",
+            description:
+              "Understanding GCP free tier limitations and quota management",
+            preview: false,
           },
         ],
       },
       {
-        session: "2. Identity & Access Management (IAM) on GCP",
+        session: "Identity & Access Management (IAM) on GCP",
         module_description: "Manage who can do what on your GCP resources.",
-        videos: [
+        content: [
           {
             id: 6,
             title: "IAM Roles & Permissions",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Deep dive into GCP IAM roles and permission structure",
+            preview: true,
           },
           {
             id: 7,
             title: "Service Accounts & Best Practices",
-            duration: "30:00",
-            preview: true,
             type: "demo",
+            duration: "30:00",
+            description:
+              "Creating and managing service accounts with security best practices",
+            preview: true,
           },
           {
             id: 8,
             title: "Custom Roles & Conditional IAM",
+            type: "exercise",
             duration: "20:00",
+            description:
+              "Building custom IAM roles and implementing conditional access",
             preview: false,
+<<<<<<< alertmodify
+=======
             type: "exercise",
             questions: [
               {
@@ -7071,192 +8661,246 @@ const courseData = [
                 answer: "JSON"
               }
             ]
+>>>>>>> main
           },
           {
             id: 9,
             title: "Managing Members & Bindings",
-            duration: "18:00",
-            preview: false,
             type: "walkthrough",
+            duration: "18:00",
+            description:
+              "Step-by-step guide to managing IAM members and policy bindings",
+            preview: false,
           },
           {
             id: 10,
             title: "Audit Logs & Access Transparency",
-            duration: "15:00",
-            preview: false,
             type: "video",
+            duration: "15:00",
+            description:
+              "Monitoring access and maintaining audit trails in GCP",
+            preview: false,
           },
         ],
       },
       {
-        session: "3. Network Security on Google Cloud",
+        session: "Network Security on Google Cloud",
         module_description:
           "Secure your virtual networks, firewalls, and connectivity.",
-        videos: [
+        content: [
           {
             id: 11,
             title: "VPC Networking & Subnets",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Understanding GCP VPC architecture and subnet configuration",
+            preview: true,
           },
           {
             id: 12,
             title: "Firewall Rules & Network Tags",
-            duration: "30:00",
-            preview: true,
             type: "demo",
+            duration: "30:00",
+            description:
+              "Configuring firewall rules and implementing network segmentation",
+            preview: true,
           },
           {
             id: 13,
             title: "Cloud VPN & Interconnect",
-            duration: "20:00",
-            preview: false,
             type: "theory",
+            duration: "20:00",
+            description:
+              "Secure connectivity options for hybrid cloud architectures",
+            preview: false,
           },
           {
             id: 14,
             title: "Load Balancing & Security Policies",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description:
+              "Implementing secure load balancing with security policies",
+            preview: false,
           },
           {
             id: 15,
             title: "Cloud Armor (DDoS Protection & WAF)",
-            duration: "28:00",
-            preview: false,
             type: "exercise",
+            duration: "28:00",
+            description:
+              "Hands-on implementation of Cloud Armor for DDoS protection",
+            preview: false,
           },
         ],
       },
       {
-        session: "4. Data Protection & Encryption",
+        session: "Data Protection & Encryption",
         module_description:
           "Ensure the confidentiality and integrity of your data on GCP.",
-        videos: [
+        content: [
           {
             id: 16,
             title: "Encryption at Rest (CMEK, CSEK)",
-            duration: "22:00",
-            preview: true,
             type: "video",
+            duration: "22:00",
+            description:
+              "Understanding customer-managed and customer-supplied encryption keys",
+            preview: true,
           },
           {
             id: 17,
             title: "Encryption in Transit",
-            duration: "18:00",
-            preview: true,
             type: "theory",
+            duration: "18:00",
+            description:
+              "Securing data during transmission across GCP services",
+            preview: true,
           },
           {
             id: 18,
             title: "Cloud Key Management Service (KMS)",
-            duration: "30:00",
-            preview: false,
             type: "demo",
+            duration: "30:00",
+            description:
+              "Practical implementation of Cloud KMS for key management",
+            preview: false,
           },
           {
             id: 19,
             title: "Cloud Storage Security Best Practices",
-            duration: "25:00",
-            preview: false,
             type: "video",
+            duration: "25:00",
+            description:
+              "Securing cloud storage with proper access controls and encryption",
+            preview: false,
           },
           {
             id: 20,
             title: "Data Loss Prevention (DLP) API",
-            duration: "20:00",
-            preview: false,
             type: "exercise",
+            duration: "20:00",
+            description:
+              "Implementing data loss prevention using GCP's DLP API",
+            preview: false,
           },
         ],
       },
       {
-        session: "5. Security Operations & Monitoring",
+        session: "Security Operations & Monitoring",
         module_description:
           "Monitor, detect, and respond to security threats on GCP.",
-        videos: [
+        content: [
           {
             id: 21,
             title: "Security Command Center (SCC) Overview",
-            duration: "25:00",
-            preview: true,
             type: "video",
+            duration: "25:00",
+            description:
+              "Centralized security management with Security Command Center",
+            preview: true,
           },
           {
             id: 22,
             title: "Cloud Logging & Monitoring for Security Events",
-            duration: "30:00",
-            preview: true,
             type: "demo",
+            duration: "30:00",
+            description:
+              "Setting up comprehensive security monitoring and alerting",
+            preview: true,
           },
           {
             id: 23,
             title: "Cloud Audit Logs for Compliance",
-            duration: "20:00",
-            preview: false,
             type: "walkthrough",
+            duration: "20:00",
+            description:
+              "Configuring audit logs for regulatory compliance requirements",
+            preview: false,
           },
           {
             id: 24,
             title: "Cloud IDS & Threat Detection",
-            duration: "22:00",
-            preview: false,
             type: "video",
+            duration: "22:00",
+            description: "Implementing intrusion detection and threat analysis",
+            preview: false,
           },
           {
             id: 25,
             title: "Incident Response in the Cloud",
-            duration: "18:00",
-            preview: false,
             type: "theory",
+            duration: "18:00",
+            description:
+              "Developing effective cloud security incident response procedures",
+            preview: false,
           },
         ],
       },
       {
-        session: "6. Compliance, Governance & Advanced Topics",
+        session: "Compliance, Governance & Advanced Topics",
         module_description:
           "Understand regulatory compliance and advanced security considerations.",
-        videos: [
+        content: [
           {
             id: 26,
             title: "GCP Compliance Offerings (HIPAA, GDPR, PCI DSS)",
-            duration: "20:00",
-            preview: true,
             type: "video",
+            duration: "20:00",
+            description: "Navigating regulatory compliance requirements in GCP",
+            preview: true,
           },
           {
             id: 27,
             title: "Resource Manager & Organizations Policies",
-            duration: "25:00",
-            preview: true,
             type: "theory",
+            duration: "25:00",
+            description:
+              "Implementing organizational policies and resource governance",
+            preview: true,
           },
           {
             id: 28,
             title: "Container Security (GKE Security)",
-            duration: "22:00",
-            preview: false,
             type: "video",
+            duration: "22:00",
+            description:
+              "Securing containerized applications on Google Kubernetes Engine",
+            preview: false,
           },
           {
             id: 29,
             title: "Serverless Security (Cloud Functions, App Engine)",
-            duration: "18:00",
-            preview: false,
             type: "discussion",
+            duration: "18:00",
+            description:
+              "Security considerations for serverless computing platforms",
+            preview: false,
           },
           {
             id: 30,
             title: "DevSecOps on GCP",
-            duration: "15:00",
-            preview: false,
             type: "summary",
+            duration: "15:00",
+            description: "Integrating security into DevOps workflows on GCP",
+            preview: false,
           },
         ],
       },
     ],
+
+    // Form-specific fields matching React course structure
+    no_of_sessions: 6,
+    status: "published",
+    rating: 4.8,
+    students: 85432,
+    created_at: "2024-01-15T10:00:00Z",
+    updated_at: "2024-01-15T10:00:00Z",
+    manual_total_hours: false,
+    calculated_hours: 45,
+    video_file: null,
+    image_file: null,
   },
 ];
 export default courseData;
