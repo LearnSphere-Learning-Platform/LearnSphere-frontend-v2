@@ -85,7 +85,38 @@ const courseData = [
             title: "Practice: Build a Profile Card",
             duration: "18:00",
             preview: false,
+<<<<<<< alertmodify
             type: "project",
+=======
+            type: "test",
+            questions: [
+              {
+                question: "Which React hook is most commonly used to manage the state of a profile card?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What is the best way to pass user data to a ProfileCard component?",
+                options: ["Via props", "Via global variable", "Via window object", "Via CSS"],
+                answer: "Via props"
+              },
+              {
+                question: "Which HTML element is best for displaying a user's profile picture?",
+                options: ["<img>", "<div>", "<span>", "<section>"],
+                answer: "<img>"
+              },
+              {
+                question: "How do you conditionally render a user's bio if it exists?",
+                options: ["{bio && <p>{bio}</p>}", "if (bio) <p>{bio}</p>", "<p>{bio}</p> always", "Use window.alert(bio)"],
+                answer: "{bio && <p>{bio}</p>}"
+              },
+              {
+                question: "What is a good practice for styling a profile card in React?",
+                options: ["Use CSS modules or styled-components", "Inline styles only", "No styles needed", "Use global CSS only"],
+                answer: "Use CSS modules or styled-components"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -105,7 +136,11 @@ const courseData = [
             title: "Props vs State",
             duration: "15:22",
             preview: true,
+<<<<<<< alertmodify
             type: "video",
+=======
+            type: "demo",
+>>>>>>> main
           },
           {
             id: 7,
@@ -127,6 +162,33 @@ const courseData = [
             duration: "30:00",
             preview: true,
             type: "assignment",
+            questions: [
+              {
+                question: "Which React hook is best for managing the state of an e-commerce cart?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What prop would you pass to a ProductCard to display its price?",
+                options: ["price", "cost", "amount", "value"],
+                answer: "price"
+              },
+              {
+                question: "How do you handle adding an item to the cart in React?",
+                options: ["Update state with setState/useState", "Reload the page", "Use window.alert", "Directly modify the DOM"],
+                answer: "Update state with setState/useState"
+              },
+              {
+                question: "Which event handler is used for button clicks in React?",
+                options: ["onClick", "onPress", "onTap", "onSelect"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to display a list of products in React?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              }
+            ]
           },
           {
             id: 10,
@@ -153,7 +215,11 @@ const courseData = [
             title: "Understanding useEffect",
             duration: "20:00",
             preview: true,
+<<<<<<< alertmodify
             type: "video",
+=======
+            type: "demo",
+>>>>>>> main
           },
           {
             id: 13,
@@ -161,6 +227,33 @@ const courseData = [
             duration: "25:00",
             preview: false,
             type: "coding-exercise",
+            questions: [
+              {
+                question: "Which hook is essential for a counter app in React?",
+                options: ["useState", "useEffect", "useContext", "useReducer"],
+                answer: "useState"
+              },
+              {
+                question: "What is the initial value of a counter typically set to?",
+                options: ["0", "1", "null", "undefined"],
+                answer: "0"
+              },
+              {
+                question: "How do you increment a counter in React?",
+                options: ["setCount(count + 1)", "count++", "add(1)", "setState(1)"],
+                answer: "setCount(count + 1)"
+              },
+              {
+                question: "Which event is used to trigger the increment?",
+                options: ["onClick", "onChange", "onInput", "onHover"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to display the counter value?",
+                options: ["Inside a <span> or <div>", "In the console", "In a CSS file", "In a comment"],
+                answer: "Inside a <span> or <div>"
+              }
+            ]
           },
           {
             id: 14,
@@ -208,7 +301,38 @@ const courseData = [
             title: "Practice: Blog Navigation",
             duration: "28:00",
             preview: false,
+<<<<<<< alertmodify
             type: "project",
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which library is commonly used for navigation in React apps?",
+                options: ["React Router", "Redux", "Axios", "Lodash"],
+                answer: "React Router"
+              },
+              {
+                question: "What is the component used to define a route?",
+                options: ["<Route>", "<Link>", "<Switch>", "<Nav>"],
+                answer: "<Route>"
+              },
+              {
+                question: "How do you navigate programmatically in React Router v6?",
+                options: ["useNavigate()", "useHistory()", "window.location", "navigateTo()"],
+                answer: "useNavigate()"
+              },
+              {
+                question: "What prop is used to specify the path in a Route?",
+                options: ["path", "to", "route", "url"],
+                answer: "path"
+              },
+              {
+                question: "How do you create a navigation link in React Router?",
+                options: ["<Link>", "<a>", "<button>", "<span>"],
+                answer: "<Link>"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 20,
@@ -257,6 +381,33 @@ const courseData = [
             duration: "40:00",
             preview: true,
             type: "assignment",
+            questions: [
+              {
+                question: "Which React hook is best for managing cart state?",
+                options: ["useState", "useEffect", "useRef", "useMemo"],
+                answer: "useState"
+              },
+              {
+                question: "What is a common way to display cart items?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              },
+              {
+                question: "How do you remove an item from the cart?",
+                options: ["Filter the array", "Push to array", "Use pop()", "Use shift()"],
+                answer: "Filter the array"
+              },
+              {
+                question: "Which event is used to handle checkout?",
+                options: ["onClick", "onChange", "onInput", "onHover"],
+                answer: "onClick"
+              },
+              {
+                question: "What is a good way to persist cart data?",
+                options: ["LocalStorage", "SessionStorage", "Cookies", "All of the above"],
+                answer: "All of the above"
+              }
+            ]
           },
         ],
       },
@@ -298,6 +449,33 @@ const courseData = [
             duration: "35:00",
             preview: true,
             type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the purpose of a final project review?",
+                options: ["To assess overall understanding", "To introduce new topics", "To skip content", "To delete the project"],
+                answer: "To assess overall understanding"
+              },
+              {
+                question: "Which is a good practice before submitting a project?",
+                options: ["Test all features", "Ignore bugs", "Remove comments", "Change project name"],
+                answer: "Test all features"
+              },
+              {
+                question: "How do you ensure your code is maintainable?",
+                options: ["Write clean code", "Use global variables", "Avoid comments", "Duplicate code"],
+                answer: "Write clean code"
+              },
+              {
+                question: "What should you include in your project documentation?",
+                options: ["Setup instructions", "Personal stories", "Unrelated code", "None of the above"],
+                answer: "Setup instructions"
+              },
+              {
+                question: "How do you deploy a React app?",
+                options: ["Use Netlify/Vercel/Heroku", "Send via email", "Print the code", "Use Notepad"],
+                answer: "Use Netlify/Vercel/Heroku"
+              }
+            ]
           },
         ],
       },
@@ -410,6 +588,37 @@ const courseData = [
             duration: "30:00",
             description: "Hands-on project to clean messy datasets",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which Python library is most commonly used for data cleaning?",
+                options: ["pandas", "numpy", "matplotlib", "seaborn"],
+                answer: "pandas"
+              },
+              {
+                question: "What method is used to remove missing values from a DataFrame?",
+                options: ["dropna()", "fillna()", "replace()", "remove()"],
+                answer: "dropna()"
+              },
+              {
+                question: "How do you fill missing values with the mean in pandas?",
+                options: ["fillna(df.mean())", "replace(df.mean())", "dropna(df.mean())", "fill(df.mean())"],
+                answer: "fillna(df.mean())"
+              },
+              {
+                question: "Which function checks for null values in a DataFrame?",
+                options: ["isnull()", "notnull()", "isna()", "all of the above"],
+                answer: "all of the above"
+              },
+              {
+                question: "What is the first step in data cleaning?",
+                options: ["Inspect the data", "Plot the data", "Train a model", "Export to CSV"],
+                answer: "Inspect the data"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -418,6 +627,37 @@ const courseData = [
             duration: "15:00",
             description: "Test your understanding of Python fundamentals",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "quiz",
+            questions: [
+              {
+                question: "Which symbol is used to comment a single line in Python?",
+                options: ["#", "//", "<!--", "--"],
+                answer: "#"
+              },
+              {
+                question: "What is the output of print(2 ** 3)?",
+                options: ["8", "6", "9", "5"],
+                answer: "8"
+              },
+              {
+                question: "Which data type is immutable in Python?",
+                options: ["tuple", "list", "dict", "set"],
+                answer: "tuple"
+              },
+              {
+                question: "How do you create a list in Python?",
+                options: ["[1, 2, 3]", "(1, 2, 3)", "{1, 2, 3}", "<1, 2, 3>"],
+                answer: "[1, 2, 3]"
+              },
+              {
+                question: "What does len([1, 2, 3]) return?",
+                options: ["3", "2", "1", "0"],
+                answer: "3"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -457,6 +697,37 @@ const courseData = [
             duration: "25:00",
             description: "Implement matrix operations using NumPy",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which NumPy function is used to create a 2D matrix?",
+                options: ["np.array()", "np.matrix()", "np.mat()", "np.create()"],
+                answer: "np.array()"
+              },
+              {
+                question: "How do you perform matrix multiplication in NumPy?",
+                options: ["np.dot()", "*", "+", "np.mult()"],
+                answer: "np.dot()"
+              },
+              {
+                question: "What does the shape attribute of a NumPy array return?",
+                options: ["Tuple of dimensions", "Sum of elements", "Data type", "First element"],
+                answer: "Tuple of dimensions"
+              },
+              {
+                question: "Which function transposes a matrix in NumPy?",
+                options: [".T", ".transpose()", ".reshape()", ".swapaxes()"],
+                answer: ".T"
+              },
+              {
+                question: "How do you access the element at row 1, column 2 in a 2D array arr?",
+                options: ["arr[0, 1]", "arr[1, 2]", "arr[1][2]", "arr[2, 1]"],
+                answer: "arr[0, 1]"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 10,
@@ -501,8 +772,40 @@ const courseData = [
             title: "Groupby Operations",
             type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
             description: "Master groupby operations for data aggregation",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which pandas function is used for groupby operations?",
+                options: ["groupby()", "aggregate()", "split()", "combine()"],
+                answer: "groupby()"
+              },
+              {
+                question: "How do you get the mean of each group in pandas?",
+                options: [".mean()", ".sum()", ".count()", ".min()"],
+                answer: ".mean()"
+              },
+              {
+                question: "What does groupby return in pandas?",
+                options: ["GroupBy object", "DataFrame", "Series", "List"],
+                answer: "GroupBy object"
+              },
+              {
+                question: "How do you apply multiple aggregation functions in groupby?",
+                options: ["agg()", "apply()", "map()", "filter()"],
+                answer: "agg()"
+              },
+              {
+                question: "Which method resets the index after groupby?",
+                options: ["reset_index()", "set_index()", "drop_index()", "clear_index()"],
+                answer: "reset_index()"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 15,
@@ -550,9 +853,41 @@ const courseData = [
             title: "Practice: Analyzing Sales Data",
             type: "assignment",
             duration: "30:00",
+<<<<<<< alertmodify
             description:
               "Build comprehensive visualizations for sales analysis",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which library is commonly used for data visualization in Python?",
+                options: ["matplotlib", "numpy", "pandas", "scipy"],
+                answer: "matplotlib"
+              },
+              {
+                question: "How do you plot a line chart in matplotlib?",
+                options: ["plt.plot()", "plt.line()", "plt.show()", "plt.draw()"],
+                answer: "plt.plot()"
+              },
+              {
+                question: "What function displays the plot window?",
+                options: ["plt.show()", "plt.display()", "plt.open()", "plt.view()"],
+                answer: "plt.show()"
+              },
+              {
+                question: "Which method is used to add a title to a plot?",
+                options: ["plt.title()", "plt.header()", "plt.caption()", "plt.label()"],
+                answer: "plt.title()"
+              },
+              {
+                question: "How do you save a plot as an image file?",
+                options: ["plt.savefig()", "plt.save()", "plt.export()", "plt.img()"],
+                answer: "plt.savefig()"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 20,
@@ -623,6 +958,37 @@ const courseData = [
             duration: "25:00",
             description: "Covers Pandas, NumPy, Matplotlib, and data workflows",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "assignment",
+            questions: [
+              {
+                question: "Which library is commonly used for linear regression in Python?",
+                options: ["scikit-learn", "pandas", "matplotlib", "numpy"],
+                answer: "scikit-learn"
+              },
+              {
+                question: "What is the target variable in a housing price prediction model?",
+                options: ["Price", "Area", "Location", "Rooms"],
+                answer: "Price"
+              },
+              {
+                question: "Which metric is used to evaluate regression models?",
+                options: ["Mean Squared Error", "Accuracy", "Recall", "F1 Score"],
+                answer: "Mean Squared Error"
+              },
+              {
+                question: "How do you split data into training and test sets?",
+                options: ["train_test_split", "split_data", "divide_data", "partition_data"],
+                answer: "train_test_split"
+              },
+              {
+                question: "What is the first step in building a machine learning model?",
+                options: ["Data preprocessing", "Model evaluation", "Prediction", "Deployment"],
+                answer: "Data preprocessing"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -740,6 +1106,37 @@ const courseData = [
             duration: "25:00",
             description: "Build your first HTML portfolio page",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which HTML tag is used to display your name on a portfolio page?",
+                options: ["<h1>", "<div>", "<span>", "<section>"],
+                answer: "<h1>"
+              },
+              {
+                question: "What attribute is used to add an image to your portfolio?",
+                options: ["src", "href", "alt", "title"],
+                answer: "src"
+              },
+              {
+                question: "Which tag is best for navigation links?",
+                options: ["<nav>", "<ul>", "<header>", "<footer>"],
+                answer: "<nav>"
+              },
+              {
+                question: "How do you make your email clickable?",
+                options: ["<a href='mailto:...'>", "<button>", "<input>", "<span>"],
+                answer: "<a href='mailto:...'>"
+              },
+              {
+                question: "What is a good practice for organizing sections on a portfolio page?",
+                options: ["Use semantic HTML tags", "Use only <div>", "No structure needed", "Use inline styles only"],
+                answer: "Use semantic HTML tags"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -787,6 +1184,37 @@ const courseData = [
             duration: "25:00",
             description: "Create responsive designs for all devices",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which CSS rule is used for responsive design?",
+                options: ["@media", "@responsive", "@screen", "@size"],
+                answer: "@media"
+              },
+              {
+                question: "How do you target screens smaller than 600px?",
+                options: ["@media (max-width: 600px)", "@media (min-width: 600px)", "@media (width: 600px)", "@media (size: 600px)"],
+                answer: "@media (max-width: 600px)"
+              },
+              {
+                question: "What property makes an image scale with the screen?",
+                options: ["width: 100%", "height: 100px", "display: block", "position: absolute"],
+                answer: "width: 100%"
+              },
+              {
+                question: "Which unit is best for flexible layouts?",
+                options: ["%", "px", "em", "rem"],
+                answer: "%"
+              },
+              {
+                question: "How do you hide an element on mobile only?",
+                options: ["@media (max-width: 600px) { display: none; }", "display: block;", "opacity: 0;", "z-index: -1;"],
+                answer: "@media (max-width: 600px) { display: none; }"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 10,
@@ -833,6 +1261,37 @@ const courseData = [
             duration: "25:00",
             description: "Interactive coding exercise for DOM manipulation",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method selects an element by its ID?",
+                options: ["document.getElementById()", "document.querySelectorAll()", "document.getElementsByClassName()", "document.createElement()"],
+                answer: "document.getElementById()"
+              },
+              {
+                question: "How do you change the text of an element in JavaScript?",
+                options: ["element.textContent = 'new text'", "element.value = 'new text'", "element.innerHTML = 'new text'", "element.setText('new text')"],
+                answer: "element.textContent = 'new text'"
+              },
+              {
+                question: "Which event is used for button clicks?",
+                options: ["onclick", "onhover", "onchange", "oninput"],
+                answer: "onclick"
+              },
+              {
+                question: "How do you add a new element to the DOM?",
+                options: ["appendChild()", "removeChild()", "replaceChild()", "insertBefore()"],
+                answer: "appendChild()"
+              },
+              {
+                question: "What method removes an element from the DOM?",
+                options: ["removeChild()", "deleteElement()", "remove()", "detach()"],
+                answer: "removeChild()"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 15,
@@ -888,6 +1347,37 @@ const courseData = [
             duration: "30:00",
             description: "Build applications that consume APIs",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to fetch data from an API in JavaScript?",
+                options: ["fetch()", "get()", "request()", "call()"],
+                answer: "fetch()"
+              },
+              {
+                question: "What does fetch() return?",
+                options: ["Promise", "Array", "String", "Object"],
+                answer: "Promise"
+              },
+              {
+                question: "How do you parse a JSON response from fetch?",
+                options: ["response.json()", "response.text()", "response.parse()", "response.data()"],
+                answer: "response.json()"
+              },
+              {
+                question: "Which HTTP method is used to send data to an API?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "How do you handle errors in fetch?",
+                options: [".catch()", ".then()", ".error()", ".fail()"],
+                answer: ".catch()"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -918,6 +1408,37 @@ const courseData = [
             duration: "30:00",
             description: "Hands-on coding exercise to build REST APIs",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method creates a new resource in REST?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "What is the default port for Express apps?",
+                options: ["3000", "8080", "5000", "80"],
+                answer: "3000"
+              },
+              {
+                question: "Which function defines a route in Express?",
+                options: ["app.get()", "app.route()", "app.listen()", "app.use()"],
+                answer: "app.get()"
+              },
+              {
+                question: "How do you send a JSON response in Express?",
+                options: ["res.json()", "res.send()", "res.write()", "res.data()"],
+                answer: "res.json()"
+              },
+              {
+                question: "Which middleware parses JSON bodies in Express?",
+                options: ["express.json()", "bodyParser.text()", "express.static()", "app.use()"],
+                answer: "express.json()"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 24,
@@ -965,6 +1486,37 @@ const courseData = [
             duration: "28:00",
             description: "Implement Create, Read, Update, Delete operations",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method creates a new document in Mongoose?",
+                options: ["Model.create()", "Model.find()", "Model.update()", "Model.delete()"],
+                answer: "Model.create()"
+              },
+              {
+                question: "How do you find all documents in a collection?",
+                options: ["Model.find()", "Model.getAll()", "Model.fetch()", "Model.all()"],
+                answer: "Model.find()"
+              },
+              {
+                question: "Which method updates a document in Mongoose?",
+                options: ["Model.updateOne()", "Model.save()", "Model.edit()", "Model.change()"],
+                answer: "Model.updateOne()"
+              },
+              {
+                question: "How do you delete a document in Mongoose?",
+                options: ["Model.deleteOne()", "Model.remove()", "Model.destroy()", "Model.drop()"],
+                answer: "Model.deleteOne()"
+              },
+              {
+                question: "What is the purpose of Mongoose schemas?",
+                options: ["Define structure of documents", "Style the UI", "Connect to frontend", "Render HTML"],
+                answer: "Define structure of documents"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 29,
@@ -1028,6 +1580,37 @@ const courseData = [
             duration: "35:00",
             description: "Complete coding project to build a blog application",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which React hook is used to manage blog post state?",
+                options: ["useState", "useEffect", "useContext", "useReducer"],
+                answer: "useState"
+              },
+              {
+                question: "How do you render a list of blog posts in React?",
+                options: ["Array.map()", "forEach()", "while loop", "setTimeout"],
+                answer: "Array.map()"
+              },
+              {
+                question: "Which prop is used to uniquely identify list items in React?",
+                options: ["key", "id", "index", "name"],
+                answer: "key"
+              },
+              {
+                question: "How do you handle form input for new blog posts?",
+                options: ["onChange event", "onClick event", "onSubmit event", "onInput event"],
+                answer: "onChange event"
+              },
+              {
+                question: "What is a good way to separate blog post components?",
+                options: ["Create a BlogPost component", "Use only App.js", "Put all code in index.js", "Use global variables"],
+                answer: "Create a BlogPost component"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1091,6 +1674,37 @@ const courseData = [
             description:
               "HTML, CSS, JavaScript, Node, React, MongoDB topics covered",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the first step in starting a final project?",
+                options: ["Plan the project structure", "Write code immediately", "Deploy to production", "Skip planning"],
+                answer: "Plan the project structure"
+              },
+              {
+                question: "Which tool is commonly used for version control?",
+                options: ["Git", "Photoshop", "Excel", "Notepad"],
+                answer: "Git"
+              },
+              {
+                question: "How do you test your application before deployment?",
+                options: ["Run locally and check features", "Deploy first", "Ignore testing", "Ask a friend"],
+                answer: "Run locally and check features"
+              },
+              {
+                question: "What is a good practice for writing project documentation?",
+                options: ["Include setup instructions", "Skip documentation", "Write in code only", "Use screenshots only"],
+                answer: "Include setup instructions"
+              },
+              {
+                question: "How do you deploy a full-stack app?",
+                options: ["Use platforms like Heroku/Netlify", "Send files via email", "Print the code", "Use Notepad"],
+                answer: "Use platforms like Heroku/Netlify"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1199,6 +1813,37 @@ const courseData = [
             duration: "25:00",
             description: "Hands-on coding exercise with closures",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a closure in JavaScript?",
+                options: ["A function with access to its outer scope", "A CSS property", "A type of loop", "A React hook"],
+                answer: "A function with access to its outer scope"
+              },
+              {
+                question: "How do closures help with data privacy?",
+                options: ["By encapsulating variables", "By exposing all variables", "By using global scope", "By using var only"],
+                answer: "By encapsulating variables"
+              },
+              {
+                question: "Which keyword creates a function in JavaScript?",
+                options: ["function", "def", "lambda", "fun"],
+                answer: "function"
+              },
+              {
+                question: "How can you use a closure to create a counter?",
+                options: ["Return a function that increments a variable", "Use a global variable", "Use setTimeout only", "Use a for loop only"],
+                answer: "Return a function that increments a variable"
+              },
+              {
+                question: "What is a common use case for closures?",
+                options: ["Event handlers", "CSS styling", "HTML rendering", "Database queries"],
+                answer: "Event handlers"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 4,
@@ -1264,6 +1909,37 @@ const courseData = [
             duration: "30:00",
             description: "Build custom objects with inheritance",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "How do you define a custom object in JavaScript?",
+                options: ["Using object literals or constructors", "Using arrays", "Using functions only", "Using strings"],
+                answer: "Using object literals or constructors"
+              },
+              {
+                question: "Which keyword is used to create a constructor function?",
+                options: ["function", "class", "object", "constructor"],
+                answer: "function"
+              },
+              {
+                question: "How do you add a method to a custom object?",
+                options: ["Assign a function to a property", "Use addMethod()", "Use push()", "Use setMethod()"],
+                answer: "Assign a function to a property"
+              },
+              {
+                question: "What is the purpose of 'this' in object methods?",
+                options: ["Refers to the object itself", "Refers to window", "Refers to parent object", "Refers to null"],
+                answer: "Refers to the object itself"
+              },
+              {
+                question: "How do you create an instance of a custom object?",
+                options: ["Using 'new' keyword", "Using 'create'", "Using 'instanceof'", "Using 'Object()'"],
+                answer: "Using 'new' keyword"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1310,6 +1986,37 @@ const courseData = [
             duration: "25:00",
             description: "Build an app that fetches and displays data",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to fetch data from an API in JavaScript?",
+                options: ["fetch()", "get()", "request()", "call()"],
+                answer: "fetch()"
+              },
+              {
+                question: "What does fetch() return?",
+                options: ["Promise", "Array", "String", "Object"],
+                answer: "Promise"
+              },
+              {
+                question: "How do you parse a JSON response from fetch?",
+                options: ["response.json()", "response.text()", "response.parse()", "response.data()"],
+                answer: "response.json()"
+              },
+              {
+                question: "Which HTTP method is used to send data to an API?",
+                options: ["POST", "GET", "PUT", "DELETE"],
+                answer: "POST"
+              },
+              {
+                question: "How do you handle errors in fetch?",
+                options: [".catch()", ".then()", ".error()", ".fail()"],
+                answer: ".catch()"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1356,6 +2063,37 @@ const courseData = [
             duration: "28:00",
             description: "Transform arrays using functional programming",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which method is used to transform each element in an array?",
+                options: ["map()", "filter()", "reduce()", "forEach()"],
+                answer: "map()"
+              },
+              {
+                question: "How do you filter elements in an array?",
+                options: ["filter()", "map()", "reduce()", "sort()"],
+                answer: "filter()"
+              },
+              {
+                question: "Which method accumulates a single value from an array?",
+                options: ["reduce()", "map()", "filter()", "forEach()"],
+                answer: "reduce()"
+              },
+              {
+                question: "What does the 'find()' method do?",
+                options: ["Returns first matching element", "Returns all elements", "Removes elements", "Sorts elements"],
+                answer: "Returns first matching element"
+              },
+              {
+                question: "How do you sort an array in JavaScript?",
+                options: ["sort()", "order()", "arrange()", "filter()"],
+                answer: "sort()"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1417,6 +2155,37 @@ const courseData = [
             description:
               "Comprehensive test covering closures, prototypes, async JS, and more",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of refactoring code?",
+                options: ["Improve readability and maintainability", "Add new features", "Remove all comments", "Increase file size"],
+                answer: "Improve readability and maintainability"
+              },
+              {
+                question: "Which tool helps identify code smells?",
+                options: ["Linters", "Compilers", "Browsers", "Text editors"],
+                answer: "Linters"
+              },
+              {
+                question: "What is a common refactoring technique?",
+                options: ["Extract function", "Add global variables", "Duplicate code", "Remove all functions"],
+                answer: "Extract function"
+              },
+              {
+                question: "Why is it important to write tests before refactoring?",
+                options: ["Ensure behavior stays the same", "Make code slower", "Increase bugs", "Reduce readability"],
+                answer: "Ensure behavior stays the same"
+              },
+              {
+                question: "What is a code smell?",
+                options: ["A sign of potential problem in code", "A good practice", "A type of comment", "A CSS property"],
+                answer: "A sign of potential problem in code"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -1530,8 +2299,40 @@ const courseData = [
             title: "Journey Mapping",
             type: "video",
             duration: "18:00",
+<<<<<<< alertmodify
             description: "Map user journeys to understand pain points",
             preview: true,
+=======
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a journey map in UX design?",
+                options: ["A visual representation of user experience", "A code diagram", "A database schema", "A marketing plan"],
+                answer: "A visual representation of user experience"
+              },
+              {
+                question: "Which phase comes first in journey mapping?",
+                options: ["Research", "Design", "Testing", "Development"],
+                answer: "Research"
+              },
+              {
+                question: "What is the main goal of journey mapping?",
+                options: ["Identify pain points and opportunities", "Write code", "Create wireframes", "Build prototypes"],
+                answer: "Identify pain points and opportunities"
+              },
+              {
+                question: "Who is the primary focus of a journey map?",
+                options: ["The user", "The developer", "The manager", "The marketer"],
+                answer: "The user"
+              },
+              {
+                question: "What tool is commonly used for journey mapping?",
+                options: ["Sticky notes or digital boards", "Database", "IDE", "Spreadsheet"],
+                answer: "Sticky notes or digital boards"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -1568,8 +2369,40 @@ const courseData = [
             title: "User Flows",
             type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
             description: "Design user flows for optimal navigation",
             preview: true,
+=======
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a user flow?",
+                options: ["A path taken by a user to complete a task", "A code function", "A UI element", "A marketing strategy"],
+                answer: "A path taken by a user to complete a task"
+              },
+              {
+                question: "Why are user flows important in UX design?",
+                options: ["They help optimize user experience", "They increase code complexity", "They slow down development", "They are not important"],
+                answer: "They help optimize user experience"
+              },
+              {
+                question: "Which tool can be used to create user flows?",
+                options: ["Figma", "Excel", "Photoshop", "Notepad"],
+                answer: "Figma"
+              },
+              {
+                question: "What is the starting point of a user flow?",
+                options: ["Entry point or trigger", "Final screen", "Database", "Code editor"],
+                answer: "Entry point or trigger"
+              },
+              {
+                question: "What should be included in a user flow diagram?",
+                options: ["All possible user actions and screens", "Only code", "Only UI colors", "Only text"],
+                answer: "All possible user actions and screens"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 9,
@@ -1615,8 +2448,40 @@ const courseData = [
             title: "Interactive Prototypes",
             type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
             description: "Build interactive prototypes with animations",
             preview: true,
+=======
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is an interactive prototype?",
+                options: ["A clickable simulation of a product", "A static image", "A code file", "A database"],
+                answer: "A clickable simulation of a product"
+              },
+              {
+                question: "Which tool is popular for creating interactive prototypes?",
+                options: ["Figma", "Excel", "Word", "Notepad"],
+                answer: "Figma"
+              },
+              {
+                question: "Why are interactive prototypes useful?",
+                options: ["They allow user testing before development", "They slow down design", "They are not useful", "They replace all code"],
+                answer: "They allow user testing before development"
+              },
+              {
+                question: "What feature makes a prototype interactive?",
+                options: ["Clickable elements and transitions", "Static images", "Text only", "No interaction"],
+                answer: "Clickable elements and transitions"
+              },
+              {
+                question: "What is a benefit of prototyping?",
+                options: ["Early feedback and iteration", "No feedback needed", "Skip user testing", "Faster coding"],
+                answer: "Early feedback and iteration"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 14,
@@ -1669,8 +2534,40 @@ const courseData = [
             title: "Conducting Usability Tests",
             type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
             description: "Plan and execute effective usability tests",
             preview: true,
+=======
+            preview: false,
+            type: "exercise",
+            questions: [
+              {
+                question: "What is usability testing?",
+                options: ["Evaluating a product by testing with users", "Writing code", "Designing UI", "Marketing"],
+                answer: "Evaluating a product by testing with users"
+              },
+              {
+                question: "When should usability testing be conducted?",
+                options: ["Throughout the design process", "Only after launch", "Never", "Only during coding"],
+                answer: "Throughout the design process"
+              },
+              {
+                question: "What is a common method for usability testing?",
+                options: ["User observation and feedback", "Code review", "Automated testing", "Marketing survey"],
+                answer: "User observation and feedback"
+              },
+              {
+                question: "What is the main goal of usability testing?",
+                options: ["Identify usability issues", "Increase code size", "Add new features", "Change UI colors"],
+                answer: "Identify usability issues"
+              },
+              {
+                question: "Who should participate in usability tests?",
+                options: ["Target users", "Developers only", "Managers only", "Marketers only"],
+                answer: "Target users"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 20,
@@ -1849,8 +2746,40 @@ const courseData = [
             title: "Terraform Basics",
             type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
             description: "Getting started with Terraform for AWS",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is Terraform primarily used for?",
+                options: ["Infrastructure as Code", "Web development", "Database management", "UI design"],
+                answer: "Infrastructure as Code"
+              },
+              {
+                question: "Which language is used to write Terraform configuration files?",
+                options: ["HCL", "YAML", "JSON", "XML"],
+                answer: "HCL"
+              },
+              {
+                question: "What command initializes a Terraform working directory?",
+                options: ["terraform init", "terraform start", "terraform apply", "terraform plan"],
+                answer: "terraform init"
+              },
+              {
+                question: "How do you apply changes defined in Terraform files?",
+                options: ["terraform apply", "terraform run", "terraform execute", "terraform deploy"],
+                answer: "terraform apply"
+              },
+              {
+                question: "What is the file extension for Terraform files?",
+                options: [".tf", ".js", ".py", ".rb"],
+                answer: ".tf"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 9,
@@ -1904,8 +2833,40 @@ const courseData = [
             title: "Building Jenkins Pipelines",
             type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
             description: "Creating robust CI/CD pipelines with Jenkins",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main purpose of Jenkins in a CI/CD pipeline?",
+                options: ["Automation of builds and deployments", "Database management", "UI design", "Cloud hosting"],
+                answer: "Automation of builds and deployments"
+              },
+              {
+                question: "Which file is commonly used to define a Jenkins pipeline?",
+                options: ["Jenkinsfile", "pipeline.yaml", "build.gradle", "Dockerfile"],
+                answer: "Jenkinsfile"
+              },
+              {
+                question: "What is a Jenkins agent?",
+                options: ["A machine that runs jobs", "A database", "A UI component", "A cloud service"],
+                answer: "A machine that runs jobs"
+              },
+              {
+                question: "Which plugin is used for Git integration in Jenkins?",
+                options: ["Git plugin", "Docker plugin", "Slack plugin", "Pipeline plugin"],
+                answer: "Git plugin"
+              },
+              {
+                question: "What is a stage in a Jenkins pipeline?",
+                options: ["A logical division of the pipeline", "A database table", "A UI element", "A cloud region"],
+                answer: "A logical division of the pipeline"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 15,
@@ -1942,8 +2903,40 @@ const courseData = [
             title: "Amazon ECS & Fargate",
             type: "video",
             duration: "25:00",
+<<<<<<< alertmodify
             description: "Container orchestration with ECS and Fargate",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does ECS stand for in AWS?",
+                options: ["Elastic Container Service", "Elastic Compute Service", "External Cloud Service", "Enterprise Cloud Solution"],
+                answer: "Elastic Container Service"
+              },
+              {
+                question: "What is AWS Fargate used for?",
+                options: ["Serverless container hosting", "Database management", "UI design", "Monitoring logs"],
+                answer: "Serverless container hosting"
+              },
+              {
+                question: "Which file defines container configuration in ECS?",
+                options: ["Task definition", "Dockerfile", "Jenkinsfile", "build.gradle"],
+                answer: "Task definition"
+              },
+              {
+                question: "What is the main benefit of using Fargate?",
+                options: ["No server management", "Manual scaling", "UI design", "Database hosting"],
+                answer: "No server management"
+              },
+              {
+                question: "Which AWS service is commonly used with ECS for container images?",
+                options: ["ECR", "S3", "Lambda", "CloudFront"],
+                answer: "ECR"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 19,
@@ -2068,6 +3061,37 @@ const courseData = [
             description:
               "CI/CD pipelines, automation, deployment strategies on AWS",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of disaster recovery?",
+                options: ["Restore service after failure", "Increase UI speed", "Add new features", "Reduce costs"],
+                answer: "Restore service after failure"
+              },
+              {
+                question: "Which AWS service is commonly used for backups?",
+                options: ["AWS Backup", "EC2", "Lambda", "CloudFront"],
+                answer: "AWS Backup"
+              },
+              {
+                question: "What is an RTO in disaster recovery?",
+                options: ["Recovery Time Objective", "Resource Transfer Option", "Remote Task Operation", "Redundant Time Output"],
+                answer: "Recovery Time Objective"
+              },
+              {
+                question: "Which strategy involves running a duplicate environment in another region?",
+                options: ["Pilot Light", "Warm Standby", "Cold Standby", "Hot Standby"],
+                answer: "Hot Standby"
+              },
+              {
+                question: "What is a common test for disaster recovery plans?",
+                options: ["Failover test", "UI test", "Unit test", "Integration test"],
+                answer: "Failover test"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -2178,6 +3202,37 @@ const courseData = [
             duration: "22:00",
             description: "Creating functions and understanding closures",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a closure in Swift?",
+                options: ["A self-contained block of code", "A UI element", "A database", "A network request"],
+                answer: "A self-contained block of code"
+              },
+              {
+                question: "How do you define a function in Swift?",
+                options: ["func myFunction() {}", "function myFunction() {}", "def myFunction() {}", "fn myFunction() {}"],
+                answer: "func myFunction() {}"
+              },
+              {
+                question: "Which keyword is used to return a value from a function?",
+                options: ["return", "output", "yield", "break"],
+                answer: "return"
+              },
+              {
+                question: "What is the syntax for calling a function in Swift?",
+                options: ["myFunction()", "call myFunction", "run myFunction", "execute myFunction"],
+                answer: "myFunction()"
+              },
+              {
+                question: "What is the main use of closures in Swift?",
+                options: ["Passing functionality as a variable", "UI design", "Database management", "Networking"],
+                answer: "Passing functionality as a variable"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -2223,8 +3278,40 @@ const courseData = [
             title: "Lists & Navigation",
             type: "coding",
             duration: "22:00",
+<<<<<<< alertmodify
             description: "Creating lists and navigation views",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a List in SwiftUI used for?",
+                options: ["Displaying rows of data", "Storing images", "Networking", "Database management"],
+                answer: "Displaying rows of data"
+              },
+              {
+                question: "Which modifier is used to navigate to a new view?",
+                options: ["NavigationLink", "onTapGesture", "sheet", "alert"],
+                answer: "NavigationLink"
+              },
+              {
+                question: "How do you make a list of items dynamic in SwiftUI?",
+                options: ["ForEach", "VStack", "HStack", "Text"],
+                answer: "ForEach"
+              },
+              {
+                question: "What is the purpose of .navigationTitle()?",
+                options: ["Set the navigation bar title", "Set the list item title", "Set the button label", "Set the view background"],
+                answer: "Set the navigation bar title"
+              },
+              {
+                question: "Which SwiftUI view is used for hierarchical navigation?",
+                options: ["NavigationView", "TabView", "ScrollView", "Form"],
+                answer: "NavigationView"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 10,
@@ -2272,7 +3359,38 @@ const courseData = [
             duration: "30:00",
             description: "Comprehensive guide to table and collection views",
             preview: false,
+<<<<<<< alertmodify
             file_size: "3.2 MB",
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is a Table View used for in UIKit?",
+                options: ["Displaying a list of rows", "Showing images", "Networking", "Database management"],
+                answer: "Displaying a list of rows"
+              },
+              {
+                question: "Which delegate method configures each cell in a Table View?",
+                options: ["cellForRowAt", "numberOfRowsInSection", "didSelectRowAt", "heightForRowAt"],
+                answer: "cellForRowAt"
+              },
+              {
+                question: "What is a Collection View used for?",
+                options: ["Displaying grid-like layouts", "Showing alerts", "Networking", "Database management"],
+                answer: "Displaying grid-like layouts"
+              },
+              {
+                question: "Which UIKit class is used for Table Views?",
+                options: ["UITableView", "UICollectionView", "UIView", "UILabel"],
+                answer: "UITableView"
+              },
+              {
+                question: "How do you handle row selection in a Table View?",
+                options: ["didSelectRowAt", "cellForRowAt", "numberOfRowsInSection", "viewForHeaderInSection"],
+                answer: "didSelectRowAt"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 15,
@@ -2309,8 +3427,40 @@ const courseData = [
             title: "Making Network Requests",
             type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
             description: "HTTP requests and URL sessions",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Which class is commonly used for network requests in Swift?",
+                options: ["URLSession", "UITableView", "UIView", "UILabel"],
+                answer: "URLSession"
+              },
+              {
+                question: "What is the purpose of a completion handler?",
+                options: ["Handle async response", "Display UI", "Store data", "Show alerts"],
+                answer: "Handle async response"
+              },
+              {
+                question: "Which HTTP method is used to retrieve data?",
+                options: ["GET", "POST", "PUT", "DELETE"],
+                answer: "GET"
+              },
+              {
+                question: "How do you parse JSON in Swift?",
+                options: ["JSONDecoder", "XMLParser", "CSVReader", "HTMLParser"],
+                answer: "JSONDecoder"
+              },
+              {
+                question: "What is the main benefit of using Codable in Swift?",
+                options: ["Easier encoding/decoding", "UI design", "Database management", "Networking"],
+                answer: "Easier encoding/decoding"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 19,
@@ -2355,8 +3505,40 @@ const courseData = [
             title: "Cloud Firestore Database",
             type: "video",
             duration: "30:00",
+<<<<<<< alertmodify
             description: "NoSQL database with Cloud Firestore",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is Cloud Firestore used for?",
+                options: ["Storing and syncing data", "UI design", "Authentication", "Hosting"],
+                answer: "Storing and syncing data"
+              },
+              {
+                question: "Which method is used to add data to Firestore?",
+                options: ["add()", "push()", "insert()", "create()"],
+                answer: "add()"
+              },
+              {
+                question: "What is a Firestore collection?",
+                options: ["A group of documents", "A single document", "A database", "A table"],
+                answer: "A group of documents"
+              },
+              {
+                question: "How do you listen for real-time updates in Firestore?",
+                options: ["onSnapshot()", "get()", "fetch()", "listen()"],
+                answer: "onSnapshot()"
+              },
+              {
+                question: "What is the data format used in Firestore?",
+                options: ["JSON-like objects", "XML", "CSV", "YAML"],
+                answer: "JSON-like objects"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 24,
@@ -2410,8 +3592,40 @@ const courseData = [
             title: "Unit Testing iOS Apps",
             type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
             description: "Testing strategies for iOS applications",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the purpose of unit testing?",
+                options: ["Test individual units of code", "Test UI only", "Test network requests", "Test database only"],
+                answer: "Test individual units of code"
+              },
+              {
+                question: "Which framework is commonly used for unit testing in iOS?",
+                options: ["XCTest", "Jest", "Mocha", "JUnit"],
+                answer: "XCTest"
+              },
+              {
+                question: "What is a test case?",
+                options: ["A set of conditions to test code", "A UI element", "A database row", "A network request"],
+                answer: "A set of conditions to test code"
+              },
+              {
+                question: "How do you assert equality in a test?",
+                options: ["XCTAssertEqual", "assertSame", "assertEquals", "expectEqual"],
+                answer: "XCTAssertEqual"
+              },
+              {
+                question: "What is test coverage?",
+                options: ["Percentage of code tested", "Number of tests", "UI coverage", "Database coverage"],
+                answer: "Percentage of code tested"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 30,
@@ -2596,8 +3810,40 @@ const courseData = [
             title: "Splitting Data into Train/Test",
             type: "video",
             duration: "18:00",
+<<<<<<< alertmodify
             description: "Properly split your dataset for training and testing",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "Why do we split data into train and test sets?",
+                options: ["To evaluate model performance", "To increase data size", "To reduce computation", "To remove outliers"],
+                answer: "To evaluate model performance"
+              },
+              {
+                question: "What is a common split ratio for train/test?",
+                options: ["80/20", "50/50", "30/70", "10/90"],
+                answer: "80/20"
+              },
+              {
+                question: "Which library function is commonly used for splitting data in Python?",
+                options: ["train_test_split", "split_data", "divide_data", "partition_data"],
+                answer: "train_test_split"
+              },
+              {
+                question: "What is the risk of not using a test set?",
+                options: ["Overfitting", "Underfitting", "Faster training", "Better accuracy"],
+                answer: "Overfitting"
+              },
+              {
+                question: "What should the test set represent?",
+                options: ["Unseen data", "Training data", "Random noise", "Outliers only"],
+                answer: "Unseen data"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 5,
@@ -2635,9 +3881,41 @@ const courseData = [
             title: "Polynomial Regression",
             type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
             description:
               "Handle non-linear relationships with polynomial features",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main difference between linear and polynomial regression?",
+                options: ["Polynomial regression fits curves", "Linear regression fits lines", "Polynomial regression is faster", "Linear regression uses more data"],
+                answer: "Polynomial regression fits curves"
+              },
+              {
+                question: "Which library is commonly used for polynomial regression in Python?",
+                options: ["scikit-learn", "pandas", "matplotlib", "numpy"],
+                answer: "scikit-learn"
+              },
+              {
+                question: "What is the purpose of the degree parameter in polynomial regression?",
+                options: ["Controls curve complexity", "Sets learning rate", "Defines data size", "Chooses optimizer"],
+                answer: "Controls curve complexity"
+              },
+              {
+                question: "What is a risk of using a high-degree polynomial?",
+                options: ["Overfitting", "Underfitting", "Faster training", "Better accuracy"],
+                answer: "Overfitting"
+              },
+              {
+                question: "Which function transforms features for polynomial regression?",
+                options: ["PolynomialFeatures", "LinearFeatures", "FeatureScaler", "CurveFitter"],
+                answer: "PolynomialFeatures"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 9,
@@ -2683,8 +3961,40 @@ const courseData = [
             title: "Support Vector Machine (SVM)",
             type: "video",
             duration: "28:00",
+<<<<<<< alertmodify
             description: "Powerful classification with support vector machines",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of SVM?",
+                options: ["Find the optimal separating hyperplane", "Reduce data size", "Increase computation", "Remove outliers"],
+                answer: "Find the optimal separating hyperplane"
+              },
+              {
+                question: "Which kernel is commonly used in SVM?",
+                options: ["RBF", "Linear", "Polynomial", "All of the above"],
+                answer: "All of the above"
+              },
+              {
+                question: "What is a support vector?",
+                options: ["A data point closest to the hyperplane", "A random data point", "A feature", "A label"],
+                answer: "A data point closest to the hyperplane"
+              },
+              {
+                question: "Which parameter controls the margin in SVM?",
+                options: ["C", "gamma", "alpha", "beta"],
+                answer: "C"
+              },
+              {
+                question: "What is the output of SVM for classification?",
+                options: ["Class label", "Probability", "Feature importance", "Loss value"],
+                answer: "Class label"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 14,
@@ -2750,6 +4060,37 @@ const courseData = [
             duration: "35:00",
             description: "Real-world project on customer segmentation",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the goal of customer segmentation?",
+                options: ["Group similar customers", "Increase prices", "Reduce data", "Remove outliers"],
+                answer: "Group similar customers"
+              },
+              {
+                question: "Which algorithm is commonly used for segmentation?",
+                options: ["K-Means", "Linear Regression", "SVM", "PCA"],
+                answer: "K-Means"
+              },
+              {
+                question: "What is a cluster center?",
+                options: ["Mean of points in a cluster", "A random point", "A label", "A feature"],
+                answer: "Mean of points in a cluster"
+              },
+              {
+                question: "What metric is used to evaluate clustering?",
+                options: ["Silhouette score", "Accuracy", "Precision", "Recall"],
+                answer: "Silhouette score"
+              },
+              {
+                question: "What is a common visualization for clusters?",
+                options: ["Scatter plot", "Bar chart", "Pie chart", "Line plot"],
+                answer: "Scatter plot"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -2795,8 +4136,40 @@ const courseData = [
             title: "Thompson Sampling",
             type: "video",
             duration: "22:00",
+<<<<<<< alertmodify
             description: "Bayesian approach to multi-armed bandits",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main goal of Thompson Sampling?",
+                options: ["Balance exploration and exploitation", "Reduce computation", "Increase data size", "Remove outliers"],
+                answer: "Balance exploration and exploitation"
+              },
+              {
+                question: "Which problem is Thompson Sampling commonly used for?",
+                options: ["Multi-armed bandit", "Linear regression", "Clustering", "Classification"],
+                answer: "Multi-armed bandit"
+              },
+              {
+                question: "What does Thompson Sampling use to make decisions?",
+                options: ["Probability distributions", "Random guessing", "Fixed rules", "Majority voting"],
+                answer: "Probability distributions"
+              },
+              {
+                question: "What is a key benefit of Thompson Sampling?",
+                options: ["Efficient learning", "Slower convergence", "More overfitting", "Less accuracy"],
+                answer: "Efficient learning"
+              },
+              {
+                question: "What is the output of Thompson Sampling?",
+                options: ["Action selection", "Model weights", "Cluster centers", "Feature importance"],
+                answer: "Action selection"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -2835,7 +4208,38 @@ const courseData = [
             duration: "28:00",
             description: "Analyze sentiment in text data",
             preview: false,
+<<<<<<< alertmodify
             file_size: "2.3 MB",
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the goal of sentiment analysis?",
+                options: ["Determine sentiment of text", "Count words", "Translate text", "Summarize text"],
+                answer: "Determine sentiment of text"
+              },
+              {
+                question: "Which library is commonly used for sentiment analysis in Python?",
+                options: ["NLTK", "matplotlib", "numpy", "pandas"],
+                answer: "NLTK"
+              },
+              {
+                question: "What is a common output of sentiment analysis?",
+                options: ["Positive/Negative/Neutral", "Word count", "Topic", "Language"],
+                answer: "Positive/Negative/Neutral"
+              },
+              {
+                question: "Which technique is often used for feature extraction in NLP?",
+                options: ["TF-IDF", "PCA", "K-Means", "SVM"],
+                answer: "TF-IDF"
+              },
+              {
+                question: "What is a challenge in sentiment analysis?",
+                options: ["Sarcasm detection", "Counting words", "Tokenization", "Lowercasing"],
+                answer: "Sarcasm detection"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 30,
@@ -2888,8 +4292,40 @@ const courseData = [
             title: "Transfer Learning",
             type: "video",
             duration: "20:00",
+<<<<<<< alertmodify
             description: "Leverage pre-trained models for new tasks",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is transfer learning?",
+                options: ["Using a pre-trained model for a new task", "Training from scratch", "Data augmentation", "Feature scaling"],
+                answer: "Using a pre-trained model for a new task"
+              },
+              {
+                question: "Which library is commonly used for transfer learning in Python?",
+                options: ["TensorFlow", "pandas", "matplotlib", "numpy"],
+                answer: "TensorFlow"
+              },
+              {
+                question: "What is a benefit of transfer learning?",
+                options: ["Faster training", "More overfitting", "Less accuracy", "Slower convergence"],
+                answer: "Faster training"
+              },
+              {
+                question: "What is fine-tuning in transfer learning?",
+                options: ["Adjusting pre-trained weights", "Training from scratch", "Data cleaning", "Feature selection"],
+                answer: "Adjusting pre-trained weights"
+              },
+              {
+                question: "What is a common application of transfer learning?",
+                options: ["Image classification", "Sorting arrays", "Database management", "UI design"],
+                answer: "Image classification"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -2950,6 +4386,37 @@ const courseData = [
             duration: "25:00",
             description: "Covers ML algorithms, model evaluation, Python & R",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is model deployment?",
+                options: ["Making a model available for use", "Training a model", "Cleaning data", "Feature selection"],
+                answer: "Making a model available for use"
+              },
+              {
+                question: "Which service is commonly used for deploying models?",
+                options: ["AWS SageMaker", "pandas", "matplotlib", "numpy"],
+                answer: "AWS SageMaker"
+              },
+              {
+                question: "What is a REST API?",
+                options: ["A way to serve models over HTTP", "A data cleaning tool", "A training algorithm", "A visualization library"],
+                answer: "A way to serve models over HTTP"
+              },
+              {
+                question: "What is a benefit of containerizing a model?",
+                options: ["Portability", "Slower inference", "Less accuracy", "More overfitting"],
+                answer: "Portability"
+              },
+              {
+                question: "What is a challenge in model deployment?",
+                options: ["Scaling", "Training", "Data cleaning", "Feature selection"],
+                answer: "Scaling"
+              }
+            ]
+>>>>>>> main
           },
         ],
       },
@@ -4151,9 +5618,41 @@ const courseData = [
             title: "Implementing a Simple GAN (MNIST/Fashion-MNIST)",
             type: "coding",
             duration: "45:00",
+<<<<<<< alertmodify
             description:
               "Build and train a simple GAN to generate images from the MNIST or Fashion-MNIST dataset.",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main purpose of a GAN?",
+                options: ["Generate new data samples", "Classify images", "Segment images", "Detect objects"],
+                answer: "Generate new data samples"
+              },
+              {
+                question: "What dataset is commonly used for simple GANs?",
+                options: ["MNIST", "CIFAR-10", "ImageNet", "COCO"],
+                answer: "MNIST"
+              },
+              {
+                question: "What are the two main components of a GAN?",
+                options: ["Generator and Discriminator", "Encoder and Decoder", "Input and Output", "Layer and Node"],
+                answer: "Generator and Discriminator"
+              },
+              {
+                question: "What is the loss function for a GAN?",
+                options: ["Adversarial loss", "Cross-entropy", "MSE", "L1 loss"],
+                answer: "Adversarial loss"
+              },
+              {
+                question: "What is a challenge in training GANs?",
+                options: ["Mode collapse", "Overfitting", "Underfitting", "Slow inference"],
+                answer: "Mode collapse"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 9,
@@ -4197,6 +5696,37 @@ const courseData = [
             description:
               "Implement a VAE to generate new images from learned latent space representations.",
             preview: true,
+<<<<<<< alertmodify
+=======
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does VAE stand for?",
+                options: ["Variational Autoencoder", "Visual Attention Encoder", "Vectorized Autoencoder", "Variable Activation Encoder"],
+                answer: "Variational Autoencoder"
+              },
+              {
+                question: "What is the main use of a VAE?",
+                options: ["Generate new data samples", "Classify images", "Segment images", "Detect objects"],
+                answer: "Generate new data samples"
+              },
+              {
+                question: "What is the latent space in a VAE?",
+                options: ["Compressed representation of data", "Output image", "Input image", "Loss function"],
+                answer: "Compressed representation of data"
+              },
+              {
+                question: "What is the loss function for a VAE?",
+                options: ["Reconstruction + KL divergence", "Cross-entropy", "MSE", "L1 loss"],
+                answer: "Reconstruction + KL divergence"
+              },
+              {
+                question: "What is a benefit of VAEs over GANs?",
+                options: ["Stable training", "Sharper images", "Faster inference", "More parameters"],
+                answer: "Stable training"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 13,
@@ -4273,6 +5803,7 @@ const courseData = [
             title: "Building a Simple Transformer for Translation",
             type: "coding",
             duration: "45:00",
+<<<<<<< alertmodify
             description:
               "Implement a simple Transformer model for machine translation tasks using PyTorch or TensorFlow.",
             preview: true,
@@ -4288,6 +5819,41 @@ const courseData = [
             id: 21,
             title: "Evolution of LLMs (GPT, BERT, T5)",
             type: "video",
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What is the main use of a Transformer in NLP?",
+                options: ["Sequence-to-sequence tasks", "Image classification", "Object detection", "Clustering"],
+                answer: "Sequence-to-sequence tasks"
+              },
+              {
+                question: "What is the key innovation in Transformers?",
+                options: ["Self-attention", "Convolutions", "Pooling", "Dropout"],
+                answer: "Self-attention"
+              },
+              {
+                question: "What is the input to a Transformer?",
+                options: ["Token embeddings", "Raw text", "Images", "Audio"],
+                answer: "Token embeddings"
+              },
+              {
+                question: "What is positional encoding used for?",
+                options: ["Inject order information", "Normalize data", "Reduce overfitting", "Increase speed"],
+                answer: "Inject order information"
+              },
+              {
+                question: "What is a common application of Transformers?",
+                options: ["Machine translation", "Sorting arrays", "Database management", "UI design"],
+                answer: "Machine translation"
+              }
+            ]
+          },
+          {
+            id: 21,
+            title: "Large Language Models (LLMs) & Fine-tuning",
+>>>>>>> main
             duration: "25:00",
             description:
               "Understand the evolution of large language models and their architectures.",
@@ -4316,9 +5882,41 @@ const courseData = [
             title: "Fine-tuning an LLM for Text Summarization",
             type: "coding",
             duration: "50:00",
+<<<<<<< alertmodify
             description:
               "Implement fine-tuning of a pre-trained LLM for text summarization tasks.",
             preview: true,
+=======
+            preview: false,
+            type: "coding-exercise",
+            questions: [
+              {
+                question: "What does LLM stand for?",
+                options: ["Large Language Model", "Long Linear Model", "Latent Learning Model", "Layered Language Model"],
+                answer: "Large Language Model"
+              },
+              {
+                question: "What is fine-tuning?",
+                options: ["Adapting a pre-trained model to a new task", "Training from scratch", "Data cleaning", "Feature selection"],
+                answer: "Adapting a pre-trained model to a new task"
+              },
+              {
+                question: "What is a common dataset for text summarization?",
+                options: ["CNN/Daily Mail", "MNIST", "CIFAR-10", "ImageNet"],
+                answer: "CNN/Daily Mail"
+              },
+              {
+                question: "What is a benefit of fine-tuning?",
+                options: ["Better performance on specific tasks", "Slower training", "Less accuracy", "More overfitting"],
+                answer: "Better performance on specific tasks"
+              },
+              {
+                question: "What is prompt engineering?",
+                options: ["Designing effective prompts for LLMs", "Data cleaning", "Model compression", "Feature selection"],
+                answer: "Designing effective prompts for LLMs"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 25,
@@ -4332,7 +5930,11 @@ const courseData = [
         ],
       },
       {
+<<<<<<< alertmodify
         session: "Advanced Generative AI & Ethical Considerations",
+=======
+        session: "5. Advanced Generative AI & Ethical Considerations",
+>>>>>>> main
         module_description:
           "Cover advanced topics like Stable Diffusion and the ethical implications of generative AI.",
         content: [
@@ -4552,6 +6154,10 @@ const courseData = [
             description:
               "Understand the importance of value and contrast in creating depth and interest in your artwork.",
             preview: true,
+<<<<<<< alertmodify
+=======
+            type: "demo",
+>>>>>>> main
           },
           {
             id: 8,
@@ -7025,6 +8631,37 @@ const courseData = [
             description:
               "Building custom IAM roles and implementing conditional access",
             preview: false,
+<<<<<<< alertmodify
+=======
+            type: "exercise",
+            questions: [
+              {
+                question: "What is a custom role in GCP IAM?",
+                options: ["A user-defined set of permissions", "A default admin role", "A billing account", "A network policy"],
+                answer: "A user-defined set of permissions"
+              },
+              {
+                question: "What is the benefit of conditional IAM policies?",
+                options: ["Granular access control", "Faster billing", "More storage", "Better UI"],
+                answer: "Granular access control"
+              },
+              {
+                question: "Which resource can you assign a custom role to?",
+                options: ["Project", "Folder", "Organization", "All of the above"],
+                answer: "All of the above"
+              },
+              {
+                question: "What is a common use case for conditional IAM?",
+                options: ["Time-based access", "UI customization", "Faster networking", "Cheaper storage"],
+                answer: "Time-based access"
+              },
+              {
+                question: "What is the format for IAM policy bindings?",
+                options: ["JSON", "XML", "CSV", "YAML"],
+                answer: "JSON"
+              }
+            ]
+>>>>>>> main
           },
           {
             id: 9,

@@ -68,6 +68,7 @@ const Dashboard = () => {
   const [overallTestPassed, setOverallTestPassed] = useState(false);
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
+  const [activeLessonTab, setActiveLessonTab] = useState('video');
 
   const videoRef = useRef(null);
 
@@ -86,7 +87,7 @@ const Dashboard = () => {
             completed: false,
             videoUrl: video.preview && course.preview ? 
               `https://www.youtube.com/embed/${course.preview.split('v=')[1]?.split('&')[0]}` : null,
-            type: video.type === 'video' ? 'video' : video.type === 'demo' ? 'video' : 'test'
+            type: video.type
           }))
         }))
       };
@@ -335,10 +336,7 @@ const Dashboard = () => {
                 ...module,
                 lessons: module.lessons.map(lesson => {
                   if (lesson.id === lessonId) {
-                    console.log('Found lesson:', lesson);
-                    console.log('Previous completed state:', lesson.completed);
                     const newCompleted = !lesson.completed;
-                    console.log('New completed state:', newCompleted);
                     return {
                       ...lesson,
                       completed: newCompleted
@@ -430,8 +428,10 @@ const Dashboard = () => {
   }
 
   return (
+
     <div className="min-h-screen bg-gray-50 mt-25" style={{ backgroundColor: '#EBEDDF' }}>
       <div className="container mx-auto px-4 py-8">
+
         <div className="mb-6">
           <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>
             {currentCourse.course_name}
@@ -439,10 +439,10 @@ const Dashboard = () => {
           <p className="text-gray-600">by {currentCourse.instructor.name}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 gap-6">
           {/* Video Player Section */}
-          <div className="lg:col-span-3">
-            {currentLesson && (currentLesson.type === 'test' || currentLesson.type === 'final-test') ? (
+          <div className="xl:col-span-3 lg:col-span-2">
+            {currentLesson && (currentLesson.type === 'test' || currentLesson.type === 'final-test' || currentLesson.type === 'coding-exercise' || currentLesson.type === 'assignment'  || currentLesson.type === 'quiz')  ? (
               <TestContent
                 currentLesson={currentLesson}
                 handleTestComplete={handleTestComplete}
@@ -478,31 +478,33 @@ const Dashboard = () => {
             />
           </div>
           {/* Course Sidebar */}
-          <LessonSidebar
-            currentCourse={currentCourse}
-            courseContent={courseContent}
-            expandedModule={expandedModule}
-            onModuleToggle={handleModuleToggle}
-            onLessonSelect={handleLessonSelect}
-            getCompletedLessonsCount={getCompletedLessonsCount}
-            getTotalLessonsCount={getTotalLessonsCount}
-            getProgressPercentage={getProgressPercentage}
-            canGetCertificate={canGetCertificate}
-            showDiscussion={showDiscussion}
-            setShowDiscussion={setShowDiscussion}
-            discussions={discussions}
-            likedComments={likedComments}
-            handleLike={handleLike}
-            handleReply={handleReply}
-            replyTo={replyTo}
-            replyContent={replyContent}
-            setReplyContent={setReplyContent}
-            handleReplySubmit={handleReplySubmit}
-            newComment={newComment}
-            setNewComment={setNewComment}
-            handleCommentSubmit={handleCommentSubmit}
-            onLessonCheckboxToggle={handleLessonCheckboxToggle}
-          />
+          <div className="xl:col-span-1 lg:col-span-1">
+            <LessonSidebar
+              currentCourse={currentCourse}
+              courseContent={courseContent}
+              expandedModule={expandedModule}
+              onModuleToggle={handleModuleToggle}
+              onLessonSelect={handleLessonSelect}
+              getCompletedLessonsCount={getCompletedLessonsCount}
+              getTotalLessonsCount={getTotalLessonsCount}
+              getProgressPercentage={getProgressPercentage}
+              canGetCertificate={canGetCertificate}
+              showDiscussion={showDiscussion}
+              setShowDiscussion={setShowDiscussion}
+              discussions={discussions}
+              likedComments={likedComments}
+              handleLike={handleLike}
+              handleReply={handleReply}
+              replyTo={replyTo}
+              replyContent={replyContent}
+              setReplyContent={setReplyContent}
+              handleReplySubmit={handleReplySubmit}
+              newComment={newComment}
+              setNewComment={setNewComment}
+              handleCommentSubmit={handleCommentSubmit}
+              onLessonCheckboxToggle={handleLessonCheckboxToggle}
+            />
+          </div>
         </div>
       </div>
     </div>
