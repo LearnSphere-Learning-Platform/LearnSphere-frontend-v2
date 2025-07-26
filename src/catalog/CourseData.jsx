@@ -91,7 +91,7 @@ const courseData = [
             title: "Session Recap",
             duration: "5:10",
             preview: false,
-            type: "summary",
+            type: "video",
           },
         ],
       },
@@ -6702,7 +6702,7 @@ const courseData = [
           {
             id: 2,
             title: "GCP Resource Hierarchy & Organizations",
-            type: "theory",
+            type: "pdf",
             duration: "22:00",
             description: "Learn about GCP's organizational structure and resource hierarchy",
             preview: true,
@@ -6726,7 +6726,7 @@ const courseData = [
           {
             id: 5,
             title: "GCP Free Tier & Quotas",
-            type: "summary",
+            type: "video",
             duration: "10:00",
             description: "Understanding GCP free tier limitations and quota management",
             preview: false,
@@ -6764,7 +6764,7 @@ const courseData = [
           {
             id: 9,
             title: "Managing Members & Bindings",
-            type: "walkthrough",
+            type: "video",
             duration: "18:00",
             description: "Step-by-step guide to managing IAM members and policy bindings",
             preview: false,
@@ -6802,7 +6802,7 @@ const courseData = [
           {
             id: 13,
             title: "Cloud VPN & Interconnect",
-            type: "theory",
+            type: "pdf",
             duration: "20:00",
             description: "Secure connectivity options for hybrid cloud architectures",
             preview: false,
@@ -6840,7 +6840,7 @@ const courseData = [
           {
             id: 17,
             title: "Encryption in Transit",
-            type: "theory",
+            type: "pdf",
             duration: "18:00",
             description: "Securing data during transmission across GCP services",
             preview: true,
@@ -6894,7 +6894,7 @@ const courseData = [
           {
             id: 23,
             title: "Cloud Audit Logs for Compliance",
-            type: "walkthrough",
+            type: "video",
             duration: "20:00",
             description: "Configuring audit logs for regulatory compliance requirements",
             preview: false,
@@ -6910,7 +6910,7 @@ const courseData = [
           {
             id: 25,
             title: "Incident Response in the Cloud",
-            type: "theory",
+            type: "pdf",
             duration: "18:00",
             description: "Developing effective cloud security incident response procedures",
             preview: false,
@@ -6932,7 +6932,7 @@ const courseData = [
           {
             id: 27,
             title: "Resource Manager & Organizations Policies",
-            type: "theory",
+            type: "pdf",
             duration: "25:00",
             description: "Implementing organizational policies and resource governance",
             preview: true,
@@ -6948,7 +6948,7 @@ const courseData = [
           {
             id: 29,
             title: "Serverless Security (Cloud Functions, App Engine)",
-            type: "discussion",
+            type: "video",
             duration: "18:00",
             description: "Security considerations for serverless computing platforms",
             preview: false,
@@ -6956,7 +6956,7 @@ const courseData = [
           {
             id: 30,
             title: "DevSecOps on GCP",
-            type: "summary",
+            type: "video",
             duration: "15:00",
             description: "Integrating security into DevOps workflows on GCP",
             preview: false,

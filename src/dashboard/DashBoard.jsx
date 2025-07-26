@@ -86,7 +86,7 @@ const Dashboard = () => {
             completed: false,
             videoUrl: video.preview && course.preview ? 
               `https://www.youtube.com/embed/${course.preview.split('v=')[1]?.split('&')[0]}` : null,
-            type: video.type === 'video' ? 'video' : video.type === 'demo' ? 'video' : 'test'
+            type: video.type // Preserve original types for icon display
           }))
         }))
       };

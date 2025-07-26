@@ -141,15 +141,18 @@ const InstructorAnnouncementForm = () => {
                 <label className="block text-sm sm:text-base font-semibold text-gray-700">
                   Message Content*
                 </label>
-                <textarea
-                  name="message"
-                  value={announcement.message}
-                  onChange={handleChange}
-                  required
-                  rows="6"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 sm:py-4 text-sm sm:text-base focus:ring-2 focus:ring-[#333A2F] focus:border-transparent transition-all duration-200 resize-none placeholder-gray-400"
-                  placeholder="Write your detailed announcement message here. Be clear and informative..."
-                />
+             <textarea
+  name="message"
+  value={announcement.message}
+  onChange={handleChange}
+  required
+  rows="6"
+  wrap="hard"
+  className="w-full max-w-full font-mono border border-gray-300 rounded-lg px-4 py-3 sm:py-4 text-sm sm:text-base focus:ring-2 focus:ring-[#333A2F] focus:border-transparent transition-all duration-200 resize-none placeholder-gray-400"
+  style={{ width: '92ch' }}
+  placeholder="Write your detailed announcement message here. Be clear and informative..."
+/>
+
                 <p className="text-xs sm:text-sm text-gray-500">
                   {announcement.message.length}/500 characters
                 </p>
@@ -231,7 +234,7 @@ const InstructorAnnouncementForm = () => {
 
                     {announcement.message && (
                       <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <p className="text-gray-700 whitespace-pre-line">
+                        <p className="text-gray-700 whitespace-pre-line font-mono w-[70ch] break-words">
                           {announcement.message}
                         </p>
                       </div>

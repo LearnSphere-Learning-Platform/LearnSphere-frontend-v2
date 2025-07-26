@@ -1,4 +1,5 @@
-import { ChevronDown, ChevronRight, CheckCircle, FileText } from 'lucide-react';
+import { ChevronDown, ChevronRight, CheckCircle, FileText, Code, ClipboardCheck } from 'lucide-react';
+import { MdOutlineAssignment } from 'react-icons/md';
 import { useState } from 'react';
 
 const LessonSidebar = ({
@@ -29,6 +30,29 @@ const LessonSidebar = ({
   // Function to check if a module is completed
   const isModuleCompleted = (module) => {
     return module.lessons.every(lesson => lesson.completed);
+  };
+
+  // Simplified icon mapping for the specific types being used
+  const iconMap = {
+    pdf: FileText,
+    coding: Code,
+    assignment: MdOutlineAssignment,
+    quiz: ClipboardCheck,
+  };
+
+  // Function to get the appropriate icon for a lesson type
+  const getLessonIcon = (lessonType) => {
+    const IconComponent = iconMap[lessonType];
+    if (IconComponent) {
+      return <IconComponent className="w-4 h-4" />;
+    }
+    // Default fallback for unmapped types
+    return <FileText className="w-4 h-4" />;
+  };
+
+  // Function to check if lesson type should show checkbox (video types)
+  const shouldShowCheckbox = (lessonType) => {
+    return ['video', 'demo', 'theory', 'summary'].includes(lessonType);
   };
 
   return (
@@ -78,7 +102,7 @@ const LessonSidebar = ({
                     style={{ borderBottom: '1px solid #f1f1f1' }}
                   >
                     <span className="flex items-center flex-1" style={{ color: '#333A2F' }}>
-                      {lesson.type === 'video' || lesson.type === 'demo' || lesson.type === 'theory' || lesson.type === 'summary'  ? (
+                      {shouldShowCheckbox(lesson.type) ? (
                         <div
                           className="custom-checkbox w-5 h-5 p-0 border rounded flex items-center justify-center cursor-pointer transition-all duration-200 mr-2"
                           style={{
@@ -104,7 +128,11 @@ const LessonSidebar = ({
                         </div>
                       ) : (
                         <span className="mr-2 inline-flex items-center px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">
-                          <FileText className="w-4 h-4 mr-1" />
+                          {lesson.type === 'pdf' && <FileText className="w-4 h-4" />}
+                          {lesson.type === 'coding-exercise' && <Code className="w-4 h-4" />}
+                          {lesson.type === 'assignment' && <MdOutlineAssignment className="w-4 h-4" />}
+                          {lesson.type === 'quiz' && <ClipboardCheck className="w-4 h-4" />}
+                          
                           {/* No text, icon only for test/final-test */}
                         </span>
                       )}
