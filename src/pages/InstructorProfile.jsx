@@ -56,7 +56,7 @@ const InstructorProfile = (props) => {
           {/* --- LEFT PANEL --- */}
           <div className="w-1/3 bg-[#EBEDDF] p-6 relative">
             {!isEditing && (
-              <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md" onClick={() => setIsEditing(true)}>
+              <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer" onClick={() => setIsEditing(true)}>
                 <svg className="w-4 h-4 text-[#333A2F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a4 4 0 01-2.828 1.172H7v-2a4 4 0 011.172-2.828z" /></svg>
               </button>
             )}
@@ -100,8 +100,8 @@ const InstructorProfile = (props) => {
                 {renderInputField('Account Number', 'accountNumber', profile.accountNumber)}
                 {renderInputField('IFSC Code', 'ifscCode', profile.ifscCode)}
                 <div className="md:col-span-2 mt-4">
-                  <button className="bg-[#333A2F] text-white px-6 py-2 rounded-lg" onClick={handleSave}>Save Changes</button>
-                  <button className="ml-4 bg-gray-300 text-gray-800 px-6 py-2 rounded-lg" onClick={() => setIsEditing(false)}>Cancel</button>
+                              <button className="bg-[#333A2F] text-white px-6 py-2 rounded-lg cursor-pointer" onClick={handleSave}>Save Changes</button>
+            <button className="ml-4 bg-gray-300 text-gray-800 px-6 py-2 rounded-lg cursor-pointer" onClick={() => setIsEditing(false)}>Cancel</button>
                 </div>
               </div>
             ) : (

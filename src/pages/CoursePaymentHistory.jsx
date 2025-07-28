@@ -277,24 +277,24 @@ const CoursePaymentHistory = () => {
                       <div className="flex items-center space-x-2">
                         {payment.status === 'completed' && (
                           <>
-                            <button className="text-[#04af2f] hover:text-darkTone text-sm font-medium">
+                            <button className="text-[#04af2f] hover:text-darkTone text-sm font-medium cursor-pointer">
                               Access Course
                             </button>
-                            <button className="text-darkTone/60 hover:text-darkTone" title="Download Receipt">
+                            <button className="text-darkTone/60 hover:text-darkTone cursor-pointer" title="Download Receipt">
                               <Receipt className="w-4 h-4" />
                             </button>
-                            <button className="text-darkTone/60 hover:text-darkTone" title="Download Certificate">
+                            <button className="text-darkTone/60 hover:text-darkTone cursor-pointer" title="Download Certificate">
                               <Download className="w-4 h-4" />
                             </button>
                           </>
                         )}
                         {payment.status === 'failed' && (
-                          <button className="text-red-600 hover:text-darkTone text-sm font-medium">
+                          <button className="text-red-600 hover:text-darkTone text-sm font-medium cursor-pointer">
                             Retry Payment
                           </button>
                         )}
                         {payment.status === 'pending' && (
-                          <button className="text-yellow-600 hover:text-darkTone text-sm font-medium">
+                          <button className="text-yellow-600 hover:text-darkTone text-sm font-medium cursor-pointer">
                             Check Status
                           </button>
                         )}
@@ -313,10 +313,10 @@ const CoursePaymentHistory = () => {
                 Showing {payments.length} transactions
               </div>
               <div className="flex items-center space-x-2">
-                <button className="px-4 py-2 text-sm font-medium text-white bg-[#333A2F] border border-darkTone/10 rounded-lg hover:bg-lightTone  transition-colors">
+                <button className="px-4 py-2 text-sm font-medium text-white bg-[#333A2F] border border-darkTone/10 rounded-lg hover:bg-lightTone  transition-colors cursor-pointer">
                   Previous
                 </button>
-                <button className="px-4 py-2 text-sm font-medium text-darkTone bg-white border border-darkTone/10 rounded-lg hover:bg-lightTone focus:outline-none focus:ring-2 focus:ring-[#333A2F] transition-colors">
+                <button className="px-4 py-2 text-sm font-medium text-darkTone bg-white border border-darkTone/10 rounded-lg hover:bg-lightTone focus:outline-none focus:ring-2 focus:ring-[#333A2F] transition-colors cursor-pointer">
                   Next
                 </button>
               </div>

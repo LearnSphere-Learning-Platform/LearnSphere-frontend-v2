@@ -551,7 +551,7 @@ const CourseAddingForm = () => {
         <div className="flex items-center justify-between mb-10">
           <button
             onClick={handleCancel}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Courses

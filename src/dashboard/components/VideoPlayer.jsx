@@ -46,7 +46,7 @@ const VideoPlayer = ({
       {/* Video Controls */}
       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4">
         <div className="flex items-center space-x-4">
-          <button onClick={onPlayPause} className="hover:text-blue-400 transition-colors">
+          <button onClick={onPlayPause} className="hover:text-blue-400 transition-colors cursor-pointer">
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
           <div className="flex items-center space-x-2 flex-1">
@@ -65,7 +65,7 @@ const VideoPlayer = ({
             <span className="text-sm">{formatTime(duration)}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <button onClick={onMute} className="hover:text-blue-400 transition-colors">
+            <button onClick={onMute} className="hover:text-blue-400 transition-colors cursor-pointer">
               {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
             </button>
             <input
@@ -80,7 +80,7 @@ const VideoPlayer = ({
                 background: `linear-gradient(to right, #10B981 0%, #10B981 ${volume * 100}%, #4B5563 ${volume * 100}%, #4B5563 100%)`
               }}
             />
-            <button onClick={handleFullscreen} className="hover:text-blue-400 transition-colors">
+            <button onClick={handleFullscreen} className="hover:text-blue-400 transition-colors cursor-pointer">
               <Maximize className="w-5 h-5" />
             </button>
           </div>

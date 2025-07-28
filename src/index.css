@@ -9,3 +9,37 @@
   color: #333A2F;
   background-color: #EBEDDF;
 }
+
+/* Global button cursor fix */
+button {
+  cursor: pointer !important;
+}
+
+button:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Ensure clickable elements have pointer cursor */
+[role="button"],
+.clickable,
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Fix for any elements that should be clickable but might not have proper cursor */
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button[type="button"],
+button[type="submit"],
+button[type="reset"] {
+  cursor: pointer !important;
+}
+
+/* Disabled state */
+button:disabled,
+input:disabled,
+[disabled] {
+  cursor: not-allowed !important;
+}

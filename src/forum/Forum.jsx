@@ -86,7 +86,7 @@ const Forum = () => {
 
         <button
           onClick={() => setShowPostForm(true)}
-          className="bg-[#EBEDDF] text-[#1] text-lg px-5 py-3 rounded-lg hover:opacity-90 shadow-md"
+          className="bg-[#EBEDDF] text-[#1] text-lg px-5 py-3 rounded-lg hover:opacity-90 shadow-md cursor-pointer"
         >
            Create Post
         </button>
@@ -123,13 +123,13 @@ const Forum = () => {
             <div className="flex justify-end gap-3 mt-5">
               <button
                 onClick={() => setShowPostForm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handlePostSubmit}
-                className="px-4 py-2 bg-[#333A2F] text-[#EBEDDF] rounded hover:opacity-90"
+                className="px-4 py-2 bg-[#333A2F] text-[#EBEDDF] rounded hover:opacity-90 cursor-pointer"
               >
                 Post
               </button>
