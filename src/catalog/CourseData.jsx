@@ -117,7 +117,7 @@ const courseData = [
           {
             id: 7,
             title: "Building a Product Card",
-            type: "coding",
+            type: "coding-exercise",
             duration: "22:30",
             description: "Interactive coding exercise to build a product card",
             preview: true,
@@ -173,7 +173,7 @@ const courseData = [
           {
             id: 13,
             title: "Building a Counter App",
-            type: "coding",
+            type: "coding-exercise",
             duration: "25:00",
             description:
               "Hands-on coding exercise to build a counter application",
@@ -332,7 +332,7 @@ const courseData = [
           {
             id: 30,
             title: "Course Project: Final Review",
-            type: "coding",
+            type: "coding-exercise",
             duration: "35:00",
             description: "Final project review and code walkthrough",
             preview: true,

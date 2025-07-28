@@ -25,7 +25,11 @@ const LessonSidebar = ({
   newComment,
   setNewComment,
   handleCommentSubmit,
-  onLessonCheckboxToggle
+  onLessonCheckboxToggle,
+  quizScores,
+  quizAttempts,
+  assignmentSubmissions,
+  showCodingExercise
 }) => {
   // Function to check if a module is completed
   const isModuleCompleted = (module) => {
@@ -127,6 +131,8 @@ const LessonSidebar = ({
                             </svg>
                           )}
                         </div>
+                      ) : (lesson.type === 'quiz' || lesson.type === 'assignment' || lesson.type === 'coding-exercise') && lesson.completed ? (
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
                       ) : (
                         <span className="mr-2 inline-flex items-center px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">
                           {getLessonIcon(lesson.type)}
@@ -139,6 +145,21 @@ const LessonSidebar = ({
                       >
                         {lesson.title}
                       </span>
+                      {lesson.type === 'quiz' && quizScores && quizScores[lesson.id] && (
+                        <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                          {Math.round(quizScores[lesson.id])}%
+                        </span>
+                      )}
+                      {lesson.type === 'assignment' && assignmentSubmissions && assignmentSubmissions[lesson.id] && (
+                        <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                          Submitted
+                        </span>
+                      )}
+                      {lesson.type === 'coding-exercise' && lesson.completed && (
+                        <span className="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
+                          Completed
+                        </span>
+                      )}
                     </span>
                     <span className="w-20 text-center text-xs text-gray-500">{lesson.duration}</span>
                   </li>

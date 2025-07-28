@@ -22,6 +22,9 @@ import CoursePaymentWrapper from "./catalog/CoursePaymentWrapper";
 
 import DashBoard from "./dashboard/DashBoard";
 import InstructorDashboard from "./dashboard/InstructorDashboard";
+import QuizPage from "./pages/QuizPage";
+import AssignmentPage from "./pages/AssignmentPage";
+import CodingExercisePage from "./pages/CodingExercisePage";
 
 import CourseAddingForm from "./instructor/CourseAddingForm";
 import InstructorAnnouncementForm from "./instructor/InstructorAnnouncementForm";
@@ -61,13 +64,23 @@ function AppContent() {
   const location = useLocation();
 
   const hideFooter =
-    location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/forgot-password" || location.pathname === "/instructor-details" || location.pathname.startsWith("/admin");
+    location.pathname === "/login" || 
+    location.pathname === "/signup" || 
+    location.pathname === "/forgot-password" || 
+    location.pathname === "/instructor-details" || 
+    location.pathname.startsWith("/admin") ||
+    location.pathname.includes("/quiz/") ||
+    location.pathname.includes("/assignment/") ||
+    location.pathname.includes("/coding/");
   const hideHeader =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname === "/forgot-password" ||
     location.pathname === "/instructor-details" ||
-    location.pathname.startsWith("/admin");
+    location.pathname.startsWith("/admin") ||
+    location.pathname.includes("/quiz/") ||
+    location.pathname.includes("/assignment/") ||
+    location.pathname.includes("/coding/"); 
 
   return (
     <div className="min-h-screen bg-white">
@@ -103,6 +116,9 @@ function AppContent() {
           <Route path="/user/payment-history" element={<CoursePaymentHistory />} />
           <Route path="/user/course/:id/dashboard" element={<DashBoard />} />
           <Route path="/user/course/:id" element={<CoursePageWrapper />} />
+          <Route path="/user/course/:courseId/quiz/:lessonId" element={<QuizPage />} />
+          <Route path="/user/course/:courseId/assignment/:lessonId" element={<AssignmentPage />} />
+          <Route path="/user/course/:courseId/coding/:lessonId" element={<CodingExercisePage />} />
         </Route>
         {/* Instructor routes (instructor and admin) */}
         <Route element={<RoleRoute allowedRoles={['instructor', 'admin']} />}>
