@@ -25,21 +25,28 @@ const RoleRoute = ({ allowedRoles }) => {
   if (userRole === 'unauthenticated') {
     return <Navigate to="/login" replace />;
   }
- 
+  
+  // Admin has full access to everything
   if (userRole === 'admin') {
     return <Outlet />;
   }
   
+  // Check if user has access to the requested route
   if (allowedRoles.includes(userRole)) {
     return <Outlet />;
   }
   
-  // If instructor tries to access admin-only routes, show not-authorized
+  // User (student) trying to access instructor or admin routes
+  if (userRole === 'student' && (allowedRoles.includes('instructor') || allowedRoles.includes('admin'))) {
+    return <Navigate to="/not-authorized" replace />;
+  }
+  
+  // Instructor trying to access admin-only routes
   if (userRole === 'instructor' && allowedRoles.includes('admin')) {
     return <Navigate to="/not-authorized" replace />;
   }
   
-  // For other cases, redirect to not-authorized
+  // For any other unauthorized access
   return <Navigate to="/not-authorized" replace />;
 };
 

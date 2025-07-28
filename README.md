@@ -8,4 +8,14 @@ npm install @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic react-to
 
 (wait patience it will take time)
 
-mpn install country-state-city
+npm install country-state-city
+
+npm install react-quill
+
+npm install papaparse
+
+npm install prismjs
+
+npm install react-simple-code-editor
+
+npm install @babel/standalone

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Play, 
   Pause, 
@@ -41,9 +41,263 @@ import DiscussionTab from './components/DiscussionTab';
 import AnnouncementsTab from './components/AnnouncementsTab';
 import ReviewsTab from './components/ReviewsTab';
 import QATab from './components/QATab';
+import Quiz from '../quiz/Quiz';
+import AssignmentForm from '../quiz/AssignmentForm';
+import AssignmentReview from '../quiz/AssignmentReview';
+import CodeEditor from '../quiz/CodeEditor';
+
+
+// Quiz data for different topics
+const quizDataMap = {
+  'Quiz: Python Basics': {
+    topic: 'Python Basics Quiz',
+    questions: [
+      {
+        question: "What is Python?",
+        options: [
+          "A. A programming language", 
+          "B. A snake", 
+          "C. A database", 
+          "D. An operating system"
+        ],
+        correct: 0
+      },
+      {
+        question: "Which of the following is used to create a list in Python?",
+        options: [
+          "A. ()", 
+          "B. []", 
+          "C. {}", 
+          "D. <>"
+        ],
+        correct: 1
+      },
+      {
+        question: "What is the correct way to create a variable in Python?",
+        options: [
+          "A. var x = 5", 
+          "B. x = 5", 
+          "C. let x = 5", 
+          "D. const x = 5"
+        ],
+        correct: 1
+      },
+      {
+        question: "Which method is used to add an element to a list?",
+        options: [
+          "A. add()", 
+          "B. append()", 
+          "C. insert()", 
+          "D. push()"
+        ],
+        correct: 1
+      },
+      {
+        question: "What does the 'print()' function do?",
+        options: [
+          "A. Creates a file", 
+          "B. Displays output", 
+          "C. Calculates math", 
+          "D. Imports modules"
+        ],
+        correct: 1
+      }
+    ]
+  },
+  'Quiz: React Fundamentals': {
+    topic: 'React Fundamentals Quiz',
+    questions: [
+      {
+        question: "What is React?",
+        options: [
+          "A. A database", 
+          "B. A JavaScript library", 
+          "C. An operating system", 
+          "D. A programming language"
+        ],
+        correct: 1
+      },
+      {
+        question: "What is a component in React?",
+        options: [
+          "A. A function or class that returns JSX", 
+          "B. A CSS file", 
+          "C. A database table", 
+          "D. An HTML tag"
+        ],
+        correct: 0
+      },
+      {
+        question: "What hook is used for state management?",
+        options: [
+          "A. useEffect", 
+          "B. useState", 
+          "C. useContext", 
+          "D. useReducer"
+        ],
+        correct: 1
+      },
+      {
+        question: "What does JSX stand for?",
+        options: [
+          "A. JavaScript XML", 
+          "B. Java Syntax Extension", 
+          "C. JavaScript Extension", 
+          "D. Java XML"
+        ],
+        correct: 0
+      },
+      {
+        question: "How do you pass data to a component?",
+        options: [
+          "A. Through CSS", 
+          "B. Through props", 
+          "C. Through state", 
+          "D. Through context"
+        ],
+        correct: 1
+      }
+    ]
+  },
+  'Quiz: Data Analysis': {
+    topic: 'Data Analysis Quiz',
+    questions: [
+      {
+        question: "What is Pandas used for?",
+        options: [
+          "A. Web development", 
+          "B. Data manipulation and analysis", 
+          "C. Game development", 
+          "D. Mobile app development"
+        ],
+        correct: 1
+      },
+      {
+        question: "What is a DataFrame?",
+        options: [
+          "A. A 2D labeled data structure", 
+          "B. A database", 
+          "C. A chart", 
+          "D. A file format"
+        ],
+        correct: 0
+      },
+      {
+        question: "Which library is commonly used for plotting in Python?",
+        options: [
+          "A. NumPy", 
+          "B. Matplotlib", 
+          "C. Pandas", 
+          "D. Scikit-learn"
+        ],
+        correct: 1
+      },
+      {
+        question: "What does groupby() do in Pandas?",
+        options: [
+          "A. Groups data by specified criteria", 
+          "B. Sorts data", 
+          "C. Filters data", 
+          "D. Merges data"
+        ],
+        correct: 0
+      },
+      {
+        question: "What is the purpose of data cleaning?",
+        options: [
+          "A. To make data look pretty", 
+          "B. To remove errors and inconsistencies", 
+          "C. To compress data", 
+          "D. To encrypt data"
+        ],
+        correct: 1
+      }
+    ]
+  }
+};
+
+// Default quiz data for any quiz not in the map
+const defaultQuizData = {
+  topic: 'General Knowledge Quiz',
+  questions: [
+    {
+      question: "What is the purpose of this quiz?",
+      options: [
+        "A. To test your knowledge", 
+        "B. To waste time", 
+        "C. To confuse you", 
+        "D. To make you think"
+      ],
+      correct: 0
+    },
+    {
+      question: "How many questions are typically in a quiz?",
+      options: [
+        "A. 1-2", 
+        "B. 3-5", 
+        "C. 10-15", 
+        "D. 20+"
+      ],
+      correct: 2
+    },
+    {
+      question: "What should you do if you're unsure about an answer?",
+      options: [
+        "A. Skip the question", 
+        "B. Guess randomly", 
+        "C. Review the material", 
+        "D. Ask for help"
+      ],
+      correct: 2
+    }
+  ]
+};
+
+// Coding exercise data for different topics
+const codingExerciseData = {
+  'Building a Simple Model': {
+    instructions: "Create a simple function that returns 'Hello World'",
+    starter: `function helloWorld() {
+  // Write your code here
+  return "Hello World";
+}
+
+// Test your function
+console.log(helloWorld());`,
+    language: 'JavaScript',
+    expectedOutput: 'Hello World',
+    hint: 'Make sure to return the exact string "Hello World"'
+  },
+  'React Component Exercise': {
+    instructions: "Create a simple React component that displays 'Hello React'",
+    starter: `function App() {
+  return (
+    <div>
+      <h1>Hello React</h1>
+    </div>
+  );
+}`,
+    language: 'React',
+    expectedOutput: 'Hello React',
+    hint: 'Use JSX to create a div with an h1 element'
+  },
+  'Python Function Exercise': {
+    instructions: "Write a Python function that adds two numbers",
+    starter: `def add_numbers(a, b):
+    # Write your code here
+    return a + b
+
+# Test your function
+print(add_numbers(5, 3))`,
+    language: 'Python',
+    expectedOutput: '8',
+    hint: 'Use the + operator to add the two parameters'
+  }
+};
 
 const Dashboard = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   console.log('Dashboard Debug - URL params:', { id });
   const course = courseData.find(c => String(c.id) === String(id));
   console.log('Dashboard Debug - Found course:', course);
@@ -73,6 +327,11 @@ const Dashboard = () => {
   const [overallTestPassed, setOverallTestPassed] = useState(false);
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
+  const [quizAttempts, setQuizAttempts] = useState({});
+  const [quizScores, setQuizScores] = useState({});
+  const [assignmentSubmissions, setAssignmentSubmissions] = useState({});
+  const [showAssignmentReview, setShowAssignmentReview] = useState(false);
+  const [showCodingExercise, setShowCodingExercise] = useState(false);
 
   const videoRef = useRef(null);
 
@@ -98,6 +357,55 @@ const Dashboard = () => {
     });
     setCourseContent(contentMap);
   }, []);
+
+  // Load completion data from localStorage
+  useEffect(() => {
+    if (course) {
+      // Load quiz results
+      const quizResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+      const newQuizScores = {};
+      const newQuizAttempts = {};
+      
+      Object.keys(quizResults).forEach(lessonId => {
+        const result = quizResults[lessonId];
+        newQuizScores[lessonId] = result.score;
+        newQuizAttempts[lessonId] = 1; // Assuming one attempt per quiz
+      });
+      
+      setQuizScores(newQuizScores);
+      setQuizAttempts(newQuizAttempts);
+
+      // Load assignment submissions
+      const assignments = JSON.parse(localStorage.getItem('assignmentSubmissions') || '{}');
+      setAssignmentSubmissions(assignments);
+
+      // Load coding exercise results
+      const codingResults = JSON.parse(localStorage.getItem('codingResults') || '{}');
+      
+      // Mark completed lessons
+      setCourseContent(prev => {
+        const newContent = { ...prev };
+        const courseId = course.id;
+        
+        if (newContent[courseId]) {
+          newContent[courseId].modules.forEach(module => {
+            module.lessons.forEach(lesson => {
+              // Check if lesson is completed based on type
+              if (lesson.type === 'quiz' && quizResults[lesson.id]?.passed) {
+                lesson.completed = true;
+              } else if (lesson.type === 'assignment' && assignments[lesson.id]) {
+                lesson.completed = true;
+              } else if (lesson.type === 'coding-exercise' && codingResults[lesson.id]?.passed) {
+                lesson.completed = true;
+              }
+            });
+          });
+        }
+        
+        return newContent;
+      });
+    }
+  }, [course]);
 
   // Automatically set currentLesson to the first lesson of the first module
   useEffect(() => {
@@ -321,6 +629,74 @@ const Dashboard = () => {
     setOverallTestPassed(passed);
   };
 
+  const handleQuizComplete = (quizId, score, passed) => {
+    setQuizAttempts(prev => ({
+      ...prev,
+      [quizId]: (prev[quizId] || 0) + 1
+    }));
+    
+    setQuizScores(prev => ({
+      ...prev,
+      [quizId]: score
+    }));
+
+    if (passed) {
+      toggleLessonCompletion(quizId);
+    }
+  };
+
+  const getQuizData = (lessonTitle) => {
+    return quizDataMap[lessonTitle] || defaultQuizData;
+  };
+
+
+
+  const handleAssignmentSubmit = async (title, description, file) => {
+    const assignmentData = {
+      id: currentLesson.id,
+      title,
+      description,
+      file: file ? {
+        name: file.name,
+        size: file.size,
+        type: file.type
+      } : null,
+      submittedAt: new Date().toISOString(),
+      lessonTitle: currentLesson.title
+    };
+
+    setAssignmentSubmissions(prev => ({
+      ...prev,
+      [currentLesson.id]: assignmentData
+    }));
+
+    // Mark assignment as completed
+    toggleLessonCompletion(currentLesson.id);
+    
+    // Show success message
+    console.log('Assignment submitted:', assignmentData);
+  };
+
+  const handleAssignmentReview = () => {
+    setShowAssignmentReview(true);
+  };
+
+  const handleCodingExerciseComplete = (exerciseId, passed) => {
+    if (passed) {
+      toggleLessonCompletion(exerciseId);
+    }
+  };
+
+  const getCodingExerciseData = (lessonTitle) => {
+    return codingExerciseData[lessonTitle] || {
+      instructions: "Complete the coding exercise as described.",
+      starter: "// Write your code here",
+      language: 'JavaScript',
+      expectedOutput: '',
+      hint: 'Follow the instructions carefully'
+    };
+  };
+
   const canGetCertificate = () => {
     return getProgressPercentage() === 100 && overallTestPassed;
   };
@@ -459,7 +835,113 @@ const Dashboard = () => {
                 handleTestComplete={handleTestComplete}
                 handleOverallTestComplete={handleOverallTestComplete}
               />
-            ) : currentLesson && shouldShowVideoPlayer(currentLesson) ? (
+            ) : currentLesson && currentLesson.type === 'quiz' ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="p-6 relative">
+                  {/* Start Button - Top Right */}
+                  <button 
+                    className="absolute top-4 right-4 py-2 px-3 rounded-lg text-white font-semibold text-xs flex items-center"
+                    style={{ backgroundColor: '#333A2F' }}
+                    onClick={() => navigate(`/user/course/${id}/quiz/${currentLesson.id}`)}
+                  >
+                    <Play className="w-3 h-3 mr-1" />
+                    Start Quiz
+                  </button>
+                  
+                  <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>
+                    {currentLesson.title}
+                  </h2>
+                  <div className="flex items-center mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mr-3">
+                      <ClipboardCheck className="w-4 h-4 mr-1" />
+                      quiz
+                    </span>
+                    <span className="text-gray-500 text-sm">{currentLesson.duration}</span>
+                  </div>
+                  <p className="text-gray-700 mb-4">{currentLesson.description}</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2">Instructions</h3>
+                    <p className="text-sm text-gray-600">
+                      Take the quiz to test your knowledge. You can retake it if needed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+                        ) : currentLesson && currentLesson.type === 'assignment' ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="p-6 relative">
+                  {/* Start Button - Top Right */}
+                  <button 
+                    className="absolute top-4 right-4 py-2 px-3 rounded-lg text-white font-semibold text-xs flex items-center"
+                    style={{ backgroundColor: '#333A2F' }}
+                    onClick={() => navigate(`/user/course/${id}/assignment/${currentLesson.id}`)}
+                  >
+                    <Play className="w-3 h-3 mr-1" />
+                    Start Assignment
+                  </button>
+                  
+                  <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>
+                    {currentLesson.title}
+                  </h2>
+                  <div className="flex items-center mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mr-3">
+                      <MdOutlineAssignment className="w-4 h-4 mr-1" />
+                      assignment
+                    </span>
+                    <span className="text-gray-500 text-sm">{currentLesson.duration}</span>
+                  </div>
+                  <p className="text-gray-700 mb-4">{currentLesson.description}</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2">Instructions</h3>
+                    <p className="text-sm text-gray-600">
+                      Complete the assignment as described. Upload your work when finished.
+                    </p>
+                    {assignmentSubmissions[currentLesson.id] && (
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <button
+                          onClick={() => setShowAssignmentReview(true)}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                        >
+                          View Submission
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              ) : currentLesson && currentLesson.type === 'coding-exercise' ? (
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="p-6 relative">
+                    {/* Start Button - Top Right */}
+                                      <button 
+                    className="absolute top-4 right-4 py-2 px-3 rounded-lg text-white font-semibold text-xs flex items-center"
+                    style={{ backgroundColor: '#333A2F' }}
+                    onClick={() => navigate(`/user/course/${id}/coding/${currentLesson.id}`)}
+                  >
+                    <Play className="w-3 h-3 mr-1" />
+                    Start Coding
+                  </button>
+                    
+                    <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>
+                      {currentLesson.title}
+                    </h2>
+                    <div className="flex items-center mb-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mr-3">
+                        <Code className="w-4 h-4 mr-1" />
+                        coding-exercise
+                      </span>
+                      <span className="text-gray-500 text-sm">{currentLesson.duration}</span>
+                    </div>
+                    <p className="text-gray-700 mb-4">{currentLesson.description}</p>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h3 className="font-semibold mb-2">Instructions</h3>
+                      <p className="text-sm text-gray-600">
+                        Complete the coding exercise below. Follow the instructions carefully and submit your solution when ready.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : currentLesson && shouldShowVideoPlayer(currentLesson) ? (
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <VideoPlayer
                   videoUrl={currentLesson.videoUrl}
@@ -523,6 +1005,16 @@ const Dashboard = () => {
                       {currentLesson.type === 'quiz' && 
                         "Take the quiz to test your knowledge. You can retake it if needed."}
                     </p>
+                    {currentLesson.type === 'assignment' && assignmentSubmissions[currentLesson.id] && (
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <button
+                          onClick={() => setShowAssignmentReview(true)}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                        >
+                          View Submission
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                 </div>
@@ -559,6 +1051,10 @@ const Dashboard = () => {
             setNewComment={setNewComment}
             handleCommentSubmit={handleCommentSubmit}
             onLessonCheckboxToggle={handleLessonCheckboxToggle}
+            quizScores={quizScores}
+            quizAttempts={quizAttempts}
+            assignmentSubmissions={assignmentSubmissions}
+            showCodingExercise={showCodingExercise}
           />
         </div>
       </div>
