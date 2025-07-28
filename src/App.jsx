@@ -38,6 +38,7 @@ import InstructorProfile from "./pages/InstructorProfile";
 
 import RoleRoute from "./RoleRoute";
 import NotAuthorized from "./pages/NotAuthorized";
+import NotFound from "./pages/NotFound";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "./admin/components/ui/tooltip";
@@ -63,6 +64,24 @@ const queryClient = new QueryClient();
 function AppContent() {
   const location = useLocation();
 
+  // Check if current path matches any defined routes
+  const isDefinedRoute = [
+    "/",
+    "/login",
+    "/signup", 
+    "/forgot-password",
+    "/catalog",
+    "/instructor-details",
+    "/not-authorized"
+  ].some(route => location.pathname === route) ||
+  location.pathname.startsWith("/admin") ||
+  location.pathname.startsWith("/user/") ||
+  location.pathname.startsWith("/instructor/") ||
+  location.pathname.startsWith("/course/") ||
+  location.pathname.includes("/quiz/") ||
+  location.pathname.includes("/assignment/") ||
+  location.pathname.includes("/coding/");
+
   const hideFooter =
     location.pathname === "/login" || 
     location.pathname === "/signup" || 
@@ -71,7 +90,8 @@ function AppContent() {
     location.pathname.startsWith("/admin") ||
     location.pathname.includes("/quiz/") ||
     location.pathname.includes("/assignment/") ||
-    location.pathname.includes("/coding/");
+    location.pathname.includes("/coding/") ||
+    !isDefinedRoute;
   const hideHeader =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
@@ -80,7 +100,8 @@ function AppContent() {
     location.pathname.startsWith("/admin") ||
     location.pathname.includes("/quiz/") ||
     location.pathname.includes("/assignment/") ||
-    location.pathname.includes("/coding/"); 
+    location.pathname.includes("/coding/") ||
+    !isDefinedRoute; 
 
   return (
     <div className="min-h-screen bg-white">
@@ -108,8 +129,8 @@ function AppContent() {
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
         <Route path="/instructor-details" element={<InstructorDetails />} />
         <Route path="/not-authorized" element={<NotAuthorized />} />
-        {/* User (student) routes */}
-        <Route element={<RoleRoute allowedRoles={['student']} />}>
+        {/* User (student and instructor) learning routes */}
+        <Route element={<RoleRoute allowedRoles={['student', 'instructor']} />}>
           <Route path="/user/dashboard" element={<DashBoard />} />
           <Route path="/user/my-learning" element={<MyLearningPage />} />
           <Route path="/user/profile" element={<Profile />} />
@@ -161,6 +182,9 @@ function AppContent() {
             }
           />
         </Route>
+        
+        {/* 404 - Catch all unmatched routes */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {!hideFooter && <Footer />}
     </div>
