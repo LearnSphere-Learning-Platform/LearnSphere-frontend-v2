@@ -36,6 +36,7 @@ const LessonSidebar = ({
   const iconMap = {
     pdf: FileText,
     coding: Code,
+    'coding-exercise': Code,
     assignment: MdOutlineAssignment,
     quiz: ClipboardCheck,
   };
@@ -128,12 +129,7 @@ const LessonSidebar = ({
                         </div>
                       ) : (
                         <span className="mr-2 inline-flex items-center px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">
-                          {lesson.type === 'pdf' && <FileText className="w-4 h-4" />}
-                          {lesson.type === 'coding-exercise' && <Code className="w-4 h-4" />}
-                          {lesson.type === 'assignment' && <MdOutlineAssignment className="w-4 h-4" />}
-                          {lesson.type === 'quiz' && <ClipboardCheck className="w-4 h-4" />}
-                          
-                          {/* No text, icon only for test/final-test */}
+                          {getLessonIcon(lesson.type)}
                         </span>
                       )}
                       <span

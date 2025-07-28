@@ -24,8 +24,11 @@ import {
   Bell,
   MessageSquare,
   User,
-  Target
+  Target,
+  Code,
+  ClipboardCheck
 } from 'lucide-react';
+import { MdOutlineAssignment } from 'react-icons/md';
 import VideoPlayer from './components/VideoPlayer';
 import LessonSidebar from './components/LessonSidebar';
 import TabNavigation from './components/TabNavigation';
@@ -322,6 +325,12 @@ const Dashboard = () => {
     return getProgressPercentage() === 100 && overallTestPassed;
   };
 
+  // Function to check if lesson should show video player
+  const shouldShowVideoPlayer = (lesson) => {
+    if (!lesson) return false;
+    return ['video', 'demo', 'theory', 'summary'].includes(lesson.type);
+  };
+
   const handleLessonCheckboxToggle = (moduleId, lessonId) => {
     
     setCourseContent(prev => {
@@ -442,7 +451,7 @@ const Dashboard = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Video Player Section */}
+          {/* Content Section */}
           <div className="lg:col-span-3">
             {currentLesson && (currentLesson.type === 'test' || currentLesson.type === 'final-test') ? (
               <TestContent
@@ -450,29 +459,75 @@ const Dashboard = () => {
                 handleTestComplete={handleTestComplete}
                 handleOverallTestComplete={handleOverallTestComplete}
               />
-            ) : (
-              currentLesson && (
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <VideoPlayer
-                    videoUrl={currentLesson.videoUrl}
-                    isPlaying={isPlaying}
-                    isMuted={isMuted}
-                    volume={volume}
-                    currentTime={currentTime}
-                    duration={duration}
-                    onPlayPause={handlePlayPause}
-                    onMute={handleMute}
-                    onVolumeChange={handleVolumeChange}
-                    onTimeUpdate={handleTimeUpdate}
-                    onLoadedMetadata={handleLoadedMetadata}
-                    onEnded={handleVideoEnded}
-                    onSeek={handleSeek}
-                    videoRef={videoRef}
-                  />
-                  <LessonInfo currentLesson={currentLesson} />
+            ) : currentLesson && shouldShowVideoPlayer(currentLesson) ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <VideoPlayer
+                  videoUrl={currentLesson.videoUrl}
+                  isPlaying={isPlaying}
+                  isMuted={isMuted}
+                  volume={volume}
+                  currentTime={currentTime}
+                  duration={duration}
+                  onPlayPause={handlePlayPause}
+                  onMute={handleMute}
+                  onVolumeChange={handleVolumeChange}
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onEnded={handleVideoEnded}
+                  onSeek={handleSeek}
+                  videoRef={videoRef}
+                />
+                <LessonInfo currentLesson={currentLesson} />
+              </div>
+            ) : currentLesson ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="p-6 relative">
+                  {/* Start Button - Top Right */}
+                  <button 
+                    className="absolute top-4 right-4 py-2 px-3 rounded-lg text-white font-semibold text-xs flex items-center"
+                    style={{ backgroundColor: '#333A2F' }}
+                    onClick={() => {
+                      console.log(`Starting ${currentLesson.type}: ${currentLesson.title}`);
+                    }}
+                  >
+                    <Play className="w-3 h-3 mr-1" />
+                    {currentLesson.type === 'pdf' ? 'Start Download' : 
+                     currentLesson.type === 'assignment' ? 'Start Assignment' :
+                     currentLesson.type === 'coding-exercise' ? 'Start Coding' :
+                     currentLesson.type === 'quiz' ? 'Start Quiz' : 'Start Test'}
+                  </button>
+                  
+                  <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>
+                    {currentLesson.title}
+                  </h2>
+                  <div className="flex items-center mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mr-3">
+                      {currentLesson.type === 'coding-exercise' && <Code className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'assignment' && <MdOutlineAssignment className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'pdf' && <FileText className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'quiz' && <ClipboardCheck className="w-4 h-4 mr-1" />}
+                      {currentLesson.type}
+                    </span>
+                    <span className="text-gray-500 text-sm">{currentLesson.duration}</span>
+                  </div>
+                  <p className="text-gray-700 mb-4">{currentLesson.description}</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2">Instructions</h3>
+                    <p className="text-sm text-gray-600">
+                      {currentLesson.type === 'coding-exercise' && 
+                        "Complete the coding exercise below. Follow the instructions carefully and submit your solution when ready."}
+                      {currentLesson.type === 'assignment' && 
+                        "Complete the assignment as described. Upload your work when finished."}
+                      {currentLesson.type === 'pdf' && 
+                        "Download and review the PDF document. Take notes on important concepts."}
+                      {currentLesson.type === 'quiz' && 
+                        "Take the quiz to test your knowledge. You can retake it if needed."}
+                    </p>
+                  </div>
+
                 </div>
-              )
-            )}
+              </div>
+            ) : null}
             <TabNavigation
               activeTab={activeTab}
               setActiveTab={setActiveTab}
