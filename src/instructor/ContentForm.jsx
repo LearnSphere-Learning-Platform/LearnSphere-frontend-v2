@@ -1,13 +1,9 @@
 "use client";
-import {
-  Trash2,
-  Play,
-  Eye,
-  FileText,
-  Code,
-  HelpCircle,
-  PenTool,
-} from "lucide-react";
+import React, { useState } from "react";
+import { Trash2, Eye, Video, FileText, HelpCircle, ClipboardList, Zap, CodeIcon } from "lucide-react";
+import QuizForm from "../quiz/QuizForm";
+import InstructorAssignmentForm from "../quiz/InstructorAssignmentForm";
+import InstructorCodingExerciseForm from "../quiz/InstructorCodingExerciseForm";
 
 const ContentForm = ({
   index,
@@ -18,6 +14,10 @@ const ContentForm = ({
   validationErrors,
   setValidationErrors,
 }) => {
+  const [showQuizBuilder, setShowQuizBuilder] = useState(false);
+  const [showAssignmentBuilder, setShowAssignmentBuilder] = useState(false);
+  const [showCodingBuilder, setShowCodingBuilder] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     let newValue;
@@ -30,37 +30,52 @@ const ContentForm = ({
       newValue = value;
     }
 
-    const updatedContent = {
-      ...content,
-      [name]: newValue,
-    };
-
+    // Update content
+    const updatedContent = { ...content, [name]: newValue };
     onChange(updatedContent);
 
-    // Clear validation errors when user makes changes
-    if (setValidationErrors) {
-      setValidationErrors((prev) => {
-        const newErrors = { ...prev };
-        if (name === "title" && newValue && newValue.trim()) {
-          delete newErrors[`content_${sessionIndex}_${index}_title`];
-        }
-        if (name === "type" && newValue) {
-          delete newErrors[`content_${sessionIndex}_${index}_type`];
-        }
-        return newErrors;
-      });
+    // Clear validation error for this field
+    const errorKey = `content_${sessionIndex}_${index}_${name}`;
+    if (validationErrors?.[errorKey]) {
+      const newErrors = { ...validationErrors };
+      delete newErrors[errorKey];
+      setValidationErrors(newErrors);
     }
   };
 
+  const handleQuizSave = (quizConfig) => {
+    const updatedContent = { ...content, quizConfig };
+    onChange(updatedContent);
+    setShowQuizBuilder(false);
+  };
+
+  const handleAssignmentSave = (assignmentConfig) => {
+    const updatedContent = { ...content, assignmentConfig };
+    onChange(updatedContent);
+    setShowAssignmentBuilder(false);
+  };
+
+  const handleCodingSave = (codingConfig) => {
+    const updatedContent = { ...content, codingConfig };
+    onChange(updatedContent);
+    setShowCodingBuilder(false);
+  };
+
   const getIconForType = (type) => {
-    const iconMap = {
-      video: Play,
-      pdf: FileText,
-      coding: Code,
-      assignment: PenTool,
-      quiz: HelpCircle,
-    };
-    return iconMap[type] || Play;
+    switch (type) {
+      case "video":
+        return <Video className="w-5 h-5" />;
+      case "pdf":
+        return <FileText className="w-5 h-5" />;
+      case "quiz":
+        return <HelpCircle className="w-5 h-5" />;
+      case "assignment":
+        return <ClipboardList className="w-5 h-5" />;
+      case "coding":
+        return <CodeIcon className="w-5 h-5" />;
+      default:
+        return <FileText className="w-5 h-5" />;
+    }
   };
 
   const renderTypeSpecificFields = () => {
@@ -177,6 +192,23 @@ const ContentForm = ({
                 className="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#333A2F] bg-white text-sm sm:text-base min-h-[44px]"
               />
             </div>
+            <div className="space-y-2">
+              <label className="block text-xs sm:text-sm font-semibold text-[#333A2F]">
+                Assignment Configuration
+              </label>
+              <button
+                type="button"
+                onClick={() => setShowAssignmentBuilder(true)}
+                className="w-full px-3 py-2 bg-[#333A2F] text-white rounded-lg hover:bg-[#2a3028] text-sm font-medium"
+              >
+                Open Assignment Builder
+              </button>
+              {content.assignmentConfig && (
+                <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
+                  ✓ Assignment configured with {content.assignmentConfig.points || 0} points
+                </p>
+              )}
+            </div>
           </>
         );
 
@@ -200,10 +232,18 @@ const ContentForm = ({
               <label className="block text-xs sm:text-sm font-semibold text-[#333A2F]">
                 Quiz Configuration
               </label>
-              <p className="text-xs text-gray-500 p-3 bg-gray-50 rounded">
-                Quiz builder will be available soon. You can specify the quiz
-                title and description for now.
-              </p>
+              <button
+                type="button"
+                onClick={() => setShowQuizBuilder(true)}
+                className="w-full px-3 py-2 bg-[#333A2F] text-white rounded-lg hover:bg-[#2a3028] text-sm font-medium"
+              >
+                Open Quiz Builder
+              </button>
+              {content.quizConfig && (
+                <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
+                  ✓ Quiz configured with {content.quizConfig.questions?.length || 0} questions
+                </p>
+              )}
             </div>
           </>
         );
@@ -228,10 +268,18 @@ const ContentForm = ({
               <label className="block text-xs sm:text-sm font-semibold text-[#333A2F]">
                 Coding Exercise Configuration
               </label>
-              <p className="text-xs text-gray-500 p-3 bg-gray-50 rounded">
-                Coding exercise builder will be available soon. You can specify
-                the exercise title and description for now.
-              </p>
+              <button
+                type="button"
+                onClick={() => setShowCodingBuilder(true)}
+                className="w-full px-3 py-2 bg-[#333A2F] text-white rounded-lg hover:bg-[#2a3028] text-sm font-medium"
+              >
+                Open Coding Exercise Builder
+              </button>
+              {content.codingConfig && (
+                <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
+                  ✓ Exercise configured with {content.codingConfig.testCases?.length || 0} test cases
+                </p>
+              )}
             </div>
           </>
         );
@@ -250,17 +298,34 @@ const ContentForm = ({
     validationErrors?.[`content_${sessionIndex}_${index}_type`];
 
   return (
-    <div className="border border-gray-200 rounded-lg p-4 sm:p-5 bg-gray-50 hover:bg-white transition-colors duration-200">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3 sm:gap-0">
+    <div className="bg-white rounded-lg shadow-md border p-5 mb-6 transition-all hover:shadow-xl">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-[#333A2F] flex-shrink-0">
-            {index + 1}
-          </div>
-          <div className="flex items-center gap-2">
-            <IconComponent className="w-4 h-4 text-[#333A2F]" />
-            <h5 className="font-semibold text-sm sm:text-base text-[#333A2F] capitalize">
+          <span className="text-2xl">{IconComponent}</span>
+          <div>
+            <h3 className="text-sm sm:text-base font-semibold text-[#333A2F]">
               {content.type} {index + 1}
-            </h5>
+            </h3>
+            <p className="text-xs text-gray-500">
+              {content.title || "Untitled content"}
+            </p>
+            {/* Configuration Status */}
+            {content.quizConfig && (
+              <p className="text-xs text-green-600 font-medium">
+                ✓ Quiz: {content.quizConfig.questions?.length || 0} questions
+              </p>
+            )}
+            {content.assignmentConfig && (
+              <p className="text-xs text-purple-600 font-medium">
+                ✓ Assignment: {content.assignmentConfig.points || 0} points
+              </p>
+            )}
+            {content.codingConfig && (
+              <p className="text-xs text-green-600 font-medium">
+                ✓ Coding: {content.codingConfig.testCases?.length || 0} test cases
+              </p>
+            )}
           </div>
         </div>
         <button
@@ -353,6 +418,43 @@ const ContentForm = ({
               Allow preview for non-enrolled students
             </span>
           </label>
+        </div>
+      )}
+
+      {/* Modal Dialogs */}
+      {showQuizBuilder && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
+          <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
+            <QuizForm
+              quizData={content.quizConfig}
+              onSave={handleQuizSave}
+              onCancel={() => setShowQuizBuilder(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {showAssignmentBuilder && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
+          <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
+            <InstructorAssignmentForm
+              assignmentData={content.assignmentConfig}
+              onSave={handleAssignmentSave}
+              onCancel={() => setShowAssignmentBuilder(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {showCodingBuilder && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
+          <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
+            <InstructorCodingExerciseForm
+              exerciseData={content.codingConfig}
+              onSave={handleCodingSave}
+              onCancel={() => setShowCodingBuilder(false)}
+            />
+          </div>
         </div>
       )}
     </div>
