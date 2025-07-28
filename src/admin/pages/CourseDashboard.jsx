@@ -12,7 +12,7 @@ import VideoPlayer from '../components/courses/VideoPlayer';
 import LessonSidebar from '../components/courses/LessonSidebar';
 import TabNavigation from '../components/courses/TabNavigation';
 import TestContent from '../components/courses/TestContent';
-import courseData from './CatalogData';
+import courseData from '../../catalog/CourseData';
 import LessonInfo from '../components/courses/LessonInfo';
 
 const Dashboard = () => {

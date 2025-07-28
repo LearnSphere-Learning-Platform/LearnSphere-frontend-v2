@@ -21,7 +21,7 @@ export function DashboardLayout({ children }) {
     localStorage.removeItem('adminToken');
     sessionStorage.removeItem('adminToken');
     // Navigate to home page
-    navigate('/');
+    navigate('/login');
   };
 
   const handleViewAsUser = () => {

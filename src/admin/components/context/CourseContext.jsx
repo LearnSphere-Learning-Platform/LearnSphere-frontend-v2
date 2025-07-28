@@ -1,68 +1,32 @@
 import { createContext, useContext, useState } from "react";
+import courseData from "../../../catalog/CourseData";
 
-// Move your original courseData here or import from another file
-const initialCourses = [
-  {
-    id: 1,
-    title: "React for Beginners",
-    instructor: "Jane Smith",
-    status: "Active",
-    type: "Paid",
-    students: 120,
-    duration: "6h 45m",
-    rating: 4.8,
-  },
-  {
-    id: 2,
-    title: "Advanced Node.js",
-    instructor: "John Doe",
-    status: "Inactive",
-    type: "Free",
-    students: 87,
-    duration: "4h 30m",
-    rating: 4.5,
-  },
-  {
-    id: 3,
-    title: "UI/UX Design Bootcamp",
-    instructor: "Emily Clark",
-    status: "Active",
-    type: "Paid",
-    students: 250,
-    duration: "8h 10m",
-    rating: 4.9,
-  },
-  {
-    id: 4,
-    title: "Python Fundamentals",
-    instructor: "Mike Johnson",
-    status: "New",
-    type: "Paid",
-    students: 0,
-    duration: "5h 20m",
-    rating: 0,
-  },
-  {
-    id: 5,
-    title: "JavaScript Masterclass",
-    instructor: "Sarah Wilson",
-    status: "New",
-    type: "Free",
-    students: 0,
-    duration: "7h 15m",
-    rating: 0,
-  },
-  {
-    id: 6,
-    title: "Fullstack Web Development",
-    instructor: "Alex Brown",
-    status: "Active",
-    type: "Paid",
-    students: 45,
-    duration: "9h 20m",
-    rating: 4.7,
-  },
-];
+// Transform courseData to match admin format
+const transformCourseData = () => {
+  return courseData.map(course => ({
+    id: course.id,
+    title: course.course_name,
+    instructor: course.instructor.name,
+    status: "Active", // Default status for all courses
+    type: course.level,
+    students: Math.floor(Math.random() * 1000) + 100, // Random student count
+    duration: course.total_no_hours,
+    rating: course.course_rating,
+    // Additional fields for detailed view
+    description: course.description,
+    image: course.image,
+    preview: course.preview,
+    about_course: course.about_course,
+    outcome: course.outcome,
+    course_content: course.course_content,
+    instructor_details: course.instructor,
+    tests: course.no_of_tests_available,
+    pdfAvailable: course.pdf_available,
+    certificate: course.certification
+  }));
+};
+
+const initialCourses = transformCourseData();
 
 const CourseContext = createContext();
 
