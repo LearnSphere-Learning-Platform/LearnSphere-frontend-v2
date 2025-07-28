@@ -548,28 +548,31 @@ const CourseAddingForm = () => {
     >
       <div className="max-w-5xl mx-auto">
         {/* Header with back button and title */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
           <button
             onClick={handleCancel}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors self-start md:self-auto"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Courses
           </button>
-          <div className="flex-1 text-center">
+
+          <div className="text-center flex-1">
             <h1
-              className="text-4xl font-bold mb-4"
+              className="text-2xl md:text-4xl font-bold mb-2 md:mb-4"
               style={{ color: "#333A2F" }}
             >
               {isEditing ? "Edit Course" : "Create New Course"}
             </h1>
-            <p className="text-xl" style={{ color: "#333A2F" }}>
+            <p className="text-lg md:text-xl" style={{ color: "#333A2F" }}>
               {isEditing
                 ? "Update your course information"
                 : "Build an engaging learning experience for your students"}
             </p>
           </div>
-          <div className="w-32"></div>
+
+          {/* Placeholder div to balance layout on desktop */}
+          <div className="hidden md:block w-32"></div>
         </div>
 
         {/* Validation Summary */}

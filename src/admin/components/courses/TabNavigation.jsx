@@ -1,0 +1,30 @@
+const TabNavigation = ({ activeTab, setActiveTab, renderTabContent }) => (
+  <div className="mt-6 bg-white rounded-lg shadow-md">
+    <div className="border-b overflow-x-auto">
+      <nav className="flex space-x-8 px-6 min-w-max sm:min-w-0" style={{ WebkitOverflowScrolling: 'touch' }}>
+        {[
+          { id: 'overview', label: 'Overview' },
+         
+        ].map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`py-4 px-2 text-sm font-medium whitespace-nowrap ${
+              activeTab === tab.id
+                ? 'border-b-2 border-[#333A2F] text-[#333A2F] bg-[#EBEDDF]'
+                : 'border-b-2 border-transparent text-gray-500 hover:text-[#333A2F] hover:border-gray-300'
+            }`}
+            style={{ minWidth: 80 }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </nav>
+    </div>
+    <div className="p-4 sm:p-6">
+      {renderTabContent()}
+    </div>
+  </div>
+);
+
+export default TabNavigation;

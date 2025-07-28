@@ -68,7 +68,17 @@ const LoginPage = () => {
         }
       }
       setTimeout(() => {
-        navigate("/");
+        // Determine role and redirect accordingly
+        if (
+          ((username === "admin" || username === "admin@learnsphere.com") && password === "12345") ||
+          (foundUser && (foundUser.fullName === "admin" || foundUser.email === "admin@learnsphere.com"))
+        ) {
+          navigate("/admin");
+        } else if (foundUser && foundUser.isInstructor) {
+          navigate("/");
+        } else {
+          navigate("/");
+        }
       }, 1500);
     } else {
       window.alert("Login Failed! Invalid username/email or password.");
