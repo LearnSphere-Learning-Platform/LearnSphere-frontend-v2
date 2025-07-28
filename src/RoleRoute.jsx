@@ -25,13 +25,11 @@ const RoleRoute = ({ allowedRoles }) => {
   if (userRole === 'unauthenticated') {
     return <Navigate to="/login" replace />;
   }
-  
-  // Admin users have access to everything, so they should never see "not-authorized"
+ 
   if (userRole === 'admin') {
     return <Outlet />;
   }
   
-  // Check if user has access to the requested route
   if (allowedRoles.includes(userRole)) {
     return <Outlet />;
   }
