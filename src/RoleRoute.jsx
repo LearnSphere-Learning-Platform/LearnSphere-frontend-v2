@@ -12,7 +12,8 @@ function getUserRole() {
     return 'unauthenticated';
   }
   
-  if (username === 'admin') return 'admin';
+  // Check for admin role - either username is 'admin' or email is 'admin@learnsphere.com'
+  if (username === 'admin' || username === 'admin@learnsphere.com') return 'admin';
   if (isInstructor) return 'instructor';
   return 'student';
 }
@@ -25,7 +26,23 @@ const RoleRoute = ({ allowedRoles }) => {
     return <Navigate to="/login" replace />;
   }
   
-  return allowedRoles.includes(userRole) ? <Outlet /> : <Navigate to="/not-authorized" replace />;
+  // Admin users have access to everything, so they should never see "not-authorized"
+  if (userRole === 'admin') {
+    return <Outlet />;
+  }
+  
+  // Check if user has access to the requested route
+  if (allowedRoles.includes(userRole)) {
+    return <Outlet />;
+  }
+  
+  // If instructor tries to access admin-only routes, show not-authorized
+  if (userRole === 'instructor' && allowedRoles.includes('admin')) {
+    return <Navigate to="/not-authorized" replace />;
+  }
+  
+  // For other cases, redirect to not-authorized
+  return <Navigate to="/not-authorized" replace />;
 };
 
 export default RoleRoute; 
