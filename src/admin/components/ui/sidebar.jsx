@@ -236,23 +236,18 @@ export const SidebarMenuButton = React.forwardRef(
     if (!tooltip) return button
     return (
       <Tooltip>
-        import { Slot } from "@radix-ui/react-slot";
-
-<TooltipTrigger asChild>
-  <Slot>
-    <button
-      ref={ref}
-      data-active={isActive}
-      className={cn(
-        "flex w-full items-center gap-2 rounded-md p-2 text-left text-sm transition hover:text-sidebar-accent-foreground",
-        "focus-visible:ring-2 focus-visible:ring-sidebar-ring",
-        className
-      )}
-      {...props}
-    />
-  </Slot>
-</TooltipTrigger>
-
+        <TooltipTrigger asChild>
+          <button
+            ref={ref}
+            data-active={isActive}
+            className={cn(
+              "flex w-full items-center gap-2 rounded-md p-2 text-left text-sm transition hover:text-sidebar-accent-foreground",
+              "focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+              className
+            )}
+            {...props}
+          />
+        </TooltipTrigger>
         <TooltipContent
           side="right"
           align="center"
