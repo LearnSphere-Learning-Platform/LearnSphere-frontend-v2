@@ -29,7 +29,12 @@ const LessonSidebar = ({
   quizScores,
   quizAttempts,
   assignmentSubmissions,
-  showCodingExercise
+  showCodingExercise,
+  showFeedbackForm,
+  setShowFeedbackForm,
+  feedbackSubmitted,
+  handleDownloadCertificate,
+  overallTestPassed
 }) => {
   // Function to check if a module is completed
   const isModuleCompleted = (module) => {
@@ -194,10 +199,24 @@ const LessonSidebar = ({
         <div>
           <h3 className="text-lg font-semibold mb-2" style={{ color: '#333A2F' }}>Certificate of Completion</h3>
           <p className="text-sm text-gray-600 mb-4">
-            Complete all lessons and pass the final assessment to earn your certificate.
+            Complete all lessons, pass the final assessment, and submit feedback to earn your certificate.
           </p>
+          
+          {/* Feedback Button */}
+          {getProgressPercentage() === 100 && overallTestPassed && !feedbackSubmitted && (
+            <button 
+              onClick={() => setShowFeedbackForm(true)}
+              className="w-full py-3 px-6 rounded-lg text-white font-semibold mb-3"
+              style={{ backgroundColor: '#333A2F' }}
+            >
+              Submit Feedback to Get Certificate
+            </button>
+          )}
+          
+          {/* Certificate Download */}
           {canGetCertificate() ? (
             <button 
+              onClick={handleDownloadCertificate}
               className="w-full py-3 px-6 rounded-lg text-white font-semibold"
               style={{ backgroundColor: '#333A2F' }}
             >
@@ -208,7 +227,9 @@ const LessonSidebar = ({
               className="w-full py-3 px-6 rounded-lg text-white font-semibold opacity-50 cursor-not-allowed"
               disabled
             >
-              Complete Course to Download
+              {getProgressPercentage() === 100 && overallTestPassed && !feedbackSubmitted 
+                ? 'Submit Feedback to Download' 
+                : 'Complete Course to Download'}
             </button>
           )}
         </div>
