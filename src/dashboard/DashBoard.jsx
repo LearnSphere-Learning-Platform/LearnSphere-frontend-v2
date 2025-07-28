@@ -24,8 +24,11 @@ import {
   Bell,
   MessageSquare,
   User,
-  Target
+  Target,
+  Code,
+  ClipboardCheck
 } from 'lucide-react';
+import { MdOutlineAssignment } from 'react-icons/md';
 import VideoPlayer from './components/VideoPlayer';
 import LessonSidebar from './components/LessonSidebar';
 import TabNavigation from './components/TabNavigation';
@@ -41,7 +44,9 @@ import QATab from './components/QATab';
 
 const Dashboard = () => {
   const { id } = useParams();
+  console.log('Dashboard Debug - URL params:', { id });
   const course = courseData.find(c => String(c.id) === String(id));
+  console.log('Dashboard Debug - Found course:', course);
 
   // If course not found, show message
   if (!course) {
@@ -68,7 +73,6 @@ const Dashboard = () => {
   const [overallTestPassed, setOverallTestPassed] = useState(false);
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
-  const [activeLessonTab, setActiveLessonTab] = useState('video');
 
   const videoRef = useRef(null);
 
@@ -87,7 +91,7 @@ const Dashboard = () => {
             completed: false,
             videoUrl: video.preview && course.preview ? 
               `https://www.youtube.com/embed/${course.preview.split('v=')[1]?.split('&')[0]}` : null,
-            type: video.type
+            type: video.type // Preserve original types for icon display
           }))
         }))
       };
@@ -321,6 +325,12 @@ const Dashboard = () => {
     return getProgressPercentage() === 100 && overallTestPassed;
   };
 
+  // Function to check if lesson should show video player
+  const shouldShowVideoPlayer = (lesson) => {
+    if (!lesson) return false;
+    return ['video', 'demo', 'theory', 'summary'].includes(lesson.type);
+  };
+
   const handleLessonCheckboxToggle = (moduleId, lessonId) => {
     
     setCourseContent(prev => {
@@ -336,7 +346,10 @@ const Dashboard = () => {
                 ...module,
                 lessons: module.lessons.map(lesson => {
                   if (lesson.id === lessonId) {
+                    console.log('Found lesson:', lesson);
+                    console.log('Previous completed state:', lesson.completed);
                     const newCompleted = !lesson.completed;
+                    console.log('New completed state:', newCompleted);
                     return {
                       ...lesson,
                       completed: newCompleted
@@ -428,10 +441,8 @@ const Dashboard = () => {
   }
 
   return (
-
     <div className="min-h-screen bg-gray-50 mt-25" style={{ backgroundColor: '#EBEDDF' }}>
       <div className="container mx-auto px-4 py-8">
-
         <div className="mb-6">
           <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>
             {currentCourse.course_name}
@@ -439,38 +450,84 @@ const Dashboard = () => {
           <p className="text-gray-600">by {currentCourse.instructor.name}</p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 gap-6">
-          {/* Video Player Section */}
-          <div className="xl:col-span-3 lg:col-span-2">
-            {currentLesson && (currentLesson.type === 'test' || currentLesson.type === 'final-test' || currentLesson.type === 'coding-exercise' || currentLesson.type === 'assignment'  || currentLesson.type === 'quiz')  ? (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Content Section */}
+          <div className="lg:col-span-3">
+            {currentLesson && (currentLesson.type === 'test' || currentLesson.type === 'final-test') ? (
               <TestContent
                 currentLesson={currentLesson}
                 handleTestComplete={handleTestComplete}
                 handleOverallTestComplete={handleOverallTestComplete}
               />
-            ) : (
-              currentLesson && (
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <VideoPlayer
-                    videoUrl={currentLesson.videoUrl}
-                    isPlaying={isPlaying}
-                    isMuted={isMuted}
-                    volume={volume}
-                    currentTime={currentTime}
-                    duration={duration}
-                    onPlayPause={handlePlayPause}
-                    onMute={handleMute}
-                    onVolumeChange={handleVolumeChange}
-                    onTimeUpdate={handleTimeUpdate}
-                    onLoadedMetadata={handleLoadedMetadata}
-                    onEnded={handleVideoEnded}
-                    onSeek={handleSeek}
-                    videoRef={videoRef}
-                  />
-                  <LessonInfo currentLesson={currentLesson} />
+            ) : currentLesson && shouldShowVideoPlayer(currentLesson) ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <VideoPlayer
+                  videoUrl={currentLesson.videoUrl}
+                  isPlaying={isPlaying}
+                  isMuted={isMuted}
+                  volume={volume}
+                  currentTime={currentTime}
+                  duration={duration}
+                  onPlayPause={handlePlayPause}
+                  onMute={handleMute}
+                  onVolumeChange={handleVolumeChange}
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onEnded={handleVideoEnded}
+                  onSeek={handleSeek}
+                  videoRef={videoRef}
+                />
+                <LessonInfo currentLesson={currentLesson} />
+              </div>
+            ) : currentLesson ? (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="p-6 relative">
+                  {/* Start Button - Top Right */}
+                  <button 
+                    className="absolute top-4 right-4 py-2 px-3 rounded-lg text-white font-semibold text-xs flex items-center"
+                    style={{ backgroundColor: '#333A2F' }}
+                    onClick={() => {
+                      console.log(`Starting ${currentLesson.type}: ${currentLesson.title}`);
+                    }}
+                  >
+                    <Play className="w-3 h-3 mr-1" />
+                    {currentLesson.type === 'pdf' ? 'Start Download' : 
+                     currentLesson.type === 'assignment' ? 'Start Assignment' :
+                     currentLesson.type === 'coding-exercise' ? 'Start Coding' :
+                     currentLesson.type === 'quiz' ? 'Start Quiz' : 'Start Test'}
+                  </button>
+                  
+                  <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>
+                    {currentLesson.title}
+                  </h2>
+                  <div className="flex items-center mb-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mr-3">
+                      {currentLesson.type === 'coding-exercise' && <Code className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'assignment' && <MdOutlineAssignment className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'pdf' && <FileText className="w-4 h-4 mr-1" />}
+                      {currentLesson.type === 'quiz' && <ClipboardCheck className="w-4 h-4 mr-1" />}
+                      {currentLesson.type}
+                    </span>
+                    <span className="text-gray-500 text-sm">{currentLesson.duration}</span>
+                  </div>
+                  <p className="text-gray-700 mb-4">{currentLesson.description}</p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold mb-2">Instructions</h3>
+                    <p className="text-sm text-gray-600">
+                      {currentLesson.type === 'coding-exercise' && 
+                        "Complete the coding exercise below. Follow the instructions carefully and submit your solution when ready."}
+                      {currentLesson.type === 'assignment' && 
+                        "Complete the assignment as described. Upload your work when finished."}
+                      {currentLesson.type === 'pdf' && 
+                        "Download and review the PDF document. Take notes on important concepts."}
+                      {currentLesson.type === 'quiz' && 
+                        "Take the quiz to test your knowledge. You can retake it if needed."}
+                    </p>
+                  </div>
+
                 </div>
-              )
-            )}
+              </div>
+            ) : null}
             <TabNavigation
               activeTab={activeTab}
               setActiveTab={setActiveTab}
@@ -478,33 +535,31 @@ const Dashboard = () => {
             />
           </div>
           {/* Course Sidebar */}
-          <div className="xl:col-span-1 lg:col-span-1">
-            <LessonSidebar
-              currentCourse={currentCourse}
-              courseContent={courseContent}
-              expandedModule={expandedModule}
-              onModuleToggle={handleModuleToggle}
-              onLessonSelect={handleLessonSelect}
-              getCompletedLessonsCount={getCompletedLessonsCount}
-              getTotalLessonsCount={getTotalLessonsCount}
-              getProgressPercentage={getProgressPercentage}
-              canGetCertificate={canGetCertificate}
-              showDiscussion={showDiscussion}
-              setShowDiscussion={setShowDiscussion}
-              discussions={discussions}
-              likedComments={likedComments}
-              handleLike={handleLike}
-              handleReply={handleReply}
-              replyTo={replyTo}
-              replyContent={replyContent}
-              setReplyContent={setReplyContent}
-              handleReplySubmit={handleReplySubmit}
-              newComment={newComment}
-              setNewComment={setNewComment}
-              handleCommentSubmit={handleCommentSubmit}
-              onLessonCheckboxToggle={handleLessonCheckboxToggle}
-            />
-          </div>
+          <LessonSidebar
+            currentCourse={currentCourse}
+            courseContent={courseContent}
+            expandedModule={expandedModule}
+            onModuleToggle={handleModuleToggle}
+            onLessonSelect={handleLessonSelect}
+            getCompletedLessonsCount={getCompletedLessonsCount}
+            getTotalLessonsCount={getTotalLessonsCount}
+            getProgressPercentage={getProgressPercentage}
+            canGetCertificate={canGetCertificate}
+            showDiscussion={showDiscussion}
+            setShowDiscussion={setShowDiscussion}
+            discussions={discussions}
+            likedComments={likedComments}
+            handleLike={handleLike}
+            handleReply={handleReply}
+            replyTo={replyTo}
+            replyContent={replyContent}
+            setReplyContent={setReplyContent}
+            handleReplySubmit={handleReplySubmit}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            handleCommentSubmit={handleCommentSubmit}
+            onLessonCheckboxToggle={handleLessonCheckboxToggle}
+          />
         </div>
       </div>
     </div>

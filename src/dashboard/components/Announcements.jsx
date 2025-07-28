@@ -212,11 +212,11 @@ const Announcements = () => {
   };
 
   const handleEditAnnouncement = (announcement) => {
-    navigate("/announcement", { state: { announcement, isEdit: true } });
+    navigate("/instructor/announcement", { state: { announcement, isEdit: true } });
   };
 
   const handleCreateAnnouncement = () => {
-    navigate("/announcement");
+    navigate("/instructor/announcement");
   };
 
   const filteredAnnouncements = announcements.filter((announcement) => {

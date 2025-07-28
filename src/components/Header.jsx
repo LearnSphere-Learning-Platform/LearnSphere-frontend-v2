@@ -138,9 +138,9 @@ const Header = () => {
                         onClick={() => {
                           setShowProfileMenu(false);
                           if (isInstructor) {
-                            navigate("/instructor-profile");
+                            navigate("/instructor/profile");
                           } else {
-                            navigate("/profile");
+                            navigate("/user/profile");
                           }
                         }}
                       >
@@ -153,7 +153,7 @@ const Header = () => {
                             className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-white transition-all"
                             onClick={() => {
                               setShowProfileMenu(false);
-                              navigate("/instructor-dashboard");
+                              navigate("/instructor/dashboard");
                             }}
                           >
                             <FaBook />
@@ -163,7 +163,7 @@ const Header = () => {
                             className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all"
                             onClick={() => {
                               setShowProfileMenu(false);
-                              navigate("/my-learning");
+                              navigate("/user/my-learning");
                             }}
                           >
                             <FaBook />
@@ -176,7 +176,7 @@ const Header = () => {
                             className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all"
                             onClick={() => {
                               setShowProfileMenu(false);
-                              navigate("/my-learning");
+                              navigate("/user/my-learning");
                             }}
                           >
                             <FaBook />
@@ -186,7 +186,7 @@ const Header = () => {
                             className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#EBEDDF] hover:text-black transition-all"
                             onClick={() => {
                               setShowProfileMenu(false);
-                              navigate("/payment-history");
+                              navigate("/user/payment-history");
                             }}
                           >
                             <FaHistory />

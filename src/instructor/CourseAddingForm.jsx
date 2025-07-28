@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CourseTemplate from "./utils/CourseTemplata";
 import SessionFormList from "./SessionFormList";
-import Swal from "sweetalert2";
 import {
   BookOpen,
   IndianRupee,
@@ -65,11 +64,11 @@ const CourseAddingForm = () => {
 
       // If course not found, show error and redirect
       alert("Course not found!");
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     } catch (error) {
       console.error("Error loading course for editing:", error);
       alert("Error loading course data!");
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     }
   };
 
@@ -423,21 +422,14 @@ const CourseAddingForm = () => {
   };
 
   const handleCancel = () => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "All unsaved changes will be lost.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, cancel it!",
-      cancelButtonText: "No, stay here",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        localStorage.removeItem("editingCourse");
-        navigate("/instructor-dashboard");
-      }
-    });
+    if (
+      window.confirm(
+        "Are you sure you want to cancel? All unsaved changes will be lost."
+      )
+    ) {
+      localStorage.removeItem("editingCourse");
+      navigate("/instructor/dashboard");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -540,7 +532,7 @@ const CourseAddingForm = () => {
           : "Course created successfully!"
       );
 
-      navigate("/instructor-dashboard");
+      navigate("/instructor/dashboard");
     } catch (error) {
       console.error("Error saving course:", error);
       alert("An error occurred while saving the course. Please try again.");

@@ -14,16 +14,16 @@ export function CourseCard({ course }) {
 
   const handleClick = () => {
     updateSelectedCourse(course);
-    navigate(`/course/${course.id}`);
+    navigate(`/user/course/${course.id}`);
   };
 
   const handleEnroll = (e) => {
     e.stopPropagation();
     updateSelectedCourse(course);
     if (course.price > 0) {
-      navigate(`/course/${course.id}/payment`);
+      navigate(`/user/course/${course.id}/payment`);
     } else {
-      navigate(`/course/${course.id}`);
+      navigate(`/user/course/${course.id}`);
     }
   };
 

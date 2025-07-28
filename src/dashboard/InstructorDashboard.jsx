@@ -93,13 +93,13 @@ const InstructorDashboard = () => {
   }, [initialCourses]);
 
   const handleCreateCourse = () => {
-    navigate("/course-adding");
+    navigate("/instructor/course-adding");
   };
 
   const handleEditCourse = (course) => {
     // Store the course data in localStorage for the form to access
     localStorage.setItem("editingCourse", JSON.stringify(course));
-    navigate(`/course-adding/${course.id}`);
+    navigate(`/instructor/course-adding/${course.id}`);
   };
 
   const handleDeleteCourse = (courseId) => {

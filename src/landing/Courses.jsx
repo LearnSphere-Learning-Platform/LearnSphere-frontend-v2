@@ -67,7 +67,7 @@ const Courses = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-[#333A2F]">{course.price === 0 ? 'Free' : course.price || '$199'}</span>
-                  <button className="px-6 py-2 bg-[#333A2F] text-white rounded-lg font-medium hover:bg-[#2a3028] transition-colors flex items-center">
+                  <button className="px-6 py-2 bg-[#333A2F] text-white rounded-lg font-medium hover:bg-[#2a3028] transition-colors flex items-center cursor-pointer">
                     Enroll Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
@@ -78,7 +78,7 @@ const Courses = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg hover:bg-[#2a3028] transition-colors"
+          <button className="px-8 py-4 bg-[#333A2F] text-white rounded-lg font-bold text-lg hover:bg-[#2a3028] transition-colors cursor-pointer"
           onClick={() => navigate('/catalog')}>
             View All Courses
           </button>

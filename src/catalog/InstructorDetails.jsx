@@ -48,13 +48,13 @@ const InstructorDetails = ({ courseData }) => {
           />
 
           <div className="flex gap-4">
-            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition">
+            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition cursor-pointer">
               <FaLink className="w-5 h-5" />
             </button>
-            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition">
+            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition cursor-pointer">
               <FaXTwitter className="w-5 h-5" />
             </button>
-            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition">
+            <button className="p-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition cursor-pointer">
               <FaYoutube className="w-5 h-5" />
             </button>
           </div>

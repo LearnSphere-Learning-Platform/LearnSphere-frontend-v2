@@ -16,7 +16,7 @@ const CourseCard = ({ course, onDelete, onEdit }) => {
   const navigate = useNavigate();
 
   const handleViewCourse = () => {
-    navigate(`/instructor-dashboard/course/${course.id}`);
+    navigate(`/instructor/course/${course.id}`);
   };
 
   const getStatusBadge = (status) => {

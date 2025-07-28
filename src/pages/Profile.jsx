@@ -96,7 +96,7 @@ const Profile = () => {
         <div className="flex min-h-[600px] bg-white rounded-lg shadow-lg overflow-hidden">
           {/* --- LEFT PANEL --- */}
           <div className="w-1/3 bg-[#EBEDDF] p-6 relative">
-            {!isEditing && <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md" onClick={handleEdit}><Pencil className="w-4 h-4 text-[#333A2F]" /></button>}
+            {!isEditing && <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer" onClick={handleEdit}><Pencil className="w-4 h-4 text-[#333A2F]" /></button>}
             <div className="flex flex-col items-center text-center">
               <div className="relative mb-4"><div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg"><img src={profile.profileImage} alt="Profile" className="w-full h-full object-cover" /></div></div>
               <h2 className="text-2xl font-bold text-gray-800">{profile.fullName}</h2>
@@ -157,7 +157,7 @@ const Profile = () => {
                   </>
                 )}
 
-                <div className="md:col-span-2 mt-4"><button className="bg-[#333A2F] text-white px-6 py-2 rounded-lg" onClick={handleSave}>Save Changes</button></div>
+                <div className="md:col-span-2 mt-4"><button className="bg-[#333A2F] text-white px-6 py-2 rounded-lg cursor-pointer" onClick={handleSave}>Save Changes</button></div>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
