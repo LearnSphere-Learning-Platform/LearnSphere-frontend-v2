@@ -38,7 +38,7 @@ const StarIcon = ({ value, displayRating, className = "" }) => {
   )
 }
 
-export default function CourseFeedbackForm() {
+export default function CourseFeedbackForm({ onSubmit }) {
   const [rating, setRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
   const [selectedFeedback, setSelectedFeedback] = useState("")
@@ -97,7 +97,12 @@ export default function CourseFeedbackForm() {
     }
 
     console.log("Feedback Submitted (JSON):", JSON.stringify(formData, null, 2))
-    alert("Feedback submitted! Check console for details.")
+    
+    if (onSubmit) {
+      onSubmit(formData);
+    } else {
+      alert("Feedback submitted! Check console for details.")
+    }
   }
 
   const displayRating = hoverRating || rating

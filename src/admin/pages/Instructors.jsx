@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DashboardLayout } from "../components/admin/DashboardLayout";
 import { Search, Filter, Star, MoreVertical, ChevronDown } from "lucide-react";
 import {
@@ -15,68 +15,65 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
+import courseData from "../../catalog/CourseData";
 
 const ITEMS_PER_PAGE = 8;
 
-const initialData = [
-  {
-    id: 101,
-    name: "Aditi Sharma",
-    email: "aditi.sharma@example.com",
-    status: "active",
-    students: 120,
-    enrolledDate: "2023-05-12",
-    payment: 15000,
-    courses: 6,
-    rating: 4.5,
-    phone: "+91 9876543210",
-    certificates: ["React Advanced", "Node.js Expert"],
-    dateOfBirth: "05/15/1990",
-    contactNumber: "+91 9876543210",
-    highestQualification: "M.Tech Computer Science",
-    areaOfInterest: "Web Development",
-    yearsOfExperience: "5",
-    address: "123 Tech Street, Bangalore, Karnataka 560001",
-    linkedinProfile: "linkedin.com/in/aditisharma",
-    githubProfile: "github.com/aditisharma",
-    portfolioLink: "aditisharma.dev",
-    twitterProfile: "twitter.com/aditi_dev",
-    skills: ["React", "Node.js", "JavaScript", "TypeScript"],
-    about: "Passionate full-stack developer with 5+ years of experience in modern web technologies.",
-    description: "Expert in React ecosystem with strong backend knowledge in Node.js and databases.",
-    bankHolderName: "Aditi Sharma",
-    accountNumber: "1234567890123456",
-    ifscCode: "HDFC0001234",
-    panNumber: "ABCDE1234F",
-    aadharNumber: "1234 5678 9012"
-  },
-  {
-    id: 102,
-    name: "Rohan Mehta",
-    email: "rohan.mehta@example.com",
-    status: "inactive",
-    students: 80,
-    enrolledDate: "2023-06-01",
-    payment: 12000,
-    courses: 4,
-    rating: 3.9,
-    phone: "+91 9876543211",
-    certificates: ["Angular Certified", "Java Spring"],
-    dateOfBirth: "08/22/1988",
-    contactNumber: "+91 9876543211",
-    highestQualification: "B.Tech Information Technology",
-    areaOfInterest: "Frontend Development",
-    yearsOfExperience: "4",
-    address: "456 Dev Lane, Mumbai, Maharashtra 400001",
-    linkedinProfile: "linkedin.com/in/rohanmehta",
-    githubProfile: "github.com/rohanmehta",
-    portfolioLink: "rohanmehta.portfolio.com",
-    twitterProfile: "twitter.com/rohan_codes",
-    skills: ["Angular", "Java", "Spring Boot", "MySQL"],
-    about: "Frontend specialist with strong Java backend experience.",
-    description: "Experienced in building scalable web applications with modern frameworks."
-  }
-];
+// Extract instructor data from courseData
+const extractInstructorsFromCourseData = () => {
+  const instructorMap = new Map();
+  
+  courseData.forEach(course => {
+    const instructor = course.instructor;
+    const instructorId = instructor.name.replace(/\s+/g, '').toLowerCase();
+    
+    if (!instructorMap.has(instructorId)) {
+      instructorMap.set(instructorId, {
+        id: instructorId,
+        name: instructor.name,
+        email: instructor.mailid,
+        status: "active",
+        students: Math.floor(Math.random() * 2000) + 500,
+        enrolledDate: "2023-01-15",
+        payment: Math.floor(Math.random() * 50000) + 10000,
+        courses: 1,
+        rating: instructor.overall_rating,
+        phone: "+91 9876543210",
+        certificates: course.about_course?.skills || [],
+        dateOfBirth: "01/01/1985",
+        contactNumber: "+91 9876543210",
+        highestQualification: "M.Tech Computer Science",
+        areaOfInterest: course.about_course?.skills?.[0] || "Programming",
+        yearsOfExperience: "5",
+        address: "123 Tech Street, Bangalore, Karnataka 560001",
+        linkedinProfile: `linkedin.com/in/${instructorId}`,
+        githubProfile: `github.com/${instructorId}`,
+        portfolioLink: `${instructorId}.dev`,
+        twitterProfile: `twitter.com/${instructorId}`,
+        skills: course.about_course?.skills || [],
+        about: instructor.about?.[0] || "Experienced instructor with expertise in modern technologies.",
+        description: instructor.about?.[1] || "Passionate about teaching and helping students learn.",
+        bankHolderName: instructor.name,
+        accountNumber: "1234567890123456",
+        ifscCode: "HDFC0001234",
+        panNumber: "ABCDE1234F",
+        aadharNumber: "1234 5678 9012",
+        total_learners: instructor.total_learners,
+        no_of_courses_released: instructor.no_of_courses_released,
+        total_reviews: instructor.total_reviews,
+        highlights: instructor.highlights || []
+      });
+    } else {
+      // If instructor already exists, increment course count
+      const existingInstructor = instructorMap.get(instructorId);
+      existingInstructor.courses += 1;
+    }
+  });
+  
+  return Array.from(instructorMap.values());
+};
+
+const initialData = extractInstructorsFromCourseData();
 
 const newInstructorApplications = [
   {
@@ -142,6 +139,12 @@ const Instructors = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [dropdownId, setDropdownId] = useState(null);
   const { toast } = useToast();
+
+  // Update instructors when courseData changes
+  useEffect(() => {
+    const updatedInstructors = extractInstructorsFromCourseData();
+    setInstructors(updatedInstructors);
+  }, []);
 
   const handleStatusChange = (id, status) => {
     setInstructors((prev) =>
@@ -495,6 +498,19 @@ const Instructors = () => {
                       <p className="font-medium text-[#333A2F]">Description:</p>
                       <p className="text-gray-600 text-sm">{viewInstructor.description || "N/A"}</p>
                     </div>
+                    {viewInstructor.highlights && viewInstructor.highlights.length > 0 && (
+                      <div>
+                        <p className="font-medium text-[#333A2F] mb-2">Highlights:</p>
+                        <ul className="space-y-1">
+                          {viewInstructor.highlights.map((highlight, idx) => (
+                            <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                              <span className="text-[#333A2F] mt-1">•</span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -529,45 +545,63 @@ const Instructors = () => {
 
                 {/* Statistics (for existing instructors) */}
                 {statusFilter !== "new" && (
-                                  <div>
-                  <h3 className="text-lg font-semibold border-b border-[#C8CBB8] pb-1 text-[#333A2F]">
-                    Statistics
-                  </h3>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-3">
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Students:</p>
-                      <p className="text-gray-600">{viewInstructor.students}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Rating:</p>
-                      <p className="text-gray-600">{viewInstructor.rating}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Enrolled Date:</p>
-                      <p className="text-gray-600">{viewInstructor.enrolledDate}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Payment:</p>
-                      <p className="text-gray-600">₹{viewInstructor.payment}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Courses:</p>
-                      <p className="text-gray-600">{viewInstructor.courses}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[#333A2F]">Status:</p>
-                      <span
-                        className={`inline-block px-2 py-0.5 rounded-lg text-xs font-bold ${
-                          viewInstructor.status === "active"
-                            ? "bg-[#C8CBB8] text-[#333A2F]"
-                            : "bg-[#EBEDDF] text-[#333A2F]"
-                        }`}
-                      >
-                        {viewInstructor.status}
-                      </span>
+                  <div>
+                    <h3 className="text-lg font-semibold border-b border-[#C8CBB8] pb-1 text-[#333A2F]">
+                      Statistics
+                    </h3>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-3">
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Students:</p>
+                        <p className="text-gray-600">{viewInstructor.students}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Rating:</p>
+                        <p className="text-gray-600">{viewInstructor.rating}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Enrolled Date:</p>
+                        <p className="text-gray-600">{viewInstructor.enrolledDate}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Payment:</p>
+                        <p className="text-gray-600">₹{viewInstructor.payment}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Courses:</p>
+                        <p className="text-gray-600">{viewInstructor.courses}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#333A2F]">Status:</p>
+                        <span
+                          className={`inline-block px-2 py-0.5 rounded-lg text-xs font-bold ${
+                            viewInstructor.status === "active"
+                              ? "bg-[#C8CBB8] text-[#333A2F]"
+                              : "bg-[#EBEDDF] text-[#333A2F]"
+                          }`}
+                        >
+                          {viewInstructor.status}
+                        </span>
+                      </div>
+                      {viewInstructor.total_learners && (
+                        <div>
+                          <p className="font-medium text-[#333A2F]">Total Learners:</p>
+                          <p className="text-gray-600">{viewInstructor.total_learners}</p>
+                        </div>
+                      )}
+                      {viewInstructor.no_of_courses_released && (
+                        <div>
+                          <p className="font-medium text-[#333A2F]">Courses Released:</p>
+                          <p className="text-gray-600">{viewInstructor.no_of_courses_released}</p>
+                        </div>
+                      )}
+                      {viewInstructor.total_reviews && (
+                        <div>
+                          <p className="font-medium text-[#333A2F]">Total Reviews:</p>
+                          <p className="text-gray-600">{viewInstructor.total_reviews}</p>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
                 )}
               </div>
 

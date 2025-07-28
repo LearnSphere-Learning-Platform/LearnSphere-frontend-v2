@@ -9,12 +9,20 @@ import {
   Filter,
   MoreVertical,
   ChevronDown,
+  BookOpen,
+  Award,
+  FileText,
+  Play,
+  Code,
+  CheckCircle,
+  Eye,
 } from "lucide-react";
 import { useCourses } from "../components/context/CourseContext";
 
 const Courses = () => {
   const { courses, updateCourseStatus } = useCourses();
 
+  // Use courses from context (now includes all 20 courses from courseData)
   const [localCourses, setLocalCourses] = useState(courses);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +32,8 @@ const Courses = () => {
   const [viewDetailsCourseId, setViewDetailsCourseId] = useState(null);
   const [showDenyModal, setShowDenyModal] = useState(false);
   const [denyReason, setDenyReason] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,6 +100,17 @@ const Courses = () => {
 
     return matchesSearch && matchesStatus;
   });
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCourses = filteredCourses.slice(startIndex, endIndex);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, statusFilter]);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -165,7 +186,7 @@ const Courses = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredCourses.map((course) => (
+          {currentCourses.map((course) => (
             <div key={course.id} className="rounded-xl shadow-xl border border-gray-200 p-6 bg-white space-y-3 relative hover:shadow-2xl transition">
               <div className="flex justify-between items-start">
                 <div>
@@ -262,33 +283,208 @@ const Courses = () => {
         )}
 
         {viewDetailsCourseId && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full relative border border-[#C8CBB8]">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
               <button
-                className="absolute top-2 right-3 text-gray-600 hover:text-black text-xl"
+                className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl font-bold z-10"
                 onClick={() => setViewDetailsCourseId(null)}
               >
                 &times;
               </button>
 
               {(() => {
-                const course = courses.find((c) => c.id === viewDetailsCourseId);
+                const course = localCourses.find((c) => c.id === viewDetailsCourseId);
                 if (!course) return <p>Course not found.</p>;
 
                 return (
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-bold text-[#333A2F]">{course.title}</h2>
-                    <p className="text-[#333A2F]"><strong>Instructor:</strong> {course.instructor}</p>
-                    <p className="text-[#333A2F]"><strong>Duration:</strong> {course.duration}</p>
-                    <p className="text-[#333A2F]"><strong>Type:</strong> {course.type}</p>
-                    <p className="text-[#333A2F]"><strong>Status:</strong> {course.status}</p>
-                    <p className="text-[#333A2F]"><strong>No. of Tests:</strong> {course.tests || 5}</p>
-                    <p className="text-[#333A2F]"><strong>PDF Available:</strong> {course.pdfAvailable ? "Yes" : "No"}</p>
-                    <p className="text-[#333A2F]"><strong>Certificate:</strong> {course.certificate ? "Available" : "Not Available"}</p>
+                  <div className="p-8">
+                    {/* Course Header */}
+                    <div className="mb-8">
+                      <div className="flex items-start gap-6 mb-6">
+                        {course.image && (
+                          <img 
+                            src={course.image} 
+                            alt={course.title}
+                            className="w-32 h-24 object-cover rounded-lg shadow-lg"
+                          />
+                        )}
+                        <div className="flex-1">
+                          <h2 className="text-3xl font-bold text-[#333A2F] mb-2">{course.title}</h2>
+                          <p className="text-gray-600 mb-4">{course.description}</p>
+                          <div className="flex items-center gap-6 text-sm">
+                            <div className="flex items-center gap-2">
+                              <Star className="w-5 h-5 text-yellow-500" />
+                              <span className="font-semibold">{course.rating}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-5 h-5 text-[#333A2F]" />
+                              <span>{course.duration}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Users className="w-5 h-5 text-[#333A2F]" />
+                              <span>{course.students} students</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Course Details Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                      {/* Left Column */}
+                      <div className="space-y-6">
+                        {/* Instructor Information */}
+                        <div className="bg-[#EBEDDF]/50 rounded-xl p-6 border border-[#C8CBB8]/30">
+                          <h3 className="text-xl font-bold text-[#333A2F] mb-4 flex items-center gap-2">
+                            <BookOpen className="w-5 h-5" />
+                            Instructor Information
+                          </h3>
+                          <div className="space-y-3">
+                            <p><strong>Name:</strong> {course.instructor}</p>
+                            {course.instructor_details && (
+                              <>
+                                <p><strong>Email:</strong> {course.instructor_details.mailid}</p>
+                                <p><strong>Rating:</strong> {course.instructor_details.overall_rating}/5</p>
+                                <p><strong>Courses:</strong> {course.instructor_details.no_of_courses_released}</p>
+                                <p><strong>Students:</strong> {course.instructor_details.total_learners}</p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Course Features */}
+                        <div className="bg-[#EBEDDF]/50 rounded-xl p-6 border border-[#C8CBB8]/30">
+                          <h3 className="text-xl font-bold text-[#333A2F] mb-4 flex items-center gap-2">
+                            <Award className="w-5 h-5" />
+                            Course Features
+                          </h3>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                              <span>Level: {course.type}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                              <span>Tests: {course.tests || 0} available</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {course.pdfAvailable ? (
+                                <CheckCircle className="w-5 h-5 text-green-600" />
+                              ) : (
+                                <span className="w-5 h-5 text-gray-400">○</span>
+                              )}
+                              <span>PDF Materials: {course.pdfAvailable ? "Available" : "Not Available"}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {course.certificate ? (
+                                <CheckCircle className="w-5 h-5 text-green-600" />
+                              ) : (
+                                <span className="w-5 h-5 text-gray-400">○</span>
+                              )}
+                              <span>Certificate: {course.certificate ? "Available" : "Not Available"}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right Column */}
+                      <div className="space-y-6">
+                        {/* Learning Outcomes */}
+                        {course.outcome && (
+                          <div className="bg-[#EBEDDF]/50 rounded-xl p-6 border border-[#C8CBB8]/30">
+                            <h3 className="text-xl font-bold text-[#333A2F] mb-4 flex items-center gap-2">
+                              <Eye className="w-5 h-5" />
+                              Learning Outcomes
+                            </h3>
+                            <ul className="space-y-2">
+                              {course.outcome.map((outcome, index) => (
+                                <li key={index} className="flex items-start gap-2">
+                                  <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                  <span className="text-sm">{outcome}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Course Skills */}
+                        {course.about_course && course.about_course.skills && (
+                          <div className="bg-[#EBEDDF]/50 rounded-xl p-6 border border-[#C8CBB8]/30">
+                            <h3 className="text-xl font-bold text-[#333A2F] mb-4 flex items-center gap-2">
+                              <Code className="w-5 h-5" />
+                              Skills You'll Learn
+                            </h3>
+                            <div className="flex flex-wrap gap-2">
+                              {course.about_course.skills.map((skill, index) => (
+                                <span 
+                                  key={index}
+                                  className="px-3 py-1 bg-[#333A2F] text-white text-xs rounded-full"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Course Content Preview */}
+                    {course.course_content && (
+                      <div className="bg-[#EBEDDF]/50 rounded-xl p-6 border border-[#C8CBB8]/30">
+                        <h3 className="text-xl font-bold text-[#333A2F] mb-4 flex items-center gap-2">
+                          <FileText className="w-5 h-5" />
+                          Course Content Preview
+                        </h3>
+                        <div className="space-y-4">
+                          {course.course_content.map((session, sessionIndex) => (
+                            <div key={sessionIndex} className="border-l-4 border-[#333A2F] pl-4">
+                              <h4 className="font-semibold text-[#333A2F] mb-2">{session.session}</h4>
+                              <p className="text-sm text-gray-600 mb-2">{session.module_description}</p>
+                              <div className="space-y-1">
+                                {session.content.map((item, itemIndex) => (
+                                  <div key={itemIndex} className="flex items-center gap-2 text-sm">
+                                    {item.type === 'video' && <Play className="w-4 h-4 text-blue-600" />}
+                                    {item.type === 'pdf' && <FileText className="w-4 h-4 text-red-600" />}
+                                    {item.type === 'assignment' && <Code className="w-4 h-4 text-purple-600" />}
+                                    {item.type === 'coding-exercise' && <Code className="w-4 h-4 text-green-600" />}
+                                    <span>{item.title}</span>
+                                    <span className="text-gray-500">({item.duration})</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })()}
             </div>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-2 pt-6">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              className="px-4 py-2 bg-[#EBEDDF] text-[#333A2F] font-bold rounded-lg hover:bg-[#C8CBB8] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Previous
+            </button>
+            <span className="px-4 text-sm text-gray-400">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              className="px-4 py-2 bg-[#EBEDDF] text-[#333A2F] font-bold rounded-lg hover:bg-[#C8CBB8] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Next
+            </button>
           </div>
         )}
       </div>

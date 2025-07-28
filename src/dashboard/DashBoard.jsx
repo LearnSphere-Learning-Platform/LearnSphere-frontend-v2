@@ -45,6 +45,7 @@ import Quiz from '../quiz/Quiz';
 import AssignmentForm from '../quiz/AssignmentForm';
 import AssignmentReview from '../quiz/AssignmentReview';
 import CodeEditor from '../quiz/CodeEditor';
+import CourseFeedbackForm from './components/CourseFeedbackForm';
 
 
 // Quiz data for different topics
@@ -332,6 +333,9 @@ const Dashboard = () => {
   const [assignmentSubmissions, setAssignmentSubmissions] = useState({});
   const [showAssignmentReview, setShowAssignmentReview] = useState(false);
   const [showCodingExercise, setShowCodingExercise] = useState(false);
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [courseFeedback, setCourseFeedback] = useState({});
 
   const videoRef = useRef(null);
 
@@ -381,6 +385,11 @@ const Dashboard = () => {
 
       // Load coding exercise results
       const codingResults = JSON.parse(localStorage.getItem('codingResults') || '{}');
+      
+      // Load feedback data
+      const feedbackData = JSON.parse(localStorage.getItem('courseFeedback') || '{}');
+      setCourseFeedback(feedbackData);
+      setFeedbackSubmitted(feedbackData[currentCourse?.id] ? true : false);
       
       // Mark completed lessons
       setCourseContent(prev => {
@@ -687,6 +696,66 @@ const Dashboard = () => {
     }
   };
 
+  const handleFeedbackSubmit = (feedbackData) => {
+    console.log('Feedback submitted:', feedbackData);
+    
+    // Save feedback to localStorage
+    const allFeedback = JSON.parse(localStorage.getItem('courseFeedback') || '{}');
+    allFeedback[currentCourse.id] = {
+      ...feedbackData,
+      submittedAt: new Date().toISOString(),
+      courseId: currentCourse.id,
+      courseName: currentCourse.course_name
+    };
+    localStorage.setItem('courseFeedback', JSON.stringify(allFeedback));
+    
+    // Update state
+    setCourseFeedback(allFeedback);
+    setFeedbackSubmitted(true);
+    setShowFeedbackForm(false);
+    
+    alert('Thank you for your feedback! You can now download your certificate.');
+  };
+
+  const handleDownloadCertificate = () => {
+    if (!canGetCertificate()) {
+      alert('Please complete the course and submit feedback to download your certificate.');
+      return;
+    }
+    
+    // Create certificate content
+    const certificateContent = `
+Certificate of Completion
+
+This is to certify that the student has successfully completed the course:
+
+${currentCourse.course_name}
+
+Course Details:
+- Instructor: ${currentCourse.instructor.name}
+- Duration: ${currentCourse.total_no_hours} hours
+- Completion Date: ${new Date().toLocaleDateString()}
+- Progress: 100%
+- Feedback Rating: ${courseFeedback[currentCourse.id]?.rating || 'N/A'} stars
+
+This certificate is awarded upon successful completion of all course materials, assessments, and submission of course feedback.
+
+Certificate ID: ${Date.now()}-${currentCourse.id}
+Generated on: ${new Date().toLocaleString()}
+    `;
+    
+    // Create and download the certificate
+    const blob = new Blob([certificateContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${currentCourse.course_name}_Certificate.txt`;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   const getCodingExerciseData = (lessonTitle) => {
     return codingExerciseData[lessonTitle] || {
       instructions: "Complete the coding exercise as described.",
@@ -698,7 +767,7 @@ const Dashboard = () => {
   };
 
   const canGetCertificate = () => {
-    return getProgressPercentage() === 100 && overallTestPassed;
+    return getProgressPercentage() === 100 && overallTestPassed && feedbackSubmitted;
   };
 
   // Function to check if lesson should show video player
@@ -1055,9 +1124,34 @@ const Dashboard = () => {
             quizAttempts={quizAttempts}
             assignmentSubmissions={assignmentSubmissions}
             showCodingExercise={showCodingExercise}
+            showFeedbackForm={showFeedbackForm}
+            setShowFeedbackForm={setShowFeedbackForm}
+            feedbackSubmitted={feedbackSubmitted}
+            handleDownloadCertificate={handleDownloadCertificate}
+            overallTestPassed={overallTestPassed}
           />
         </div>
       </div>
+
+      {/* Feedback Modal */}
+      {showFeedbackForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-[#333A2F]">Course Feedback</h2>
+                <button
+                  onClick={() => setShowFeedbackForm(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <CourseFeedbackForm onSubmit={handleFeedbackSubmit} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
