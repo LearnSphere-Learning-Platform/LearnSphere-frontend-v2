@@ -1,6 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { Trash2, Eye, Video, FileText, HelpCircle, ClipboardList, Zap, CodeIcon } from "lucide-react";
+import {
+  Trash2,
+  Eye,
+  Video,
+  FileText,
+  HelpCircle,
+  ClipboardList,
+  Zap,
+  CodeIcon,
+} from "lucide-react";
 import QuizForm from "../quiz/QuizForm";
 import InstructorAssignmentForm from "../quiz/InstructorAssignmentForm";
 import InstructorCodingExerciseForm from "../quiz/InstructorCodingExerciseForm";
@@ -43,20 +52,20 @@ const ContentForm = ({
     }
   };
 
-  const handleQuizSave = (quizConfig) => {
-    const updatedContent = { ...content, quizConfig };
+  const handleQuizSave = (quiz_config) => {
+    const updatedContent = { ...content, quiz_config };
     onChange(updatedContent);
     setShowQuizBuilder(false);
   };
 
-  const handleAssignmentSave = (assignmentConfig) => {
-    const updatedContent = { ...content, assignmentConfig };
+  const handleAssignmentSave = (assignment_config) => {
+    const updatedContent = { ...content, assignment_config };
     onChange(updatedContent);
     setShowAssignmentBuilder(false);
   };
 
-  const handleCodingSave = (codingConfig) => {
-    const updatedContent = { ...content, codingConfig };
+  const handleCodingSave = (coding_config) => {
+    const updatedContent = { ...content, coding_config };
     onChange(updatedContent);
     setShowCodingBuilder(false);
   };
@@ -203,9 +212,10 @@ const ContentForm = ({
               >
                 Open Assignment Builder
               </button>
-              {content.assignmentConfig && (
+              {content.assignment_config && (
                 <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
-                  ✓ Assignment configured with {content.assignmentConfig.points || 0} points
+                  ✓ Assignment configured with{" "}
+                  {content.assignment_config.points || 0} points
                 </p>
               )}
             </div>
@@ -239,9 +249,10 @@ const ContentForm = ({
               >
                 Open Quiz Builder
               </button>
-              {content.quizConfig && (
+              {content.quiz_config && (
                 <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
-                  ✓ Quiz configured with {content.quizConfig.questions?.length || 0} questions
+                  ✓ Quiz configured with{" "}
+                  {content.quiz_config.questions?.length || 0} questions
                 </p>
               )}
             </div>
@@ -275,9 +286,10 @@ const ContentForm = ({
               >
                 Open Coding Exercise Builder
               </button>
-              {content.codingConfig && (
+              {content.coding_config && (
                 <p className="text-xs text-green-600 p-2 bg-green-50 rounded">
-                  ✓ Exercise configured with {content.codingConfig.testCases?.length || 0} test cases
+                  ✓ Exercise configured with{" "}
+                  {content.coding_config.testCases?.length || 0} test cases
                 </p>
               )}
             </div>
@@ -311,19 +323,20 @@ const ContentForm = ({
               {content.title || "Untitled content"}
             </p>
             {/* Configuration Status */}
-            {content.quizConfig && (
+            {content.quiz_config && (
               <p className="text-xs text-green-600 font-medium">
-                ✓ Quiz: {content.quizConfig.questions?.length || 0} questions
+                ✓ Quiz: {content.quiz_config.questions?.length || 0} questions
               </p>
             )}
-            {content.assignmentConfig && (
+            {content.assignment_config && (
               <p className="text-xs text-purple-600 font-medium">
-                ✓ Assignment: {content.assignmentConfig.points || 0} points
+                ✓ Assignment: {content.assignment_config.points || 0} points
               </p>
             )}
-            {content.codingConfig && (
+            {content.coding_config && (
               <p className="text-xs text-green-600 font-medium">
-                ✓ Coding: {content.codingConfig.testCases?.length || 0} test cases
+                ✓ Coding: {content.coding_config.testCases?.length || 0} test
+                cases
               </p>
             )}
           </div>
@@ -426,7 +439,7 @@ const ContentForm = ({
         <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
           <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
             <QuizForm
-              quizData={content.quizConfig}
+              quizData={content.quiz_config}
               onSave={handleQuizSave}
               onCancel={() => setShowQuizBuilder(false)}
             />
@@ -438,7 +451,7 @@ const ContentForm = ({
         <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
           <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
             <InstructorAssignmentForm
-              assignmentData={content.assignmentConfig}
+              assignmentData={content.assignment_config}
               onSave={handleAssignmentSave}
               onCancel={() => setShowAssignmentBuilder(false)}
             />
@@ -450,7 +463,7 @@ const ContentForm = ({
         <div className="fixed inset-0 backdrop-blur-sm bg-[#EBEDDF]/50 flex items-center justify-center z-[9999] p-4 top-0">
           <div className="bg-[#EBEDDF]/95 backdrop-blur-md rounded-lg max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-[#C8CBB8]">
             <InstructorCodingExerciseForm
-              exerciseData={content.codingConfig}
+              exerciseData={content.coding_config}
               onSave={handleCodingSave}
               onCancel={() => setShowCodingBuilder(false)}
             />

@@ -57,11 +57,12 @@ const SessionFormList = ({
   };
 
   const handleSessionChange = (index, updatedSession) => {
-    const updated = [...course.course_content];
-    updated[index] = updatedSession;
+    const updated = course.course_content.map((item, i) =>
+      i === index ? { ...updatedSession } : item
+    ); // new array/object
     setCourse((prev) => ({
       ...prev,
-      course_content: updated,
+      course_content: [...updated], // new array
     }));
 
     // Clear validation errors for this session when data changes

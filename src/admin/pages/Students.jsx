@@ -29,22 +29,134 @@ import {
 } from "../components/ui/dropdown-menu";
 
 const studentsData = [
-  { id: 1, name: "Emma Thompson", email: "emma.thom@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 5 },
-  { id: 2, name: "Marcus Johnson", email: "marcus.j@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 3 },
-  { id: 3, name: "Sophia Chen", email: "sophia.chen@email.com", status: "inactive", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 2 },
-  { id: 4, name: "David Rodriguez", email: "david.r@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 4 },
-  { id: 5, name: "John Doe", email: "john.doe@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 1 },
-  { id: 6, name: "Jane Smith", email: "jane.smith@email.com", status: "inactive", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 3 },
-  { id: 7, name: "Alex Carter", email: "alex.carter@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 2 },
-  { id: 8, name: "Mia Lee", email: "mia.lee@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 4 },
-  { id: 9, name: "Noah Kim", email: "noah.kim@email.com", status: "inactive", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 3 },
-  { id: 10, name: "Lily Brown", email: "lily.brown@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 5 },
-  { id: 11, name: "James Wilson", email: "james.w@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 1 },
-  { id: 12, name: "Olivia Martin", email: "olivia.m@email.com", status: "inactive", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 2 },
-  { id: 13, name: "Ethan Walker", email: "ethan.w@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 4 },
-  { id: 14, name: "Ava Davis", email: "ava.d@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 3 },
-  { id: 15, name: "Lucas Miller", email: "lucas.m@email.com", status: "inactive", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 2 },
-  { id: 16, name: "Grace Taylor", email: "grace.t@email.com", status: "active", avatar: "/placeholder-avatar.jpg", coursesEnrolled: 1 },
+  {
+    id: 1,
+    name: "Emma Thompson",
+    email: "emma.thom@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 5,
+  },
+  {
+    id: 2,
+    name: "Marcus Johnson",
+    email: "marcus.j@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 3,
+  },
+  {
+    id: 3,
+    name: "Sophia Chen",
+    email: "sophia.chen@email.com",
+    status: "inactive",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 2,
+  },
+  {
+    id: 4,
+    name: "David Rodriguez",
+    email: "david.r@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 4,
+  },
+  {
+    id: 5,
+    name: "John Doe",
+    email: "john.doe@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 1,
+  },
+  {
+    id: 6,
+    name: "Jane Smith",
+    email: "jane.smith@email.com",
+    status: "inactive",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 3,
+  },
+  {
+    id: 7,
+    name: "Alex Carter",
+    email: "alex.carter@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 2,
+  },
+  {
+    id: 8,
+    name: "Mia Lee",
+    email: "mia.lee@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 4,
+  },
+  {
+    id: 9,
+    name: "Noah Kim",
+    email: "noah.kim@email.com",
+    status: "inactive",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 3,
+  },
+  {
+    id: 10,
+    name: "Lily Brown",
+    email: "lily.brown@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 5,
+  },
+  {
+    id: 11,
+    name: "James Wilson",
+    email: "james.w@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 1,
+  },
+  {
+    id: 12,
+    name: "Olivia Martin",
+    email: "olivia.m@email.com",
+    status: "inactive",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 2,
+  },
+  {
+    id: 13,
+    name: "Ethan Walker",
+    email: "ethan.w@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 4,
+  },
+  {
+    id: 14,
+    name: "Ava Davis",
+    email: "ava.d@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 3,
+  },
+  {
+    id: 15,
+    name: "Lucas Miller",
+    email: "lucas.m@email.com",
+    status: "inactive",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 2,
+  },
+  {
+    id: 16,
+    name: "Grace Taylor",
+    email: "grace.t@email.com",
+    status: "active",
+    avatar: "/placeholder-avatar.jpg",
+    coursesEnrolled: 1,
+  },
 ];
 
 const Students = () => {
@@ -57,7 +169,7 @@ const Students = () => {
   const [filteredStudents, setFilteredStudents] = useState(studentsData);
   const [csvUploadVisible, setCsvUploadVisible] = useState(false);
   const [csvStudents, setCsvStudents] = useState([]);
-const currentUser = { role: "admin" }; // You can change to "student" to test
+  const currentUser = { role: "admin" }; // You can change to "student" to test
 
   const studentsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
@@ -143,7 +255,7 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
           <div className="flex flex-col sm:flex-row gap-4">
             <form
               className="flex flex-1 gap-2"
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 handleSearch(searchTerm);
               }}
@@ -154,7 +266,7 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
                   placeholder="Search students by name or email..."
                   className="pl-10 bg-[#EBEDDF] rounded-lg border-none focus:ring-2 focus:ring-[#C8CBB8]"
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
               <Button
@@ -180,18 +292,26 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
           {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {paginatedStudents.map((student) => (
-              <Card key={student.id} className="bg-white rounded-xl shadow-xl border border-gray-200 hover:shadow-2xl transition">
+              <Card
+                key={student.id}
+                className="bg-white rounded-xl shadow-xl border border-gray-200 hover:shadow-2xl transition"
+              >
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <Avatar className="h-10 w-10 bg-[#EBEDDF]">
                         <AvatarImage src={student.avatar} />
                         <AvatarFallback className="bg-[#EBEDDF] text-[#333A2F] font-bold">
-                          {student.name.split(" ").map((n) => n[0]).join("")}
+                          {student.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
                         </AvatarFallback>
                       </Avatar>
                       <div>
-                        <h3 className="font-semibold text-[#333A2F] text-sm">{student.name}</h3>
+                        <h3 className="font-semibold text-[#333A2F] text-sm">
+                          {student.name}
+                        </h3>
                         <p className="text-xs text-gray-600">{student.email}</p>
                       </div>
                     </div>
@@ -201,15 +321,24 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
                           <MoreVertical className="w-4 h-4" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-48">
-                        <DropdownMenuItem onClick={() => handleViewProfile(student)}>
+                      <DropdownMenuContent
+                        align="end"
+                        className="w-48 bg-white"
+                      >
+                        <DropdownMenuItem
+                          onClick={() => handleViewProfile(student)}
+                        >
                           <Eye className="w-4 h-4 mr-2" />
                           View Profile
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => handleManageStudent(student, "message")}> 
+                        <DropdownMenuItem
+                          onClick={() =>
+                            handleManageStudent(student, "message")
+                          }
+                        >
                           <AlertTriangle className="w-4 h-4 mr-2" />
                           Message
-                        </DropdownMenuItem>       
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
@@ -220,7 +349,9 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
                         onChange={(e) => {
                           const newStatus = e.target.value;
                           const updated = filteredStudents.map((s) =>
-                            s.id === student.id ? { ...s, status: newStatus } : s
+                            s.id === student.id
+                              ? { ...s, status: newStatus }
+                              : s
                           );
                           setFilteredStudents(updated);
                         }}
@@ -272,7 +403,9 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
               variant="outline"
               size="sm"
               disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
               className="bg-[#EBEDDF] text-[#333A2F] font-bold rounded-lg"
             >
               Next
@@ -298,7 +431,10 @@ const currentUser = { role: "admin" }; // You can change to "student" to test
           />
         )}
 
-        <AddStudentDialog open={addStudentOpen} onOpenChange={setAddStudentOpen} />
+        <AddStudentDialog
+          open={addStudentOpen}
+          onOpenChange={setAddStudentOpen}
+        />
       </div>
     </DashboardLayout>
   );

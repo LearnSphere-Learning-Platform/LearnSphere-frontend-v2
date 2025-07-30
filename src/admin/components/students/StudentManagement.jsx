@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -17,12 +12,7 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Badge } from "../ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   UserCheck,
   UserX,
@@ -69,15 +59,28 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
           <CardContent className="space-y-3">
             <div className="flex items-center justify-between">
               <span>Current Status</span>
-              <Badge variant={student.status === "active" ? "default" : "secondary"}>
+              <Badge
+                variant={student.status === "active" ? "default" : "secondary"}
+              >
                 {student.status}
               </Badge>
             </div>
             <div className="flex gap-2">
               <Button
                 size="sm"
-                variant={student.status === "active" ? "destructive" : "default"}
-                onClick={() => handleAction(student.status === "active" ? "deactivated" : "activated")}
+                variant={
+                  student.status === "active" ? "destructive" : "default"
+                }
+                className={
+                  student.status === "active"
+                    ? "bg-red-600 text-white hover:bg-red-700 font-bold transition-colors"
+                    : "bg-[#333A2F] text-white hover:bg-[#22261C] font-bold transition-colors"
+                }
+                onClick={() =>
+                  handleAction(
+                    student.status === "active" ? "deactivated" : "activated"
+                  )
+                }
                 disabled={loading}
               >
                 {student.status === "active" ? (
@@ -95,6 +98,7 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
               <Button
                 size="sm"
                 variant="destructive"
+                className="bg-red-600 text-white hover:bg-red-700 font-bold transition-colors"
                 onClick={() => handleAction("deleted")}
                 disabled={loading}
               >
@@ -122,7 +126,11 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" placeholder="Type your message here..." />
           </div>
-          <Button onClick={() => handleAction("message sent")} disabled={loading}>
+          <Button
+            className="bg-[#333A2F] text-white hover:bg-[#22261C] font-bold transition-colors"
+            onClick={() => handleAction("message sent")}
+            disabled={loading}
+          >
             <Mail className="w-4 h-4 mr-2" />
             Send Message
           </Button>
@@ -142,8 +150,15 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {["Introduction to React", "Advanced JavaScript", "Data Structures"].map((course, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-muted/20 rounded-lg">
+          {[
+            "Introduction to React",
+            "Advanced JavaScript",
+            "Data Structures",
+          ].map((course, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between p-3 bg-muted/20 rounded-lg"
+            >
               <span className="font-medium">{course}</span>
               <Button
                 size="sm"
@@ -172,12 +187,19 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="python-basics">Python Basics</SelectItem>
-                <SelectItem value="web-design">Web Design Fundamentals</SelectItem>
-                <SelectItem value="machine-learning">Machine Learning Intro</SelectItem>
+                <SelectItem value="web-design">
+                  Web Design Fundamentals
+                </SelectItem>
+                <SelectItem value="machine-learning">
+                  Machine Learning Intro
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={() => handleAction("enrolled in new course")} disabled={loading}>
+          <Button
+            onClick={() => handleAction("enrolled in new course")}
+            disabled={loading}
+          >
             <BookOpen className="w-4 h-4 mr-2" />
             Enroll Student
           </Button>
@@ -214,7 +236,7 @@ export const StudentManagement = ({ student, open, onOpenChange, action }) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader>
           <DialogTitle>{getTitle()}</DialogTitle>
           <p className="text-muted-foreground">

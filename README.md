@@ -19,3 +19,5 @@ npm install prismjs
 npm install react-simple-code-editor
 
 npm install @babel/standalone
+
+npm install sweetalert2

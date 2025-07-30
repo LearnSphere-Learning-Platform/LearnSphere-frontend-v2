@@ -11,26 +11,20 @@ const ContentFormList = ({
 }) => {
   const handleAddContent = () => {
     const newContent = {
-      id: Date.now(),
       title: "",
       type: "video", // Default to video
       duration: "",
       preview: false,
       url: "",
       description: "",
-      resources: [],
-      questions: [],
-      file_size: "",
-      download_url: "",
       file: null,
     };
-    onChange([...content, newContent]);
+    onChange([...content, { ...newContent }]); // ensure new array/object
   };
 
   const handleRemoveContent = (index) => {
-    const updated = [...content];
-    updated.splice(index, 1);
-    onChange(updated);
+    const updated = content.slice(0, index).concat(content.slice(index + 1)); // new array
+    onChange([...updated]);
 
     // Clear validation errors for this content item
     if (setValidationErrors) {
@@ -47,9 +41,10 @@ const ContentFormList = ({
   };
 
   const handleContentChange = (index, updatedContent) => {
-    const updated = [...content];
-    updated[index] = updatedContent;
-    onChange(updated);
+    const updated = content.map((item, i) =>
+      i === index ? { ...updatedContent } : item
+    ); // new array/object
+    onChange([...updated]);
 
     // Clear validation errors for this content item when data changes
     if (setValidationErrors) {

@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -58,6 +64,7 @@ import AdminAnalytics from "./admin/pages/Analytics";
 import AdminReports from "./admin/pages/Reports";
 import AdminPayments from "./admin/pages/Payments";
 import AdminFlagged from "./admin/pages/Flagged";
+import ResetPassword from "./pages/ResetPassword ";
 
 const queryClient = new QueryClient();
 
@@ -65,28 +72,29 @@ function AppContent() {
   const location = useLocation();
 
   // Check if current path matches any defined routes
-  const isDefinedRoute = [
-    "/",
-    "/login",
-    "/signup", 
-    "/forgot-password",
-    "/catalog",
-    "/instructor-details",
-    "/not-authorized"
-  ].some(route => location.pathname === route) ||
-  location.pathname.startsWith("/admin") ||
-  location.pathname.startsWith("/user/") ||
-  location.pathname.startsWith("/instructor/") ||
-  location.pathname.startsWith("/course/") ||
-  location.pathname.includes("/quiz/") ||
-  location.pathname.includes("/assignment/") ||
-  location.pathname.includes("/coding/");
+  const isDefinedRoute =
+    [
+      "/",
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/catalog",
+      "/instructor-details",
+      "/not-authorized",
+    ].some((route) => location.pathname === route) ||
+    location.pathname.startsWith("/admin") ||
+    location.pathname.startsWith("/user/") ||
+    location.pathname.startsWith("/instructor/") ||
+    location.pathname.startsWith("/course/") ||
+    location.pathname.includes("/quiz/") ||
+    location.pathname.includes("/assignment/") ||
+    location.pathname.includes("/coding/");
 
   const hideFooter =
-    location.pathname === "/login" || 
-    location.pathname === "/signup" || 
-    location.pathname === "/forgot-password" || 
-    location.pathname === "/instructor-details" || 
+    location.pathname === "/login" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/forgot-password" ||
+    location.pathname === "/instructor-details" ||
     location.pathname.startsWith("/admin") ||
     location.pathname.includes("/quiz/") ||
     location.pathname.includes("/assignment/") ||
@@ -101,7 +109,7 @@ function AppContent() {
     location.pathname.includes("/quiz/") ||
     location.pathname.includes("/assignment/") ||
     location.pathname.includes("/coding/") ||
-    !isDefinedRoute; 
+    !isDefinedRoute;
 
   return (
     <div className="min-h-screen bg-white">
@@ -123,35 +131,66 @@ function AppContent() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/catalog" element={<CourseCatalog />} />
         <Route path="/course/:id" element={<CoursePageWrapper />} />
-        <Route path="/user/course/:id/payment" element={<CoursePaymentWrapper />} />
+        <Route
+          path="/user/course/:id/payment"
+          element={<CoursePaymentWrapper />}
+        />
         <Route path="/instructor/:id" element={<InstructorRouteWrapper />} />
         <Route path="/instructor-details" element={<InstructorDetails />} />
         <Route path="/not-authorized" element={<NotAuthorized />} />
         {/* User (student and instructor) learning routes */}
-        <Route element={<RoleRoute allowedRoles={['student', 'instructor']} />}>
+        <Route element={<RoleRoute allowedRoles={["student", "instructor"]} />}>
           <Route path="/user/dashboard" element={<DashBoard />} />
           <Route path="/user/my-learning" element={<MyLearningPage />} />
           <Route path="/user/profile" element={<Profile />} />
-          <Route path="/user/payment-history" element={<CoursePaymentHistory />} />
+          <Route
+            path="/user/payment-history"
+            element={<CoursePaymentHistory />}
+          />
           <Route path="/user/course/:id/dashboard" element={<DashBoard />} />
           <Route path="/user/course/:id" element={<CoursePageWrapper />} />
-          <Route path="/user/course/:courseId/quiz/:lessonId" element={<QuizPage />} />
-          <Route path="/user/course/:courseId/assignment/:lessonId" element={<AssignmentPage />} />
-          <Route path="/user/course/:courseId/coding/:lessonId" element={<CodingExercisePage />} />
+          <Route
+            path="/user/course/:courseId/quiz/:lessonId"
+            element={<QuizPage />}
+          />
+          <Route
+            path="/user/course/:courseId/assignment/:lessonId"
+            element={<AssignmentPage />}
+          />
+          <Route
+            path="/user/course/:courseId/coding/:lessonId"
+            element={<CodingExercisePage />}
+          />
         </Route>
         {/* Instructor routes (instructor and admin) */}
-        <Route element={<RoleRoute allowedRoles={['instructor', 'admin']} />}>
-          <Route path="/instructor/dashboard" element={<InstructorDashboard />} />
-          <Route path="/instructor/course-adding" element={<CourseAddingForm />} />
-          <Route path="/instructor/course-adding/:courseId" element={<CourseAddingForm />} />
-          <Route path="/instructor/announcement" element={<InstructorAnnouncementForm />} />
+        <Route element={<RoleRoute allowedRoles={["instructor", "admin"]} />}>
+          <Route
+            path="/instructor/dashboard"
+            element={<InstructorDashboard />}
+          />
+          <Route
+            path="/instructor/course-adding"
+            element={<CourseAddingForm />}
+          />
+          <Route
+            path="/instructor/course-adding/:courseId"
+            element={<CourseAddingForm />}
+          />
+          <Route
+            path="/instructor/announcement"
+            element={<InstructorAnnouncementForm />}
+          />
           <Route path="/instructor/course/:id" element={<CourseView />} />
-          <Route path="/instructor/profile" element={<InstructorProfileWrapper />} />
+          <Route
+            path="/instructor/profile"
+            element={<InstructorProfileWrapper />}
+          />
         </Route>
         {/* Admin routes */}
-        <Route element={<RoleRoute allowedRoles={['admin']} />}>
+        <Route element={<RoleRoute allowedRoles={["admin"]} />}>
           <Route
             path="/admin/*"
             element={
@@ -160,13 +199,25 @@ function AppContent() {
                   <SidebarProvider>
                     <CourseProvider>
                       <Routes>
-                        <Route path="" element={<Navigate to="dashboard" replace />} />
+                        <Route
+                          path=""
+                          element={<Navigate to="dashboard" replace />}
+                        />
                         <Route path="dashboard" element={<AdminIndex />} />
-                        <Route path="notifications" element={<AdminNotifications />} />
+                        <Route
+                          path="notifications"
+                          element={<AdminNotifications />}
+                        />
                         <Route path="students" element={<AdminStudents />} />
                         <Route path="courses" element={<AdminCourses />} />
-                        <Route path="course/:id" element={<AdminCourseDashboard />} />
-                        <Route path="instructors" element={<AdminInstructors />} />
+                        <Route
+                          path="course/:id"
+                          element={<AdminCourseDashboard />}
+                        />
+                        <Route
+                          path="instructors"
+                          element={<AdminInstructors />}
+                        />
                         <Route path="analytics" element={<AdminAnalytics />} />
                         <Route path="reports" element={<AdminReports />} />
                         <Route path="payments" element={<AdminPayments />} />
@@ -182,7 +233,7 @@ function AppContent() {
             }
           />
         </Route>
-        
+
         {/* 404 - Catch all unmatched routes */}
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -202,11 +253,19 @@ function App() {
 
 function InstructorProfileWrapper() {
   // Get instructor data from localStorage
-  const instructorDataString = localStorage.getItem('instructorData');
-  const profile = instructorDataString ? JSON.parse(instructorDataString) : null;
+  const instructorDataString = localStorage.getItem("instructorData");
+  const profile = instructorDataString
+    ? JSON.parse(instructorDataString)
+    : null;
   // You can add editing logic if needed, for now just show profile
   if (!profile) return <div>Loading...</div>;
-  return <InstructorProfile profile={profile} isEditing={false} handleChange={() => {}} />;
+  return (
+    <InstructorProfile
+      profile={profile}
+      isEditing={false}
+      handleChange={() => {}}
+    />
+  );
 }
 
 export default App;
