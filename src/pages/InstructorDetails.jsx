@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPlus, FaTrash, FaArrowLeft } from "react-icons/fa";
+import { readJsonFromLocalStorage } from "../utils/safeJsonParse";
 
 const InstructorDetails = () => {
   const navigate = useNavigate();
@@ -127,7 +128,7 @@ const InstructorDetails = () => {
   const handleSubmit = () => {
     if (validateStep(3)) {
       // Get signup data
-      const signupData = JSON.parse(localStorage.getItem('signupData') || '{}');
+      const signupData = readJsonFromLocalStorage('signupData', {});
       
       // Combine all data
       const completeData = {
@@ -141,7 +142,7 @@ const InstructorDetails = () => {
       // ALSO, create the user session object so the profile page knows we are logged in.
       localStorage.setItem('user', JSON.stringify(completeData));
       // Add instructor to users array for login
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const users = readJsonFromLocalStorage('users', []);
       users.push(completeData);
       localStorage.setItem('users', JSON.stringify(users));
       

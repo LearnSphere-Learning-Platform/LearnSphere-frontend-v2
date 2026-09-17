@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { readJsonFromLocalStorage } from '../utils/safeJsonParse';
 
 const InstructorProfile = (props) => {
   // If props.profile is passed, use it; otherwise, try to load from localStorage
-  const initialProfile = props.profile || JSON.parse(localStorage.getItem('instructorData') || '{}');
+  const initialProfile = props.profile || readJsonFromLocalStorage('instructorData', {});
   const [profile, setProfile] = useState(initialProfile);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -17,7 +18,7 @@ const InstructorProfile = (props) => {
     localStorage.setItem('instructorData', JSON.stringify(profile));
     localStorage.setItem('user', JSON.stringify(profile));
     // Update users array
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users = readJsonFromLocalStorage('users', []);
     const idx = users.findIndex(u => u.email === profile.email);
     if (idx !== -1) {
       users[idx] = profile;

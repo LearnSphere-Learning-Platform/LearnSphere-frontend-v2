@@ -29,12 +29,13 @@ import {
   ClipboardCheck
 } from 'lucide-react';
 import { MdOutlineAssignment } from 'react-icons/md';
-import VideoPlayer from './components/VideoPlayer';
-import LessonSidebar from './components/LessonSidebar';
-import TabNavigation from './components/TabNavigation';
-import TestContent from './components/TestContent';
+import VideoPlayer from '../components/course-content/VideoPlayer';
+import LessonSidebar from '../components/course-content/LessonSidebar';
+import TabNavigation from '../components/course-content/TabNavigation';
+import TestContent from '../components/course-content/TestContent';
 import CourseList from './components/CourseList';
-import courseData from '../catalog/CourseData';
+import useCourseById from '../hooks/useCourseById';
+import useAllCourses from '../hooks/useAllCourses';
 import LessonInfo from './components/LessonInfo';
 import NotesTab from './components/NotesTab';
 import DiscussionTab from './components/DiscussionTab';
@@ -46,6 +47,7 @@ import AssignmentForm from '../quiz/AssignmentForm';
 import AssignmentReview from '../quiz/AssignmentReview';
 import CodeEditor from '../quiz/CodeEditor';
 import CourseFeedbackForm from './components/CourseFeedbackForm';
+import { readJsonFromLocalStorage } from '../utils/safeJsonParse';
 
 
 // Quiz data for different topics
@@ -296,17 +298,26 @@ print(add_numbers(5, 3))`,
   }
 };
 
+// Loads the course from the backend, then renders the dashboard with it
 const Dashboard = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  console.log('Dashboard Debug - URL params:', { id });
-  const course = courseData.find(c => String(c.id) === String(id));
-  console.log('Dashboard Debug - Found course:', course);
+  const { course, loading } = useCourseById(id);
+  const allCourses = useAllCourses();
+
+  if (loading) {
+    return <div className="text-center p-6 text-gray-700">Loading course...</div>;
+  }
 
   // If course not found, show message
   if (!course) {
     return <div className="text-center p-6 text-gray-700">Course not found</div>;
   }
+
+  return <DashboardContent course={course} allCourses={allCourses} />;
+};
+
+const DashboardContent = ({ course, allCourses }) => {
+  const navigate = useNavigate();
 
   // All state and logic below should use this course only
   const [currentCourse] = useState(course);
@@ -339,34 +350,32 @@ const Dashboard = () => {
 
   const videoRef = useRef(null);
 
-  // Initialize course content from catalogData
+  // Initialize course content for the current course (from the backend course data)
   useEffect(() => {
     const contentMap = {};
-    courseData.forEach(course => {
-      contentMap[course.id] = {
-        modules: course.course_content.map((session, index) => ({
-          id: index + 1,
-          title: session.session,
-          lessons: (session.videos || session.content || []).map((video, videoIndex) => ({
-            id: video.id,
-            title: video.title,
-            duration: video.duration,
-            completed: false,
-            videoUrl: video.preview && course.preview ? 
-              `https://www.youtube.com/embed/${course.preview.split('v=')[1]?.split('&')[0]}` : null,
-            type: video.type // Preserve original types for icon display
-          }))
+    contentMap[course.id] = {
+      modules: course.course_content.map((session, index) => ({
+        id: index + 1,
+        title: session.session,
+        lessons: (session.videos || session.content || []).map((video) => ({
+          id: video.id,
+          title: video.title,
+          duration: video.duration,
+          completed: false,
+          videoUrl: video.type === 'video' ? video.url : null,
+          // the backend calls it "coding", the dashboard expects "coding-exercise"
+          type: video.type === 'coding' ? 'coding-exercise' : video.type
         }))
-      };
-    });
+      }))
+    };
     setCourseContent(contentMap);
-  }, []);
+  }, [course.id]);
 
   // Load completion data from localStorage
   useEffect(() => {
     if (course) {
       // Load quiz results
-      const quizResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+      const quizResults = readJsonFromLocalStorage('quizResults', {});
       const newQuizScores = {};
       const newQuizAttempts = {};
       
@@ -380,14 +389,14 @@ const Dashboard = () => {
       setQuizAttempts(newQuizAttempts);
 
       // Load assignment submissions
-      const assignments = JSON.parse(localStorage.getItem('assignmentSubmissions') || '{}');
+      const assignments = readJsonFromLocalStorage('assignmentSubmissions', {});
       setAssignmentSubmissions(assignments);
 
       // Load coding exercise results
-      const codingResults = JSON.parse(localStorage.getItem('codingResults') || '{}');
+      const codingResults = readJsonFromLocalStorage('codingResults', {});
       
       // Load feedback data
-      const feedbackData = JSON.parse(localStorage.getItem('courseFeedback') || '{}');
+      const feedbackData = readJsonFromLocalStorage('courseFeedback', {});
       setCourseFeedback(feedbackData);
       setFeedbackSubmitted(feedbackData[currentCourse?.id] ? true : false);
       
@@ -420,12 +429,12 @@ const Dashboard = () => {
   useEffect(() => {
     if (!currentLesson && currentCourse && currentCourse.course_content?.length > 0) {
       const firstModule = currentCourse.course_content[0];
-      if (firstModule && firstModule.videos && firstModule.videos.length > 0) {
+      const firstContent = (firstModule.videos || firstModule.content || [])[0];
+      if (firstContent) {
         setCurrentLesson({
-          ...firstModule.videos[0],
-          videoUrl: firstModule.videos[0].preview && currentCourse.preview
-            ? `https://www.youtube.com/embed/${currentCourse.preview.split('v=')[1]?.split('&')[0]}`
-            : null
+          ...firstContent,
+          videoUrl: firstContent.type === 'video' ? firstContent.url : null,
+          type: firstContent.type === 'coding' ? 'coding-exercise' : firstContent.type
         });
       }
     }
@@ -700,7 +709,7 @@ const Dashboard = () => {
     console.log('Feedback submitted:', feedbackData);
     
     // Save feedback to localStorage
-    const allFeedback = JSON.parse(localStorage.getItem('courseFeedback') || '{}');
+    const allFeedback = readJsonFromLocalStorage('courseFeedback', {});
     allFeedback[currentCourse.id] = {
       ...feedbackData,
       submittedAt: new Date().toISOString(),
@@ -857,6 +866,7 @@ Generated on: ${new Date().toLocaleString()}
       case 'discussion':
         return (
           <DiscussionTab
+            courseId={id}
             discussions={discussions}
             likedComments={likedComments}
             handleLike={handleLike}
@@ -881,7 +891,7 @@ Generated on: ${new Date().toLocaleString()}
 
   if (!currentCourse) {
     return (
-      <CourseList enrolledCourses={courseData} onSelect={handleCourseSelect} />
+      <CourseList enrolledCourses={allCourses} onSelect={handleCourseSelect} />
     );
   }
 

@@ -1,107 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CodeEditor from '../quiz/CodeEditor';
-import courseData from '../catalog/CourseData';
+import useCourseById from '../hooks/useCourseById';
+import { readJsonFromLocalStorage } from '../utils/safeJsonParse';
 
-// Coding exercise data for different topics (same as in dashboard)
-const codingExerciseData = {
-  'Building a Simple Model': {
-    instructions: "Create a simple function that returns 'Hello World'",
-    starter: `function helloWorld() {
-  // Write your code here
-  return "Hello World";
-}
-
-// Test your function
-console.log(helloWorld());`,
-    language: 'JavaScript',
-    expectedOutput: 'Hello World',
-    hint: 'Make sure to return the exact string "Hello World"'
-  },
-  'React Component Exercise': {
-    instructions: "Create a simple React component that displays 'Hello React'",
-    starter: `function App() {
-  return (
-    <div>
-      <h1>Hello React</h1>
-    </div>
-  );
-}`,
-    language: 'React',
-    expectedOutput: 'Hello React',
-    hint: 'Use JSX to create a div with an h1 element'
-  },
-  'Python Function Exercise': {
-    instructions: "Write a Python function that adds two numbers",
-    starter: `def add_numbers(a, b):
-    # Write your code here
-    return a + b
-
-# Test your function
-print(add_numbers(5, 3))`,
-    language: 'Python',
-    expectedOutput: '8',
-    hint: 'Use the + operator to add the two parameters'
+const findLesson = (course, lessonId) => {
+  if (!course) return null;
+  for (const session of course.course_content || []) {
+    for (const content of session.content || []) {
+      if (String(content.id) === String(lessonId)) return content;
+    }
   }
+  return null;
+};
+
+const DEFAULT_EXERCISE = {
+  instructions: "Complete the coding exercise as described.",
+  starterCode: "// Write your code here",
+  language: 'JavaScript',
+  expectedOutput: '',
+  hint: 'Follow the instructions carefully'
 };
 
 const CodingExercisePage = () => {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
-  const [lesson, setLesson] = useState(null);
-  const [course, setCourse] = useState(null);
-
-  useEffect(() => {
-    // Find the course and lesson
-    const foundCourse = courseData.find(c => String(c.id) === String(courseId));
-    if (foundCourse) {
-      setCourse(foundCourse);
-      
-      // Find the lesson in the course content
-      let foundLesson = null;
-      foundCourse.course_content.forEach(session => {
-        session.content.forEach(content => {
-          if (String(content.id) === String(lessonId)) {
-            foundLesson = content;
-          }
-        });
-      });
-      
-      if (foundLesson) {
-        setLesson(foundLesson);
-      } else {
-        // If lesson not found, redirect back to dashboard
-        navigate(`/user/course/${courseId}/dashboard`);
-      }
-    } else {
-      // If course not found, redirect to catalog
-      navigate('/catalog');
-    }
-  }, [courseId, lessonId, navigate]);
-
-  const getCodingExerciseData = (lessonTitle) => {
-    return codingExerciseData[lessonTitle] || {
-      instructions: "Complete the coding exercise as described.",
-      starter: "// Write your code here",
-      language: 'JavaScript',
-      expectedOutput: '',
-      hint: 'Follow the instructions carefully'
-    };
-  };
+  const { course, loading } = useCourseById(courseId);
+  const lesson = findLesson(course, lessonId);
 
   const handleCodingExerciseComplete = (passed) => {
     // Store coding exercise completion in localStorage
-    const codingResults = JSON.parse(localStorage.getItem('codingResults') || '{}');
+    const codingResults = readJsonFromLocalStorage('codingResults', {});
     codingResults[lessonId] = { passed, completedAt: new Date().toISOString() };
     localStorage.setItem('codingResults', JSON.stringify(codingResults));
-    
+
     // Navigate back to dashboard after a short delay
     setTimeout(() => {
       navigate(`/user/course/${courseId}/dashboard`);
     }, 2000);
   };
 
-  if (!lesson || !course) {
+  if (loading || !course) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -111,6 +50,29 @@ const CodingExercisePage = () => {
       </div>
     );
   }
+
+  if (!lesson) {
+    navigate(`/user/course/${courseId}/dashboard`);
+    return null;
+  }
+
+  // Real config comes from the instructor's Coding Exercise Builder
+  // (content.coding_config, saved via ContentForm.jsx). Fall back to a
+  // generic starter if the instructor hasn't configured this lesson yet.
+  const cfg = lesson.coding_config;
+  const exercise = cfg ? {
+    instructions: cfg.instructions || DEFAULT_EXERCISE.instructions,
+    starter: cfg.starterCode || DEFAULT_EXERCISE.starterCode,
+    language: cfg.language || DEFAULT_EXERCISE.language,
+    expectedOutput: cfg.expectedOutput || '',
+    hint: cfg.hint || '',
+  } : {
+    instructions: DEFAULT_EXERCISE.instructions,
+    starter: DEFAULT_EXERCISE.starterCode,
+    language: DEFAULT_EXERCISE.language,
+    expectedOutput: DEFAULT_EXERCISE.expectedOutput,
+    hint: DEFAULT_EXERCISE.hint,
+  };
 
   return (
     <div className="h-screen bg-white">
@@ -123,14 +85,14 @@ const CodingExercisePage = () => {
             ← Back to Course
           </button>
         </div>
-        
+
         <div className="flex-1 overflow-hidden">
           <CodeEditor
-            instructions={getCodingExerciseData(lesson.title).instructions}
-            expectedOutput={getCodingExerciseData(lesson.title).expectedOutput}
-            hint={getCodingExerciseData(lesson.title).hint}
-            starter={getCodingExerciseData(lesson.title).starter}
-            language={getCodingExerciseData(lesson.title).language}
+            instructions={exercise.instructions}
+            expectedOutput={exercise.expectedOutput}
+            hint={exercise.hint}
+            starter={exercise.starter}
+            language={exercise.language}
             onComplete={handleCodingExerciseComplete}
           />
         </div>
@@ -139,4 +101,4 @@ const CodingExercisePage = () => {
   );
 };
 
-export default CodingExercisePage; 
+export default CodingExercisePage;
