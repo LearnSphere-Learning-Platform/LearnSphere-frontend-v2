@@ -2,6 +2,16 @@ import { ChevronDown, ChevronRight, CheckCircle, FileText, Code, ClipboardCheck 
 import { MdOutlineAssignment } from 'react-icons/md';
 import { useState } from 'react';
 
+// Shared between the student dashboard (dashboard/DashBoard.jsx) and the admin course
+// preview (admin/pages/CourseDashboard.jsx). This is the dashboard's superset version -
+// the admin copy was missing the whole "Fixed Bottom Section" (progress bar + certificate
+// download), the richer icon set, and the quiz/assignment/coding-exercise status badges.
+// CourseDashboard.jsx already passes every function this needs (getCompletedLessonsCount,
+// getTotalLessonsCount, getProgressPercentage, canGetCertificate), so no consumer change
+// is required there; the extra optional props it doesn't pass (quizScores, quizAttempts,
+// assignmentSubmissions, showCodingExercise, showFeedbackForm, setShowFeedbackForm,
+// feedbackSubmitted, handleDownloadCertificate, overallTestPassed) safely default to
+// undefined and the JSX that reads them is already guarded (&&, ?:) against that.
 const LessonSidebar = ({
   currentCourse,
   courseContent,
@@ -68,20 +78,20 @@ const LessonSidebar = ({
   return (
     <div className="bg-white rounded-lg shadow-md p-6 h-full flex flex-col">
       <h2 className="text-xl font-semibold mb-4" style={{ color: '#333A2F' }}>Course Content</h2>
-      
+
       {/* Scrollable Course Content with custom scrollbar */}
-      <div 
-        className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar" 
-        style={{ 
+      <div
+        className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar"
+        style={{
           maxHeight: '60vh',
           scrollbarWidth: 'thin',
           scrollbarColor: '#333A2F #EBEDDF'
         }}
       >
-        
+
         {currentCourse && courseContent[currentCourse.id] && courseContent[currentCourse.id].modules.map(module => (
           <div key={module.id} className="border-b pb-4">
-            <div 
+            <div
               className="flex items-center justify-between cursor-pointer"
               onClick={() => onModuleToggle(module.id)}
             >
@@ -106,8 +116,8 @@ const LessonSidebar = ({
                   <span className="w-20 text-center">Duration</span>
                 </li>
                 {module.lessons.map(lesson => (
-                  <li 
-                    key={lesson.id} 
+                  <li
+                    key={lesson.id}
                     className={`flex items-center px-4 py-3 text-sm transition-colors ${lesson.type === 'test' || lesson.type === 'final-test' ? 'font-semibold' : ''}`}
                     style={{ borderBottom: '1px solid #f1f1f1' }}
                   >
@@ -185,26 +195,26 @@ const LessonSidebar = ({
             <span>{getProgressPercentage()}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
+            <div
               className="h-2 rounded-full transition-all duration-300"
-              style={{ 
+              style={{
                 width: `${getProgressPercentage()}%`,
                 backgroundColor: '#333A2F'
               }}
             ></div>
           </div>
         </div>
-        
+
         {/* Certificate Section */}
         <div>
           <h3 className="text-lg font-semibold mb-2" style={{ color: '#333A2F' }}>Certificate of Completion</h3>
           <p className="text-sm text-gray-600 mb-4">
             Complete all lessons, pass the final assessment, and submit feedback to earn your certificate.
           </p>
-          
+
           {/* Feedback Button */}
           {getProgressPercentage() === 100 && overallTestPassed && !feedbackSubmitted && (
-            <button 
+            <button
               onClick={() => setShowFeedbackForm(true)}
               className="w-full py-3 px-6 rounded-lg text-white font-semibold mb-3"
               style={{ backgroundColor: '#333A2F' }}
@@ -212,10 +222,10 @@ const LessonSidebar = ({
               Submit Feedback to Get Certificate
             </button>
           )}
-          
+
           {/* Certificate Download */}
           {canGetCertificate() ? (
-            <button 
+            <button
               onClick={handleDownloadCertificate}
               className="w-full py-3 px-6 rounded-lg text-white font-semibold"
               style={{ backgroundColor: '#333A2F' }}
@@ -223,12 +233,12 @@ const LessonSidebar = ({
               Download Certificate
             </button>
           ) : (
-            <button 
+            <button
               className="w-full py-3 px-6 rounded-lg text-white font-semibold opacity-50 cursor-not-allowed"
               disabled
             >
-              {getProgressPercentage() === 100 && overallTestPassed && !feedbackSubmitted 
-                ? 'Submit Feedback to Download' 
+              {getProgressPercentage() === 100 && overallTestPassed && !feedbackSubmitted
+                ? 'Submit Feedback to Download'
                 : 'Complete Course to Download'}
             </button>
           )}
@@ -238,4 +248,4 @@ const LessonSidebar = ({
   );
 };
 
-export default LessonSidebar; 
+export default LessonSidebar;

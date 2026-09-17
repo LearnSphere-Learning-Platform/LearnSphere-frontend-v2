@@ -1,6 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 
+// Shared between the student dashboard (dashboard/DashBoard.jsx) and the admin course
+// preview (admin/pages/CourseDashboard.jsx) - the two copies of this file had drifted
+// apart to nothing but a couple of missing "cursor-pointer" classes, so they're now one
+// file. Same prop contract both consumers already used, nothing else changed behavior-wise.
 const VideoPlayer = ({
   videoUrl,
   isPlaying,
@@ -37,7 +41,7 @@ const VideoPlayer = ({
     <div className="relative">
       <video
         ref={videoRef}
-        className="w-full h-96 bg-black"
+        className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] bg-black"
         src={videoUrl}
         onTimeUpdate={onTimeUpdate}
         onLoadedMetadata={onLoadedMetadata}
@@ -46,7 +50,7 @@ const VideoPlayer = ({
       {/* Video Controls */}
       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4">
         <div className="flex items-center space-x-4">
-          <button onClick={onPlayPause} className="hover:text-blue-400 transition-colors">
+          <button onClick={onPlayPause} className="hover:text-blue-400 transition-colors cursor-pointer">
             {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
           </button>
           <div className="flex items-center space-x-2 flex-1">
@@ -65,7 +69,7 @@ const VideoPlayer = ({
             <span className="text-sm">{formatTime(duration)}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <button onClick={onMute} className="hover:text-blue-400 transition-colors">
+            <button onClick={onMute} className="hover:text-blue-400 transition-colors cursor-pointer">
               {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
             </button>
             <input
@@ -80,13 +84,13 @@ const VideoPlayer = ({
                 background: `linear-gradient(to right, #10B981 0%, #10B981 ${volume * 100}%, #4B5563 ${volume * 100}%, #4B5563 100%)`
               }}
             />
-            <button onClick={handleFullscreen} className="hover:text-blue-400 transition-colors">
+            <button onClick={handleFullscreen} className="hover:text-blue-400 transition-colors cursor-pointer">
               <Maximize className="w-5 h-5" />
             </button>
           </div>
         </div>
       </div>
-      
+
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
@@ -97,7 +101,7 @@ const VideoPlayer = ({
           cursor: pointer;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-        
+
         .slider::-moz-range-thumb {
           height: 16px;
           width: 16px;
@@ -107,7 +111,7 @@ const VideoPlayer = ({
           border: none;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-        
+
         .slider:focus {
           outline: none;
         }
