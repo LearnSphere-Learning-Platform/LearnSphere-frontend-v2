@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle, PlayCircle, MoreHorizontal } from 'lucide-react';
-import courseData from '../catalog/CourseData';
 import { useNavigate } from 'react-router-dom';
+import useAllCourses from '../hooks/useAllCourses';
+import { enrollmentApi, courseApi, downloadFile } from '../services/api';
 
 const TabNavigation = ({ activeTab, setActiveTab }) => {
   const tabs = ['In Progress', 'Completed', 'Certification'];
@@ -26,6 +27,20 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
 };
 
 const CourseCard = ({ course, showCertificateButton }) => {
+  const navigate = useNavigate();
+
+  // download the completion certificate from the enrollment service
+  const handleCertificate = async () => {
+    try {
+      await downloadFile(
+        `${import.meta.env.VITE_ENROLLMENT_API_URL}/api/enrollments/${course.id}/certificate`,
+        `certificate_${course.courseId}.pdf`
+      );
+    } catch (e) {
+      alert(e.message || 'Could not download the certificate.');
+    }
+  };
+
   return (
     <div className="bg-white bg-opacity-90 border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
       <div className="flex items-start justify-between">
@@ -42,11 +57,19 @@ const CourseCard = ({ course, showCertificateButton }) => {
           <ProgressBar progress={course.progress} />
           <div className="flex items-center space-x-4 mt-2">
             {showCertificateButton ? (
-              <button className="text-white px-4 py-2 rounded-md hover:opacity-90 cursor-pointer" style={{ backgroundColor: '#333A2F' }}>
-                View Certificate
+              <button
+                onClick={handleCertificate}
+                className="text-white px-4 py-2 rounded-md hover:opacity-90 cursor-pointer"
+                style={{ backgroundColor: '#333A2F' }}
+              >
+                Download Certificate
               </button>
             ) : (
-              <button className="text-white px-4 py-2 rounded-md hover:opacity-90 cursor-pointer" style={{ backgroundColor: '#333A2F' }}>
+              <button
+                onClick={() => navigate(`/user/course/${course.courseId}/dashboard`)}
+                className="text-white px-4 py-2 rounded-md hover:opacity-90 cursor-pointer"
+                style={{ backgroundColor: '#333A2F' }}
+              >
                 {course.status === 'completed' ? 'Review' : 'Get started'}
               </button>
             )}
@@ -75,7 +98,7 @@ const ProgressBar = ({ progress }) => (
   </div>
 );
 
-const CourseList = ({ courses, activeTab, setActiveTab }) => {
+const CourseList = ({ courses, loading, activeTab, setActiveTab }) => {
   const filteredCourses = courses.filter(course => {
     if (activeTab === 'In Progress') return course.status === 'in-progress';
     if (activeTab === 'Completed') return course.status === 'completed';
@@ -88,6 +111,10 @@ const CourseList = ({ courses, activeTab, setActiveTab }) => {
       <h1 className="text-2xl font-bold text-gray-900 mb-4">My Learning</h1>
       <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="space-y-4">
+        {loading && <p className="text-gray-500">Loading your courses...</p>}
+        {!loading && filteredCourses.length === 0 && (
+          <p className="text-gray-500">No courses here yet.</p>
+        )}
         {filteredCourses.map(course => (
           <CourseCard key={course.id} course={course} showCertificateButton={activeTab === 'Certification'} />
         ))}
@@ -98,8 +125,8 @@ const CourseList = ({ courses, activeTab, setActiveTab }) => {
 
 const Recommendations = () => {
   const navigate = useNavigate();
-  // Use the first 3 recommended courses from courseData
-  const recommended = courseData.slice(0, 3);
+  const courses = useAllCourses();
+  const recommended = courses.slice(0, 3);
   return (
     <div className="bg-white rounded-lg shadow-sm p-6 mt-10">
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Recommended for you</h2>
@@ -126,18 +153,73 @@ const Recommendations = () => {
 
 const MyLearningPage = () => {
   const [activeTab, setActiveTab] = useState('In Progress');
-  const courses = [
-    { id: 1, title: 'React Basics', provider: 'Meta', progress: 0, duration: '2 minutes', type: 'Video', status: 'in-progress' },
-    { id: 2, title: 'JavaScript Fundamentals', provider: 'Meta', progress: 75, duration: '15 minutes', type: 'Video', status: 'in-progress' },
-    { id: 3, title: 'Node.js Backend Development', provider: 'Google', progress: 100, duration: '12 hours', type: 'Course', status: 'completed' },
-  ];
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    // load the real enrollments of the logged-in user
+    const load = async () => {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const response = await enrollmentApi.get(`/api/enrollments/getAllEnrollments/${userId}`);
+        const enrollments = response.enrollments || response || [];
+
+        // resolve the course title for each enrollment
+        const cards = await Promise.all(
+          enrollments.map(async (enrollment) => {
+            let title = 'Course';
+            try {
+              const name = await courseApi.get(`/api/v1/courses/${enrollment.courseId}/name`);
+              title = typeof name === 'string' ? name : (name.courseName || name.course_name || 'Course');
+            } catch (e) {
+              // course may have been deleted - keep the placeholder
+            }
+            const status =
+              enrollment.status === 'COMPLETED'
+                ? 'completed'
+                : 'in-progress';
+            return {
+              id: enrollment.enrollmentId,
+              courseId: enrollment.courseId,
+              title,
+              provider: 'LearnSphere',
+              progress: Math.round(enrollment.progress || 0),
+              duration: 'self paced',
+              type: 'Course',
+              status,
+            };
+          })
+        );
+
+        if (!cancelled) {
+          setCourses(cards);
+        }
+      } catch (e) {
+        console.warn('Could not load enrollments:', e.message);
+      }
+      if (!cancelled) {
+        setLoading(false);
+      }
+    };
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#EBEDDF' }}>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-25">
           <div className="lg:col-span-2">
-            <CourseList courses={courses} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <CourseList courses={courses} loading={loading} activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
           <div className="lg:col-span-1 self-start mt-[58px]">
             <Recommendations />
@@ -148,4 +230,4 @@ const MyLearningPage = () => {
   );
 };
 
-export default MyLearningPage; 
+export default MyLearningPage;
