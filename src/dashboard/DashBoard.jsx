@@ -48,6 +48,7 @@ import AssignmentReview from '../quiz/AssignmentReview';
 import CodeEditor from '../quiz/CodeEditor';
 import CourseFeedbackForm from './components/CourseFeedbackForm';
 import { readJsonFromLocalStorage } from '../utils/safeJsonParse';
+import jsPDF from 'jspdf';
 
 
 // Quiz data for different topics
@@ -731,38 +732,262 @@ const DashboardContent = ({ course, allCourses }) => {
       alert('Please complete the course and submit feedback to download your certificate.');
       return;
     }
-    
-    // Create certificate content
-    const certificateContent = `
-Certificate of Completion
 
-This is to certify that the student has successfully completed the course:
+    // Student name comes from the logged-in user's stored profile (set at login in
+    // authService.login), not from anything on the course itself.
+    const storedUser = readJsonFromLocalStorage('user', {});
+    const studentName = storedUser.fullName || localStorage.getItem('username') || 'Student';
+    const rating = courseFeedback[currentCourse.id]?.rating;
+    const certificateId = `LS-${currentCourse.id}-${Date.now().toString(36).toUpperCase()}`;
 
-${currentCourse.course_name}
+    // Landscape A4, in mm - previously this just downloaded a plain-text .txt file with no
+    // layout at all. Now a designed PDF certificate matching the app's brand colors
+    // (#333A2F / #EBEDDF used throughout the dashboard/course pages): triple border frame,
+    // ornamental corners, a LearnSphere wordmark, a laurel-wrapped seal, and a subtle "LS"
+    // watermark tucked into empty space so it never competes with the readable text.
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const accent = [51, 58, 47]; // #333A2F
+    const cream = [235, 237, 223]; // #EBEDDF
+    const gold = [180, 140, 60];
+    const goldLight = [205, 170, 100];
 
-Course Details:
-- Instructor: ${currentCourse.instructor.name}
-- Duration: ${currentCourse.total_no_hours} hours
-- Completion Date: ${new Date().toLocaleDateString()}
-- Progress: 100%
-- Feedback Rating: ${courseFeedback[currentCourse.id]?.rating || 'N/A'} stars
+    const letterSpace = (str, spaces = 1) => str.split('').join(' '.repeat(spaces));
 
-This certificate is awarded upon successful completion of all course materials, assessments, and submission of course feedback.
+    const drawPolygon = (points, style, color, lineWidth) => {
+      const segs = [];
+      for (let i = 1; i < points.length; i++) {
+        segs.push([points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1]]);
+      }
+      if (style === 'F') {
+        doc.setFillColor(...color);
+      } else {
+        doc.setDrawColor(...color);
+        doc.setLineWidth(lineWidth || 0.2);
+      }
+      doc.lines(segs, points[0][0], points[0][1], [1, 1], style, true);
+    };
 
-Certificate ID: ${Date.now()}-${currentCourse.id}
-Generated on: ${new Date().toLocaleString()}
-    `;
-    
-    // Create and download the certificate
-    const blob = new Blob([certificateContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${currentCourse.course_name}_Certificate.txt`;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
+    // jsPDF's built-in fonts (Helvetica/Times) don't have the Unicode star glyph - text with a
+    // star character renders as "&". Draw actual 5-point star shapes instead.
+    const drawStar = (cx, cy, outerR, innerR, filled) => {
+      const pts = [];
+      for (let i = 0; i < 10; i++) {
+        const angle = (Math.PI / 5) * i - Math.PI / 2;
+        const r = i % 2 === 0 ? outerR : innerR;
+        pts.push([cx + r * Math.cos(angle), cy + r * Math.sin(angle)]);
+      }
+      drawPolygon(pts, filled ? 'F' : 'S', filled ? gold : [200, 200, 200], 0.2);
+    };
+
+    // A simple pointed-leaf polygon, tip pointing along angleDeg, base at (cx,cy)
+    const drawLeaf = (cx, cy, angleDeg, length, width, color) => {
+      const angle = (angleDeg * Math.PI) / 180;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      const local = [
+        [0, 0],
+        [length * 0.32, width / 2],
+        [length, 0],
+        [length * 0.32, -width / 2],
+      ];
+      const world = local.map(([x, y]) => [cx + x * cos - y * sin, cy + x * sin + y * cos]);
+      drawPolygon(world, 'F', color);
+    };
+
+    // side: 1 = right branch, -1 = left branch. Leaves hug close to the medal along its lower
+    // half, oriented tangent to that arc (like real laurel leaflets along a curved stem).
+    const drawLaurelBranch = (cx, cy, side) => {
+      const leafCount = 5;
+      for (let i = 0; i < leafCount; i++) {
+        const t = i / (leafCount - 1);
+        const arcDeg = 200 - t * 120;
+        const angle = side === 1 ? 180 - arcDeg : arcDeg;
+        const radius = 9.5 + t * 3.5;
+        const rad = (angle * Math.PI) / 180;
+        const lx = cx + radius * Math.cos(rad);
+        const ly = cy - radius * Math.sin(rad);
+        const tangent = angle + (side === 1 ? -68 : 68);
+        const size = 7 - t * 2.2;
+        drawLeaf(lx, ly, -tangent, size, size * 0.42, i % 2 === 0 ? gold : goldLight);
+      }
+    };
+
+    // ---------- Background ----------
+    doc.setFillColor(...cream);
+    doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+    // Faint watermark monogram, tucked into empty space so it never competes with the text
+    doc.saveGraphicsState();
+    doc.setGState(new doc.GState({ opacity: 0.07 }));
+    doc.setFont('times', 'bold');
+    doc.setFontSize(60);
+    doc.setTextColor(...accent);
+    doc.text('LS', pageWidth / 2, pageHeight * 0.83, { align: 'center' });
+    doc.restoreGraphicsState();
+
+    // ---------- Border frame ----------
+    doc.setDrawColor(...accent);
+    doc.setLineWidth(1.3);
+    doc.rect(8, 8, pageWidth - 16, pageHeight - 16);
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.5);
+    doc.rect(11.5, 11.5, pageWidth - 23, pageHeight - 23);
+    doc.setDrawColor(...accent);
+    doc.setLineWidth(0.25);
+    doc.rect(13.5, 13.5, pageWidth - 27, pageHeight - 27);
+
+    // Ornamental corner brackets over the border, all 4 corners
+    const corner = (x, y, dx, dy) => {
+      doc.setDrawColor(...gold);
+      doc.setLineWidth(0.9);
+      doc.line(x, y, x + dx * 14, y);
+      doc.line(x, y, x, y + dy * 14);
+      doc.setFillColor(...gold);
+      doc.circle(x, y, 1.3, 'F');
+    };
+    corner(8, 8, 1, 1);
+    corner(pageWidth - 8, 8, -1, 1);
+    corner(8, pageHeight - 8, 1, -1);
+    corner(pageWidth - 8, pageHeight - 8, -1, -1);
+
+    // ---------- Header wordmark ----------
+    const wmY = 26;
+    doc.setFillColor(...accent);
+    doc.circle(pageWidth / 2 - 24, wmY - 1.5, 3.2, 'F');
+    doc.setFont('times', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(255, 255, 255);
+    doc.text('LS', pageWidth / 2 - 24, wmY, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+    doc.setTextColor(...accent);
+    doc.text(letterSpace('LEARNSPHERE', 1), pageWidth / 2 - 18, wmY + 0.5, { align: 'left' });
+
+    // ---------- Title ----------
+    doc.setTextColor(...accent);
+    doc.setFont('times', 'bold');
+    doc.setFontSize(32);
+    doc.text(letterSpace('CERTIFICATE OF COMPLETION', 0.6), pageWidth / 2, 48, { align: 'center' });
+
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.6);
+    doc.line(pageWidth / 2 - 45, 55, pageWidth / 2 - 4, 55);
+    doc.line(pageWidth / 2 + 4, 55, pageWidth / 2 + 45, 55);
+    drawPolygon(
+      [
+        [pageWidth / 2, 55 - 2],
+        [pageWidth / 2 + 2, 55],
+        [pageWidth / 2, 55 + 2],
+        [pageWidth / 2 - 2, 55],
+      ],
+      'F',
+      gold
+    );
+
+    // ---------- Body ----------
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12.5);
+    doc.setTextColor(90, 90, 90);
+    doc.text('This certificate is proudly presented to', pageWidth / 2, 68, { align: 'center' });
+
+    doc.setFont('times', 'bolditalic');
+    doc.setFontSize(29);
+    doc.setTextColor(...accent);
+    doc.text(studentName, pageWidth / 2, 84, { align: 'center' });
+    const nameWidth = doc.getTextWidth(studentName);
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.5);
+    doc.line(pageWidth / 2 - nameWidth / 2 - 6, 88, pageWidth / 2 + nameWidth / 2 + 6, 88);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12.5);
+    doc.setTextColor(90, 90, 90);
+    doc.text('for successfully completing the course', pageWidth / 2, 99, { align: 'center' });
+
+    doc.setFont('helvetica', 'bolditalic');
+    doc.setFontSize(17);
+    doc.setTextColor(...accent);
+    doc.text(`“${currentCourse.course_name}”`, pageWidth / 2, 111, { align: 'center' });
+
+    // Details row
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10.5);
+    doc.setTextColor(100, 100, 100);
+    const detailsY = 126;
+    doc.text('INSTRUCTOR', pageWidth / 2 - 90, detailsY, { align: 'center' });
+    doc.text('DURATION', pageWidth / 2, detailsY, { align: 'center' });
+    doc.text('DATE', pageWidth / 2 + 90, detailsY, { align: 'center' });
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11.5);
+    doc.setTextColor(...accent);
+    doc.text(currentCourse.instructor?.name || 'N/A', pageWidth / 2 - 90, detailsY + 6, { align: 'center' });
+    doc.text(`${currentCourse.total_no_hours || 'N/A'} hours`, pageWidth / 2, detailsY + 6, { align: 'center' });
+    doc.text(new Date().toLocaleDateString(), pageWidth / 2 + 90, detailsY + 6, { align: 'center' });
+
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(0.3);
+    doc.line(pageWidth / 2 - 45, detailsY - 4, pageWidth / 2 - 45, detailsY + 8);
+    doc.line(pageWidth / 2 + 45, detailsY - 4, pageWidth / 2 + 45, detailsY + 8);
+
+    if (rating) {
+      const rounded = Math.round(rating);
+      const ratingY = detailsY + 20;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      const label = `FEEDBACK RATING  (${rating}/5)`;
+      const labelWidth = doc.getTextWidth(label);
+      const startX = pageWidth / 2 - (labelWidth + 6 + 5 * 7) / 2;
+      doc.text(label, startX, ratingY + 1.5);
+      for (let i = 0; i < 5; i++) {
+        drawStar(startX + labelWidth + 6 + i * 7 + 2.5, ratingY, 2.5, 1, i < rounded);
+      }
+    }
+
+    // ---------- Seal with laurel wreath (bottom-left) ----------
+    const sealX = 48;
+    const sealY = pageHeight - 42;
+    drawLaurelBranch(sealX, sealY, 1);
+    drawLaurelBranch(sealX, sealY, -1);
+    doc.setFillColor(...gold);
+    doc.circle(sealX, sealY, 11, 'F');
+    doc.setFillColor(...accent);
+    doc.circle(sealX, sealY, 8.5, 'F');
+    doc.setDrawColor(255, 255, 255);
+    doc.setLineWidth(0.4);
+    doc.circle(sealX, sealY, 6.8, 'S');
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('times', 'bold');
+    doc.setFontSize(10);
+    doc.text('LS', sealX, sealY + 2.6, { align: 'center' });
+    doc.setFillColor(...gold);
+    doc.triangle(sealX - 5.5, sealY + 8, sealX - 1.5, sealY + 20, sealX - 9, sealY + 18, 'F');
+    doc.triangle(sealX + 5.5, sealY + 8, sealX + 1.5, sealY + 20, sealX + 9, sealY + 18, 'F');
+
+    // ---------- Signature (bottom-right) ----------
+    const sigX = pageWidth - 65;
+    doc.setDrawColor(...accent);
+    doc.setLineWidth(0.4);
+    doc.line(sigX - 38, pageHeight - 38, sigX + 38, pageHeight - 38);
+    doc.setFont('times', 'bolditalic');
+    doc.setFontSize(15);
+    doc.setTextColor(...accent);
+    doc.text('LearnSphere', sigX, pageHeight - 43, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(100, 100, 100);
+    doc.text('PROGRAM DIRECTOR', sigX, pageHeight - 33, { align: 'center' });
+
+    // ---------- Footer ----------
+    doc.setFontSize(7.5);
+    doc.setTextColor(140, 140, 140);
+    doc.text(`Certificate ID: ${certificateId}`, 20, pageHeight - 16);
+    doc.text(`Generated on ${new Date().toLocaleString()}`, pageWidth - 20, pageHeight - 16, { align: 'right' });
+
+    doc.save(`${currentCourse.course_name.replace(/\s+/g, '_')}_Certificate.pdf`);
   };
 
   const getCodingExerciseData = (lessonTitle) => {
