@@ -12,6 +12,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 import MyLearningPage from "../pages/MyLearningPage";
 import Profile from "../pages/Profile";
+import { logout } from "../services/authService";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,6 +22,13 @@ const Header = () => {
   const location = useLocation();
   const username = localStorage.getItem("username");
   const isInstructor = localStorage.getItem("isInstructor") === "true";
+
+  // clear the session locally and blacklist the token on the server
+  const handleLogout = async () => {
+    await logout();
+    setShowProfileMenu(false);
+    navigate("/login");
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -45,7 +54,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg fixed top-0 left-0 w-full z-90 border-b border-gray-200">
+    <header className="bg-white shadow-lg fixed top-0 left-0 w-full z-[90] border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -55,7 +64,7 @@ const Header = () => {
               className="flex items-center space-x-2 text-2xl font-bold text-[#333A2F] hover:text-[#2a3028] transition-colors"
             >
               <img
-                src="./src/assets/logo.png"
+                src={logo}
                 alt="LearnSphere Logo"
                 className="h-15 w-15"
               />
@@ -115,7 +124,7 @@ const Header = () => {
                 </button>
                 {showProfileMenu && (
                   <div
-                    className="absolute right-0 mt-10 w-56 rounded-lg shadow-lg z-110"
+                    className="absolute right-0 mt-10 w-56 rounded-lg shadow-lg z-[110]"
                     style={{
                       background:
                         "linear-gradient(139deg, rgba(36,40,50,1) 0%, rgba(36,40,50,1) 0%, rgba(37,28,40,1) 100%)",
@@ -196,13 +205,7 @@ const Header = () => {
                       )}
                       <li
                         className="flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[#8e2a2a] hover:text-white transition-all"
-                        onClick={() => {
-                          localStorage.removeItem("isAuthenticated");
-                          localStorage.removeItem("username");
-                          localStorage.removeItem("isInstructor");
-                          setShowProfileMenu(false);
-                          navigate("/login");
-                        }}
+                        onClick={handleLogout}
                       >
                         <FaSignOutAlt />
                         Logout
@@ -216,6 +219,7 @@ const Header = () => {
             <div className="md:hidden">
               <button
                 onClick={toggleMenu}
+                aria-label="Toggle menu"
                 className="text-[#333A2F] hover:text-[#2a3028] transition-colors cursor-pointer"
               >
                 {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}

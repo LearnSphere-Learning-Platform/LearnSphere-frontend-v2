@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
 import bgLeft from "../assets/bg-left.webp";
-// Remove: import { useToast } from "@/components/ui/use-toast";
+import { login } from "../services/authService";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,22 +14,11 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const { toast } = useToast(); // Removed as per edit hint
   const navigate = useNavigate();
 
   // Prevent background scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    // Add base users if not present
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    if (users.length === 0) {
-      const baseUsers = [
-        { fullName: "user", email: "user@learnsphere.com", password: "12345", isInstructor: false },
-        { fullName: "admin", email: "admin@learnsphere.com", password: "12345", isInstructor: false },
-        { fullName: "instructor", email: "instructor@learnsphere.com", password: "12345", isInstructor: true },
-      ];
-      localStorage.setItem("users", JSON.stringify(baseUsers));
-    }
     return () => { document.body.style.overflow = ''; };
   }, []);
 
@@ -37,51 +26,20 @@ const LoginPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate loading delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Get users from localStorage
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const foundUser = users.find(
-      (u) =>
-        (u.fullName === username || u.username === username || u.email === username) &&
-        u.password === password
-    );
-
-    if (
-      (username === "admin" && password === "admin") ||
-      foundUser
-    ) {
+    try {
+      // call the real auth service (username is the email)
+      const { user } = await login(username, password);
       window.alert("Login Successful! Welcome back. Redirecting to dashboard...");
-      // Store authentication state
-      localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("username", foundUser ? foundUser.fullName : username);
-      // Store isInstructor flag
-      localStorage.setItem("isInstructor", foundUser ? foundUser.isInstructor : false);
-      // Store full user object for profile page
-      if (foundUser) {
-        localStorage.setItem("user", JSON.stringify(foundUser));
-        if (foundUser.isInstructor) {
-          localStorage.setItem("instructorData", JSON.stringify(foundUser));
-        } else {
-          localStorage.removeItem("instructorData");
-        }
-      }
+
       setTimeout(() => {
-        // Determine role and redirect accordingly
-        if (
-          ((username === "admin" || username === "admin@learnsphere.com") && password === "12345") ||
-          (foundUser && (foundUser.fullName === "admin" || foundUser.email === "admin@learnsphere.com"))
-        ) {
+        if (user.isAdmin) {
           navigate("/admin");
-        } else if (foundUser && foundUser.isInstructor) {
-          navigate("/");
         } else {
           navigate("/");
         }
       }, 1500);
-    } else {
-      window.alert("Login Failed! Invalid username/email or password.");
+    } catch (error) {
+      window.alert("Login Failed! Invalid email or password.");
     }
     setIsLoading(false);
   };
@@ -126,10 +84,10 @@ const LoginPage = () => {
       <main className="flex-1 w-full flex items-center justify-center p-6 md:p-12 relative">
         <div className="w-full max-w-xl p-8 z-10">
           <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Sign In</h1>
-          <form className="auth-form space-y-4">
+          <form className="auth-form space-y-4" onSubmit={handleLogin}>
             {/* Email Field */}
             <div className="auth-form__span-2">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="email">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtLoginEmailId">
                 Username or Email
               </label>
               <input
@@ -147,7 +105,7 @@ const LoginPage = () => {
             </div>
             {/* Password Field */}
             <div className="auth-form__span-2 relative">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="password">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtLoginPassword">
                 Enter Password
               </label>
               <div className="relative">
@@ -203,10 +161,9 @@ const LoginPage = () => {
             <button
               id="submitLogin"
               name="submitLogin"
-              type="button"
+              type="submit"
               className="login-btn auth-form__button w-full text-white py-3 px-4 text-base font-medium transition-colors duration-200 flex items-center justify-center rounded-lg"
               style={{ backgroundColor: '#333A2F' }}
-              onClick={handleLogin}
               disabled={isLoading}
             >
               {isLoading ? "Logging In..." : "Sign In"}

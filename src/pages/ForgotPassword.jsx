@@ -4,10 +4,12 @@ import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
 import bgLeft from "../assets/bg-left.webp";
 import { Link, useNavigate } from "react-router-dom";
+import { forgotPassword } from "../services/authService";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,9 +17,16 @@ const ForgotPassword = () => {
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setError("");
+    try {
+      // ask the backend to email the reset link (valid for 15 minutes)
+      await forgotPassword(email);
+      setSent(true);
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
+    }
   };
 
   return (

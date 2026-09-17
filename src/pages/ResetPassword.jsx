@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
 import bgLeft from "../assets/bg-left.webp";
+import { resetPassword } from "../services/authService";
 
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
@@ -12,46 +13,45 @@ const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
+    if (newPassword.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      return;
+    }
+    if (!/[A-Za-z]/.test(newPassword) || !/[0-9]/.test(newPassword)) {
+      setError("Password must include at least one letter and one number.");
+      return;
+    }
     if (newPassword !== confirmPassword) {
-      alert("Passwords do not match.");
+      setError("Passwords do not match.");
       return;
     }
 
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/learnsphere/reset-password?token=${token}&newPassword=${newPassword}&confirmPassword=${confirmPassword}`,
-        {
-          method: "POST",
+      // calls the auth service on port 8070 (fixes the old wrong port 8080)
+      await resetPassword(token, newPassword, confirmPassword);
+      setSubmitted(true);
+    } catch (err) {
+      const message = String(err.message || "");
+      if (
+        message.toLowerCase().includes("token expired") ||
+        message.toLowerCase().includes("invalid or expired")
+      ) {
+        const goToForgot = window.confirm(
+          "Your reset link has expired. Would you like to request a new one?"
+        );
+        if (goToForgot) {
+          navigate("/forgot-password");
         }
-      );
-
-      const message = await response.text();
-
-      if (response.ok) {
-        setSubmitted(true);
       } else {
-        if (
-          message.toLowerCase().includes("token expired") ||
-          message.toLowerCase().includes("invalid or expired")
-        ) {
-          const goToForgot = window.confirm(
-            "Your reset link has expired. Would you like to request a new one?"
-          );
-          if (goToForgot) {
-            navigate("/forgot-password");
-          }
-        } else {
-          alert(message || "Something went wrong.");
-        }
+        setError(message || "Something went wrong.");
       }
-    } catch (error) {
-      console.error(error);
-      alert("Server error. Try again.");
     }
   };
 
@@ -137,6 +137,11 @@ const ResetPassword = () => {
                     required
                   />
                 </div>
+                {error && (
+                  <div className="text-red-600 text-sm font-medium text-center">
+                    {error}
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="w-full py-3 bg-[#333A2F] text-white font-medium rounded-lg cursor-pointer hover:bg-[#22261C] transition-colors"

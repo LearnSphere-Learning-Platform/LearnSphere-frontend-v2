@@ -1,28 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
-// Handle browser zoom level changes
-const handleZoomChange = () => {
-  const zoomLevel = window.devicePixelRatio;
-  const root = document.documentElement;
-  
-  // Adjust font size and spacing based on zoom level
-  if (zoomLevel !== 1) {
-    root.style.fontSize = `${16 / zoomLevel}px`;
-  } else {
-    root.style.fontSize = '16px';
-  }
-};
-
-// Listen for zoom changes
-window.addEventListener('resize', handleZoomChange);
-window.addEventListener('orientationchange', handleZoomChange);
-
-// Initial call
-handleZoomChange();
+// NOTE: a previous "browser zoom" handler here set the root font-size to
+// 16 / window.devicePixelRatio on every resize/orientationchange. That was
+// meant to detect browser zoom, but devicePixelRatio is a hardware/DPI
+// signal, not a zoom signal - on real phones (DPR 2-3) it collapsed every
+// rem-based size app-wide (e.g. to ~5.3px on a 3x-DPR phone), breaking
+// layout on mobile instead of helping it. Removed - see the audit report.
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
