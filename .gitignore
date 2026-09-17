@@ -25,3 +25,16 @@ dist-ssr
 
 
 package-lock.json
+
+# Environment files (added during E2E test setup - .env was previously
+# untracked here, which risks committing real secrets if it ever holds more
+# than localhost URLs; .env.e2e holds real test-account passwords, never
+# commit it)
+.env
+.env.*
+!.env.e2e.example
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
