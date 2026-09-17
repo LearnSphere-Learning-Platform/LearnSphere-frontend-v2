@@ -4,17 +4,16 @@ import { useState, useMemo } from "react";
 import { CourseSidebar } from "./CourseSidebar";
 import { CourseGrid } from "./CourseGrid";
 import { SearchBar } from "./SearchBar";
-import courseData from "./CourseData";
+import useAllCourses from "../hooks/useAllCourses";
 import React from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-
-const courses = courseData;
 
 export function CourseCatalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState([]);
   const [selectedInstructors, setSelectedInstructors] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const courses = useAllCourses();
 
   // Get unique instructor names for filter options
   const instructors = useMemo(() => {
@@ -52,7 +51,7 @@ export function CourseCatalog() {
 
       return matchesSearch && matchesLevel && matchesInstructor;
     });
-  }, [searchQuery, selectedLevel, selectedInstructors]);
+  }, [courses, searchQuery, selectedLevel, selectedInstructors]);
 
   return (
     <div className="flex min-h-screen bg-[#f5f5f5] mt-23">

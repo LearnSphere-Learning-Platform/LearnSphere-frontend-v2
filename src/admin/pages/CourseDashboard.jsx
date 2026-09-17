@@ -8,17 +8,25 @@ import {
 } from 'lucide-react';
 import { useCourses } from "../components/context/CourseContext";
 
-import VideoPlayer from '../components/courses/VideoPlayer';
-import LessonSidebar from '../components/courses/LessonSidebar';
-import TabNavigation from '../components/courses/TabNavigation';
-import TestContent from '../components/courses/TestContent';
-import courseData from '../../catalog/CourseData';
+import VideoPlayer from '../../components/course-content/VideoPlayer';
+import LessonSidebar from '../../components/course-content/LessonSidebar';
+import TabNavigation from '../../components/course-content/TabNavigation';
+import TestContent from '../../components/course-content/TestContent';
 import LessonInfo from '../components/courses/LessonInfo';
 
 const Dashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const course = courseData.find(c => String(c.id) === String(id));
+  // Was previously courseData.find(...) against the static demo catalog - approving/denying
+  // a course here never touched the backend. Now reads from the same CourseContext the admin
+  // course list (admin/pages/Courses.jsx) already loads from the real course service, so both
+  // pages agree on status and there's one PATCH-backed updateCourseStatus for both to share.
+  const { courses, updateCourseStatus, loading: coursesLoading } = useCourses();
+  const course = courses.find(c => String(c.id) === String(id));
+
+  if (coursesLoading) {
+    return <div className="text-center p-6 text-gray-700">Loading course...</div>;
+  }
 
   if (!course) {
     return <div className="text-center p-6 text-gray-700">Course not found</div>;
@@ -51,51 +59,49 @@ const Dashboard = () => {
   const [showDenyModal, setShowDenyModal] = useState(false);
   const [denyReason, setDenyReason] = useState('');
 
+  // Was built from every course in the static courseData catalog, matching lessons by
+  // session.videos[] with a single course-level preview URL reused for every "video" lesson.
+  // The real course service stores per-lesson content instead (session.content[], each item
+  // with its own url) - this now only builds the map for the course actually being previewed,
+  // straight from the real data already loaded via CourseContext.
   useEffect(() => {
-    const contentMap = {};
-    courseData.forEach(course => {
-      contentMap[course.id] = {
-        modules: course.course_content.map((session, index) => ({
-          id: index + 1,
+    if (!currentCourse || !currentCourse.course_content) {
+      setCourseContent({});
+      return;
+    }
+    setCourseContent({
+      [currentCourse.id]: {
+        modules: currentCourse.course_content.map((session, index) => ({
+          id: session.id || index + 1,
           title: session.session,
-          lessons: session.videos.map((video, videoIndex) => ({
-            id: video.id,
-            title: video.title,
-            duration: video.duration,
+          lessons: (session.content || []).map((item) => ({
+            id: item.id,
+            title: item.title,
+            duration: item.duration,
             completed: false,
-            videoUrl: video.preview && course.preview ? 
-              `https://www.youtube.com/embed/${course.preview.split('v=')[1]?.split('&')[0]}` : null,
-            type: video.type === 'video' || video.type === 'demo' ? 'video' : 'test'
+            videoUrl: item.type === 'video' ? item.url : null,
+            type: item.type,
           }))
         }))
-      };
+      }
     });
-    setCourseContent(contentMap);
-  }, []);
+  }, [currentCourse]);
 
   useEffect(() => {
-    if (!currentLesson && currentCourse && currentCourse.course_content?.length > 0) {
-      const firstModule = currentCourse.course_content[0];
-      if (firstModule && firstModule.videos.length > 0) {
-        setCurrentLesson({
-          ...firstModule.videos[0],
-          videoUrl: firstModule.videos[0].preview && currentCourse.preview
-            ? `https://www.youtube.com/embed/${currentCourse.preview.split('v=')[1]?.split('&')[0]}`
-            : null
-        });
+    if (!currentLesson && courseContent[currentCourse?.id]) {
+      const firstModule = courseContent[currentCourse.id].modules[0];
+      if (firstModule && firstModule.lessons.length > 0) {
+        setCurrentLesson(firstModule.lessons[0]);
       }
     }
-  }, [currentLesson, currentCourse]);
+  }, [currentLesson, currentCourse, courseContent]);
 
-const { updateCourseStatus } = useCourses();
-
-const handleApprove = () => {
-  updateCourseStatus(currentCourse.id, 'Active');
-  alert("Course approved successfully!");
-  setDecisionMade(true);
-  navigate("/courses");
-  updateCourseStatus(courseId, "Active"); 
-};
+  const handleApprove = () => {
+    updateCourseStatus(currentCourse.id, 'Active');
+    alert("Course approved successfully!");
+    setDecisionMade(true);
+    navigate("/courses");
+  };
 
 
 
@@ -103,9 +109,11 @@ const handleApprove = () => {
 
   const submitDeny = () => {
     if (!denyReason.trim()) return;
-    console.log(`Denied course: ${currentCourse.course_name}`);
-    console.log(`Reason: ${denyReason}`);
-    alert(`Denial reason sent to instructor: ${denyReason}`);
+    // The course service has no field to store a denial reason yet, so - same limitation as
+    // admin/pages/Courses.jsx's own deny flow - only the status change is persisted; the reason
+    // itself is shown to the admin here but not sent anywhere yet.
+    updateCourseStatus(currentCourse.id, 'Inactive');
+    alert(`Course denied. Reason recorded here only for now: ${denyReason}`);
     setDecisionMade(true);
     setShowDenyModal(false);
     navigate("/courses");
@@ -185,7 +193,7 @@ const handleApprove = () => {
 
   const renderTabContent = () => {
     const overview = currentCourse ? {
-      title: currentCourse.course_name,
+      title: currentCourse.title,
       description: currentCourse.description,
       learn: currentCourse.outcome || [],
       prerequisites: currentCourse.about_course?.skills || []
@@ -221,8 +229,8 @@ const handleApprove = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>{currentCourse.course_name}</h1>
-        <p className="text-gray-600">by {currentCourse.instructor.name}</p>
+        <h1 className="text-3xl font-bold" style={{ color: '#333A2F' }}>{currentCourse.title}</h1>
+        <p className="text-gray-600">by {currentCourse.instructor}</p>
 
         {courseStatus === 'New' && (
           <div className="mt-2 px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm inline-block">Pending Approval</div>
@@ -239,6 +247,7 @@ const handleApprove = () => {
               currentLesson={currentLesson}
               handleTestComplete={toggleLessonCompletion}
               handleOverallTestComplete={setOverallTestPassed}
+              mode="preview"
             />
           ) : currentLesson && (
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -266,6 +275,7 @@ const handleApprove = () => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             renderTabContent={renderTabContent}
+            tabs={[{ id: 'overview', label: 'Overview' }]}
           />
         </div>
 

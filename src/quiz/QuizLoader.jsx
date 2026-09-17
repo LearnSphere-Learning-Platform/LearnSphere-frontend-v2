@@ -1,26 +1,42 @@
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import courseData from "../catalog/CourseData";
+import useCourseById from "../hooks/useCourseById";
 import Quiz from "./Quiz";
 
 const QuizLoader = () => {
   const { courseId, moduleId } = useParams();
   const navigate = useNavigate();
+  const { course, loading } = useCourseById(courseId);
+  const [questionsData, setQuestionsData] = useState(null);
 
-  // Find the course and module
-  const course = courseData.find(c => String(c.id) === String(courseId));
-  let questionsData = null;
+  useEffect(() => {
+    if (!course) return;
 
-  if (course) {
-    for (const session of course.course_content) {
-      for (const video of session.videos) {
-        if (String(video.id) === String(moduleId) && video.questions) {
-          questionsData = video.questions.map(q => ({
-            question: q.question,
-            options: q.options.map(opt => ({ text: opt, correct: opt === q.answer })),
-          }));
+    // Find the lesson in the course content that matches the lesson id
+    let found = null;
+    for (const session of course.course_content || []) {
+      for (const content of session.content || []) {
+        if (String(content.id) === String(moduleId) && content.quiz_config) {
+          found = content;
         }
       }
     }
+
+    if (found) {
+      setQuestionsData(
+        found.quiz_config.questions.map(q => ({
+          question: q.question,
+          options: q.options.map((opt, index) => ({
+            text: opt,
+            correct: index === q.correct,
+          })),
+        }))
+      );
+    }
+  }, [course, moduleId]);
+
+  if (loading) {
+    return <div className="p-8 text-center">Loading test...</div>;
   }
 
   if (!questionsData) {
@@ -35,4 +51,4 @@ const QuizLoader = () => {
   );
 };
 
-export default QuizLoader; 
+export default QuizLoader;

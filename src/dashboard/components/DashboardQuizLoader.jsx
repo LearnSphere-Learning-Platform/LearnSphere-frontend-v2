@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import courseData from '../../catalog/CourseData';
+import useCourseById from '../../hooks/useCourseById';
 import Quiz from '../../quiz/Quiz';
 
 const DashboardQuizLoader = () => {
@@ -8,25 +8,36 @@ const DashboardQuizLoader = () => {
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
+  const { course, loading } = useCourseById(courseId);
+  const [questionsData, setQuestionsData] = useState(null);
+  const [lessonTitle, setLessonTitle] = useState('');
 
   // Find the course and lesson
-  const course = courseData.find(c => String(c.id) === String(courseId));
-  let questionsData = null;
-  let lessonTitle = '';
+  useEffect(() => {
+    if (!course) return;
 
-  if (course) {
-    for (const session of course.course_content) {
-      for (const video of session.videos) {
-        if (String(video.id) === String(lessonId) && video.questions) {
-          questionsData = video.questions.map(q => ({
-            question: q.question,
-            options: q.options.map(opt => ({ text: opt, correct: opt === q.answer })),
-          }));
-          lessonTitle = video.title;
+    let found = null;
+    for (const session of course.course_content || []) {
+      for (const content of session.content || []) {
+        if (String(content.id) === String(lessonId) && content.quiz_config) {
+          found = content;
         }
       }
     }
-  }
+
+    if (found) {
+      setLessonTitle(found.title);
+      setQuestionsData(
+        found.quiz_config.questions.map(q => ({
+          question: q.question,
+          options: q.options.map((opt, index) => ({
+            text: opt,
+            correct: index === q.correct,
+          })),
+        }))
+      );
+    }
+  }, [course, lessonId]);
 
   useEffect(() => {
     // Add quiz-fullscreen class to hide header/footer
@@ -69,6 +80,10 @@ const DashboardQuizLoader = () => {
     }
     window.focus();
   };
+
+  if (loading) {
+    return <div className="p-8 text-center">Loading test...</div>;
+  }
 
   if (!questionsData) {
     return <div className="p-8 text-center text-red-600 font-bold">No test found for this lesson.</div>;

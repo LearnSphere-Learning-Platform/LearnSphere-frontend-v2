@@ -4,29 +4,41 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Flag } from 'lucide-react';
+import { discussionApi } from "../services/api";
 
-const ReportFlag = ({ thread, setThreads }) => {
+// Wired to the real discussion service: POST /api/flags/flag/{userId}/{courseId}/{discussionId}.
+// The endpoint returns the created Flag, not the updated post, so "flagged" here is just a
+// local UI lock to stop the same viewer from re-flagging in this session.
+const ReportFlag = ({ thread, setThreads, courseId, userId }) => {
   const [showOptions, setShowOptions] = useState(false);
   const [customReason, setCustomReason] = useState("");
+  const [flagged, setFlagged] = useState(false);
+  const [flagType, setFlagType] = useState("");
   const dropdownRef = useRef();
 
-  // Flag the post
-  const handleFlag = (type) => {
+  const handleFlag = async (type) => {
+    if (!userId) {
+      toast.warn("Please log in to report a post.");
+      return;
+    }
     const finalType = type === "Other" && customReason ? customReason : type;
 
-    setThreads((prev) =>
-      prev.map((t) =>
-        t.id === thread.id ? { ...t, flagged: true, flagType: finalType } : t
-      )
-    );
-
-    setShowOptions(false);
-    setCustomReason("");
-
-    toast.success(`🚩 Post flagged as '${finalType}'`, {
-      position: "top-right",
-      autoClose: 2500,
-    });
+    try {
+      await discussionApi.post(
+        `/api/flags/flag/${userId}/${courseId}/${thread.id}`,
+        { reason: finalType }
+      );
+      setFlagged(true);
+      setFlagType(finalType);
+      setShowOptions(false);
+      setCustomReason("");
+      toast.success(`🚩 Post flagged as '${finalType}'`, {
+        position: "top-right",
+        autoClose: 2500,
+      });
+    } catch (err) {
+      toast.error("Failed to flag post.");
+    }
   };
 
   // Click outside to close dropdown
@@ -50,13 +62,13 @@ const ReportFlag = ({ thread, setThreads }) => {
       <button
         onClick={() => setShowOptions(!showOptions)}
         className={`text-red-500 underline font-semibold transition-all duration-200 ${
-          thread.flagged ? "opacity-60 cursor-not-allowed" : "hover:text-red-700"
+          flagged ? "opacity-60 cursor-not-allowed" : "hover:text-red-700"
         }`}
-        disabled={thread.flagged}
+        disabled={flagged}
         aria-haspopup="true"
         aria-expanded={showOptions}
       >
-        <Flag className="w-4 h-4 inline mr-1" /> {thread.flagged ? `Flagged (${thread.flagType})` : "Report Post"}
+        <Flag className="w-4 h-4 inline mr-1" /> {flagged ? `Flagged (${flagType})` : "Report Post"}
       </button>
 
       {showOptions && (
@@ -81,7 +93,7 @@ const ReportFlag = ({ thread, setThreads }) => {
                 const data = editor.getData();
                 setCustomReason(data);
               }}
-              disabled={thread.flagged}
+              disabled={flagged}
             />
             <button
               className="mt-2 text-xs text-blue-600 hover:underline disabled:opacity-50"
@@ -97,4 +109,4 @@ const ReportFlag = ({ thread, setThreads }) => {
   );
 };
 
-export default ReportFlag; 
+export default ReportFlag;

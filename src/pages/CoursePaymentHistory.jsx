@@ -1,84 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpen, Calendar, DollarSign, CheckCircle, XCircle, Clock, User, Play, Download, Receipt , IndianRupee } from 'lucide-react';
+import { enrollmentApi } from '../services/api';
 
 const CoursePaymentHistory = () => {
-  const [payments] = useState([
-    {
-      id: 1,
-      date: '2025-01-15',
-      courseName: 'Advanced React Development',
-      instructor: 'John Smith',
-      amount: 299.99,
-      status: 'completed',
-      method: 'Credit Card',
-      category: 'Programming',
-      reference: 'COURSE-001',
-      receiptId: 'RCP-2025-001-ADV',
-      duration: '12 weeks',
-      lessons: 45,
-      level: 'Advanced'
-    },
-    {
-      id: 2,
-      date: '2025-01-10',
-      courseName: 'UI/UX Design Fundamentals',
-      instructor: 'Sarah Johnson',
-      amount: 199.99,
-      status: 'completed',
-      method: 'PayPal',
-      category: 'Design',
-      reference: 'COURSE-002',
-      receiptId: 'RCP-2025-002-DES',
-      duration: '8 weeks',
-      lessons: 32,
-      level: 'Beginner'
-    },
-    {
-      id: 3,
-      date: '2025-01-05',
-      courseName: 'Machine Learning Basics',
-      instructor: 'Dr. Michael Chen',
-      amount: 399.99,
-      status: 'pending',
-      method: 'Bank Transfer',
-      category: 'AI/ML',
-      reference: 'COURSE-003',
-      receiptId: 'RCP-2025-003-ML',
-      duration: '16 weeks',
-      lessons: 60,
-      level: 'Intermediate'
-    },
-    {
-      id: 4,
-      date: '2024-12-28',
-      courseName: 'JavaScript for Beginners',
-      instructor: 'Emily Davis',
-      amount: 149.99,
-      status: 'failed',
-      method: 'Credit Card',
-      category: 'Programming',
-      reference: 'COURSE-004',
-      receiptId: 'RCP-2024-004-JS',
-      duration: '6 weeks',
-      lessons: 28,
-      level: 'Beginner'
-    },
-    {
-      id: 5,
-      date: '2024-12-20',
-      courseName: 'Digital Marketing Mastery',
-      instructor: 'Mark Wilson',
-      amount: 249.99,
-      status: 'completed',
-      method: 'Debit Card',
-      category: 'Marketing',
-      reference: 'COURSE-005',
-      receiptId: 'RCP-2024-005-MKT',
-      duration: '10 weeks',
-      lessons: 40,
-      level: 'Intermediate'
-    }
-  ]);
+  // real payment records loaded from the backend
+  const [payments, setPayments] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const load = async () => {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const records = await enrollmentApi.get(`/api/payments/user/${userId}`);
+        setPayments(
+          (records || []).map((p) => ({
+            id: p.paymentId,
+            date: (p.paidAt || p.createdAt || '').split('T')[0],
+            courseName: `Course ${p.courseId}`,
+            instructor: '',
+            amount: p.amount,
+            status: p.status === 'PAID' ? 'completed' : (p.status || '').toLowerCase(),
+            method: 'Razorpay',
+            category: '',
+            reference: p.razorpayOrderId,
+            receiptId: p.razorpayPaymentId || p.razorpayOrderId,
+            duration: '',
+            lessons: 0,
+            level: ''
+          }))
+        );
+      } catch (e) {
+        console.warn('Could not load payment history:', e.message);
+      }
+      setLoading(false);
+    };
+    load();
+  }, []);
 
   const getStatusIcon = (status) => {
     switch (status) {
@@ -304,6 +265,10 @@ const CoursePaymentHistory = () => {
                 ))}
               </tbody>
             </table>
+            {loading && <p className="text-center py-6 text-gray-500">Loading payments...</p>}
+            {!loading && payments.length === 0 && (
+              <p className="text-center py-6 text-gray-500">No payments yet.</p>
+            )}
           </div>
 
           {/* Footer */}

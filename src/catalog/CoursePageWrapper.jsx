@@ -1,6 +1,6 @@
 // catalog/CoursePageWrapper.jsx
 import { useParams, useLocation } from "react-router-dom";
-import { getCourseById } from "../hooks/useSelectedCourse";
+import useCourseById from "../hooks/useCourseById";
 import Enrollment from "./Enrollment";
 import CourseInfo from "./CourseInfo";
 import CourseTabs from "./CourseTabs";
@@ -8,10 +8,12 @@ import CourseInstructor from "./CourseInstructor";
 
 const CoursePageWrapper = () => {
   const { id } = useParams();
-  console.log('CoursePageWrapper param id:', id);
-  const course = getCourseById(id);
-  console.log('CoursePageWrapper found course:', course);
+  const { course, loading } = useCourseById(id);
   const location = useLocation();
+
+  if (loading) {
+    return <div className="text-center p-6 text-gray-700">Loading course...</div>;
+  }
 
   if (!course) {
     return (

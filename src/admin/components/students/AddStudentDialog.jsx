@@ -6,6 +6,7 @@ import { Label } from "../ui/label";
 import { Upload, X, FileText, Users } from "lucide-react";
 import { useToast } from "../../hooks/use-toast";
 import Papa from "papaparse";
+import { studentApi } from "../../../services/api";
 
 export const AddStudentDialog = ({ open, onOpenChange }) => {
   const [uploadMethod, setUploadMethod] = useState("single"); // "single" or "bulk"
@@ -24,18 +25,32 @@ export const AddStudentDialog = ({ open, onOpenChange }) => {
   const handleSingleStudentSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Success",
-      description: `Student ${formData.name} has been added successfully!`,
-    });
-    
-    setFormData({ name: "", email: "", phone: "", enrollmentDate: "" });
-    setLoading(false);
-    onOpenChange(false);
+
+    try {
+      // create the student in the bulk-student service
+      await studentApi.post("/api/learnsphere/students/", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        enrollmentDate: formData.enrollmentDate,
+      });
+
+      toast({
+        title: "Success",
+        description: `Student ${formData.name} has been added successfully!`,
+      });
+
+      setFormData({ name: "", email: "", phone: "", enrollmentDate: "" });
+      setLoading(false);
+      onOpenChange(false);
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err.message || "Could not add the student.",
+        variant: "destructive"
+      });
+      setLoading(false);
+    }
   };
 
   const handleCSVUpload = (event) => {
@@ -75,19 +90,28 @@ export const AddStudentDialog = ({ open, onOpenChange }) => {
     }
 
     setLoading(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    toast({
-      title: "Success",
-      description: `${csvData.length} students have been added successfully!`,
-    });
-    
-    setCsvFile(null);
-    setCsvData([]);
-    setLoading(false);
-    onOpenChange(false);
+
+    try {
+      // send the parsed CSV rows to the bulk-student service
+      await studentApi.post("/api/learnsphere/students/bulk-upload", csvData);
+
+      toast({
+        title: "Success",
+        description: `${csvData.length} students have been added successfully!`,
+      });
+
+      setCsvFile(null);
+      setCsvData([]);
+      setLoading(false);
+      onOpenChange(false);
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err.message || "Bulk upload failed.",
+        variant: "destructive"
+      });
+      setLoading(false);
+    }
   };
 
   const downloadTemplate = () => {

@@ -1,19 +1,14 @@
 import React from "react";
 import OverviewOfCourse from "./OverviewOfCourse.jsx";
 import { useParams } from "react-router-dom";
-import { getCourseById } from "../hooks/useSelectedCourse";
-import useSelectedCourse from "../hooks/useSelectedCourse"; // ✅ new hook
+import useCourseById from "../hooks/useCourseById";
 import bgImage from "../assets/course_enrollement_background_image2.png";
 
 const Enrollment = () => {
-  const [selectedCourse] = useSelectedCourse();
   const { id } = useParams();
-  const course = getCourseById(id);
+  const { course } = useCourseById(id);
 
-  // Use selectedCourse if available, otherwise fall back to course from URL
-  const courseToDisplay = course;
-
-  if (!courseToDisplay) {
+  if (!course) {
     return <div className="text-white text-center p-4">Loading...</div>;
   }
 
@@ -25,7 +20,7 @@ const Enrollment = () => {
       }}
     >
       <div className="relative z-10 text-white p-4 w-full mx-auto lg:-ml-15">
-        <OverviewOfCourse course={courseToDisplay} />
+        <OverviewOfCourse course={course} />
       </div>
     </div>
   );

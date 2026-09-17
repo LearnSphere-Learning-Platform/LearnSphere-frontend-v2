@@ -1,16 +1,21 @@
 import React from 'react';
 import { Star, Clock, Users, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import courseData from '../catalog/CourseData';
+import useAllCourses from '../hooks/useAllCourses';
 
 function getRandomCourses(data, count) {
   const shuffled = [...data].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }
 
+// Was picking 6 random courses from the static demo catalog on every load, regardless of what
+// real courses exist - visitors to the public landing page never saw an actual course.
+// useAllCourses already calls the real course service and only falls back to the static
+// catalog if the backend is unreachable, so this now shows real approved courses.
 const Courses = () => {
   const navigate = useNavigate();
-  const courses = getRandomCourses(courseData, 6);
+  const allCourses = useAllCourses();
+  const courses = getRandomCourses(allCourses, Math.min(6, allCourses.length));
 
   return (
     <section id="courses" className="py-16 bg-[rgb(235, 237, 223),rgb(235, 237, 223)]">

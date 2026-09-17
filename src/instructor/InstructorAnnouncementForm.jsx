@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import useAllCourses from "../hooks/useAllCourses";
+import { announcementApi } from "../services/api";
 import Swal from "sweetalert2";
 
 const InstructorAnnouncementForm = () => {
@@ -20,6 +21,8 @@ const InstructorAnnouncementForm = () => {
           attachment: "",
         }
   );
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const courses = useAllCourses();
 
@@ -28,10 +31,42 @@ const InstructorAnnouncementForm = () => {
     setAnnouncement((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  // Previously this just navigated back with the announcement in router state and
+  // Announcements.jsx merged it into local state - nothing ever reached the backend, so a
+  // page refresh (or the sample data being replaced with a real fetch) would lose it. Now it
+  // actually calls the announcement service, which already has the create/edit endpoints
+  // wired up with no caller.
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Instead of just logging, navigate back and pass the announcement and edit flag
-    navigate("/instructor/dashboard", { state: { announcement, isEdit } });
+    setSubmitError("");
+    setSubmitting(true);
+    const instructorId = Number(localStorage.getItem("instructorId"));
+    const payload = {
+      instructorId,
+      courseId: announcement.course,
+      title: announcement.title,
+      message: announcement.message,
+      announcementType: announcement.type,
+      attachmentLink: announcement.attachment,
+    };
+    try {
+      if (isEdit && editAnnouncement?.id) {
+        await announcementApi.put(
+          `/api/learnsphere/announcement/edit/${editAnnouncement.id}`,
+          { ...payload, announcementId: editAnnouncement.id }
+        );
+      } else {
+        await announcementApi.post(
+          "/api/learnsphere/announcement/createAnnouncement",
+          payload
+        );
+      }
+      navigate("/instructor/dashboard", { state: { announcementPosted: true } });
+    } catch (err) {
+      setSubmitError(err.message || "Failed to save announcement.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const getSelectedCourse = () => {
@@ -307,16 +342,20 @@ const InstructorAnnouncementForm = () => {
                 <button
                   type="submit"
                   disabled={
+                    submitting ||
                     !announcement.title ||
                     !announcement.message ||
                     !announcement.course
                   }
                   className="w-full sm:w-auto bg-gradient-to-r from-[#333A2F] to-[#3a4235] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:from-[#3a4235] hover:to-[#404739] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 focus:ring-2 focus:ring-[#333A2F] focus:ring-offset-2 shadow-lg"
                 >
-                  {isEdit ? "Save Changes" : "Post Announcement"}
+                  {submitting ? "Saving..." : isEdit ? "Save Changes" : "Post Announcement"}
                 </button>
               </div>
             </div>
+            {submitError && (
+              <p className="mt-4 text-sm text-red-600">{submitError}</p>
+            )}
           </div>
         </form>
       </div>

@@ -2,51 +2,58 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { MessageSquare, ThumbsUp } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css";
+import { discussionApi } from "../services/api";
 
-const UpvoteReply = ({ thread, setThreads, currentUser }) => {
+// Wired to the real discussion service: replies are Comments {replyId, userId, content,
+// repliedAt, nestedReplies}, and upvotes go through PUT /{discussionId}/upvote?userId=.
+const UpvoteReply = ({ thread, setThreads, userId }) => {
   const [showReplyBox, setShowReplyBox] = useState(false);
-  
+  const alreadyUpvoted = thread.upvotedUserIds?.includes(userId);
 
-  const handleUpvote = () => {
-    setThreads((prev) =>
-      prev.map((t) =>
-        t.id === thread.id ? { ...t, upvotes: t.upvotes + 1 } : t
-      )
-    );
-    toast.success("👍 Upvoted successfully!");
+  const replaceThread = (updated) => {
+    setThreads((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
   };
 
-  const addReply = (text, parentId = null) => {
-    const newReply = {
-      id: Date.now(),
-      text,
-      author: currentUser || "AnonymousUser",
-      timestamp: new Date().toLocaleString(),
-      parentId,
-      replies: [],
-    };
-
-    const addNestedReply = (replies) =>
-      replies.map((r) =>
-        r.id === parentId
-          ? { ...r, replies: [...(r.replies || []), newReply] }
-          : { ...r, replies: addNestedReply(r.replies || []) }
+  const handleUpvote = async () => {
+    if (!userId) {
+      toast.warn("Please log in to upvote.");
+      return;
+    }
+    try {
+      const updated = await discussionApi.put(
+        `/api/discussions/${thread.id}/upvote?userId=${encodeURIComponent(userId)}`
       );
+      replaceThread(updated);
+      toast.success("👍 Upvoted successfully!");
+    } catch (err) {
+      if (String(err.message).includes("409") || String(err.message).toLowerCase().includes("already")) {
+        toast.warn("You've already upvoted this post.");
+      } else {
+        toast.error("Failed to upvote.");
+      }
+    }
+  };
 
-    setThreads((prev) =>
-      prev.map((t) => {
-        if (t.id === thread.id) {
-          return {
-            ...t,
-            replies: parentId
-              ? addNestedReply(t.replies || [])
-              : [...(t.replies || []), newReply],
-          };
-        }
-        return t;
-      })
-    );
-    toast.success("💬 Reply posted!");
+  const addReply = async (text, parentId = null) => {
+    if (!userId) {
+      toast.warn("Please log in to reply.");
+      return;
+    }
+    try {
+      const updated = parentId
+        ? await discussionApi.put(`/api/discussions/addnestedreply/${thread.id}/${parentId}`, {
+            userId,
+            content: text,
+          })
+        : await discussionApi.put(`/api/discussions/addComment/${thread.id}`, {
+            userId,
+            content: text,
+          });
+      replaceThread(updated);
+      toast.success("💬 Reply posted!");
+    } catch (err) {
+      toast.error("Failed to post reply.");
+    }
   };
 
   const ReplyInput = ({ parentId = null, onDone }) => {
@@ -83,7 +90,7 @@ const UpvoteReply = ({ thread, setThreads, currentUser }) => {
 
   const RenderReplies = ({ replies }) => {
     return replies.map((reply) => (
-      <Reply key={reply.id} reply={reply} />
+      <Reply key={reply.replyId} reply={reply} />
     ));
   };
 
@@ -93,10 +100,12 @@ const UpvoteReply = ({ thread, setThreads, currentUser }) => {
       <div className="ml-4 mt-3 border-l-[2px] border-gray-300 pl-4">
         <div className="text-sm text-gray-700">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-semibold">@{reply.author}</span>
-            <span className="text-xs text-gray-500">{reply.timestamp}</span>
+            <span className="font-semibold">@{reply.userId}</span>
+            <span className="text-xs text-gray-500">
+              {reply.repliedAt ? new Date(reply.repliedAt).toLocaleString() : ""}
+            </span>
           </div>
-          <div className="ml-1">{reply.text}</div>
+          <div className="ml-1">{reply.content}</div>
           <button
             onClick={() => setShowNestedInput(!showNestedInput)}
             className="text-sm text-blue-600 hover:underline mt-1"
@@ -104,10 +113,10 @@ const UpvoteReply = ({ thread, setThreads, currentUser }) => {
             ↪ Reply
           </button>
           {showNestedInput && (
-            <ReplyInput parentId={reply.id} onDone={() => setShowNestedInput(false)} />
+            <ReplyInput parentId={reply.replyId} onDone={() => setShowNestedInput(false)} />
           )}
-          {reply.replies?.length > 0 && (
-            <RenderReplies replies={reply.replies} />
+          {reply.nestedReplies?.length > 0 && (
+            <RenderReplies replies={reply.nestedReplies} />
           )}
         </div>
       </div>
@@ -118,9 +127,11 @@ const UpvoteReply = ({ thread, setThreads, currentUser }) => {
     <div className="mt-4">
       <button
         onClick={handleUpvote}
-        className="text-green-600 font-semibold hover:underline mb-2 flex items-center gap-1"
+        className={`font-semibold hover:underline mb-2 flex items-center gap-1 ${
+          alreadyUpvoted ? "text-gray-400 cursor-default" : "text-green-600"
+        }`}
       >
-        <ThumbsUp className="w-4 h-4" /> Upvote ({thread.upvotes})
+        <ThumbsUp className="w-4 h-4" /> Upvote ({thread.UpvoteCount || 0})
       </button>
 
       <button

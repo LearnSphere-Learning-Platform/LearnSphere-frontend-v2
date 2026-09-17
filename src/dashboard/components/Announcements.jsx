@@ -1,54 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Megaphone,
   Plus,
   Search,
-  Eye,
   Edit,
   Trash2,
   Calendar,
-  Users,
-  AlertCircle,
   BookOpen,
 } from "lucide-react";
+import { announcementApi } from "../../services/api";
+import useAllCourses from "../../hooks/useAllCourses";
 
-// Sample announcements data
-const sampleAnnouncements = [
-  {
-    id: "1",
-    title: "New Course Update: React Advanced Patterns",
-    message:
-      "We've added 3 new modules covering advanced React patterns including render props, compound components, and custom hooks.",
-    type: "update",
-    course: "React - The Complete Guide",
-    createdAt: "2024-01-15T10:30:00Z",
-    isPublished: true,
-    attachment: "",
-  },
-  {
-    id: "2",
-    title: "Scheduled Maintenance - January 20th",
-    message:
-      "Our platform will undergo scheduled maintenance on January 20th from 2:00 AM to 4:00 AM EST. Some features may be temporarily unavailable.",
-    type: "urgent",
-    course: "All Courses",
-    createdAt: "2024-01-12T14:15:00Z",
-    isPublished: true,
-    attachment: "",
-  },
-  {
-    id: "3",
-    title: "New Assessment Feature Available",
-    message:
-      "We're excited to announce the launch of our new interactive assessment feature. Students can now take quizzes directly within the course modules.",
-    type: "info",
-    course: "JavaScript Fundamentals",
-    createdAt: "2024-01-10T09:45:00Z",
-    isPublished: false,
-    attachment: "https://example.com/assessment-guide.pdf",
-  },
-];
+// Was previously seeded with 3 hardcoded sampleAnnouncements and only ever mutated in local
+// React state (new/edited announcements arrived via router state from
+// InstructorAnnouncementForm.jsx and were merged into that local array) - nothing was ever
+// persisted, so a refresh silently reverted to the same 3 fake announcements. The announcement
+// service already had create/edit/delete/list endpoints with no caller. Note: the backend
+// Announcement entity has no isPublished/draft concept and no createdAt field (only
+// `repliedAt`, which the create endpoint doesn't appear to set) - the "Draft" badge and posted
+// date are dropped here rather than faked.
 
 // Announcement Card Component
 const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
@@ -87,6 +58,7 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
   };
 
   const formatDate = (dateString) => {
+    if (!dateString) return null;
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
       month: "short",
@@ -95,6 +67,8 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
       minute: "2-digit",
     });
   };
+
+  const formattedDate = formatDate(announcement.repliedAt);
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
@@ -108,11 +82,6 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
           >
             {getTypeIcon(announcement.type)} {announcement.type}
           </span>
-          {!announcement.isPublished && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-              Draft
-            </span>
-          )}
         </div>
         <div className="flex space-x-2">
           <button
@@ -142,17 +111,19 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
       <div className="flex items-center space-x-2 mb-4">
         <BookOpen className="h-4 w-4 text-gray-500" />
         <span className="text-sm text-gray-600 font-medium">
-          {announcement.course}
+          {announcement.courseName}
         </span>
       </div>
 
       {/* Footer */}
       <div className="flex items-center justify-between text-sm text-gray-500">
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <Calendar className="h-4 w-4" />
-            <span>{formatDate(announcement.createdAt)}</span>
-          </div>
+          {formattedDate && (
+            <div className="flex items-center space-x-1">
+              <Calendar className="h-4 w-4" />
+              <span>{formattedDate}</span>
+            </div>
+          )}
           {announcement.attachment && (
             <div className="flex items-center space-x-1">
               <span>📎</span>
@@ -167,47 +138,73 @@ const AnnouncementCard = ({ announcement, onDelete, onEdit }) => {
 
 const Announcements = () => {
   const navigate = useNavigate();
-  const [announcements, setAnnouncements] = useState(sampleAnnouncements);
+  const location = useLocation();
+  const [announcements, setAnnouncements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
-  useEffect(() => {
-    if (
-      window.history.state &&
-      window.history.state.usr &&
-      window.history.state.usr.announcement
-    ) {
-      const { announcement, isEdit } = window.history.state.usr;
-      setAnnouncements((prev) => {
-        if (isEdit) {
-          // Edit: update the existing announcement
-          return prev.map((a) =>
-            a.id === announcement.id ? { ...announcement } : a
-          );
-        } else {
-          // New: add to the list
-          return [
-            {
-              ...announcement,
-              id: Date.now().toString(),
-              createdAt: new Date().toISOString(),
-              isPublished: true,
-            },
-            ...prev,
-          ];
-        }
-      });
-      // Clean up navigation state
-      window.history.replaceState({}, document.title);
+  const courses = useAllCourses();
+
+  const instructorId = localStorage.getItem("instructorId");
+
+  const loadAnnouncements = async () => {
+    if (!instructorId) {
+      setLoading(false);
+      return;
     }
+    setLoading(true);
+    setLoadError("");
+    try {
+      const data = await announcementApi.get(
+        `/api/learnsphere/announcement/instructor/${instructorId}`
+      );
+      setAnnouncements(
+        (data || []).map((a) => ({
+          id: a.announcementId,
+          title: a.title,
+          message: a.message,
+          type: a.announcementType,
+          course: a.courseId,
+          attachment: a.attachmentLink,
+          repliedAt: a.repliedAt,
+        }))
+      );
+    } catch (e) {
+      setLoadError(e.message || "Could not load announcements.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadAnnouncements();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleDeleteAnnouncement = (announcementId) => {
-    if (window.confirm("Are you sure you want to delete this announcement?")) {
-      setAnnouncements(
-        announcements.filter(
-          (announcement) => announcement.id !== announcementId
-        )
-      );
+  // This component likely stays mounted as a persistent dashboard tab, so a plain create/edit
+  // -> navigate back doesn't remount it and re-run the effect above - the form flags the
+  // return trip via router state instead, so the just-saved announcement actually shows up.
+  useEffect(() => {
+    if (location.state?.announcementPosted) {
+      loadAnnouncements();
+      window.history.replaceState({}, document.title);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state]);
+
+  const courseNameFor = (courseId) =>
+    courses.find((c) => String(c.id) === String(courseId))?.course_name || courseId;
+
+  const handleDeleteAnnouncement = async (announcementId) => {
+    if (!window.confirm("Are you sure you want to delete this announcement?")) return;
+    const previous = announcements;
+    setAnnouncements(announcements.filter((a) => a.id !== announcementId));
+    try {
+      await announcementApi.delete(`/api/learnsphere/announcement/delete/${announcementId}`);
+    } catch (e) {
+      setAnnouncements(previous);
+      alert(`Could not delete announcement: ${e.message}`);
     }
   };
 
@@ -223,7 +220,7 @@ const Announcements = () => {
     const matchesSearch =
       announcement.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       announcement.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      announcement.course.toLowerCase().includes(searchTerm.toLowerCase());
+      courseNameFor(announcement.course).toLowerCase().includes(searchTerm.toLowerCase());
 
     const matchesFilter =
       filterType === "all" || announcement.type === filterType;
@@ -289,7 +286,11 @@ const Announcements = () => {
 
       {/* Announcements List */}
       <div className="p-6">
-        {filteredAnnouncements.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12 text-gray-500">Loading announcements...</div>
+        ) : loadError ? (
+          <div className="text-center py-12 text-red-600">{loadError}</div>
+        ) : filteredAnnouncements.length === 0 ? (
           <div className="text-center py-12">
             <Megaphone className="mx-auto h-12 w-12 text-gray-400 mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">
@@ -315,7 +316,7 @@ const Announcements = () => {
             {filteredAnnouncements.map((announcement) => (
               <AnnouncementCard
                 key={announcement.id}
-                announcement={announcement}
+                announcement={{ ...announcement, courseName: courseNameFor(announcement.course) }}
                 onDelete={handleDeleteAnnouncement}
                 onEdit={handleEditAnnouncement}
               />

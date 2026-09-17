@@ -1,5 +1,5 @@
 // [Imports remain unchanged]
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DashboardLayout } from "../components/admin/DashboardLayout";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
@@ -9,6 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { StudentProfile } from "../components/students/StudentProfile";
 import { StudentManagement } from "../components/students/StudentManagement";
 import { AddStudentDialog } from "../components/students/AddStudentDialog";
+import { studentApi } from "../../services/api";
 import {
   Users,
   Search,
@@ -166,7 +167,8 @@ const Students = () => {
   const [addStudentOpen, setAddStudentOpen] = useState(false);
   const [managementAction, setManagementAction] = useState("manage");
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredStudents, setFilteredStudents] = useState(studentsData);
+  const [studentsData, setStudentsData] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
   const [csvUploadVisible, setCsvUploadVisible] = useState(false);
   const [csvStudents, setCsvStudents] = useState([]);
   const currentUser = { role: "admin" }; // You can change to "student" to test
@@ -174,6 +176,29 @@ const Students = () => {
   const studentsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
+
+  // Load the real students from the bulk-student service
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const students = await studentApi.get("/api/learnsphere/students/");
+        const list = (students || []).map((s) => ({
+          id: s.id,
+          name: s.name,
+          email: s.email,
+          phone: s.phone,
+          status: "active",
+          avatar: "/placeholder-avatar.jpg",
+          coursesEnrolled: 0,
+        }));
+        setStudentsData(list);
+        setFilteredStudents(list);
+      } catch (e) {
+        console.warn("Could not load students:", e.message);
+      }
+    };
+    load();
+  }, []);
 
   const handleSearch = (value) => {
     setSearchTerm(value);

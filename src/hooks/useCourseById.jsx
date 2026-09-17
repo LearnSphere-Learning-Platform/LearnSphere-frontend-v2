@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import courseData from "../catalog/CourseData";
+import { getCourseById } from "./useSelectedCourse";
 import { courseApi } from "../services/api";
 
-// Map a backend course document to the shape the UI components expect
-const mapBackendCourse = (c) => ({
+// same mapping as useAllCourses - turns a backend course document into the UI shape
+export const mapBackendCourse = (c) => ({
   id: c.courseId,
   course_name: c.course_name || "Untitled Course",
   level: (c.level || "").toLowerCase(),
@@ -36,26 +36,33 @@ const mapBackendCourse = (c) => ({
   course_content: c.course_content || [],
 });
 
-// Loads the approved courses from the real course service.
+// Loads a single course from the backend by id.
 // Falls back to the static demo data if the backend is not reachable.
-const useAllCourses = () => {
-  const [courses, setCourses] = useState([]);
+const useCourseById = (id) => {
+  const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
 
     const load = async () => {
+      if (!id) {
+        setLoading(false);
+        return;
+      }
       try {
-        const page = await courseApi.get("/api/v1/courses?page=0&size=50");
-        const content = page.content || [];
+        const data = await courseApi.get(`/api/v1/courses/${id}`);
         if (!cancelled) {
-          setCourses(content.map(mapBackendCourse));
+          setCourse(mapBackendCourse(data));
         }
       } catch (e) {
-        console.warn("Could not load courses from backend, using demo data:", e.message);
+        console.warn("Could not load course from backend, using demo data:", e.message);
         if (!cancelled) {
-          setCourses(courseData);
+          setCourse(getCourseById(id));
         }
+      }
+      if (!cancelled) {
+        setLoading(false);
       }
     };
 
@@ -63,9 +70,9 @@ const useAllCourses = () => {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [id]);
 
-  return courses;
+  return { course, loading };
 };
 
-export default useAllCourses;
+export default useCourseById;

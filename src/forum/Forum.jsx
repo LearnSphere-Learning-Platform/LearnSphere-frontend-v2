@@ -1,28 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ThreadList from "./ThreadList";
-import { useNavigate } from "react-router-dom";
 import UploadSection from "./UploadSection";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Forum = () => {
-  const [threads, setThreads] = useState([
-    {
-      id: 1,
-      title: "React Basics",
-      author: "Alice",
-      tag: "React",
-      content: "What's the difference between useState and useEffect?",
-      replies: [],
-      upvotes: 2,
-      flagged: false,
-      date: new Date().toLocaleString(),
-      uploadData: {
-        pdf: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-        link: "https://reactjs.org/docs/hooks-overview.html",
-      },
-    },
-  ]);
+// Wired to the real discussion service (DiscussionPostController) instead of local mock
+// state. courseId comes from the parent (the course dashboard); userId/username come from
+// what authService.login() stores in localStorage after a real login.
+const Forum = ({ courseId }) => {
+  const [threads, setThreads] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [search, setSearch] = useState("");
   const [showPostForm, setShowPostForm] = useState(false);
@@ -30,39 +20,98 @@ const Forum = () => {
   const [content, setContent] = useState("");
   const [tag, setTag] = useState("");
   const [uploadData, setUploadData] = useState({});
-  const navigate = useNavigate();
-  const currentUser = "CurrentUser";
-  const userPosts = threads.filter((t) => t.author === currentUser);
+  const [submitting, setSubmitting] = useState(false);
+
+  const userId = localStorage.getItem("userId");
+  const currentUserName = localStorage.getItem("username") || "You";
+
+  const loadDiscussions = useCallback(async () => {
+    if (!courseId) return;
+    setLoading(true);
+    setError("");
+    try {
+      const token = localStorage.getItem("jwtToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_DISCUSSION_API_URL}/api/discussions/getall?courseId=${encodeURIComponent(courseId)}`,
+        {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        }
+      );
+      if (!res.ok) throw new Error(`Failed to load discussions (${res.status})`);
+      const data = await res.json();
+      setThreads(Array.isArray(data) ? data : []);
+    } catch (err) {
+      setError(err.message || "Failed to load discussions.");
+    } finally {
+      setLoading(false);
+    }
+  }, [courseId]);
+
+  useEffect(() => {
+    loadDiscussions();
+  }, [loadDiscussions]);
 
   const filteredThreads = threads.filter((t) =>
-    [t.title, t.content, t.tag, t.author].some((field) =>
+    [t.title, t.description, t.tag, t.userName].some((field) =>
       field?.toLowerCase().includes(search.toLowerCase())
     )
   );
 
-  const handlePostSubmit = () => {
+  const handlePostSubmit = async () => {
     if (!title.trim() || !content.trim()) return;
+    if (!courseId || !userId) {
+      toast.error("You need to be logged in and viewing a course to post.");
+      return;
+    }
 
-    const newPost = {
-      id: threads.length + 1,
-      title,
-      content,
-      tag,
-      author: currentUser,
-      date: new Date().toLocaleString(),
-      replies: [],
-      upvotes: 0,
-      flagged: false,
-      uploadData,
-    };
+    setSubmitting(true);
+    try {
+      const postPayload = {
+        title,
+        description: content,
+        tag,
+        userName: currentUserName,
+        referenceLink: uploadData.link || null,
+      };
 
-    setThreads([newPost, ...threads]);
-    setTitle("");
-    setContent("");
-    setTag("");
-    setUploadData({});
-    setShowPostForm(false);
+      const formData = new FormData();
+      formData.append("post", new Blob([JSON.stringify(postPayload)], { type: "application/json" }));
+      if (uploadData.imageFile) formData.append("image", uploadData.imageFile);
+      if (uploadData.pdfFile) formData.append("pdf", uploadData.pdfFile);
+
+      const token = localStorage.getItem("jwtToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_DISCUSSION_API_URL}/api/discussions/create/${userId}/${courseId}`,
+        {
+          method: "POST",
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          body: formData,
+        }
+      );
+      if (!res.ok) throw new Error(`Failed to create post (${res.status})`);
+      const created = await res.json();
+
+      setThreads((prev) => [created, ...prev]);
+      setTitle("");
+      setContent("");
+      setTag("");
+      setUploadData({});
+      setShowPostForm(false);
+      toast.success("Post created!");
+    } catch (err) {
+      toast.error(err.message || "Failed to create post.");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  if (!courseId) {
+    return (
+      <div className="py-10 px-4 text-center text-gray-600">
+        Select a course to view its discussion forum.
+      </div>
+    );
+  }
 
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 text-[#333A2F] min-h-screen">
@@ -76,14 +125,6 @@ const Forum = () => {
           className="w-full sm:w-2/3 px-5 py-3 border border-[#333A2F] rounded-lg bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-[#333A2F]"
         />
 
-        {/* View Activity Button */}
-        {/* <button
-          onClick={() => navigate("/activity", { state: { userPosts } })}
-          className="bg-[#333A2F] text-[#EBEDDF] border border-[#333A2F] px-4 py-3 rounded-lg  shadow-md text-sm"
-        >
-          📊 View My Activity
-        </button> */}
-
         <button
           onClick={() => setShowPostForm(true)}
           className="bg-[#EBEDDF] text-[#1] text-lg px-5 py-3 rounded-lg hover:opacity-90 shadow-md cursor-pointer"
@@ -94,7 +135,7 @@ const Forum = () => {
 
       {/* Modal */}
       {showPostForm && (
-        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-40 flex items-center justify-center z-100">
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-40 flex items-center justify-center z-[100]">
           <div className="bg-[#EBEDDF] border border-[#333A2F] p-6 rounded-lg w-full max-w-2xl shadow-xl">
             <h2 className="text-2xl font-bold mb-5">📝 Create New Post</h2>
 
@@ -124,22 +165,37 @@ const Forum = () => {
               <button
                 onClick={() => setShowPostForm(false)}
                 className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 cursor-pointer"
+                disabled={submitting}
               >
                 Cancel
               </button>
               <button
                 onClick={handlePostSubmit}
-                className="px-4 py-2 bg-[#333A2F] text-[#EBEDDF] rounded hover:opacity-90 cursor-pointer"
+                className="px-4 py-2 bg-[#333A2F] text-[#EBEDDF] rounded hover:opacity-90 cursor-pointer disabled:opacity-50"
+                disabled={submitting}
               >
-                Post
+                {submitting ? "Posting..." : "Post"}
               </button>
             </div>
           </div>
         </div>
       )}
 
+      {loading && <p className="text-center text-gray-600">Loading discussions...</p>}
+      {!loading && error && <p className="text-center text-red-600">{error}</p>}
+      {!loading && !error && filteredThreads.length === 0 && (
+        <p className="text-center text-gray-600">No discussions yet. Be the first to post!</p>
+      )}
+
       {/* Thread List */}
-      <ThreadList threads={filteredThreads} setThreads={setThreads} />
+      {!loading && !error && (
+        <ThreadList
+          threads={filteredThreads}
+          setThreads={setThreads}
+          courseId={courseId}
+          userId={userId}
+        />
+      )}
     </div>
   );
 };

@@ -4,6 +4,23 @@ import { useState, useEffect } from "react"
 import { CreditCard, Lock, CheckCircle, Clock, Users, Award, Star, Play, ChevronDown } from "lucide-react"
 import courseData from "../catalog/CourseData"
 import { Country, State, City } from 'country-state-city';
+import { useNavigate } from "react-router-dom";
+import { enrollmentApi } from "../services/api";
+
+// loads the Razorpay checkout script once
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    if (window.Razorpay) {
+      resolve(true)
+      return
+    }
+    const script = document.createElement("script")
+    script.src = "https://checkout.razorpay.com/v1/checkout.js"
+    script.onload = () => resolve(true)
+    script.onerror = () => resolve(false)
+    document.body.appendChild(script)
+  })
+}
 
 
 
@@ -17,6 +34,7 @@ const CoursePayment = (props) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("card");
   const [step, setStep] = useState(1);
   const [receiptNumber, setReceiptNumber] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Generate a random receipt number when the component mounts or step changes to 2
@@ -38,14 +56,72 @@ const CoursePayment = (props) => {
   const stateOptions = selectedCountry ? State.getStatesOfCountry(selectedCountry) : [];
   const cityOptions = selectedState ? City.getCitiesOfState(selectedCountry, selectedState) : [];
 
+  // real Razorpay checkout flow
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsProcessing(true)
-    // Simulate payment processing
-    setTimeout(() => {
-      setIsProcessing(false)
-      alert("Payment successful! Welcome to the course!")
-    }, 2000)
+
+    try {
+      const scriptLoaded = await loadRazorpayScript()
+      if (!scriptLoaded) {
+        alert("Could not load Razorpay. Check your internet connection.")
+        setIsProcessing(false)
+        return
+      }
+
+      const userId = localStorage.getItem("userId")
+      if (!userId) {
+        alert("Please log in before buying a course.")
+        setIsProcessing(false)
+        navigate("/login")
+        return
+      }
+
+      // 1. create the order on our backend
+      const order = await enrollmentApi.post(
+        `/api/payments/create-order?userId=${userId}&courseId=${course.id}`,
+        { amount: Number(course.price) }
+      )
+
+      // 2. get the public key id
+      const keyInfo = await enrollmentApi.get("/api/payments/key")
+
+      // 3. open the Razorpay checkout window
+      const razorpay = new window.Razorpay({
+        key: keyInfo.keyId,
+        amount: Math.round(Number(course.price) * 100), // in paise
+        currency: "INR",
+        name: "LearnSphere",
+        description: course.course_name,
+        order_id: order.razorpayOrderId,
+        prefill: {
+          name: localStorage.getItem("username") || "",
+          email: localStorage.getItem("userEmail") || "",
+        },
+        theme: { color: "#333A2F" },
+        handler: async function (response) {
+          // 4. verify the payment on our backend (this also enrolls the user)
+          try {
+            await enrollmentApi.post("/api/payments/verify", {
+              razorpayOrderId: response.razorpay_order_id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpaySignature: response.razorpay_signature,
+            })
+            alert("Payment successful! Welcome to the course!")
+            navigate(`/user/course/${course.id}/dashboard`)
+          } catch (err) {
+            alert(err.message || "Payment verification failed.")
+          }
+        },
+      })
+      razorpay.on("payment.failed", function () {
+        alert("Payment failed. Please try again.")
+      })
+      razorpay.open()
+    } catch (err) {
+      alert(err.message || "Could not start the payment.")
+    }
+    setIsProcessing(false)
   }
 
   const handlePreview = () => {

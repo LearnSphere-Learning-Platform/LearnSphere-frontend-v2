@@ -16,64 +16,47 @@ import {
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
 import courseData from "../../catalog/CourseData";
+import { authApi } from "../../services/api";
+import useAllCourses from "../../hooks/useAllCourses";
 
 const ITEMS_PER_PAGE = 8;
 
-// Extract instructor data from courseData
-const extractInstructorsFromCourseData = () => {
-  const instructorMap = new Map();
-  
-  courseData.forEach(course => {
-    const instructor = course.instructor;
-    const instructorId = instructor.name.replace(/\s+/g, '').toLowerCase();
-    
-    if (!instructorMap.has(instructorId)) {
-      instructorMap.set(instructorId, {
-        id: instructorId,
-        name: instructor.name,
-        email: instructor.mailid,
-        status: "active",
-        students: Math.floor(Math.random() * 2000) + 500,
-        enrolledDate: "2023-01-15",
-        payment: Math.floor(Math.random() * 50000) + 10000,
-        courses: 1,
-        rating: instructor.overall_rating,
-        phone: "+91 9876543210",
-        certificates: course.about_course?.skills || [],
-        dateOfBirth: "01/01/1985",
-        contactNumber: "+91 9876543210",
-        highestQualification: "M.Tech Computer Science",
-        areaOfInterest: course.about_course?.skills?.[0] || "Programming",
-        yearsOfExperience: "5",
-        address: "123 Tech Street, Bangalore, Karnataka 560001",
-        linkedinProfile: `linkedin.com/in/${instructorId}`,
-        githubProfile: `github.com/${instructorId}`,
-        portfolioLink: `${instructorId}.dev`,
-        twitterProfile: `twitter.com/${instructorId}`,
-        skills: course.about_course?.skills || [],
-        about: instructor.about?.[0] || "Experienced instructor with expertise in modern technologies.",
-        description: instructor.about?.[1] || "Passionate about teaching and helping students learn.",
-        bankHolderName: instructor.name,
-        accountNumber: "1234567890123456",
-        ifscCode: "HDFC0001234",
-        panNumber: "ABCDE1234F",
-        aadharNumber: "1234 5678 9012",
-        total_learners: instructor.total_learners,
-        no_of_courses_released: instructor.no_of_courses_released,
-        total_reviews: instructor.total_reviews,
-        highlights: instructor.highlights || []
-      });
-    } else {
-      // If instructor already exists, increment course count
-      const existingInstructor = instructorMap.get(instructorId);
-      existingInstructor.courses += 1;
-    }
-  });
-  
-  return Array.from(instructorMap.values());
-};
-
-const initialData = extractInstructorsFromCourseData();
+// Map a backend instructor (user record) to the shape the page uses
+const mapBackendInstructor = (user, courseCount) => ({
+  id: user.id,
+  name: user.fullName,
+  email: user.email,
+  status: "active",
+  students: 0,
+  enrolledDate: (user.createdAt || "").split("T")[0] || "",
+  payment: 0,
+  courses: courseCount,
+  rating: 0,
+  phone: user.phoneNumber || "",
+  certificates: [],
+  dateOfBirth: "",
+  contactNumber: user.phoneNumber || "",
+  highestQualification: "",
+  areaOfInterest: "",
+  yearsOfExperience: "",
+  address: user.address || "",
+  linkedinProfile: "",
+  githubProfile: "",
+  portfolioLink: user.portfolioWebsiteUrl || "",
+  twitterProfile: "",
+  skills: [],
+  about: user.about || "",
+  description: "",
+  bankHolderName: "",
+  accountNumber: "",
+  ifscCode: "",
+  panNumber: "",
+  aadharNumber: "",
+  total_learners: "0",
+  no_of_courses_released: courseCount,
+  total_reviews: "0",
+  highlights: []
+});
 
 const newInstructorApplications = [
   {
@@ -133,18 +116,32 @@ const newInstructorApplications = [
 const Instructors = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [instructors, setInstructors] = useState(initialData);
+  const [instructors, setInstructors] = useState([]);
   const [newApplications, setNewApplications] = useState(newInstructorApplications);
   const [viewInstructor, setViewInstructor] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [dropdownId, setDropdownId] = useState(null);
   const { toast } = useToast();
+  const allCourses = useAllCourses();
 
-  // Update instructors when courseData changes
+  // Load the real instructor users from the backend
   useEffect(() => {
-    const updatedInstructors = extractInstructorsFromCourseData();
-    setInstructors(updatedInstructors);
-  }, []);
+    const load = async () => {
+      try {
+        const users = await authApi.get("/api/learnsphere/users/instructors");
+        const list = (users || []).map((user) => {
+          const courseCount = allCourses.filter(
+            (c) => String(c.instructor?.id) === String(user.id)
+          ).length;
+          return mapBackendInstructor(user, courseCount);
+        });
+        setInstructors(list);
+      } catch (e) {
+        console.warn("Could not load instructors:", e.message);
+      }
+    };
+    load();
+  }, [allCourses]);
 
   const handleStatusChange = (id, status) => {
     setInstructors((prev) =>
