@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DOMPurify from "dompurify";
 
 const AssignmentForm = ({ onSubmitAssignment, assignmentTitle, assignmentDescription }) => {
   const [title, setTitle] = useState("");
@@ -152,7 +153,7 @@ const AssignmentForm = ({ onSubmitAssignment, assignmentTitle, assignmentDescrip
             {description && (
               <div className="mt-4 p-3 rounded-lg border border-[#d6d6c2] bg-[#f7f7f2]">
                 <div className="font-bold mb-1" style={{ color: '#333A2F' }}>Preview:</div>
-                <div dangerouslySetInnerHTML={{ __html: description }} style={{ color: '#333A2F' }} />
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} style={{ color: '#333A2F' }} />
               </div>
             )}
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DOMPurify from "dompurify";
 
 // Mock backend API call to fetch user name
 const fetchUserNameFromBackend = async () => {
@@ -220,7 +221,7 @@ const AssignmentReview = ({ onBack, assignmentData }) => {
             {description && (
               <div className="mt-4 p-3 rounded-lg border border-[#d6d6c2] bg-[#f7f7f2]">
                 <div className="font-bold mb-1" style={{ color: '#384933' }}>Preview:</div>
-                <div dangerouslySetInnerHTML={{ __html: description }} style={{ color: '#384933' }} />
+                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} style={{ color: '#384933' }} />
               </div>
             )}
           </div>

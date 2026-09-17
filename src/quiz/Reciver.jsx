@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { set as idbSet } from 'idb-keyval';
+import DOMPurify from "dompurify";
 
 const Reciver = ({ assignmentTitle = "Sample Assignment Title", assignmentDescription = "This is a sample assignment description. Please complete the assignment as described and upload your work below.", topic, onFileSubmit }) => {
   const [files, setFiles] = useState([]);
@@ -146,7 +147,7 @@ const Reciver = ({ assignmentTitle = "Sample Assignment Title", assignmentDescri
           {topic && (
             <div className="text-lg font-semibold text-[#384933] mb-1">{topic}</div>
           )}
-          <div className="text-[#384933] text-base mb-2" dangerouslySetInnerHTML={{ __html: assignmentDescription }} />
+          <div className="text-[#384933] text-base mb-2" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(assignmentDescription) }} />
         </div>
         {submitted ? (
           <div className="w-full flex flex-col items-center justify-center py-16">

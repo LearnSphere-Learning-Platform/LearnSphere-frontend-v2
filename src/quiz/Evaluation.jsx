@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { get as idbGet } from 'idb-keyval';
+import DOMPurify from "dompurify";
 
 // Mock backend API call to fetch user name
 const fetchUserNameFromBackend = async () => {
@@ -179,7 +180,7 @@ const Evaluation = () => {
               <div className="border border-[#d6d6c2] rounded-lg bg-[#f8fafc] p-6">
                 <div 
                   className="text-[#384933] leading-relaxed prose prose-lg max-w-none"
-                  dangerouslySetInnerHTML={{ __html: submission.description }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(submission.description) }}
                 />
               </div>
             </div>

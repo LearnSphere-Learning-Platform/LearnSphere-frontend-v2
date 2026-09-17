@@ -1,6 +1,7 @@
 // src/forum/MyActivity.jsx
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const MyActivity = () => {
   const navigate = useNavigate();
@@ -29,24 +30,24 @@ const MyActivity = () => {
           >
             <h3 className="text-xl font-semibold mb-1">{post.title}</h3>
             <p className="text-sm text-gray-500 mb-2">
-              Posted on {post.date} | Tag: {post.tag || "N/A"}
+              Posted on {post.createdAt ? new Date(post.createdAt).toLocaleString() : "N/A"} | Tag: {post.tag || "N/A"}
             </p>
             <div
               className="prose prose-sm"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.description) }}
             />
             {/* Image Preview */}
-            {post.uploadData?.image && (
+            {post.image && (
               <img
-                src={post.uploadData.image}
+                src={post.image}
                 alt="Uploaded"
                 className="mt-4 h-36 object-cover rounded"
               />
             )}
             {/* PDF Preview */}
-            {post.uploadData?.pdf && (
+            {post.pdfUrl && (
               <a
-                href={post.uploadData.pdf}
+                href={post.pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline mt-2 block"
@@ -55,14 +56,14 @@ const MyActivity = () => {
               </a>
             )}
             {/* Link */}
-            {post.uploadData?.link && (
+            {post.referenceLink && (
               <a
-                href={post.uploadData.link}
+                href={post.referenceLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-600 underline mt-1 block break-all"
               >
-                🔗 {post.uploadData.link}
+                🔗 {post.referenceLink}
               </a>
             )}
           </div>
