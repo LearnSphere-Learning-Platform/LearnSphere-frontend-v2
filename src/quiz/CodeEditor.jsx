@@ -14,15 +14,35 @@ import "prismjs/components/prism-markup-templating";
 import "prismjs/components/prism-php";
 import "prismjs/themes/prism.css";
 import * as Babel from "@babel/standalone";
+import { courseApi } from "../services/api";
 
-// Was previously hardcoded 6 times below. Moving it to an env var stops it from being committed
-// to git, but note this does NOT hide it from end users once deployed - Vite inlines every
-// VITE_* value into the shipped JS bundle, so anyone can read it from devtools on the live site.
-// The only real fix for that is proxying Judge0 calls through a backend endpoint that holds the
-// key server-side instead of calling judge0-ce.p.rapidapi.com directly from the browser. Rotate
-// this key on RapidAPI regardless, since the previous hardcoded value has been sitting in git
-// history.
-const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY || "";
+// Code execution for compiled languages (C/C++/Java/TypeScript/PHP) now goes through the course
+// service's Judge0 proxy (Judge0Controller/Judge0Service) instead of calling
+// judge0-ce.p.rapidapi.com directly from the browser with a VITE_JUDGE0_API_KEY. That key used
+// to be bundled into the shipped JS by Vite - readable by anyone via devtools on the live site,
+// regardless of whether it was committed to git - so the RapidAPI key now lives only in the
+// backend's config.
+async function runViaJudge0(languageId, sourceCode) {
+  const createData = await courseApi.post("/api/v1/judge0/submissions", {
+    language_id: languageId,
+    source_code: sourceCode,
+    stdin: "",
+  });
+
+  if (!createData || !createData.token) {
+    throw new Error("No token received from the code execution service");
+  }
+
+  let result;
+  for (let i = 0; i < 10; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    result = await courseApi.get(`/api/v1/judge0/submissions/${createData.token}`);
+    if (result && result.status && result.status.id > 2) {
+      break;
+    }
+  }
+  return result;
+}
 
 const LANGUAGES = [
   { label: "React/JSX", value: "React" },
@@ -155,52 +175,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
           return;
         }
 
-        // Create submission
-        const createResponse = await fetch('https://judge0-ce.p.rapidapi.com/submissions', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': JUDGE0_API_KEY,
-            'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-          },
-          body: JSON.stringify({
-            language_id: languageId,
-            source_code: code,
-            stdin: ''
-          })
-        });
-
-        if (!createResponse.ok) {
-          throw new Error(`API Error: ${createResponse.status} - ${createResponse.statusText}`);
-        }
-
-        const createData = await createResponse.json();
-        console.log('Create response:', createData);
-        
-        if (!createData.token) {
-          throw new Error('No token received from API');
-        }
-        
-        const token = createData.token;
-
-        // Poll for results
-        let result;
-        for (let i = 0; i < 10; i++) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          
-          const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-            headers: {
-              'X-RapidAPI-Key': JUDGE0_API_KEY,
-              'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-            }
-          });
-          
-          result = await getResponse.json();
-          
-          if (result.status && result.status.id > 2) {
-            break;
-          }
-        }
+        const result = await runViaJudge0(languageId, code);
 
         if (result.stdout) {
           setJsOutput(result.stdout);
@@ -276,43 +251,8 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
         };
         
         const languageId = languageIds[selectedLanguage];
-        
-        // Create submission
-        const createResponse = await fetch('https://judge0-ce.p.rapidapi.com/submissions', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': JUDGE0_API_KEY,
-            'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-          },
-          body: JSON.stringify({
-            language_id: languageId,
-            source_code: code,
-            stdin: ''
-          })
-        });
 
-        const createData = await createResponse.json();
-        const token = createData.token;
-
-        // Poll for results
-        let result;
-        for (let i = 0; i < 10; i++) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          
-          const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-            headers: {
-              'X-RapidAPI-Key': JUDGE0_API_KEY,
-              'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-            }
-          });
-          
-          result = await getResponse.json();
-          
-          if (result.status && result.status.id > 2) {
-            break;
-          }
-        }
+        const result = await runViaJudge0(languageId, code);
 
         if (result.stdout) {
           output = result.stdout.trim();
@@ -609,43 +549,8 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
                               };
                               
                               const languageId = languageIds[selectedLanguage];
-                              
-                              // Create submission
-                              const createResponse = await fetch('https://judge0-ce.p.rapidapi.com/submissions', {
-                                method: 'POST',
-                                headers: {
-                                  'content-type': 'application/json',
-                                  'X-RapidAPI-Key': JUDGE0_API_KEY,
-                                  'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-                                },
-                                body: JSON.stringify({
-                                  language_id: languageId,
-                                  source_code: code,
-                                  stdin: ''
-                                })
-                              });
 
-                              const createData = await createResponse.json();
-                              const token = createData.token;
-
-                              // Poll for results
-                              let result;
-                              for (let i = 0; i < 10; i++) {
-                                await new Promise(resolve => setTimeout(resolve, 1000));
-                                
-                                const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
-                                  headers: {
-                                    'X-RapidAPI-Key': JUDGE0_API_KEY,
-                                    'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-                                  }
-                                });
-                                
-                                result = await getResponse.json();
-                                
-                                if (result.status && result.status.id > 2) {
-                                  break;
-                                }
-                              }
+                              const result = await runViaJudge0(languageId, code);
 
                               if (result.stdout) {
                                 output = result.stdout.trim();
