@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import bgTop from "../assets/bg-top.png";
 import bgBottom from "../assets/bg-bottom.png";
 import bgLeft from "../assets/bg-left.webp";
+import { signup } from "../services/authService";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,16 +22,6 @@ const Signup = () => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    // Add base users if not present
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    if (users.length === 0) {
-      const baseUsers = [
-        { fullName: "user", email: "user@learnsphere.com", password: "12345", isInstructor: false },
-        { fullName: "admin", email: "admin@learnsphere.com", password: "12345", isInstructor: false },
-        { fullName: "instructor", email: "instructor@learnsphere.com", password: "12345", isInstructor: true },
-      ];
-      localStorage.setItem("users", JSON.stringify(baseUsers));
-    }
     return () => { document.body.style.overflow = ''; };
   }, []);
 
@@ -39,11 +30,18 @@ const Signup = () => {
     setError("");
     setIsLoading(true);
 
-    // Simulate delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     if (!fullName || !email || !password || !confirmPassword) {
       setError("All fields are required.");
+      setIsLoading(false);
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      setIsLoading(false);
+      return;
+    }
+    if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+      setError("Password must include at least one letter and one number.");
       setIsLoading(false);
       return;
     }
@@ -57,36 +55,44 @@ const Signup = () => {
       setIsLoading(false);
       return;
     }
-    // Get users from localStorage
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    if (users.find((u) => u.fullName === fullName)) {
-      setError("Full Name already exists.");
-      setIsLoading(false);
-      return;
-    }
-    if (users.find((u) => u.email === email)) {
-      setError("Email already registered.");
-      setIsLoading(false);
-      return;
-    }
-    // Store basic signup data
-    localStorage.setItem('signupData', JSON.stringify({
-      fullName,
-      email,
-      password, // Ensure password is included
-      isInstructor
-    }));
 
-    if (isInstructor) {
+    try {
+      // create the account in the real backend
+      await signup(fullName, email, password, isInstructor);
+
+      // keep basic signup data for the instructor details wizard
+      localStorage.setItem('signupData', JSON.stringify({ fullName, email, isInstructor }));
+
+      if (isInstructor) {
+        setIsLoading(false);
+        navigate('/instructor-details');
+      } else {
+        window.alert("Signup Successful! You can now log in with your new account.");
+        setIsLoading(false);
+        setTimeout(() => navigate("/login"), 1200);
+      }
+    } catch (err) {
+      // A generic browser-level network failure (fetch() rejecting instead of resolving with a
+      // non-2xx response) means the request may still have reached the server and succeeded -
+      // the browser just never let this code see the response (e.g. a CORS policy mismatch, a
+      // dropped connection, a proxy timeout). In that case "Signup failed, try again" is actively
+      // misleading: retrying with the same email either fails confusingly with "Email already
+      // exists" (if it did succeed) or silently duplicates effort. Tell the user what's actually
+      // uncertain instead of guessing, and point them at the one safe way to find out.
+      const isAmbiguousNetworkFailure =
+        err instanceof TypeError ||
+        /NetworkError|Failed to fetch|network/i.test(err.message || "");
+
+      if (isAmbiguousNetworkFailure) {
+        setError(
+          "Couldn't confirm whether your account was created - your connection dropped before the server could respond. " +
+          "Please try logging in with the email and password you just entered before signing up again."
+        );
+      } else {
+        // the backend returned a real response (e.g. "Email already exists")
+        setError(err.message || "Signup failed. Please try again.");
+      }
       setIsLoading(false);
-      navigate('/instructor-details');
-    } else {
-      // Add new user
-      users.push({ fullName, email, password, isInstructor });
-      localStorage.setItem("users", JSON.stringify(users));
-      window.alert("Signup Successful! You can now log in with your new account.");
-      setIsLoading(false);
-      setTimeout(() => navigate("/login"), 1200);
     }
   };
 
@@ -134,7 +140,7 @@ const Signup = () => {
           <form className="auth-form space-y-4" onSubmit={handleSignup}>
             {/* Full Name Field */}
             <div className="auth-form__span-2">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="fullName">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtSignupFullName">
                 Full Name
               </label>
               <input
@@ -152,7 +158,7 @@ const Signup = () => {
             </div>
             {/* Email Field */}
             <div className="auth-form__span-2">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="email">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtSignupEmailId">
                 E-mail Address
               </label>
               <input
@@ -169,7 +175,7 @@ const Signup = () => {
             </div>
             {/* Password Field */}
             <div className="auth-form__span-2 relative">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="password">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtSignupPassword">
                 Create Password
               </label>
               <div className="relative">
@@ -194,7 +200,7 @@ const Signup = () => {
             </div>
             {/* Confirm Password Field */}
             <div className="auth-form__span-2 relative">
-              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="confirmPassword">
+              <label className="label block text-base font-medium text-gray-700 mb-2" htmlFor="txtSignupConfirmPassword">
                 Confirm Password
               </label>
               <div className="relative">

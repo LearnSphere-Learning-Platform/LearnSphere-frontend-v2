@@ -15,6 +15,15 @@ import "prismjs/components/prism-php";
 import "prismjs/themes/prism.css";
 import * as Babel from "@babel/standalone";
 
+// Was previously hardcoded 6 times below. Moving it to an env var stops it from being committed
+// to git, but note this does NOT hide it from end users once deployed - Vite inlines every
+// VITE_* value into the shipped JS bundle, so anyone can read it from devtools on the live site.
+// The only real fix for that is proxying Judge0 calls through a backend endpoint that holds the
+// key server-side instead of calling judge0-ce.p.rapidapi.com directly from the browser. Rotate
+// this key on RapidAPI regardless, since the previous hardcoded value has been sitting in git
+// history.
+const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY || "";
+
 const LANGUAGES = [
   { label: "React/JSX", value: "React" },
   { label: "JavaScript", value: "JavaScript" },
@@ -151,7 +160,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+            'X-RapidAPI-Key': JUDGE0_API_KEY,
             'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
           },
           body: JSON.stringify({
@@ -181,7 +190,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
           
           const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
             headers: {
-              'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+              'X-RapidAPI-Key': JUDGE0_API_KEY,
               'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
             }
           });
@@ -273,7 +282,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+            'X-RapidAPI-Key': JUDGE0_API_KEY,
             'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
           },
           body: JSON.stringify({
@@ -293,7 +302,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
           
           const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
             headers: {
-              'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+              'X-RapidAPI-Key': JUDGE0_API_KEY,
               'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
             }
           });
@@ -606,7 +615,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
                                 method: 'POST',
                                 headers: {
                                   'content-type': 'application/json',
-                                  'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+                                  'X-RapidAPI-Key': JUDGE0_API_KEY,
                                   'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
                                 },
                                 body: JSON.stringify({
@@ -626,7 +635,7 @@ export default function LearnSphereSandbox({ instructions, expectedOutput, hint,
                                 
                                 const getResponse = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}`, {
                                   headers: {
-                                    'X-RapidAPI-Key': '84a404a31cmsh94f9e9f791bf588p11c516jsn3bf9f940ca21',
+                                    'X-RapidAPI-Key': JUDGE0_API_KEY,
                                     'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
                                   }
                                 });
