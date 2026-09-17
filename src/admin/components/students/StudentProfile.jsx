@@ -133,63 +133,10 @@ export const StudentProfile = ({ student, open, onOpenChange }) => {
     ],
   };
 
-  // Certificate component that will be captured
-  const CertificateTemplate = ({ studentName, courseName, date, ref }) => (
-    <div
-      ref={ref}
-      className="w-[800px] h-[600px] bg-gradient-to-br from-gray-50 to-gray-100 p-8 border-8 border-amber-600 relative mx-auto"
-      style={{ fontFamily: "serif" }}
-    >
-      {/* Decorative corners */}
-      <div className="absolute top-4 left-4 w-16 h-16 border-l-4 border-t-4 border-amber-600"></div>
-      <div className="absolute top-4 right-4 w-16 h-16 border-r-4 border-t-4 border-amber-600"></div>
-      <div className="absolute bottom-4 left-4 w-16 h-16 border-l-4 border-b-4 border-amber-600"></div>
-      <div className="absolute bottom-4 right-4 w-16 h-16 border-r-4 border-b-4 border-amber-600"></div>
-
-      <div className="text-center h-full flex flex-col justify-center">
-        <h1 className="text-5xl font-bold text-gray-800 mb-4">CERTIFICATE</h1>
-        <h2 className="text-2xl text-amber-600 tracking-widest mb-12">
-          OF COMPLETION
-        </h2>
-
-        <p className="text-lg text-gray-600 mb-8">
-          THIS CERTIFICATE IS AWARDED TO :
-        </p>
-
-        <div className="mb-8">
-          <h3 className="text-4xl font-bold text-gray-800 border-b-2 border-amber-600 pb-2 inline-block">
-            {studentName?.toUpperCase()}
-          </h3>
-        </div>
-
-        <p className="text-lg text-gray-600 mb-4">
-          FOR COMPLETING A CERTIFICATION PROGRAM FOR
-        </p>
-        <p className="text-xl font-semibold text-gray-800 mb-12">
-          "{courseName}" AT LEARN SPHERE.
-        </p>
-
-        {/* Logo placeholder */}
-        <div className="flex justify-center mb-8">
-          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">LS</span>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-end mt-auto">
-          <div className="text-left">
-            <div className="border-b border-gray-400 w-32 mb-2"></div>
-            <p className="text-sm text-gray-600">COURSE ID</p>
-          </div>
-
-          <div className="text-right">
-            <div className="border-b border-gray-400 w-32 mb-2"></div>
-            <p className="text-sm text-gray-600">INSTRUCTOR SIGNATURE</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  // NOTE: an unused `CertificateTemplate` component (a fixed 800x600 certificate mockup) used
+  // to live here. It was never rendered anywhere in this file - the real certificate download
+  // below (`handleDownloadCertificate`) builds the PDF directly with jsPDF text calls and never
+  // referenced it. Removed as dead code rather than "responsively fixing" markup nobody ever saw.
   const handleDownloadReport = () => {
     const doc = new jsPDF();
 

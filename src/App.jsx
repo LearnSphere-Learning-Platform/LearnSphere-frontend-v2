@@ -64,7 +64,7 @@ import AdminAnalytics from "./admin/pages/Analytics";
 import AdminReports from "./admin/pages/Reports";
 import AdminPayments from "./admin/pages/Payments";
 import AdminFlagged from "./admin/pages/Flagged";
-import ResetPassword from "./pages/ResetPassword ";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -112,7 +112,12 @@ function AppContent() {
     !isDefinedRoute;
 
   return (
-    <div className="min-h-screen bg-white">
+    // Header is `fixed top-0 ... w-full` (see components/Header.jsx), so it's taken out of
+    // normal document flow and doesn't push this content down on its own - every page under it
+    // was rendering with its first ~96px hidden behind the header. pt-24 (96px) clears the
+    // header's actual rendered height (py-4 padding + h-15 logo + border), only applied when the
+    // header is actually shown.
+    <div className={`min-h-screen bg-white ${!hideHeader ? "pt-24" : ""}`}>
       {!hideHeader && <Header />}
       <Routes>
         {/* Public routes */}
